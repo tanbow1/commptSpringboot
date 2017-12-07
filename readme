@@ -1,0 +1,29 @@
+#公共服务平台核心后端#
+
+服务启动：
+1.mysql
+2.mongodb
+3.redis
+4.activemq
+5.本应用
+
+目录结构
+java:
+    com.tanb.commpt
+    core://公共核心模块
+        annotation //自定义注解
+        controller
+        service //表示层与dao层中间服务层
+        dao //数据库调用层
+        repository //对象操作层
+        mapper //mybatis
+        exception
+        filter
+        global
+        interceptor
+        listener
+        log
+        po
+        util
+        global
+    miniapp://小程序后端

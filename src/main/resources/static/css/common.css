@@ -1,0 +1,171 @@
+body {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.pull__right {
+    float: right;
+}
+
+.font__16p {
+    font-size: 16px
+}
+
+.font__grey {
+    color: grey;
+}
+
+.h__20p {
+    height: 20px;
+}
+
+.h__30p {
+    height: 30px;
+}
+
+.h__37p {
+    height: 37px;
+}
+
+.h__50p {
+    height: 50px;
+}
+
+.h__100 {
+    height: 100%;
+}
+
+.l__h__37p {
+    line-height: 37px;
+}
+
+.l__h__50p {
+    line-height: 50px;
+}
+
+.w_40 {
+    width: 40%;
+}
+
+.w__50 {
+    width: 50%;
+}
+
+.w__100 {
+    width: 100%;
+}
+
+.w__30p {
+    width: 30px;
+}
+
+.w__100p {
+    width: 100px;
+}
+
+.w__150p {
+    width: 150px;
+}
+
+.w__300p {
+    width: 300px;
+}
+
+.p__0 {
+    padding: 0;
+}
+
+.p__10p {
+    padding: 10px;
+}
+
+.p__lr__5p {
+    padding: 0 5px;
+}
+
+.m__0 {
+    margin: 0;
+}
+
+.m__l__10p {
+    margin-left: 10px;
+}
+
+.m__l__20p {
+    margin-left: 20px;
+}
+
+.m__l__50p {
+    margin-left: 50px;
+}
+
+.ov__hidden {
+    overflow: hidden;
+}
+
+.ov__x__hidden {
+    overflow-x: hidden;
+}
+
+.ov__y__hidden {
+    overflow-y: hidden;
+}
+
+.dis__inline {
+    display: inline;
+}
+
+.dis__block {
+    display: block;
+}
+
+.dis__inlineblock {
+    display: inline-block;
+}
+
+/*fa loading*/
+/*fa-spinner fa-spin fa-pull-left fa-3x fa-fw*/
+/*fa-circle-o-notch fa-spin*/
+/*fa-refresh fa-spin*/
+/*fa-cog fa-spin*/
+/*fa-spinner fa-pulse*/
+
+/*自定义*/
+.icon-download {
+    background: url('../image/icons/download.png') no-repeat center center;
+}
+
+.icon-import {
+    background: url('../image/icons/import.png') no-repeat center center;
+}
+
+.icon-export {
+    background: url('../image/icons/export.png') no-repeat center center;
+}
+
+.icon-upload {
+    background: url('../image/icons/upload.png') no-repeat center center;
+}
+
+.icon-upload2 {
+    background: url('../image/icons/upload_2.png') no-repeat center center;
+}
+
+.icon-cancel2 {
+    background: url('../image/icons/cancel_2.png') no-repeat center center;
+}
+
+.icon-add2 {
+    background: url('../image/icons/add_2.png') no-repeat center center;
+}
+
+.icon-remove2 {
+    background: url('../image/icons/remove_2.png') no-repeat center center;
+}
+
+.icon-reset {
+    background: url('../image/icons/reset.png') no-repeat center center;
+}
