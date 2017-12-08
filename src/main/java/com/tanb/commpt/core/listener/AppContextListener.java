@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebListener;
  * Created by Tanbo on 2017/12/6.
  */
 @WebListener
-@Component
 public class AppContextListener implements ServletContextListener {
 
     private static final Logger LOGGER = Logger.getLogger(AppContextListener.class);

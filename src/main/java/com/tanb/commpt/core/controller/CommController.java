@@ -38,7 +38,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Controller
 @RequestMapping("/comm")
 public class CommController {
-    private static Logger logger = LoggerFactory.getLogger(CommController.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(CommController.class);
 
     @Autowired
     private SystemConfig config;
@@ -196,27 +196,27 @@ public class CommController {
             jsonResponse = (JsonResponse) method.invoke(serviceBean, paramValues);
 
         } catch (NoSuchMethodException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_008 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_008 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_008);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_008);
         } catch (IllegalAccessException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_009 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_009 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_009);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_009);
         } catch (ClassCastException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_012 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_012 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_012);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_012);
         } catch (ClassNotFoundException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_013 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_013 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_013);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_013);
         } catch (IllegalArgumentException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_014 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_014 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_014);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_014);
         } catch (NoSuchBeanDefinitionException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_010 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_010 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_010);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_010);
         }
@@ -262,23 +262,23 @@ public class CommController {
             Method method = serviceBean.getClass().getMethod(methodName, JsonRequest.class);
             jsonResponse = (JsonResponse) method.invoke(serviceBean, jsonRequest);
         } catch (NoSuchMethodException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_008 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_008 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_008);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_008);
         } catch (IllegalAccessException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_009 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_009 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_009);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_009);
         } catch (ClassCastException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_012 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_012 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_012);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_012);
         } catch (IllegalArgumentException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_014 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_014 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_014);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_014);
         } catch (NoSuchBeanDefinitionException e) {
-            logger.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_010 + "]");
+            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_010 + "]");
             jsonResponse.setCode(ConsCommon.WARN_CODE_010);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_010);
         }
@@ -323,19 +323,19 @@ public class CommController {
             Method method = serviceBean.getClass().getMethod(methodName, JsonRequest.class, MultipartFile[].class);
             jsonResponse = (JsonResponse) method.invoke(serviceBean, jsonRequest, files);
         } catch (NoSuchMethodException e) {
-            logger.error(e.getMessage());
+            LOGGER.error(e.getMessage());
             jsonResponse.setCode(ConsCommon.WARN_CODE_008);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_008);
         } catch (IllegalAccessException e) {
-            logger.error(e.getMessage());
+            LOGGER.error(e.getMessage());
             jsonResponse.setCode(ConsCommon.WARN_CODE_009);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_009);
         } catch (ClassCastException e) {
-            logger.error(e.getMessage());
+            LOGGER.error(e.getMessage());
             jsonResponse.setCode(ConsCommon.WARN_CODE_012);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_012);
         } catch (IllegalArgumentException e) {
-            logger.error(e.getMessage());
+            LOGGER.error(e.getMessage());
             jsonResponse.setCode(ConsCommon.WARN_CODE_014);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_014);
         }

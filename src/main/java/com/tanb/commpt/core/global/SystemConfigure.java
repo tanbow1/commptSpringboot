@@ -39,6 +39,6 @@ public class SystemConfigure implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        System.out.println("========CommandLineRunner=======");
+        System.out.println("========系统参数组件初始化=======");
     }
 }

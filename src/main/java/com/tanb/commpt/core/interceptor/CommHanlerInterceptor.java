@@ -1,11 +1,9 @@
 package com.tanb.commpt.core.interceptor;
 
-import com.tanb.commpt.core.global.SystemConfig;
 import com.tanb.commpt.core.global.SystemConfigure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -62,6 +60,6 @@ public class CommHanlerInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-        LOGGER.debug(">>>CommHanlerInterceptor>>>>>>>在整个请求结束之后被调用，也就是在DispatcherServlet 渲染了对应的视图之后执行（主要是用于进行资源清理工作）");
+        LOGGER.debug(">>>CommHanlerInterceptor>>>>>>>请求结束之后被调用，也是在DispatcherServlet 渲染了对应的视图之后执行（主要用于进行资源清理工作）");
     }
 }

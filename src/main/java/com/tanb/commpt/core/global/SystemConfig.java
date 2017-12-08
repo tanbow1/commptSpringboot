@@ -8,6 +8,8 @@ import org.springframework.context.annotation.PropertySource;
  * Created by Tanbo on 2017/8/27.
  * <p>
  * 注入其他系统配置信息
+ *
+ * 暂时用SystemConfigure替代此类
  */
 
 @Deprecated

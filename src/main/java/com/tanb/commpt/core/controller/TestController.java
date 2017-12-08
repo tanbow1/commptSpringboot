@@ -18,7 +18,7 @@ public class TestController {
     private static final Logger LOGGER = Logger.getLogger(TestController.class);
 
     @Autowired
-    SystemConfig config;
+    SystemConfig systemConfig;
 
     @Autowired
     private SystemConfigure systemConfigure;
