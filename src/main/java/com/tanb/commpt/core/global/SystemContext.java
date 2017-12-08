@@ -12,8 +12,11 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 缓存配置文件，在spring管理之前完成
+ */
 public class SystemContext {
-    private static final Logger logger = LoggerFactory.getLogger(SystemContext.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SystemContext.class);
 
     private static boolean initialized = false;
 
@@ -21,7 +24,7 @@ public class SystemContext {
 
     private static SystemContext systemContext = null;
 
-    private static final String BOOTSTRAP = "systemconfig.properties";//多个，分割
+    private static final String BOOTSTRAP = "systemConfig.properties";//多个，分割
 
 
     private SystemContext() {
@@ -40,7 +43,7 @@ public class SystemContext {
         contextPool = new ConcurrentHashMap();
         loadProperties();
         setInitialized(true);
-        logger.info("完成缓存中所有的参数数据初始化.");
+        LOGGER.info("配置文件(" + BOOTSTRAP + ")初始化成功.");
     }
 
     private void loadProperties() {
@@ -53,7 +56,7 @@ public class SystemContext {
                 String value = props.getProperty(key);
                 synchronized (contextPool) {
                     contextPool.put(key, value);
-                    logger.info("初始化系统属性: " + key + " = " + value);
+                    LOGGER.info("初始化系统属性:" + key + " = " + value);
                 }
             }
         }
@@ -72,7 +75,7 @@ public class SystemContext {
             }
             list.add(props);
         } catch (Exception e) {
-            logger.error("读取系统属性配置文件时发生错误:", e);
+            LOGGER.error("读取系统属性配置文件时发生错误:", e);
         } finally {
             try {
                 if (is != null) {
@@ -102,7 +105,7 @@ public class SystemContext {
     public void clear() {
         contextPool.clear();
         initialized = false;
-        logger.info("清除参数缓存中所有的参数数据");
+        LOGGER.info("清除参数缓存中所有的配置文件信息.");
     }
 
 
@@ -150,12 +153,12 @@ public class SystemContext {
     public Object getValue(String pkID, String skID) {
         Object obj = contextPool.get(pkID);
         if (null == obj) {
-            logger.error(
+            LOGGER.error(
                     "找不到配置项：" + pkID + "　，请检查配置文件：" + BOOTSTRAP);
             return null;
         }
         if (!(obj instanceof IConfigContext)) {
-            logger.error(
+            LOGGER.error(
                     "配置项：" + pkID + "　没有加载或加载错误，请检查配置文件：" + BOOTSTRAP);
             return null;
         }

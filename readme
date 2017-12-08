@@ -1,7 +1,7 @@
 #公共服务平台核心后端#
 
 服务启动：
-1.mysql
+1.mysql/oracle
 2.mongodb
 3.redis
 4.activemq
@@ -10,13 +10,14 @@
 目录结构
 java:
     com.tanb.commpt
-    core://公共核心模块
-        annotation //自定义注解
+    core: //公共核心模块
+        annotation
+        constant
         controller
-        service //表示层与dao层中间服务层
-        dao //数据库调用层
-        repository //对象操作层
-        mapper //mybatis
+        service
+        dao //数据库调用
+        repository //对象操作
+        mapper
         exception
         filter
         global
@@ -26,4 +27,11 @@ java:
         po
         util
         global
-    miniapp://小程序后端
+    miniapp: //小程序后端
+resources:
+    static
+    templates
+    application.properties //spring boot相关配置
+    systemConfig.properties //其他配置
+    generatorConfig.xml
+    logback.xml

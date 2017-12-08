@@ -8,6 +8,7 @@ import com.tanb.commpt.core.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,20 +25,20 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author Tanbo
  */
+@Component
 public class MySimpleMappingExceptionResolver implements
         HandlerExceptionResolver {
 
-    private static final Logger logger = LoggerFactory
+    private static final Logger LOGGER = LoggerFactory
             .getLogger(MySimpleMappingExceptionResolver.class);
 
     @Autowired
     SystemConfig config;
 
-    @SuppressWarnings("unchecked")
     public ModelAndView resolveException(HttpServletRequest request,
                                          HttpServletResponse response, Object object, Exception ex) {
         JsonResponse jsonResponse = new JsonResponse();
-        logger.error(ex.getMessage());
+        LOGGER.error(ex.getMessage());
         // 判断是否ajax请求
         if (!CommonUtil.isAjaxRequest(request)) {
             // 非ajax请求

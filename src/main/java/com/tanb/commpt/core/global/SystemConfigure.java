@@ -1,19 +1,14 @@
 package com.tanb.commpt.core.global;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
- * Created by Tanbo on 2017/8/27.
- * <p>
- * 注入其他系统配置信息
+ * Created by Tanbo on 2017/12/7.
  */
-
-@Deprecated
 @Configuration
-@PropertySource(value = "classpath:systemConfig.properties", ignoreResourceNotFound = true)
-public class SystemConfig {
+public class SystemConfigure implements CommandLineRunner {
 
     @Value("${interceptor.ignoreUri}")
     public String INTERCEPTOR_IGNORE_URI;
@@ -41,4 +36,9 @@ public class SystemConfig {
 
     @Value("${ftp.uploadBasepath}")
     public String FTP_BASEPATH;
+
+    @Override
+    public void run(String... strings) throws Exception {
+        System.out.println("========CommandLineRunner=======");
+    }
 }
