@@ -5,11 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.constant.ContentType;
 import com.tanb.commpt.core.exception.BizLevelException;
-import com.tanb.commpt.core.mapper.DmAccountMapper;
 import com.tanb.commpt.core.mapper.DmGjdqMapper;
 import com.tanb.commpt.core.mapper.DmMenuMapper;
 import com.tanb.commpt.core.mapper.DmProductTypeMapper;
-import com.tanb.commpt.core.po.DmAccount;
 import com.tanb.commpt.core.po.DmGjdq;
 import com.tanb.commpt.core.po.DmMenu;
 import com.tanb.commpt.core.po.DmProductType;
@@ -41,9 +39,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DmServiceImpl implements IDmService {
 
     @Autowired
-    private DmAccountMapper dmAccountMapper;
-
-    @Autowired
     private DmMenuMapper dmMenuMapper;
 
     @Autowired
@@ -54,25 +49,7 @@ public class DmServiceImpl implements IDmService {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    @Override
-    public List<DmAccount> selectAllDmAccount() {
-        return dmAccountMapper.selectAll();
-    }
 
-    @Override
-    public DmAccount selectDmAccountByPrimaryKey(String accountType) {
-        return dmAccountMapper.selectByPrimaryKey(accountType);
-    }
-
-    @Override
-    public int deleteDmAccountByPrimaryKey(String accountType) {
-        return dmAccountMapper.deleteByPrimaryKey(accountType);
-    }
-
-    @Override
-    public int saveDmAccount(DmAccount record) {
-        return dmAccountMapper.insert(record);
-    }
 
     @Override
     public List<DmMenu> selectMenuByPId(String parentId) {

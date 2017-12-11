@@ -1,8 +1,6 @@
 package com.tanb.commpt.core.po;
 
-
 import com.tanb.commpt.core.po.comm.Base;
-
 import java.util.Date;
 
 public class XtUser extends Base {
@@ -16,29 +14,29 @@ public class XtUser extends Base {
 
     private String sex;
 
-    private String birthday;
-
     private String mobile;
 
+    private String birthday;
+
+    private String nationalityId;
+
     private String nationality;
+
+    private String cardId;
 
     private String cardType;
 
     private String cardNumber;
 
-    private String addr;
-
-    private String yxbj;
-
-    private Date lrSj;
-
-    private Date xgSj;
-
-    private String pass;
-
-    private String passEnc;
+    private String address;
 
     private String avatar;
+
+    private Date registTime;
+
+    private String password;
+
+    private String status;
 
     public String getUserId() {
         return userId;
@@ -80,14 +78,6 @@ public class XtUser extends Base {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday == null ? null : birthday.trim();
-    }
-
     public String getMobile() {
         return mobile;
     }
@@ -96,12 +86,36 @@ public class XtUser extends Base {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday == null ? null : birthday.trim();
+    }
+
+    public String getNationalityId() {
+        return nationalityId;
+    }
+
+    public void setNationalityId(String nationalityId) {
+        this.nationalityId = nationalityId == null ? null : nationalityId.trim();
+    }
+
     public String getNationality() {
         return nationality;
     }
 
     public void setNationality(String nationality) {
         this.nationality = nationality == null ? null : nationality.trim();
+    }
+
+    public String getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId == null ? null : cardId.trim();
     }
 
     public String getCardType() {
@@ -120,52 +134,12 @@ public class XtUser extends Base {
         this.cardNumber = cardNumber == null ? null : cardNumber.trim();
     }
 
-    public String getAddr() {
-        return addr;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr == null ? null : addr.trim();
-    }
-
-    public String getYxbj() {
-        return yxbj;
-    }
-
-    public void setYxbj(String yxbj) {
-        this.yxbj = yxbj == null ? null : yxbj.trim();
-    }
-
-    public Date getLrSj() {
-        return lrSj;
-    }
-
-    public void setLrSj(Date lrSj) {
-        this.lrSj = lrSj;
-    }
-
-    public Date getXgSj() {
-        return xgSj;
-    }
-
-    public void setXgSj(Date xgSj) {
-        this.xgSj = xgSj;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass == null ? null : pass.trim();
-    }
-
-    public String getPassEnc() {
-        return passEnc;
-    }
-
-    public void setPassEnc(String passEnc) {
-        this.passEnc = passEnc == null ? null : passEnc.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
     public String getAvatar() {
@@ -174,5 +148,29 @@ public class XtUser extends Base {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar == null ? null : avatar.trim();
+    }
+
+    public Date getRegistTime() {
+        return registTime;
+    }
+
+    public void setRegistTime(Date registTime) {
+        this.registTime = registTime;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

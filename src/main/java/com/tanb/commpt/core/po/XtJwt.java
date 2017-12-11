@@ -11,7 +11,7 @@ public class XtJwt extends XtJwtKey {
 
     private Date jwtRefreshInterval;
 
-    private Date lrSj;
+    private Date createTime;
 
     public String getRefreshToken() {
         return refreshToken;
@@ -45,11 +45,11 @@ public class XtJwt extends XtJwtKey {
         this.jwtRefreshInterval = jwtRefreshInterval;
     }
 
-    public Date getLrSj() {
-        return lrSj;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setLrSj(Date lrSj) {
-        this.lrSj = lrSj;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

@@ -30,7 +30,7 @@ public interface DmMenuMapper {
             "from T_DM_MENU",
             "where MENU_ID = #{menuId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.DmMenuMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmMenuMapper.BaseResultMap")
     DmMenu selectByPrimaryKey(String menuId);
 
     @Select({
@@ -39,7 +39,7 @@ public interface DmMenuMapper {
             "from T_DM_MENU",
             "where YXBJ = '1'"
     })
-    @ResultMap("com.tb.commpt.mapper.DmMenuMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmMenuMapper.BaseResultMap")
     List<DmMenu> selectAll();
 
     int updateByPrimaryKeySelective(DmMenu record);

@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-public interface DmZjlxMapper {
+public interface DmZjlxMapper{
     @Delete({
         "delete from T_DM_ZJLX",
         "where CARD_TYPE = #{cardType,jdbcType=VARCHAR}"

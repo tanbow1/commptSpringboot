@@ -34,9 +34,10 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public XtUser selectByUsernameAndPassword(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        XtUser xtUser = xtUserMapper.selectExistsUser(username);
+//        XtUser xtUser = xtUserMapper.selectExistsUser(username);
+        XtUser xtUser = xtUserMapper.selectByPrimaryKey(username);
         if (null != xtUser) {
-            if (MD5Util.validateStr(password, xtUser.getPassEnc())) {
+            if (MD5Util.validateStr(password, xtUser.getPassword())) {
                 return xtUser;
             }
         }
@@ -57,9 +58,9 @@ public class UserServiceImpl implements IUserService {
     @Transactional(rollbackFor = {Exception.class})
     @Override
     public String saveUserInfo(XtUser user, XtUserAccount userAccount, XtUserAddress userAddress, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException {
-        if (null != user.getPass()) {
-            user.setPassEnc(MD5Util.getEncryptedStr(user.getPass()));
-            user.setPass("");
+        if (null != user.getPassword()) {
+            user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
+         //   user.setPass("");
         }
         XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
         if (null != existsUser) {
@@ -86,7 +87,7 @@ public class UserServiceImpl implements IUserService {
      * @param userId
      * @return
      */
-    private XtUser selectByPrimaryKey(String userId) {
-        return xtUserMapper.selectByPrimaryKey(userId);
-    }
+//    private XtUser selectByPrimaryKey(String userId) {
+//        return xtUserMapper.selectByPrimaryKey(userId);
+//    }
 }

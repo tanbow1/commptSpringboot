@@ -3,12 +3,26 @@
 database:
 commpt
 
+
+
+#oracle
+
+database:
+ORCLCDB
+
+
+
 users:
 C##DB_XT
 C##DB_DM
 C##DB_APP
 
 tables:
+
+
+
+
+CREATE OR REPLACE EDITIONABLE SYNONYM "C##DB_APP"."XT_USER" FOR "C##DB_XT"."XT_USER";
 
 
 #mongodb

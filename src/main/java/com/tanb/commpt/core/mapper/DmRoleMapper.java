@@ -29,7 +29,7 @@ public interface DmRoleMapper {
         "from T_DM_ROLE",
         "where ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.DmRoleMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmRoleMapper.BaseResultMap")
     DmRole selectByPrimaryKey(String roleId);
 
     @Select({
@@ -38,7 +38,7 @@ public interface DmRoleMapper {
             "from T_DM_ROLE",
             "where YXBJ = '1'"
     })
-    @ResultMap("com.tb.commpt.mapper.DmRoleMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmRoleMapper.BaseResultMap")
     List<DmRole> selectAll();
 
     int updateByPrimaryKeySelective(DmRole record);

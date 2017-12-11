@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tb.commpt.code.mapper.XtUserAddressMapper">
-  <resultMap id="BaseResultMap" type="com.tb.commpt.code.po.XtUserAddress">
+<mapper namespace="com.tanb.commpt.core.mapper.XtUserAddressMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.code.po.XtUserAddress">
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
     <id column="ADDRESS" jdbcType="VARCHAR" property="address" />
     <result column="IS_DEFAULT" jdbcType="CHAR" property="isDefault" />
@@ -11,7 +11,7 @@
   <sql id="Base_Column_List">
     USER_ID, ADDRESS, IS_DEFAULT, YXBJ, LR_SJ
   </sql>
-  <insert id="insertSelective" parameterType="com.tb.commpt.code.po.XtUserAddress">
+  <insert id="insertSelective" parameterType="com.tanb.commpt.code.po.XtUserAddress">
     insert into T_XT_USER_ADDRESS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -48,7 +48,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tb.commpt.code.po.XtUserAddress">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.code.po.XtUserAddress">
     update T_XT_USER_ADDRESS
     <set>
       <if test="isDefault != null">

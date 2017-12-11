@@ -2,13 +2,9 @@ package com.tanb.commpt.core.mapper;
 
 import com.tanb.commpt.core.po.XtUserRole;
 import com.tanb.commpt.core.po.XtUserRoleKey;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
-public interface XtUserRoleMapper {
+public interface XtUserRoleMapper  {
     @Delete({
         "delete from T_XT_USERANDROLE",
         "where USER_ID = #{userId,jdbcType=VARCHAR}",
@@ -33,7 +29,7 @@ public interface XtUserRoleMapper {
         "where USER_ID = #{userId,jdbcType=VARCHAR}",
           "and ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.XtUserRoleMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.XtUserRoleMapper.BaseResultMap")
     XtUserRole selectByPrimaryKey(XtUserRoleKey key);
 
     int updateByPrimaryKeySelective(XtUserRole record);

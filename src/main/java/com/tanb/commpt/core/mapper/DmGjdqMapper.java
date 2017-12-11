@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 import java.util.Map;
 
-public interface DmGjdqMapper {
+public interface DmGjdqMapper{
     @Insert({
             "insert into T_DM_GJDQ (GJDQ_MC_Z, GJDQ_MC_E, ",
             "GJDQ_MCDM, GJDQ_DHDM, ",

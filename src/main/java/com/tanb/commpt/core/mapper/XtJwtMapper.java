@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public interface XtJwtMapper {
+public interface XtJwtMapper  {
     @Delete({
             "delete from T_XT_JWT",
             "where USER_ID = #{userId,jdbcType=VARCHAR}",
@@ -33,7 +33,8 @@ public interface XtJwtMapper {
             "where USER_ID = #{userId,jdbcType=VARCHAR}",
             "and ACCESS_TOKEN = #{accessToken,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.XtJwtMapper.BaseResultMap")
+
+    @ResultMap("com.tanb.commpt.core.mapper.XtJwtMapper.BaseResultMap")
     XtJwt selectByPrimaryKey(XtJwtKey key);
 
     int updateByPrimaryKeySelective(XtJwt record);

@@ -30,7 +30,7 @@ public interface DmProductTypeMapper {
             "from T_DM_PRODUCTTYPE",
             "where TYPE_ID = #{typeId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.DmProductTypeMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmProductTypeMapper.BaseResultMap")
     DmProductType selectByPrimaryKey(String typeId);
 
     int updateByPrimaryKeySelective(DmProductType record);

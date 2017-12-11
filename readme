@@ -35,3 +35,7 @@ resources:
     systemConfig.properties //其他配置
     generatorConfig.xml
     logback.xml
+
+
+其他：
+mvn install:install-file -Dfile=/Users/Tanbo/project/commPlatformForSpringboot/commptbgsystem/doc/ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.1 -Dpackaging=jar

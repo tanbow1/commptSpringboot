@@ -2,13 +2,9 @@ package com.tanb.commpt.core.mapper;
 
 import com.tanb.commpt.core.po.XtUserAccount;
 import com.tanb.commpt.core.po.XtUserAccountKey;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
-public interface XtUserAccountMapper {
+public interface XtUserAccountMapper  {
     @Delete({
             "delete from T_XT_USER_ACCOUNT",
             "where USER_ID = #{userId,jdbcType=VARCHAR}",

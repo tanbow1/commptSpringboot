@@ -28,7 +28,7 @@ import java.io.IOException;
  * 全局异常特殊处理，先于MySimpleMappingExceptionResolver
  */
 //将作用在所有注解了@RequestMapping的控制器的方法上
-@ControllerAdvice
+//@ControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory
             .getLogger(GlobalExceptionHandler.class);

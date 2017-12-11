@@ -1,7 +1,6 @@
 package com.tanb.commpt.core.service;
 
 import com.tanb.commpt.core.exception.BizLevelException;
-import com.tanb.commpt.core.po.DmAccount;
 import com.tanb.commpt.core.po.DmMenu;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
@@ -15,13 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public interface IDmService {
 
     //dmAccount
-    List<DmAccount> selectAllDmAccount();
 
-    DmAccount selectDmAccountByPrimaryKey(String accountType);
-
-    int deleteDmAccountByPrimaryKey(String accountType);
-
-    int saveDmAccount(DmAccount record);
 
     //dmMenu
     List<DmMenu> selectMenuByPId(String parentId);

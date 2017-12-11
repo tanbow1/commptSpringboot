@@ -7,7 +7,7 @@ public class DmRole extends Base {
 
     private String roleName;
 
-    private String yxbj;
+    private String status;
 
     public String getRoleId() {
         return roleId;
@@ -25,11 +25,11 @@ public class DmRole extends Base {
         this.roleName = roleName == null ? null : roleName.trim();
     }
 
-    public String getYxbj() {
-        return yxbj;
+    public String getStatus() {
+        return status;
     }
 
-    public void setYxbj(String yxbj) {
-        this.yxbj = yxbj == null ? null : yxbj.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

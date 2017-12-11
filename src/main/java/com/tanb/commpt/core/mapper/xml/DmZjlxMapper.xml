@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tb.commpt.core.mapper.DmZjlxMapper">
-  <resultMap id="BaseResultMap" type="com.tb.commpt.core.po.DmZjlx">
+<mapper namespace="com.tanb.commpt.core.mapper.DmZjlxMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmZjlx">
     <id column="CARD_TYPE" jdbcType="VARCHAR" property="cardType" />
     <result column="CARD_NAME" jdbcType="VARCHAR" property="cardName" />
     <result column="YXBJ" jdbcType="CHAR" property="yxbj" />
@@ -9,7 +9,7 @@
   <sql id="Base_Column_List">
     CARD_TYPE, CARD_NAME, YXBJ
   </sql>
-  <insert id="insertSelective" parameterType="com.tb.commpt.core.po.DmZjlx">
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmZjlx">
     insert into T_DM_ZJLX
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cardType != null">
@@ -34,7 +34,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tb.commpt.core.po.DmZjlx">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmZjlx">
     update T_DM_ZJLX
     <set>
       <if test="cardName != null">

@@ -1,5 +1,6 @@
 package com.tanb.commpt.core.controller;
 
+import com.tanb.commpt.core.dao.impl.BaseDao;
 import com.tanb.commpt.core.global.SystemConfig;
 import com.tanb.commpt.core.global.SystemConfigure;
 import org.apache.log4j.Logger;
@@ -23,11 +24,15 @@ public class TestController {
     @Autowired
     private SystemConfigure systemConfigure;
 
+    @Autowired
+    BaseDao baseDao;
+
     @ResponseBody
     @RequestMapping("hello")
     public String hello() {
         LOGGER.debug("=====TEST=====");
-        System.out.print(systemConfigure);
+        System.out.println(systemConfigure);
+        System.out.println(baseDao.getNowLocal());
         return "Hello CommPt!!";
     }
 
