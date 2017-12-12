@@ -26,15 +26,6 @@ public interface XtJwtMapper  {
 
     int insertSelective(XtJwt record);
 
-    @Select({
-            "select",
-            "USER_ID, ACCESS_TOKEN, REFRESH_TOKEN, JWT_TTL, JWT_REFRESH_TTL, JWT_REFRESH_INTERVAL",
-            "from T_XT_JWT",
-            "where USER_ID = #{userId,jdbcType=VARCHAR}",
-            "and ACCESS_TOKEN = #{accessToken,jdbcType=VARCHAR}"
-    })
-
-    @ResultMap("com.tanb.commpt.core.mapper.XtJwtMapper.BaseResultMap")
     XtJwt selectByPrimaryKey(XtJwtKey key);
 
     int updateByPrimaryKeySelective(XtJwt record);

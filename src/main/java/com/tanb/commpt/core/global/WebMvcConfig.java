@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Created by Tanbo on 2017/12/7.
  */
 @Configuration
-public class MyAppConfigurer extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 需提前注册bean 否则CommHanlerInterceptor内无法正确注入

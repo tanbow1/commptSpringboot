@@ -49,7 +49,7 @@ function loginsys(btnObj) {
     }
 
     $.ajax({
-        url: "/comm/login",
+        url: "/doLogin",
         data: {
             reqData: {
                 username: username,

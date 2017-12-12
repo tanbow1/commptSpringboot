@@ -32,15 +32,6 @@ public interface XtUserMapper  {
 
     int insertSelective(XtUser record);
 
-    @Select({
-        "select",
-        "USER_ID, USER_NAME, USER_ACCOUNT, REAL_NAME, SEX, MOBILE, BIRTHDAY, NATIONALITY_ID, ",
-        "NATIONALITY, CARD_ID, CARD_TYPE, CARD_NUMBER, ADDRESS, AVATAR, REGIST_TIME, ",
-        "PASSWORD, STATUS",
-        "from XT_USER",
-        "where USER_ID = #{userId,jdbcType=VARCHAR}"
-    })
-    @ResultMap("com.tanb.commpt.core.mapper.XtUserMapper.BaseResultMap")
     XtUser selectByPrimaryKey(String userId);
 
     int updateByPrimaryKeySelective(XtUser record);

@@ -34,8 +34,7 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public XtUser selectByUsernameAndPassword(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-//        XtUser xtUser = xtUserMapper.selectExistsUser(username);
-        XtUser xtUser = xtUserMapper.selectByPrimaryKey(username);
+        XtUser xtUser = xtUserMapper.selectExistsUser(username);
         if (null != xtUser) {
             if (MD5Util.validateStr(password, xtUser.getPassword())) {
                 return xtUser;

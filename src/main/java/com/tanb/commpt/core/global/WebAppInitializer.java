@@ -11,9 +11,9 @@ import javax.servlet.ServletException;
  * <p>
  * web.xml
  */
-public class MyAppInitializer implements WebApplicationInitializer {
+public class WebAppInitializer implements WebApplicationInitializer {
 
-    private static final Logger LOGGER = Logger.getLogger(MyAppInitializer.class);
+    private static final Logger LOGGER = Logger.getLogger(WebAppInitializer.class);
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {

@@ -24,13 +24,6 @@ public interface DmMenuMapper {
 
     int insertSelective(DmMenu record);
 
-    @Select({
-            "select",
-            "MENU_ID, PARENT_ID, MENU_NAME, URL, YXBJ, OPEN_TYPE",
-            "from T_DM_MENU",
-            "where MENU_ID = #{menuId,jdbcType=VARCHAR}"
-    })
-    @ResultMap("com.tanb.commpt.core.mapper.DmMenuMapper.BaseResultMap")
     DmMenu selectByPrimaryKey(String menuId);
 
     @Select({

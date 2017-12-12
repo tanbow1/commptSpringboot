@@ -26,11 +26,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Tanbo
  */
 @Component
-public class MySimpleMappingExceptionResolver implements
+public class SimpleMappingExceptionResolver implements
         HandlerExceptionResolver {
 
     private static final Logger LOGGER = LoggerFactory
-            .getLogger(MySimpleMappingExceptionResolver.class);
+            .getLogger(SimpleMappingExceptionResolver.class);
 
     @Autowired
     SystemConfig config;

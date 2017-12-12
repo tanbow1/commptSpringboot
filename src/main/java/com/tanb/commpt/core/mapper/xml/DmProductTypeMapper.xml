@@ -97,4 +97,10 @@
         </set>
         where TYPE_ID = #{typeId,jdbcType=VARCHAR}
     </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM T_DM_PRODUCTTYPEb
+        where TYPE_ID = #{typeId,jdbcType=VARCHAR}
+    </select>
 </mapper>

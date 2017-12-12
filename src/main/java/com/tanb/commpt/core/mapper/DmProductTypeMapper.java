@@ -24,13 +24,6 @@ public interface DmProductTypeMapper {
 
     int insertSelective(DmProductType record);
 
-    @Select({
-            "select",
-            "TYPE_ID, TYPE_NAME, YXBJ, P_ID, TYPE_DESC, PX,HASCHILDREN,STATE",
-            "from T_DM_PRODUCTTYPE",
-            "where TYPE_ID = #{typeId,jdbcType=VARCHAR}"
-    })
-    @ResultMap("com.tanb.commpt.core.mapper.DmProductTypeMapper.BaseResultMap")
     DmProductType selectByPrimaryKey(String typeId);
 
     int updateByPrimaryKeySelective(DmProductType record);
@@ -47,10 +40,10 @@ public interface DmProductTypeMapper {
     int updateByPrimaryKey(DmProductType record);
 
     @Select("select TYPE_ID, TYPE_NAME, YXBJ, P_ID, TYPE_DESC ,HASCHILDREN,decode(STATE,'0','closed')  state from T_DM_PRODUCTTYPE order by PX")
-    @ResultMap("com.tb.commpt.mapper.DmProductTypeMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmProductTypeMapper.BaseResultMap")
     List<DmProductType> selectAllDmProductTypes();
 
     @Select("select TYPE_ID, TYPE_NAME, YXBJ, P_ID, TYPE_DESC,HASCHILDREN,decode(STATE,'0','closed')  state from T_DM_PRODUCTTYPE where P_ID = #{parentId,jdbcType=VARCHAR} order by PX")
-    @ResultMap("com.tb.commpt.mapper.DmProductTypeMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.DmProductTypeMapper.BaseResultMap")
     List<DmProductType> selectDmProductTypesByParentId(String parentId);
 }

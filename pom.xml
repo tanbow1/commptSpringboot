@@ -165,10 +165,10 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>com.oracle</groupId>-->
-            <!--<artifactId>ojdbc6</artifactId>-->
-            <!--<version>${com.oracle.ojdbc6.version}</version>-->
-            <!--<scope>runtime</scope>-->
+        <!--<groupId>com.oracle</groupId>-->
+        <!--<artifactId>ojdbc6</artifactId>-->
+        <!--<version>${com.oracle.ojdbc6.version}</version>-->
+        <!--<scope>runtime</scope>-->
         <!--</dependency>-->
 
         <dependency>
@@ -193,7 +193,21 @@
 
     </dependencies>
 
+
+    <!--坑逼，不会自动打包xml映射文件，需要在此添加-->
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

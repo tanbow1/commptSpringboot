@@ -120,4 +120,9 @@
          and ACCESS_TOKEN = #{accessToken,jdbcType=VARCHAR}
          and REFRESH_TOKEN = #{refreshToken,jdbcType=VARCHAR}
     </select>
+    <select id="selectByPrimaryKey" parameterType="com.tanb.commpt.core.po.XtJwtKey" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM XT_USER_JWT WHERE ACCESS_TOKEN = #{accessToken,jdbcType=VARCHAR} AND USER_ID = #{userId,jdbcType=VARCHAR}
+    </select>
 </mapper>

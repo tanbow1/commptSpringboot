@@ -35,7 +35,7 @@ public interface XtUserAccountMapper  {
             "and ACCOUNT_TYPE = #{accountType,jdbcType=CHAR}",
             "and ACCOUNT = #{account,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.XtUserAccountMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.XtUserAccountMapper.BaseResultMap")
     XtUserAccount selectByPrimaryKey(XtUserAccountKey key);
 
     int updateByPrimaryKeySelective(XtUserAccount record);

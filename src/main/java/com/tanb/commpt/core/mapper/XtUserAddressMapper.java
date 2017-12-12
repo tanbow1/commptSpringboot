@@ -29,7 +29,7 @@ public interface XtUserAddressMapper  {
         "where USER_ID = #{userId,jdbcType=VARCHAR}",
           "and ADDRESS = #{address,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tb.commpt.mapper.XtUserAddressMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.XtUserAddressMapper.BaseResultMap")
     XtUserAddress selectByPrimaryKey(XtUserAddressKey key);
 
     int updateByPrimaryKeySelective(XtUserAddress record);

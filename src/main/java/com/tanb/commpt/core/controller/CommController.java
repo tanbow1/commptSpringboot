@@ -6,6 +6,7 @@ import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.global.SpringContext;
 import com.tanb.commpt.core.global.SystemConfig;
+import com.tanb.commpt.core.global.SystemConfigure;
 import com.tanb.commpt.core.po.XtUser;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
@@ -41,7 +42,7 @@ public class CommController {
     private static Logger LOGGER = LoggerFactory.getLogger(CommController.class);
 
     @Autowired
-    private SystemConfig config;
+    private SystemConfigure config;
 
     @Autowired
     private IAuthService authService;
@@ -67,34 +68,6 @@ public class CommController {
     @RequestMapping("/error")
     public ModelAndView error() throws BizLevelException {
         return new ModelAndView("common/error");
-    }
-
-
-    //登录
-    @ResponseBody
-    @RequestMapping("/login")
-    public JsonResponse login(@ModelAttribute JsonRequest jsonRequest) throws Exception {
-        JsonResponse jsonResponse = new JsonResponse();
-
-        XtUser user = userService.selectByUsernameAndPassword(String.valueOf(jsonRequest.getReqData().get("username")),
-                String.valueOf(jsonRequest.getReqData().get("password")));
-
-        if (null != user) {
-
-            Map<String, String> resultMap = authService.saveJwt(user.getUserId());
-            if ("0".equals(resultMap.get("insertCount"))) {
-                throw new SystemLevelException(ConsCommon.ERROR_MSG_UNKNOW + ":插入token失败");
-            }
-
-            jsonResponse.getRepData().put(ConsCommon.ACCESS_TOKEN, resultMap.get("accessToken"));
-            jsonResponse.getRepData().put(ConsCommon.REFRESH_TOKEN, resultMap.get("refreshToken"));
-
-        } else {
-            jsonResponse.setCode(ConsCommon.ERROR_CODE);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_007);
-        }
-
-        return jsonResponse;
     }
 
     //刷新token

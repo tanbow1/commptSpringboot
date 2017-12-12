@@ -86,4 +86,10 @@
         where YXBJ='1' AND PARENT_ID = #{parentId,jdbcType=VARCHAR}
         ORDER BY PX
     </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM T_DM_MENU
+        WHERE MENU_ID = #{menuId,jdbcType=VARCHAR}
+    </select>
 </mapper>
