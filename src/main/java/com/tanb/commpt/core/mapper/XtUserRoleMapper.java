@@ -6,14 +6,14 @@ import org.apache.ibatis.annotations.*;
 
 public interface XtUserRoleMapper  {
     @Delete({
-        "delete from T_XT_USERANDROLE",
+        "delete from XT_USER_ROLE",
         "where USER_ID = #{userId,jdbcType=VARCHAR}",
           "and ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
     int deleteByPrimaryKey(XtUserRoleKey key);
 
     @Insert({
-        "insert into T_XT_USERANDROLE (USER_ID, ROLE_ID, ",
+        "insert into XT_USER_ROLE (USER_ID, ROLE_ID, ",
         "YXBJ)",
         "values (#{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, ",
         "#{yxbj,jdbcType=CHAR})"
@@ -25,7 +25,7 @@ public interface XtUserRoleMapper  {
     @Select({
         "select",
         "USER_ID, ROLE_ID, YXBJ",
-        "from T_XT_USERANDROLE",
+        "from XT_USER_ROLE",
         "where USER_ID = #{userId,jdbcType=VARCHAR}",
           "and ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
@@ -35,7 +35,7 @@ public interface XtUserRoleMapper  {
     int updateByPrimaryKeySelective(XtUserRole record);
 
     @Update({
-        "update T_XT_USERANDROLE",
+        "update XT_USER_ROLE",
         "set YXBJ = #{yxbj,jdbcType=CHAR}",
         "where USER_ID = #{userId,jdbcType=VARCHAR}",
           "and ROLE_ID = #{roleId,jdbcType=VARCHAR}"

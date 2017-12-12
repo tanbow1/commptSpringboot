@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
-import com.tanb.commpt.core.mapper.XtJwtMapper;
-import com.tanb.commpt.core.po.XtJwt;
+import com.tanb.commpt.core.mapper.XtUserJwtMapper;
+import com.tanb.commpt.core.po.XtUserJwt;
 import com.tanb.commpt.core.service.IAuthService;
 import com.tanb.commpt.core.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class AuthServiceImpl implements IAuthService {
     private JwtUtil jwt;
 
     @Autowired
-    private XtJwtMapper xtJwtMapper;
+    private XtUserJwtMapper xtJwtMapper;
 
 
     /**
@@ -45,7 +45,7 @@ public class AuthServiceImpl implements IAuthService {
         String subject = JwtUtil.generalSubject(userId);
         String accessToken = jwt.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_TTL);
         String refreshToken = jwt.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_REFRESH_TTL);
-        XtJwt xtJwt = new XtJwt();
+        XtUserJwt xtJwt = new XtUserJwt();
         xtJwt.setUserId(userId);
         xtJwt.setAccessToken(accessToken);
         xtJwt.setRefreshToken(refreshToken);

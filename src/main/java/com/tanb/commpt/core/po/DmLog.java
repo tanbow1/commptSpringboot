@@ -1,14 +1,13 @@
 package com.tanb.commpt.core.po;
 
-
 import com.tanb.commpt.core.po.comm.Base;
 
 public class DmLog extends Base {
     private String logType;
 
-    private String logDes;
+    private String logDesc;
 
-    private String yxbj;
+    private String status;
 
     public String getLogType() {
         return logType;
@@ -18,19 +17,19 @@ public class DmLog extends Base {
         this.logType = logType == null ? null : logType.trim();
     }
 
-    public String getLogDes() {
-        return logDes;
+    public String getLogDesc() {
+        return logDesc;
     }
 
-    public void setLogDes(String logDes) {
-        this.logDes = logDes == null ? null : logDes.trim();
+    public void setLogDesc(String logDesc) {
+        this.logDesc = logDesc == null ? null : logDesc.trim();
     }
 
-    public String getYxbj() {
-        return yxbj;
+    public String getStatus() {
+        return status;
     }
 
-    public void setYxbj(String yxbj) {
-        this.yxbj = yxbj == null ? null : yxbj.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

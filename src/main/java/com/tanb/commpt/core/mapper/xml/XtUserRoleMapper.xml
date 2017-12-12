@@ -10,7 +10,7 @@
     USER_ID, ROLE_ID, STATUS
   </sql>
   <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtUserRole">
-    insert into T_XT_USERANDROLE
+    insert into XT_USER_ROLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         USER_ID,
@@ -35,7 +35,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.XtUserRole">
-    update T_XT_USERANDROLE
+    update XT_USER_ROLE
     <set>
       <if test="status != null">
         STATUS = #{status,jdbcType=CHAR},

@@ -3,45 +3,45 @@
 <mapper namespace="com.tanb.commpt.core.mapper.DmLogMapper">
   <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmLog">
     <id column="LOG_TYPE" jdbcType="VARCHAR" property="logType" />
-    <result column="LOG_DES" jdbcType="VARCHAR" property="logDes" />
-    <result column="YXBJ" jdbcType="CHAR" property="yxbj" />
+    <result column="LOG_DESC" jdbcType="VARCHAR" property="logDesc" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    LOG_TYPE, LOG_DES, YXBJ
+    LOG_TYPE, LOG_DESC, STATUS
   </sql>
   <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmLog">
-    insert into T_DM_LOG
+    insert into DM_LOG
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="logType != null">
         LOG_TYPE,
       </if>
-      <if test="logDes != null">
-        LOG_DES,
+      <if test="logDesc != null">
+        LOG_DESC,
       </if>
-      <if test="yxbj != null">
-        YXBJ,
+      <if test="status != null">
+        STATUS,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="logType != null">
         #{logType,jdbcType=VARCHAR},
       </if>
-      <if test="logDes != null">
-        #{logDes,jdbcType=VARCHAR},
+      <if test="logDesc != null">
+        #{logDesc,jdbcType=VARCHAR},
       </if>
-      <if test="yxbj != null">
-        #{yxbj,jdbcType=CHAR},
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmLog">
-    update T_DM_LOG
+    update DM_LOG
     <set>
-      <if test="logDes != null">
-        LOG_DES = #{logDes,jdbcType=VARCHAR},
+      <if test="logDesc != null">
+        LOG_DESC = #{logDesc,jdbcType=VARCHAR},
       </if>
-      <if test="yxbj != null">
-        YXBJ = #{yxbj,jdbcType=CHAR},
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
       </if>
     </set>
     where LOG_TYPE = #{logType,jdbcType=VARCHAR}

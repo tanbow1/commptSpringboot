@@ -8,9 +8,9 @@
 
     <!--指定特定数据库的jdbc驱动jar包的位置 -->
     <!--oracle-->
-    <!--<classPathEntry location="/Users/Tanbo/software/java/apache-maven-3.5.0/resp/com/oracle/ojdbc6/11.2.0.2.0/ojdbc6-11.2.0.2.0.jar"/>-->
+    <classPathEntry location="/Users/Tanbo/project/commPlatformForSpringboot/commptbgsystem/doc/ojdbc7.jar"/>
     <!--mysql-->
-    <classPathEntry location="/Users/Tanbo/software/java/apache-maven-3.5.0/resp/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar" />
+    <!--<classPathEntry location="/Users/Tanbo/software/java/apache-maven-3.5.0/resp/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar" />-->
 
     <!--
     context:生成一组对象的环境
@@ -49,12 +49,12 @@
 
         <!--jdbc的数据库连接 -->
         <!--oracle-->
-        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:49161:ORCL" userId="system" password="Oracle">-->
-        <!--</jdbcConnection>-->
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:49161:ORCLCDB" userId="C##DB_APP" password="DB_APP">
+    </jdbcConnection>
 
         <!--mysql-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/commpt" userId="root" password="123456">
-        </jdbcConnection>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/commpt" userId="root" password="123456">-->
+        <!--</jdbcConnection>-->
 
         <!-- 非必要，java类型处理器
         用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
@@ -94,7 +94,7 @@
         </javaModelGenerator>
 
         <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
-        <sqlMapGenerator targetPackage="com.tanb.commpt.core.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.tanb.commpt.core.mapper.xml" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
@@ -167,7 +167,7 @@
 
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="XT_USER" domainObjectName="TXtUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="DM_PRODUCT" domainObjectName="DmProduct" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <!--<property name="constructorBased" value="false"/>-->

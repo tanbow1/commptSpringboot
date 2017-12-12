@@ -11,39 +11,17 @@ public class DmMenu extends Base {
 
     private String url;
 
-    private String yxbj;
-
     private String openType;
-
-    private String state;
 
     private String haschildren;
 
-    private String readonly;
+    private String state;
 
-    public String getReadonly() {
-        return readonly;
-    }
+    private String isDel;
 
-    public void setReadonly(String readonly) {
-        this.readonly = readonly;
-    }
+    private String isEdit;
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getHaschildren() {
-        return haschildren;
-    }
-
-    public void setHaschildren(String haschildren) {
-        this.haschildren = haschildren;
-    }
+    private String status;
 
     public String getMenuId() {
         return menuId;
@@ -77,19 +55,51 @@ public class DmMenu extends Base {
         this.url = url == null ? null : url.trim();
     }
 
-    public String getYxbj() {
-        return yxbj;
-    }
-
-    public void setYxbj(String yxbj) {
-        this.yxbj = yxbj == null ? null : yxbj.trim();
-    }
-
     public String getOpenType() {
         return openType;
     }
 
     public void setOpenType(String openType) {
         this.openType = openType == null ? null : openType.trim();
+    }
+
+    public String getHaschildren() {
+        return haschildren;
+    }
+
+    public void setHaschildren(String haschildren) {
+        this.haschildren = haschildren == null ? null : haschildren.trim();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
+    }
+
+    public String getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(String isDel) {
+        this.isDel = isDel == null ? null : isDel.trim();
+    }
+
+    public String getIsEdit() {
+        return isEdit;
+    }
+
+    public void setIsEdit(String isEdit) {
+        this.isEdit = isEdit == null ? null : isEdit.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

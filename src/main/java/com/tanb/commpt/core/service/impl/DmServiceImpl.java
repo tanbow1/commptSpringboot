@@ -1,16 +1,20 @@
 package com.tanb.commpt.core.service.impl;
 
 import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.constant.ContentType;
+import com.tanb.commpt.core.constant.ContentType;
 import com.tanb.commpt.core.exception.BizLevelException;
-import com.tanb.commpt.core.mapper.DmGjdqMapper;
+import com.tanb.commpt.core.mapper.DmNationalityMapper;
 import com.tanb.commpt.core.mapper.DmMenuMapper;
-import com.tanb.commpt.core.mapper.DmProductTypeMapper;
-import com.tanb.commpt.core.po.DmGjdq;
+import com.tanb.commpt.core.mapper.DmNationalityMapper;
+import com.tanb.commpt.core.mapper.DmProductMapper;
+import com.tanb.commpt.core.po.DmNationality;
 import com.tanb.commpt.core.po.DmMenu;
-import com.tanb.commpt.core.po.DmProductType;
+import com.tanb.commpt.core.po.DmNationality;
+import com.tanb.commpt.core.po.DmProduct;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.service.IDmService;
@@ -42,10 +46,10 @@ public class DmServiceImpl implements IDmService {
     private DmMenuMapper dmMenuMapper;
 
     @Autowired
-    private DmGjdqMapper dmGjdqMapper;
+    private DmNationalityMapper dmGjdqMapper;
 
     @Autowired
-    private DmProductTypeMapper dmProductTypeMapper;
+    private DmProductMapper dmProductProductMapper;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -85,8 +89,8 @@ public class DmServiceImpl implements IDmService {
             dataList.add(map);
             map.put("id", menu.getMenuId());
             map.put("text", menu.getMenuName());
-            map.put("openType", menu.getOpenType());
-            map.put("readonly", menu.getReadonly());
+            map.put("openProduct", menu.getOpenType());
+            map.put("readonly", menu.getIsEdit());
             if (!StringUtils.isEmptyOrWhitespace(menu.getUrl())) {
                 map.put("url", menu.getUrl());
             } else {
@@ -117,7 +121,7 @@ public class DmServiceImpl implements IDmService {
         Integer[] pageStartAndEnd = CommonUtil.getPageStartAndEnd(pageNum, pageSize);
         int total = dmGjdqMapper.selectGjdqCount();
         if (total > 0) {
-            List<DmGjdq> dmGjdqList = dmGjdqMapper.selectGjdqList(pageStartAndEnd[0], pageStartAndEnd[1]);
+            List<DmNationality> dmGjdqList = dmGjdqMapper.selectGjdqList(pageStartAndEnd[0], pageStartAndEnd[1]);
             if (null != dmGjdqList)
                 jsonResponse.getRepData().put("gjdqList", dmGjdqList);
         }
@@ -137,16 +141,16 @@ public class DmServiceImpl implements IDmService {
     @Override
     public JsonResponse deleteGjdqBatch(JsonRequest jsonRequest) throws IOException {
         JsonResponse jsonResponse = new JsonResponse();
-        JavaType javaType = CommonUtil.getCollectionType(ArrayList.class, DmGjdq.class);
-        List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaType);
+        JavaType javaProduct = CommonUtil.getCollectionType(ArrayList.class, DmNationality.class);
+        List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaProduct);
         Iterator it = list.iterator();
-        DmGjdq dmGjdq;
+        DmNationality dmGjdq;
         int deleteCount;
-        List<DmGjdq> errorList = new ArrayList<DmGjdq>();
+        List<DmNationality> errorList = new ArrayList<DmNationality>();
         while (it.hasNext()) {
-            dmGjdq = (DmGjdq) it.next();
-            if (null != dmGjdq.getUuid()) {
-                deleteCount = dmGjdqMapper.deleteByPrimaryKey(dmGjdq.getUuid());
+            dmGjdq = (DmNationality) it.next();
+            if (null != dmGjdq.getNationalityId()) {
+                deleteCount = dmGjdqMapper.deleteByPrimaryKey(dmGjdq.getNationalityId());
                 if (deleteCount <= 0) {
                     errorList.add(dmGjdq);
                 }
@@ -171,15 +175,15 @@ public class DmServiceImpl implements IDmService {
     @Override
     public JsonResponse addGjdqBatch(JsonRequest jsonRequest) throws IOException, BizLevelException {
         JsonResponse jsonResponse = new JsonResponse();
-        JavaType javaType = CommonUtil.getCollectionType(ArrayList.class, DmGjdq.class);
-        List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaType);
+        JavaType javaProduct = CommonUtil.getCollectionType(ArrayList.class, DmNationality.class);
+        List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaProduct);
         Iterator it = list.iterator();
-        DmGjdq dmGjdq;
+        DmNationality dmGjdq;
         int changeCount;
-        List<DmGjdq> errorList = new ArrayList<DmGjdq>();
+        List<DmNationality> errorList = new ArrayList<DmNationality>();
         while (it.hasNext()) {
-            dmGjdq = (DmGjdq) it.next();
-            if (null == dmGjdq.getUuid()) {
+            dmGjdq = (DmNationality) it.next();
+            if (null == dmGjdq.getNationalityId()) {
                 //add
                 changeCount = dmGjdqMapper.insertSelective(dmGjdq);
             } else {
@@ -187,7 +191,7 @@ public class DmServiceImpl implements IDmService {
                 changeCount = dmGjdqMapper.updateByPrimaryKey(dmGjdq);
             }
             if (changeCount > 0) {
-                int recordCount = dmGjdqMapper.selectCountByGjdqId(dmGjdq.getGjdqId());
+                int recordCount = dmGjdqMapper.selectCountByGjdqId(dmGjdq.getNationalityId());
                 if (recordCount > 1) {
                     throw new BizLevelException(ConsCommon.WARN_MSG_018);
                 }
@@ -228,11 +232,11 @@ public class DmServiceImpl implements IDmService {
                 jsonResponse.setCode(ConsCommon.WARN_CODE_020);
                 jsonResponse.setMsg(ConsCommon.WARN_MSG_020);
             } else {
-                List<DmGjdq> gjdqList = new ArrayList<DmGjdq>();
-                DmGjdq gjdq = null;
+                List<DmNationality> gjdqList = new ArrayList<DmNationality>();
+                DmNationality gjdq = null;
                 ArrayList<String> listItem = null;
                 for (int i = 0, len = list.size(); i < len; i++) {
-                    gjdq = new DmGjdq();
+                    gjdq = new DmNationality();
                     listItem = list.get(i);
                     gjdq.setGjdqMcE(listItem.get(0));
                     gjdq.setGjdqMcZ(listItem.get(1));
@@ -275,10 +279,10 @@ public class DmServiceImpl implements IDmService {
     }
 
     @Override
-    public JsonResponse selectProductTypeTreeByParentId(JsonRequest jsonRequest) {
+    public JsonResponse selectProductProductTreeByParentId(JsonRequest jsonRequest) {
         JsonResponse jsonResponse = new JsonResponse();
-        List<DmProductType> dmProductTypeList =
-                dmProductTypeMapper.selectDmProductTypesByParentId(String.valueOf(jsonRequest.getReqData().get("parentId")));
+        List<DmProduct> dmProductProductList =
+                dmProductProductMapper.selectDmProductsByParentId(String.valueOf(jsonRequest.getReqData().get("parentId")));
         return jsonResponse;
     }
 
@@ -290,13 +294,13 @@ public class DmServiceImpl implements IDmService {
      * @throws IOException
      */
     @Override
-    public JsonResponse getProductTypeTree(JsonRequest jsonRequest) throws IOException {
+    public JsonResponse getProductProductTree(JsonRequest jsonRequest) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<ConcurrentHashMap<String, Object>> dmProductTypeList = new ArrayList<>();
-        getProductTypeTreegrid(dmProductTypeList, "1");
+        List<ConcurrentHashMap<String, Object>> dmProductProductList = new ArrayList<>();
+        getProductProductTreegrid(dmProductProductList, "1");
         Map<String, Object> dataMap = new ConcurrentHashMap<String, Object>();
-        dataMap.put("rows", dmProductTypeList);
-        dataMap.put("total", dmProductTypeList.size());
+        dataMap.put("rows", dmProductProductList);
+        dataMap.put("total", dmProductProductList.size());
         dataMap.put("footer", new ArrayList<>());
         HttpServletResponse httpServletResponse = (HttpServletResponse) jsonRequest.getReqData().get("response");
         httpServletResponse.setContentType(ContentType.getContentType("json"));
@@ -307,30 +311,30 @@ public class DmServiceImpl implements IDmService {
         return null;
     }
 
-    private void getProductTypeTreegrid(List<ConcurrentHashMap<String, Object>> dataList,
+    private void getProductProductTreegrid(List<ConcurrentHashMap<String, Object>> dataList,
                                         String parentId) {
-        List<DmProductType> dmProductTypeList = dmProductTypeMapper.selectDmProductTypesByParentId(parentId);
-        DmProductType dmProductType = null;
+        List<DmProduct> dmProductProductList = dmProductProductMapper.selectDmProductsByParentId(parentId);
+        DmProduct dmProductProduct = null;
         ConcurrentHashMap<String, Object> map = null;
 
-        Iterator dmProductTypeIterator = dmProductTypeList.iterator();
-        while (dmProductTypeIterator.hasNext()) {
+        Iterator dmProductProductIterator = dmProductProductList.iterator();
+        while (dmProductProductIterator.hasNext()) {
             map = new ConcurrentHashMap<String, Object>();
-            dmProductType = (DmProductType) dmProductTypeIterator.next();
+            dmProductProduct = (DmProduct) dmProductProductIterator.next();
             dataList.add(map);
-            map.put("typeId", dmProductType.getTypeId());
-            map.put("typeName", dmProductType.getTypeName());
-            map.put("typeDesc", null == dmProductType.getTypeDesc() ? "--" : dmProductType.getTypeDesc());
-            map.put("yxbj", dmProductType.getYxbj());
-            //   map.put("state", null == dmProductType.getState() ? "" : dmProductType.getState());
-            map.put("pId", dmProductType.getpId());
-            map.put("haschildren", dmProductType.getHaschildren());
-            if ("1".equals(dmProductType.getHaschildren())) {
+            map.put("typeId", dmProductProduct.getProductId());
+            map.put("typeName", dmProductProduct.getProductName());
+            map.put("typeDesc", null == dmProductProduct.getProductDesc() ? "--" : dmProductProduct.getProductDesc());
+            map.put("yxbj", dmProductProduct.getYxbj());
+            //   map.put("state", null == dmProductProduct.getState() ? "" : dmProductProduct.getState());
+            map.put("pId", dmProductProduct.getpId());
+            map.put("haschildren", dmProductProduct.getHaschildren());
+            if ("1".equals(dmProductProduct.getHaschildren())) {
                 map.put("state", "closed");
                 //此处state与数据库字段无关，与是否含子节点保持一致
                 List<ConcurrentHashMap<String, Object>> childrenList = new ArrayList<ConcurrentHashMap<String, Object>>();
                 map.put("children", childrenList);
-                getProductTypeTreegrid(childrenList, dmProductType.getTypeId());
+                getProductProductTreegrid(childrenList, dmProductProduct.getProductId());
             }
         }
     }
@@ -345,23 +349,23 @@ public class DmServiceImpl implements IDmService {
     @Transactional(rollbackFor = {Exception.class})
     public JsonResponse updateSpflBatch(JsonRequest jsonRequest) throws IOException, BizLevelException {
         JsonResponse jsonResponse = new JsonResponse();
-        JavaType javaType = CommonUtil.getCollectionType(ArrayList.class, DmProductType.class);
-        List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaType);
+        JavaType javaProduct = CommonUtil.getCollectionType(ArrayList.class, DmProduct.class);
+        List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaProduct);
         Iterator it = list.iterator();
-        DmProductType dmProductType;
+        DmProduct dmProductProduct;
         int changeCount;
-        List<DmProductType> errorList = new ArrayList<DmProductType>();
+        List<DmProduct> errorList = new ArrayList<DmProduct>();
 
         while (it.hasNext()) {
-            dmProductType = (DmProductType) it.next();
-            if (null == dmProductType.getTypeId()) {
+            dmProductProduct = (DmProduct) it.next();
+            if (null == dmProductProduct.getProductId()) {
                 throw new BizLevelException(ConsCommon.WARN_MSG_021);
             } else {
                 //update
-                changeCount = dmProductTypeMapper.updateByPrimaryKeySelective(dmProductType);
+                changeCount = dmProductProductMapper.updateByPrimaryKeySelective(dmProductProduct);
             }
             if (changeCount <= 0) {
-                errorList.add(dmProductType);
+                errorList.add(dmProductProduct);
                 jsonResponse.setCode(ConsCommon.WARN_CODE_016);
                 jsonResponse.setMsg(ConsCommon.WARN_MSG_016);
             }
