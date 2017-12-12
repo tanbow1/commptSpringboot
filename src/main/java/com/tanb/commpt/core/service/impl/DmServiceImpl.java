@@ -49,10 +49,9 @@ public class DmServiceImpl implements IDmService {
     private DmNationalityMapper dmGjdqMapper;
 
     @Autowired
-    private DmProductMapper dmProductProductMapper;
+    private DmProductMapper dmProductMapper;
 
     ObjectMapper objectMapper = new ObjectMapper();
-
 
 
     @Override
@@ -238,12 +237,12 @@ public class DmServiceImpl implements IDmService {
                 for (int i = 0, len = list.size(); i < len; i++) {
                     gjdq = new DmNationality();
                     listItem = list.get(i);
-                    gjdq.setGjdqMcE(listItem.get(0));
-                    gjdq.setGjdqMcZ(listItem.get(1));
-                    gjdq.setGjdqMcdm(listItem.get(2));
-                    gjdq.setGjdqDhdm(listItem.get(3));
-                    gjdq.setSc(listItem.get(4));
-                    gjdq.setGjdqId(listItem.get(5));
+                    gjdq.setNationalityId(listItem.get(0));
+                    gjdq.setNationalityNameZh(listItem.get(1));
+                    gjdq.setNationalityNameZh(listItem.get(2));
+                    gjdq.setNationalityEnTag(listItem.get(3));
+                    gjdq.setAlphabetic(listItem.get(4));
+                    gjdq.setStatus(listItem.get(5));
                     gjdqList.add(gjdq);
                 }
                 int insertBatchCount = dmGjdqMapper.insertByBatch(gjdqList);
@@ -279,41 +278,52 @@ public class DmServiceImpl implements IDmService {
     }
 
     @Override
-    public JsonResponse selectProductProductTreeByParentId(JsonRequest jsonRequest) {
-        JsonResponse jsonResponse = new JsonResponse();
-        List<DmProduct> dmProductProductList =
-                dmProductProductMapper.selectDmProductsByParentId(String.valueOf(jsonRequest.getReqData().get("parentId")));
-        return jsonResponse;
+    public JsonResponse selectProductTypeTreeByParentId(JsonRequest jsonRequest) {
+        return null;
     }
+
+    @Override
+    public JsonResponse getProductTypeTree(JsonRequest jsonRequest) throws IOException {
+        return null;
+    }
+
+//    @Override
+//    public JsonResponse selectProductProductTreeByParentId(JsonRequest jsonRequest) {
+//        JsonResponse jsonResponse = new JsonResponse();
+//        List<DmProduct> dmProductProductList =
+//                dmProductProductMapper.selectDmProductsByParentId(String.valueOf(jsonRequest.getReqData().get("parentId")));
+//        return jsonResponse;
+//    }
 
     /**
      * 获取产品类型结构树
      *
-     * @param jsonRequest
+     * @param
      * @return
      * @throws IOException
      */
-    @Override
-    public JsonResponse getProductProductTree(JsonRequest jsonRequest) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<ConcurrentHashMap<String, Object>> dmProductProductList = new ArrayList<>();
-        getProductProductTreegrid(dmProductProductList, "1");
-        Map<String, Object> dataMap = new ConcurrentHashMap<String, Object>();
-        dataMap.put("rows", dmProductProductList);
-        dataMap.put("total", dmProductProductList.size());
-        dataMap.put("footer", new ArrayList<>());
-        HttpServletResponse httpServletResponse = (HttpServletResponse) jsonRequest.getReqData().get("response");
-        httpServletResponse.setContentType(ContentType.getContentType("json"));
-        httpServletResponse.setCharacterEncoding("utf-8");
-        PrintWriter out = httpServletResponse.getWriter();
-        out.print(objectMapper.writeValueAsString(dataMap));
-        out.flush();
-        return null;
-    }
-
+//    @Override
+//    public JsonResponse getProductProductTree(JsonRequest jsonRequest) throws IOException {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        List<ConcurrentHashMap<String, Object>> dmProductProductList = new ArrayList<>();
+//        getProductProductTreegrid(dmProductProductList, "1");
+//        Map<String, Object> dataMap = new ConcurrentHashMap<String, Object>();
+//        dataMap.put("rows", dmProductProductList);
+//        dataMap.put("total", dmProductProductList.size());
+//        dataMap.put("footer", new ArrayList<>());
+//        HttpServletResponse httpServletResponse = (HttpServletResponse) jsonRequest.getReqData().get("response");
+//        httpServletResponse.setContentType(ContentType.getContentType("json"));
+//        httpServletResponse.setCharacterEncoding("utf-8");
+//        PrintWriter out = httpServletResponse.getWriter();
+//        out.print(objectMapper.writeValueAsString(dataMap));
+//        out.flush();
+//        return null;
+//    }
     private void getProductProductTreegrid(List<ConcurrentHashMap<String, Object>> dataList,
-                                        String parentId) {
-        List<DmProduct> dmProductProductList = dmProductProductMapper.selectDmProductsByParentId(parentId);
+                                           String parentId) {
+//        List<DmProduct> dmProductProductList = dmProductMapper.selectDmProductsByParentId(parentId);
+
+        List<DmProduct> dmProductProductList = null;
         DmProduct dmProductProduct = null;
         ConcurrentHashMap<String, Object> map = null;
 
@@ -325,9 +335,9 @@ public class DmServiceImpl implements IDmService {
             map.put("typeId", dmProductProduct.getProductId());
             map.put("typeName", dmProductProduct.getProductName());
             map.put("typeDesc", null == dmProductProduct.getProductDesc() ? "--" : dmProductProduct.getProductDesc());
-            map.put("yxbj", dmProductProduct.getYxbj());
+            map.put("yxbj", dmProductProduct.getStatus());
             //   map.put("state", null == dmProductProduct.getState() ? "" : dmProductProduct.getState());
-            map.put("pId", dmProductProduct.getpId());
+            map.put("pId", dmProductProduct.getProductId());
             map.put("haschildren", dmProductProduct.getHaschildren());
             if ("1".equals(dmProductProduct.getHaschildren())) {
                 map.put("state", "closed");
@@ -362,7 +372,7 @@ public class DmServiceImpl implements IDmService {
                 throw new BizLevelException(ConsCommon.WARN_MSG_021);
             } else {
                 //update
-                changeCount = dmProductProductMapper.updateByPrimaryKeySelective(dmProductProduct);
+                changeCount = dmProductMapper.updateByPrimaryKeySelective(dmProductProduct);
             }
             if (changeCount <= 0) {
                 errorList.add(dmProductProduct);

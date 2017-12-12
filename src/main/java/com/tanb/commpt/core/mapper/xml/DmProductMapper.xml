@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmProductMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmProduct">
+    <id column="PRODUCT_ID" jdbcType="VARCHAR" property="productId" />
+    <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+    <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+    <result column="PRODUCT_DESC" jdbcType="VARCHAR" property="productDesc" />
+    <result column="HASCHILDREN" jdbcType="CHAR" property="haschildren" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="SORT" jdbcType="DECIMAL" property="sort" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PRODUCT_ID, PRODUCT_NAME, PARENT_ID, PRODUCT_DESC, HASCHILDREN, STATE, SORT, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmProduct">
+    insert into DM_PRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        PRODUCT_ID,
+      </if>
+      <if test="productName != null">
+        PRODUCT_NAME,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="productDesc != null">
+        PRODUCT_DESC,
+      </if>
+      <if test="haschildren != null">
+        HASCHILDREN,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="sort != null">
+        SORT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="productDesc != null">
+        #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="haschildren != null">
+        #{haschildren,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmProduct">
+    update DM_PRODUCT
+    <set>
+      <if test="productName != null">
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="productDesc != null">
+        PRODUCT_DESC = #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="haschildren != null">
+        HASCHILDREN = #{haschildren,jdbcType=CHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        SORT = #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+</mapper>

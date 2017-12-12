@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.BzWxUserMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.BzWxUser">
+    <id column="OPEN_ID" jdbcType="VARCHAR" property="openId" />
+    <result column="UNION_ID" jdbcType="VARCHAR" property="unionId" />
+    <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
+    <result column="AVATAR_URL" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="GENDER" jdbcType="CHAR" property="gender" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="country" />
+    <result column="LANGUAGE" jdbcType="VARCHAR" property="language" />
+    <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="COUNTRY_CODE" jdbcType="VARCHAR" property="countryCode" />
+    <result column="PURE_PHONE_NUMBER" jdbcType="VARCHAR" property="purePhoneNumber" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OPEN_ID, UNION_ID, NICK_NAME, AVATAR_URL, GENDER, CITY, PROVINCE, COUNTRY, LANGUAGE, 
+    PHONE_NUMBER, COUNTRY_CODE, PURE_PHONE_NUMBER, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.BzWxUser">
+    insert into BZ_WX_USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        OPEN_ID,
+      </if>
+      <if test="unionId != null">
+        UNION_ID,
+      </if>
+      <if test="nickName != null">
+        NICK_NAME,
+      </if>
+      <if test="avatarUrl != null">
+        AVATAR_URL,
+      </if>
+      <if test="gender != null">
+        GENDER,
+      </if>
+      <if test="city != null">
+        CITY,
+      </if>
+      <if test="province != null">
+        PROVINCE,
+      </if>
+      <if test="country != null">
+        COUNTRY,
+      </if>
+      <if test="language != null">
+        LANGUAGE,
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER,
+      </if>
+      <if test="countryCode != null">
+        COUNTRY_CODE,
+      </if>
+      <if test="purePhoneNumber != null">
+        PURE_PHONE_NUMBER,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionId != null">
+        #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="purePhoneNumber != null">
+        #{purePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.BzWxUser">
+    update BZ_WX_USER
+    <set>
+      <if test="unionId != null">
+        UNION_ID = #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        AVATAR_URL = #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        GENDER = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="city != null">
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        LANGUAGE = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        COUNTRY_CODE = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="purePhoneNumber != null">
+        PURE_PHONE_NUMBER = #{purePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where OPEN_ID = #{openId,jdbcType=VARCHAR}
+  </update>
+</mapper>

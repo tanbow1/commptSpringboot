@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmUserLocationMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmUserLocation">
+    <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="country" />
+    <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="STREET" jdbcType="VARCHAR" property="street" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="RECIPIENTS" jdbcType="VARCHAR" property="recipients" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_ID, LOCATION, COUNTRY, PROVINCE, CITY, STREET, PHONE, RECIPIENTS, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmUserLocation">
+    insert into DM_USER_LOCATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="location != null">
+        LOCATION,
+      </if>
+      <if test="country != null">
+        COUNTRY,
+      </if>
+      <if test="province != null">
+        PROVINCE,
+      </if>
+      <if test="city != null">
+        CITY,
+      </if>
+      <if test="street != null">
+        STREET,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="recipients != null">
+        RECIPIENTS,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipients != null">
+        #{recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmUserLocation">
+    update DM_USER_LOCATION
+    <set>
+      <if test="location != null">
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        STREET = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipients != null">
+        RECIPIENTS = #{recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

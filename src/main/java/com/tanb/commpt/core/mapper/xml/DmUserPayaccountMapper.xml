@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmUserPayaccountMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmUserPayaccount">
+    <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <id column="PAYACCOUNT" jdbcType="VARCHAR" property="payaccount" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="ACCOUNT_TYPE" jdbcType="VARCHAR" property="accountType" />
+    <result column="PAY_KEY" jdbcType="VARCHAR" property="payKey" />
+    <result column="SORT" jdbcType="DECIMAL" property="sort" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_ID, PAYACCOUNT, ACCOUNT_ID, ACCOUNT_TYPE, PAY_KEY, SORT, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmUserPayaccount">
+    insert into DM_USER_PAYACCOUNT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="payaccount != null">
+        PAYACCOUNT,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="accountType != null">
+        ACCOUNT_TYPE,
+      </if>
+      <if test="payKey != null">
+        PAY_KEY,
+      </if>
+      <if test="sort != null">
+        SORT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="payaccount != null">
+        #{payaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="payKey != null">
+        #{payKey,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmUserPayaccount">
+    update DM_USER_PAYACCOUNT
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="payKey != null">
+        PAY_KEY = #{payKey,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        SORT = #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+      and PAYACCOUNT = #{payaccount,jdbcType=VARCHAR}
+  </update>
+</mapper>

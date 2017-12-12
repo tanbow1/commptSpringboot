@@ -4,8 +4,6 @@ import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.mapper.XtUserMapper;
 import com.tanb.commpt.core.po.XtUser;
-import com.tanb.commpt.core.po.XtUserAccount;
-import com.tanb.commpt.core.po.XtUserAddress;
 import com.tanb.commpt.core.po.XtUserRole;
 import com.tanb.commpt.core.service.IUserService;
 import com.tanb.commpt.core.util.MD5Util;
@@ -54,31 +52,31 @@ public class UserServiceImpl implements IUserService {
      * @throws UnsupportedEncodingException
      * @throws NoSuchAlgorithmException
      */
-    @Transactional(rollbackFor = {Exception.class})
-    @Override
-    public String saveUserInfo(XtUser user, XtUserAccount userAccount, XtUserAddress userAddress, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException {
-        if (null != user.getPassword()) {
-            user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
-         //   user.setPass("");
-        }
-        XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
-        if (null != existsUser) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_001);
-        }
-        existsUser = xtUserMapper.selectExistsUser(user.getCardNumber());
-        if (null != existsUser) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_002);
-        }
-        existsUser = xtUserMapper.selectExistsUser(user.getMobile());
-        if (null != existsUser) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_003);
-        }
-
-        int insertCount = xtUserMapper.insert2(user);
-        if (insertCount > 0)
-            return user.getUserId();
-        return null;
-    }
+//    @Transactional(rollbackFor = {Exception.class})
+//    @Override
+//    public String saveUserInfo(XtUser user, XtUserAccount userAccount, XtUserAddress userAddress, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException {
+//        if (null != user.getPassword()) {
+//            user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
+//         //   user.setPass("");
+//        }
+//        XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
+//        if (null != existsUser) {
+//            throw new BizLevelException(ConsCommon.WARN_MSG_001);
+//        }
+//        existsUser = xtUserMapper.selectExistsUser(user.getCardNumber());
+//        if (null != existsUser) {
+//            throw new BizLevelException(ConsCommon.WARN_MSG_002);
+//        }
+//        existsUser = xtUserMapper.selectExistsUser(user.getMobile());
+//        if (null != existsUser) {
+//            throw new BizLevelException(ConsCommon.WARN_MSG_003);
+//        }
+//
+//        int insertCount = xtUserMapper.insert2(user);
+//        if (insertCount > 0)
+//            return user.getUserId();
+//        return null;
+//    }
 
     /**
      * 主健查询用户信息

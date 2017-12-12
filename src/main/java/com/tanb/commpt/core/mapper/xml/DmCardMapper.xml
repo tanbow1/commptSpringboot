@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmCardMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmCard">
+    <id column="CARD_ID" jdbcType="VARCHAR" property="cardId" />
+    <id column="CARD_TYPE" jdbcType="CHAR" property="cardType" />
+    <result column="CARD_NAME" jdbcType="VARCHAR" property="cardName" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CARD_ID, CARD_TYPE, CARD_NAME, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmCard">
+    insert into DM_CARD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cardId != null">
+        CARD_ID,
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE,
+      </if>
+      <if test="cardName != null">
+        CARD_NAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="cardName != null">
+        #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmCard">
+    update DM_CARD
+    <set>
+      <if test="cardName != null">
+        CARD_NAME = #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where CARD_ID = #{cardId,jdbcType=VARCHAR}
+      and CARD_TYPE = #{cardType,jdbcType=CHAR}
+  </update>
+</mapper>

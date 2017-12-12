@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.XtLoggerMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.XtLogger">
+    <id column="LOGGER_ID" jdbcType="VARCHAR" property="loggerId" />
+    <result column="LOGGER_DESC" jdbcType="VARCHAR" property="loggerDesc" />
+    <result column="LOG_TYPE" jdbcType="VARCHAR" property="logType" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="LONGITUDE" jdbcType="VARCHAR" property="longitude" />
+    <result column="LATITUDE" jdbcType="VARCHAR" property="latitude" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="APP_ID" jdbcType="VARCHAR" property="appId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOGGER_ID, LOGGER_DESC, LOG_TYPE, CREATE_TIME, CREATE_USER, LOCATION, LONGITUDE, 
+    LATITUDE, IP, STATUS, APP_ID
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtLogger">
+    insert into XT_LOGGER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loggerId != null">
+        LOGGER_ID,
+      </if>
+      <if test="loggerDesc != null">
+        LOGGER_DESC,
+      </if>
+      <if test="logType != null">
+        LOG_TYPE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="location != null">
+        LOCATION,
+      </if>
+      <if test="longitude != null">
+        LONGITUDE,
+      </if>
+      <if test="latitude != null">
+        LATITUDE,
+      </if>
+      <if test="ip != null">
+        IP,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="appId != null">
+        APP_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loggerId != null">
+        #{loggerId,jdbcType=VARCHAR},
+      </if>
+      <if test="loggerDesc != null">
+        #{loggerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.XtLogger">
+    update XT_LOGGER
+    <set>
+      <if test="loggerDesc != null">
+        LOGGER_DESC = #{loggerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        LOG_TYPE = #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        LONGITUDE = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        LATITUDE = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        APP_ID = #{appId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOGGER_ID = #{loggerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

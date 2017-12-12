@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmNationalityMapper">
+    <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmNationality">
+        <id column="NATIONALITY_ID" jdbcType="VARCHAR" property="nationalityId"/>
+        <result column="NATIONALITY_NAME_ZH" jdbcType="VARCHAR" property="nationalityNameZh"/>
+        <result column="NATIONALITY_NAME_EN" jdbcType="VARCHAR" property="nationalityNameEn"/>
+        <result column="NATIONALITY_EN_TAG" jdbcType="VARCHAR" property="nationalityEnTag"/>
+        <result column="ALPHABETIC" jdbcType="CHAR" property="alphabetic"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    NATIONALITY_ID, NATIONALITY_NAME_ZH, NATIONALITY_NAME_EN, NATIONALITY_EN_TAG, ALPHABETIC, 
+    STATUS
+  </sql>
+    <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmNationality">
+        insert into DM_NATIONALITY
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nationalityId != null">
+                NATIONALITY_ID,
+            </if>
+            <if test="nationalityNameZh != null">
+                NATIONALITY_NAME_ZH,
+            </if>
+            <if test="nationalityNameEn != null">
+                NATIONALITY_NAME_EN,
+            </if>
+            <if test="nationalityEnTag != null">
+                NATIONALITY_EN_TAG,
+            </if>
+            <if test="alphabetic != null">
+                ALPHABETIC,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="nationalityId != null">
+                #{nationalityId,jdbcType=VARCHAR},
+            </if>
+            <if test="nationalityNameZh != null">
+                #{nationalityNameZh,jdbcType=VARCHAR},
+            </if>
+            <if test="nationalityNameEn != null">
+                #{nationalityNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="nationalityEnTag != null">
+                #{nationalityEnTag,jdbcType=VARCHAR},
+            </if>
+            <if test="alphabetic != null">
+                #{alphabetic,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmNationality">
+        update DM_NATIONALITY
+        <set>
+            <if test="nationalityNameZh != null">
+                NATIONALITY_NAME_ZH = #{nationalityNameZh,jdbcType=VARCHAR},
+            </if>
+            <if test="nationalityNameEn != null">
+                NATIONALITY_NAME_EN = #{nationalityNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="nationalityEnTag != null">
+                NATIONALITY_EN_TAG = #{nationalityEnTag,jdbcType=VARCHAR},
+            </if>
+            <if test="alphabetic != null">
+                ALPHABETIC = #{alphabetic,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+        </set>
+        where NATIONALITY_ID = #{nationalityId,jdbcType=VARCHAR}
+    </update>
+    <insert id="insertByBatch" parameterType="java.util.List">
+        INSERT into DM_NATIONALITY (
+        <include refid="Base_Column_List"/>
+        )
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            #{item.nationalityId,jdbcType=VARCHAR},
+            #{item.nationalityNameZh,jdbcType=VARCHAR},
+            #{item.nationalityIdNameEn,jdbcType=VARCHAR},
+            #{item.nationalityIdEnTag,jdbcType=VARCHAR},
+            #{item.alphabetic,jdbcType=VARCHAR},
+            #{item.status,jdbcType=VARCHAR}
+            FROM dual
+        </foreach>
+    </insert>
+    <select id="selectGjdqList" parameterType="int" resultMap="BaseResultMap">
+        <choose>
+            <when test="pageStart != null and pageEnd != null">
+                select
+                <include refid="Base_Column_List"/>
+                from (
+                select t.*, ROW_NUMBER() OVER (order by NATIONALITY_ID) rownums from DM_NATIONALITY t
+                ) where rownums between #{pageStart,jdbcType=INTEGER} and #{pageEnd,jdbcType=INTEGER}
+            </when>
+            <otherwise>
+                select
+                <include refid="Base_Column_List"/>
+                from NATIONALITY_ID
+            </otherwise>
+        </choose>
+    </select>
+</mapper>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmApplistMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmApplist">
+    <id column="APP_ID" jdbcType="VARCHAR" property="appId" />
+    <result column="APP_NAME" jdbcType="VARCHAR" property="appName" />
+    <result column="APP_DESC" jdbcType="VARCHAR" property="appDesc" />
+    <result column="APP_OWNER" jdbcType="VARCHAR" property="appOwner" />
+    <result column="APP_STATUS" jdbcType="CHAR" property="appStatus" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    APP_ID, APP_NAME, APP_DESC, APP_OWNER, APP_STATUS, CREATE_TIME, MODIFY_TIME, CREATE_USER, 
+    STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmApplist">
+    insert into DM_APPLIST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        APP_ID,
+      </if>
+      <if test="appName != null">
+        APP_NAME,
+      </if>
+      <if test="appDesc != null">
+        APP_DESC,
+      </if>
+      <if test="appOwner != null">
+        APP_OWNER,
+      </if>
+      <if test="appStatus != null">
+        APP_STATUS,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null">
+        #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appDesc != null">
+        #{appDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="appOwner != null">
+        #{appOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="appStatus != null">
+        #{appStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmApplist">
+    update DM_APPLIST
+    <set>
+      <if test="appName != null">
+        APP_NAME = #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appDesc != null">
+        APP_DESC = #{appDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="appOwner != null">
+        APP_OWNER = #{appOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="appStatus != null">
+        APP_STATUS = #{appStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where APP_ID = #{appId,jdbcType=VARCHAR}
+  </update>
+</mapper>
