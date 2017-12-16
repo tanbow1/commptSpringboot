@@ -19,11 +19,12 @@
         <result column="REGIST_TIME" jdbcType="TIMESTAMP" property="registTime"/>
         <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
         <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="USER_STATUS" jdbcType="CHAR" property="userStatus"/>
     </resultMap>
     <sql id="Base_Column_List">
     USER_ID, USER_NAME, USER_ACCOUNT, REAL_NAME, SEX, MOBILE, BIRTHDAY, NATIONALITY_ID, 
     NATIONALITY, CARD_ID, CARD_TYPE, CARD_NUMBER, ADDRESS, AVATAR, REGIST_TIME, PASSWORD, 
-    STATUS
+    STATUS,USER_STATUS
   </sql>
     <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtUser">
         insert into XT_USER
@@ -79,6 +80,9 @@
             <if test="status != null">
                 STATUS,
             </if>
+            <if test="userStatus != null">
+                USER_STATUS,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="userId != null">
@@ -132,6 +136,9 @@
             <if test="status != null">
                 #{status,jdbcType=CHAR},
             </if>
+            <if test="userStatus != null">
+                #{userStatus,jdbcType=CHAR},
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.XtUser">
@@ -184,6 +191,9 @@
             </if>
             <if test="status != null">
                 STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="userStatus != null">
+                USER_STATUS = #{userStatus,jdbcType=CHAR},
             </if>
         </set>
         where USER_ID = #{userId,jdbcType=VARCHAR}

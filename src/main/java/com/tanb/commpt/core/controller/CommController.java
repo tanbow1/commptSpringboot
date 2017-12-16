@@ -5,14 +5,11 @@ import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.global.SpringContext;
-import com.tanb.commpt.core.global.SystemConfig;
 import com.tanb.commpt.core.global.SystemConfigure;
-import com.tanb.commpt.core.po.XtUser;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.service.IAuthService;
 import com.tanb.commpt.core.service.IDmService;
-import com.tanb.commpt.core.service.IUserService;
 import com.tanb.commpt.core.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,13 +39,10 @@ public class CommController {
     private static Logger LOGGER = LoggerFactory.getLogger(CommController.class);
 
     @Autowired
-    private SystemConfigure config;
+    private SystemConfigure systemConfigure;
 
     @Autowired
     private IAuthService authService;
-
-    @Autowired
-    private IUserService userService;
 
     @Autowired
     private IDmService dmService;
@@ -85,7 +79,7 @@ public class CommController {
         }
         Map<String, String> resultMap = authService.refreshToken(accessToken, refreshToken);
         if ("0".equals(resultMap.get("insertCount"))) {
-            throw new SystemLevelException(ConsCommon.ERROR_MSG_UNKNOW + ":刷新token失败");
+            throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":刷新token失败");
         }
         jsonResponse.getRepData().put("resultData", resultMap);
         return jsonResponse;
@@ -284,7 +278,7 @@ public class CommController {
         jsonRequest.getReqData().put("request", httpServletRequest);
         jsonRequest.getReqData().put("response", httpServletResponse);
 
-        int fileMaxlength = Integer.parseInt(config.FILE_MAXLENGTH);
+        int fileMaxlength = Integer.parseInt(systemConfigure.FILE_MAXLENGTH);
         if (files.length > fileMaxlength) {
             throw new BizLevelException("文件数过多，最多不能超过" + fileMaxlength + "个，当前文件数：" + files.length);
         }

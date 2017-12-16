@@ -10,6 +10,7 @@ import com.tanb.commpt.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -45,38 +46,38 @@ public class UserServiceImpl implements IUserService {
      * 保存用户信息
      *
      * @param user
-     * @param userAccount
-     * @param userAddress
      * @param userRole
      * @return 用户主键
      * @throws UnsupportedEncodingException
      * @throws NoSuchAlgorithmException
      */
-//    @Transactional(rollbackFor = {Exception.class})
-//    @Override
-//    public String saveUserInfo(XtUser user, XtUserAccount userAccount, XtUserAddress userAddress, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException {
-//        if (null != user.getPassword()) {
-//            user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
-//         //   user.setPass("");
-//        }
-//        XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
-//        if (null != existsUser) {
-//            throw new BizLevelException(ConsCommon.WARN_MSG_001);
-//        }
-//        existsUser = xtUserMapper.selectExistsUser(user.getCardNumber());
-//        if (null != existsUser) {
-//            throw new BizLevelException(ConsCommon.WARN_MSG_002);
-//        }
-//        existsUser = xtUserMapper.selectExistsUser(user.getMobile());
-//        if (null != existsUser) {
-//            throw new BizLevelException(ConsCommon.WARN_MSG_003);
-//        }
-//
-//        int insertCount = xtUserMapper.insert2(user);
-//        if (insertCount > 0)
-//            return user.getUserId();
-//        return null;
-//    }
+    @Transactional(rollbackFor = {Exception.class})
+    @Override
+    public String saveUserInfo(XtUser user, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException {
+        if (!StringUtils.isEmpty(user.getPassword())) {
+            user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
+        } else {
+            //默认密码
+        }
+        XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
+        if (null != existsUser) {
+            throw new BizLevelException(ConsCommon.WARN_MSG_001);
+        }
+        existsUser = xtUserMapper.selectExistsUser(user.getCardNumber());
+        if (null != existsUser) {
+            throw new BizLevelException(ConsCommon.WARN_MSG_002);
+        }
+        existsUser = xtUserMapper.selectExistsUser(user.getMobile());
+        if (null != existsUser) {
+            throw new BizLevelException(ConsCommon.WARN_MSG_003);
+        }
+
+        int insertCount = xtUserMapper.insert2(user);
+        if (insertCount > 0)
+            return user.getUserId();
+        else
+            throw new BizLevelException(ConsCommon.REGIST_EXCEPTION);
+    }
 
     /**
      * 主健查询用户信息
@@ -84,7 +85,7 @@ public class UserServiceImpl implements IUserService {
      * @param userId
      * @return
      */
-//    private XtUser selectByPrimaryKey(String userId) {
-//        return xtUserMapper.selectByPrimaryKey(userId);
-//    }
+    private XtUser selectByPrimaryKey(String userId) {
+        return xtUserMapper.selectByPrimaryKey(userId);
+    }
 }

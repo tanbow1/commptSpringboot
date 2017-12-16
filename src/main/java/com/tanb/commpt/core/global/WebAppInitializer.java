@@ -17,7 +17,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        LOGGER.info("应用初始化，启动中...");
+        LOGGER.info("========应用初始化，启动中========");
 
         try {
             SystemContext.singleton().init();

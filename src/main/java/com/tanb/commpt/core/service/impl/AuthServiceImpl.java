@@ -23,10 +23,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class AuthServiceImpl implements IAuthService {
 
     @Autowired
-    private JwtUtil jwt;
+    private JwtUtil jwtUtil;
 
     @Autowired
-    private XtUserJwtMapper xtJwtMapper;
+    private XtUserJwtMapper xtUserJwtMapper;
 
 
     /**
@@ -34,22 +34,22 @@ public class AuthServiceImpl implements IAuthService {
      *
      * @param userId
      * @return 返回用户id
-     * jwt创建的accessToken，refreshToken
-     * jwt新增记录数，成功插入则1
+     * jwtUtil创建的accessToken，refreshToken
+     * jwtUtil新增记录数，成功插入则1
      * @throws Exception
      */
     @Override
     @Transactional(rollbackFor = {BizLevelException.class, SystemLevelException.class})
     public ConcurrentHashMap<String, String> saveJwt(String userId) throws JsonProcessingException {
-        xtJwtMapper.deleteByUserId(userId);
+        xtUserJwtMapper.deleteByUserId(userId);
         String subject = JwtUtil.generalSubject(userId);
-        String accessToken = jwt.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_TTL);
-        String refreshToken = jwt.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_REFRESH_TTL);
+        String accessToken = jwtUtil.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_TTL);
+        String refreshToken = jwtUtil.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_REFRESH_TTL);
         XtUserJwt xtJwt = new XtUserJwt();
         xtJwt.setUserId(userId);
         xtJwt.setAccessToken(accessToken);
         xtJwt.setRefreshToken(refreshToken);
-        int insertCount = xtJwtMapper.insert2(xtJwt);
+        int insertCount = xtUserJwtMapper.insert2(xtJwt);
         ConcurrentHashMap<String, String> resultMap = new ConcurrentHashMap<String, String>();
         resultMap.put("insertCount", String.valueOf(insertCount));
         resultMap.put("userId", userId);
@@ -75,7 +75,7 @@ public class AuthServiceImpl implements IAuthService {
         if (StringUtils.isEmptyOrWhitespace(refreshToken)) {
             throw new BizLevelException(ConsCommon.WARN_MSG_005);
         }
-        String userId = xtJwtMapper.selectByRefreshToken(accessToken, refreshToken);
+        String userId = xtUserJwtMapper.selectByRefreshToken(accessToken, refreshToken);
         if (null == userId) {
             throw new BizLevelException(ConsCommon.WARN_MSG_006);
         } else {
@@ -93,7 +93,7 @@ public class AuthServiceImpl implements IAuthService {
      */
     @Override
     public ConcurrentHashMap<String, String> selectByAccessToken(String accessToken) {
-        return xtJwtMapper.selectByAccessToken(accessToken);
+        return xtUserJwtMapper.selectByAccessToken(accessToken);
     }
 
     /**

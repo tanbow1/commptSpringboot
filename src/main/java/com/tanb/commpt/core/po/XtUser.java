@@ -1,6 +1,7 @@
 package com.tanb.commpt.core.po;
 
 import com.tanb.commpt.core.po.comm.Base;
+
 import java.util.Date;
 
 public class XtUser extends Base {
@@ -37,6 +38,16 @@ public class XtUser extends Base {
     private String password;
 
     private String status;
+
+    private String userStatus;
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
 
     public String getUserId() {
         return userId;

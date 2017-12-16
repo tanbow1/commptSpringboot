@@ -15,7 +15,7 @@ public interface IUserService {
 
     XtUser selectByUsernameAndPassword(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException;
 
-//    String saveUserInfo(XtUser user, XtUserAccount userAccount, XtUserAddress userAddress, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException;
+    String saveUserInfo(XtUser user,XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException;
 
 
 }

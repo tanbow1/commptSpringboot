@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tanb.commpt.core.mapper.BzWxUserMapper">
-  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.BzWxUser">
+<mapper namespace="com.tanb.commpt.miniapp.mapper.BzWxUserMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.miniapp.po.BzWxUser">
     <id column="OPEN_ID" jdbcType="VARCHAR" property="openId" />
     <result column="UNION_ID" jdbcType="VARCHAR" property="unionId" />
     <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
@@ -20,7 +20,7 @@
     OPEN_ID, UNION_ID, NICK_NAME, AVATAR_URL, GENDER, CITY, PROVINCE, COUNTRY, LANGUAGE, 
     PHONE_NUMBER, COUNTRY_CODE, PURE_PHONE_NUMBER, STATUS
   </sql>
-  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.BzWxUser">
+  <insert id="insertSelective" parameterType="com.tanb.commpt.miniapp.po.BzWxUser">
     insert into BZ_WX_USER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="openId != null">
@@ -105,7 +105,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.BzWxUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.miniapp.po.BzWxUser">
     update BZ_WX_USER
     <set>
       <if test="unionId != null">

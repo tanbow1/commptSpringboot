@@ -5,6 +5,10 @@ public class DmCard extends DmCardKey {
 
     private String status;
 
+    private String parentId;
+
+    private String cardSimple;
+
     public String getCardName() {
         return cardName;
     }
@@ -19,5 +23,21 @@ public class DmCard extends DmCardKey {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId == null ? null : parentId.trim();
+    }
+
+    public String getCardSimple() {
+        return cardSimple;
+    }
+
+    public void setCardSimple(String cardSimple) {
+        this.cardSimple = cardSimple == null ? null : cardSimple.trim();
     }
 }

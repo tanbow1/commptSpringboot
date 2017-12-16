@@ -1,6 +1,6 @@
-package com.tanb.commpt.core.mapper;
+package com.tanb.commpt.miniapp.mapper;
 
-import com.tanb.commpt.core.po.BzWxUser;
+import com.tanb.commpt.miniapp.po.BzWxUser;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
@@ -39,7 +39,7 @@ public interface BzWxUserMapper {
         "from BZ_WX_USER",
         "where OPEN_ID = #{openId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tanb.commpt.core.mapper.BzWxUserMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.miniapp.mapper.BzWxUserMapper.BaseResultMap")
     BzWxUser selectByPrimaryKey(String openId);
 
     int updateByPrimaryKeySelective(BzWxUser record);

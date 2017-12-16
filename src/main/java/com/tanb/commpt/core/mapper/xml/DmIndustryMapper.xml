@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmIndustryMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmIndustry">
+    <id column="INDUSTRY_ID" jdbcType="VARCHAR" property="industryId" />
+    <result column="INDUSTRY_NAME" jdbcType="VARCHAR" property="industryName" />
+    <result column="MLBZ" jdbcType="CHAR" property="mlbz" />
+    <result column="DLBZ" jdbcType="CHAR" property="dlbz" />
+    <result column="ZLBZ" jdbcType="CHAR" property="zlbz" />
+    <result column="XLBZ" jdbcType="CHAR" property="xlbz" />
+    <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    INDUSTRY_ID, INDUSTRY_NAME, MLBZ, DLBZ, ZLBZ, XLBZ, PARENT_ID, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmIndustry">
+    insert into DM_INDUSTRY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="industryId != null">
+        INDUSTRY_ID,
+      </if>
+      <if test="industryName != null">
+        INDUSTRY_NAME,
+      </if>
+      <if test="mlbz != null">
+        MLBZ,
+      </if>
+      <if test="dlbz != null">
+        DLBZ,
+      </if>
+      <if test="zlbz != null">
+        ZLBZ,
+      </if>
+      <if test="xlbz != null">
+        XLBZ,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="industryId != null">
+        #{industryId,jdbcType=VARCHAR},
+      </if>
+      <if test="industryName != null">
+        #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="mlbz != null">
+        #{mlbz,jdbcType=CHAR},
+      </if>
+      <if test="dlbz != null">
+        #{dlbz,jdbcType=CHAR},
+      </if>
+      <if test="zlbz != null">
+        #{zlbz,jdbcType=CHAR},
+      </if>
+      <if test="xlbz != null">
+        #{xlbz,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmIndustry">
+    update DM_INDUSTRY
+    <set>
+      <if test="industryName != null">
+        INDUSTRY_NAME = #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="mlbz != null">
+        MLBZ = #{mlbz,jdbcType=CHAR},
+      </if>
+      <if test="dlbz != null">
+        DLBZ = #{dlbz,jdbcType=CHAR},
+      </if>
+      <if test="zlbz != null">
+        ZLBZ = #{zlbz,jdbcType=CHAR},
+      </if>
+      <if test="xlbz != null">
+        XLBZ = #{xlbz,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where INDUSTRY_ID = #{industryId,jdbcType=VARCHAR}
+  </update>
+</mapper>

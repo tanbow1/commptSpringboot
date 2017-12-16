@@ -1,7 +1,7 @@
-package com.tanb.commpt.core.mapper;
+package com.tanb.commpt.miniapp.mapper;
 
-import com.tanb.commpt.core.po.BzUserLogger;
-import com.tanb.commpt.core.po.BzUserLoggerKey;
+import com.tanb.commpt.miniapp.po.BzUserLogger;
+import com.tanb.commpt.miniapp.po.BzUserLoggerKey;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
@@ -42,7 +42,7 @@ public interface BzUserLoggerMapper {
         "where LOGGER_ID = #{loggerId,jdbcType=VARCHAR}",
           "and USER_ID = #{userId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tanb.commpt.core.mapper.BzUserLoggerMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.miniapp.mapper.BzUserLoggerMapper.BaseResultMap")
     BzUserLogger selectByPrimaryKey(BzUserLoggerKey key);
 
     int updateByPrimaryKeySelective(BzUserLogger record);

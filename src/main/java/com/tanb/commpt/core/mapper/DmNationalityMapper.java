@@ -15,11 +15,11 @@ public interface DmNationalityMapper {
 
     @Insert({
         "insert into DM_NATIONALITY (NATIONALITY_ID, NATIONALITY_NAME_ZH, ",
-        "NATIONALITY_NAME_EN, NATIONALITY_EN_TAG, ",
-        "ALPHABETIC, STATUS)",
+        "NATIONALITY_NAME_EN, NATIONALITY_EN_SIMPLE, ",
+        "ALPHABETIC, STATUS, NATIONALITY_ZH_SIMPLE)",
         "values (#{nationalityId,jdbcType=VARCHAR}, #{nationalityNameZh,jdbcType=VARCHAR}, ",
-        "#{nationalityNameEn,jdbcType=VARCHAR}, #{nationalityEnTag,jdbcType=VARCHAR}, ",
-        "#{alphabetic,jdbcType=CHAR}, #{status,jdbcType=CHAR})"
+        "#{nationalityNameEn,jdbcType=VARCHAR}, #{nationalityEnSimple,jdbcType=VARCHAR}, ",
+        "#{alphabetic,jdbcType=CHAR}, #{status,jdbcType=CHAR}, #{nationalityZhSimple,jdbcType=VARCHAR})"
     })
     int insert(DmNationality record);
 
@@ -27,8 +27,8 @@ public interface DmNationalityMapper {
 
     @Select({
         "select",
-        "NATIONALITY_ID, NATIONALITY_NAME_ZH, NATIONALITY_NAME_EN, NATIONALITY_EN_TAG, ",
-        "ALPHABETIC, STATUS",
+        "NATIONALITY_ID, NATIONALITY_NAME_ZH, NATIONALITY_NAME_EN, NATIONALITY_EN_SIMPLE, ",
+        "ALPHABETIC, STATUS, NATIONALITY_ZH_SIMPLE",
         "from DM_NATIONALITY",
         "where NATIONALITY_ID = #{nationalityId,jdbcType=VARCHAR}"
     })
@@ -41,9 +41,10 @@ public interface DmNationalityMapper {
         "update DM_NATIONALITY",
         "set NATIONALITY_NAME_ZH = #{nationalityNameZh,jdbcType=VARCHAR},",
           "NATIONALITY_NAME_EN = #{nationalityNameEn,jdbcType=VARCHAR},",
-          "NATIONALITY_EN_TAG = #{nationalityEnTag,jdbcType=VARCHAR},",
+          "NATIONALITY_EN_SIMPLE = #{nationalityEnSimple,jdbcType=VARCHAR},",
           "ALPHABETIC = #{alphabetic,jdbcType=CHAR},",
-          "STATUS = #{status,jdbcType=CHAR}",
+          "STATUS = #{status,jdbcType=CHAR},",
+          "NATIONALITY_ZH_SIMPLE = #{nationalityZhSimple,jdbcType=VARCHAR}",
         "where NATIONALITY_ID = #{nationalityId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(DmNationality record);

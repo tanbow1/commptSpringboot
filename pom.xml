@@ -34,7 +34,9 @@
         <commons-net.version>3.6</commons-net.version>
         <commons-codec.version>1.11</commons-codec.version>
         <com.oracle.ojdbc6.version>11.2.0.2.0</com.oracle.ojdbc6.version>
+        <com.oracle.ojdbc7.version>12.1.0.1</com.oracle.ojdbc7.version>
         <org.apache.tomcat-dbcp.version>9.0.0.M26</org.apache.tomcat-dbcp.version>
+        <com.github.pagehelper.version>1.2.3</com.github.pagehelper.version>
     </properties>
 
     <dependencies>
@@ -164,6 +166,7 @@
             <version>${commons-net.version}</version>
         </dependency>
 
+        <!--ojdbc-->
         <!--<dependency>-->
         <!--<groupId>com.oracle</groupId>-->
         <!--<artifactId>ojdbc6</artifactId>-->
@@ -174,13 +177,20 @@
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc7</artifactId>
-            <version>12.1.0.1</version>
+            <version>${com.oracle.ojdbc7.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
             <version>${org.apache.tomcat-dbcp.version}</version>
+        </dependency>
+
+        <!-- mybatis分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${com.github.pagehelper.version}</version>
         </dependency>
 
         <!--mybatis generator-->

@@ -9,11 +9,33 @@ public class DmNationality extends Base {
 
     private String nationalityNameEn;
 
-    private String nationalityEnTag;
+    private String nationalityEnSimple;
 
     private String alphabetic;
 
     private String status;
+
+    private String nationalityZhSimple;
+
+    private String formalDm;
+
+    private String reserveDm;
+
+    public String getFormalDm() {
+        return formalDm;
+    }
+
+    public void setFormalDm(String formalDm) {
+        this.formalDm = formalDm;
+    }
+
+    public String getReserveDm() {
+        return reserveDm;
+    }
+
+    public void setReserveDm(String reserveDm) {
+        this.reserveDm = reserveDm;
+    }
 
     public String getNationalityId() {
         return nationalityId;
@@ -39,12 +61,12 @@ public class DmNationality extends Base {
         this.nationalityNameEn = nationalityNameEn == null ? null : nationalityNameEn.trim();
     }
 
-    public String getNationalityEnTag() {
-        return nationalityEnTag;
+    public String getNationalityEnSimple() {
+        return nationalityEnSimple;
     }
 
-    public void setNationalityEnTag(String nationalityEnTag) {
-        this.nationalityEnTag = nationalityEnTag == null ? null : nationalityEnTag.trim();
+    public void setNationalityEnSimple(String nationalityEnSimple) {
+        this.nationalityEnSimple = nationalityEnSimple == null ? null : nationalityEnSimple.trim();
     }
 
     public String getAlphabetic() {
@@ -61,5 +83,13 @@ public class DmNationality extends Base {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getNationalityZhSimple() {
+        return nationalityZhSimple;
+    }
+
+    public void setNationalityZhSimple(String nationalityZhSimple) {
+        this.nationalityZhSimple = nationalityZhSimple == null ? null : nationalityZhSimple.trim();
     }
 }

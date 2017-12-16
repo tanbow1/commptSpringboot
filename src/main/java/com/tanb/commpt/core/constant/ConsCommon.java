@@ -15,45 +15,33 @@ public class ConsCommon {
     public static final String LANGUAGE_EN = "en";
 
 
-    // //////////////////////////////////////////////////////////
-
-
-    public static final int BATCH_COUNT = 100;//批量提交数
-
-    // //////////////////////////////////////////////////////////用户
-
-    public static final String ROLE_ID_SUPER = "001";// 超级用户roleId
-
     // //////////////////////////////////////////////////////////分页
 
     public static final int DEFAULT_PAGE_START = 1;
-
     public static final int DEFAULT_PAGE_SIZE = 10;
 
 
     // //////////////////////////////////////////////////////////公共消息返回
 
     public static final String SUCCESS_CODE = "1";
+    public static final String SUCCESS = "成功";
 
-    public static final String SUCCESS_MSG = "success";
+    public static final String FAILED_CODE = "0";
+    public static final String FAILED = "失败";
 
-    public static final String ERROR_CODE = "0";
-
-    public static final String ERROR_MSG = "fail";
-
-    public static final String ERROR_CODE_UNKNOW = "-1";
-
-    public static final String ERROR_MSG_UNKNOW = "unknow error";
+    public static final String UNKNOW_CODE = "-1";
+    public static final String UNKNOW_ERROR = "未知错误";
 
     // //////////////////////////////////////////////////////////异常
 
     public static final String RUNTIME_EXCEPTION_CODE = "EX001";
-    public static final String RUNTIME_EXCEPTION_MSG = "运行时异常";
+    public static final String RUNTIME_EXCEPTION = "运行时异常";
 
-    // //////////////////////////////////////////////////////////错误
+    public static final String MAXUPLOADSIZE_EXCEPTION_CODE = "EX002";
+    public static final String MAXUPLOADSIZE_EXCEPTION = "上传文件过大";
 
-    public static final String MAXUPLOADSIZE_EXCEPTION_CODE = "E002";
-    public static final String MAXUPLOADSIZE_EXCEPTION_MSG = "上传文件过大";
+    public static final String REGIST_EXCEPTION_CODE = "EX003";
+    public static final String REGIST_EXCEPTION = "注册失败";
 
     // //////////////////////////////////////////////////////////警告
 
@@ -72,10 +60,10 @@ public class ConsCommon {
     public static final String WARN_CODE_005 = "W005";
     public static final String WARN_MSG_005 = "refreshToken为空";
 
-    public static final String WARN_CODE_006 = "W0006";
+    public static final String WARN_CODE_006 = "W006";
     public static final String WARN_MSG_006 = "token失效";
 
-    public static final String WARN_CODE_007 = "W0007";
+    public static final String WARN_CODE_007 = "W007";
     public static final String WARN_MSG_007 = "用户名或密码有误";
 
     public static final String WARN_CODE_008 = "W008";
@@ -125,13 +113,13 @@ public class ConsCommon {
     public static final String JWT_ID = "jwt";
 
     //accessToken2天有效
-    public static final int JWT_TTL = 48 * 60 * 60 * 1000;  //millisecond
+    public static final long JWT_TTL = 172800000l;  //ms
 
     //refreshToken每天刷新
-    public static final int JWT_REFRESH_INTERVAL = 24 * 60 * 60 * 1000;  //millisecond
+    public static final long JWT_REFRESH_INTERVAL = 86400000l;
 
     //refreshToken1年有效
-    public static final int JWT_REFRESH_TTL = 356 * 24 * 60 * 60 * 1000;  //millisecond
+    public static final long JWT_REFRESH_TTL = 31536000000l;
 
     public static final String ACCESS_TOKEN = SYS_PREFIX + "ACCESS_TOKEN";
 

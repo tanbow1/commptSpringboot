@@ -18,9 +18,11 @@ public interface DmCardMapper {
 
     @Insert({
         "insert into DM_CARD (CARD_ID, CARD_TYPE, ",
-        "CARD_NAME, STATUS)",
+        "CARD_NAME, STATUS, PARENT_ID, ",
+        "CARD_SIMPLE)",
         "values (#{cardId,jdbcType=VARCHAR}, #{cardType,jdbcType=CHAR}, ",
-        "#{cardName,jdbcType=VARCHAR}, #{status,jdbcType=CHAR})"
+        "#{cardName,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{parentId,jdbcType=VARCHAR}, ",
+        "#{cardSimple,jdbcType=VARCHAR})"
     })
     int insert(DmCard record);
 
@@ -28,7 +30,7 @@ public interface DmCardMapper {
 
     @Select({
         "select",
-        "CARD_ID, CARD_TYPE, CARD_NAME, STATUS",
+        "CARD_ID, CARD_TYPE, CARD_NAME, STATUS, PARENT_ID, CARD_SIMPLE",
         "from DM_CARD",
         "where CARD_ID = #{cardId,jdbcType=VARCHAR}",
           "and CARD_TYPE = #{cardType,jdbcType=CHAR}"
@@ -41,7 +43,9 @@ public interface DmCardMapper {
     @Update({
         "update DM_CARD",
         "set CARD_NAME = #{cardName,jdbcType=VARCHAR},",
-          "STATUS = #{status,jdbcType=CHAR}",
+          "STATUS = #{status,jdbcType=CHAR},",
+          "PARENT_ID = #{parentId,jdbcType=VARCHAR},",
+          "CARD_SIMPLE = #{cardSimple,jdbcType=VARCHAR}",
         "where CARD_ID = #{cardId,jdbcType=VARCHAR}",
           "and CARD_TYPE = #{cardType,jdbcType=CHAR}"
     })

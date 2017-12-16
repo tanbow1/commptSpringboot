@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class JsonResponse extends Base {
 
     private String code = ConsCommon.SUCCESS_CODE;
-    private String msg = ConsCommon.SUCCESS_MSG;
+    private String msg = ConsCommon.SUCCESS;
     private String detailMsg;
 
     public JsonResponse() {

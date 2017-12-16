@@ -47,17 +47,15 @@ public class IndexController {
                 String.valueOf(jsonRequest.getReqData().get("password")));
 
         if (null != user) {
-
             Map<String, String> resultMap = authService.saveJwt(user.getUserId());
             if ("0".equals(resultMap.get("insertCount"))) {
-                throw new SystemLevelException(ConsCommon.ERROR_MSG_UNKNOW + ":插入token失败");
+                throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":插入token失败");
             }
 
             jsonResponse.getRepData().put(ConsCommon.ACCESS_TOKEN, resultMap.get("accessToken"));
             jsonResponse.getRepData().put(ConsCommon.REFRESH_TOKEN, resultMap.get("refreshToken"));
-
         } else {
-            jsonResponse.setCode(ConsCommon.ERROR_CODE);
+            jsonResponse.setCode(ConsCommon.FAILED_CODE);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_007);
         }
 

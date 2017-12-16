@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tanb.commpt.core.mapper.BzUserLoggerMapper">
-  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.BzUserLogger">
+<mapper namespace="com.tanb.commpt.miniapp.mapper.BzUserLoggerMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.miniapp.po.BzUserLogger">
     <id column="LOGGER_ID" jdbcType="VARCHAR" property="loggerId" />
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
     <result column="LOGGER_DESC" jdbcType="VARCHAR" property="loggerDesc" />
@@ -19,7 +19,7 @@
     LOGGER_ID, USER_ID, LOGGER_DESC, LOG_TYPE, CREATE_TIME, CREATE_USER, LOCATION, LONGITUDE, 
     LATITUDE, IP, STATUS, APP_ID
   </sql>
-  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.BzUserLogger">
+  <insert id="insertSelective" parameterType="com.tanb.commpt.miniapp.po.BzUserLogger">
     insert into BZ_USER_LOGGER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="loggerId != null">
@@ -98,7 +98,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.BzUserLogger">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.miniapp.po.BzUserLogger">
     update BZ_USER_LOGGER
     <set>
       <if test="loggerDesc != null">

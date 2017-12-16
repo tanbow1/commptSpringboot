@@ -1,4 +1,4 @@
-package com.tanb.commpt.core.po;
+package com.tanb.commpt.miniapp.po;
 
 import com.tanb.commpt.core.po.comm.Base;
 
