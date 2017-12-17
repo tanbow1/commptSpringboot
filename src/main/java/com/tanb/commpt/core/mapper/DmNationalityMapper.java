@@ -49,16 +49,16 @@ public interface DmNationalityMapper {
     })
     int updateByPrimaryKey(DmNationality record);
 
-    List<DmNationality> selectGjdqList(@Param("pageStart") int pageStart, @Param("pageEnd") int pageEnd);
+    List<DmNationality> selectNationalityListPagination(@Param("pageStart") int pageStart, @Param("pageEnd") int pageEnd);
 
-    @Select({"select count(*) from DM_NATIONALITY "})
-    int selectGjdqCount();
+    @Select({"select count(1) from DM_NATIONALITY "})
+    int selectCount();
 
     @Select({"select count(1) from DM_NATIONALITY where NATIONALITY_ID = #{nationalityId,jdbcType=VARCHAR} "})
-    int selectCountByGjdqId(String gjdqId);
+    int selectCountByNationalityId(String nationalityId);
 
     int insertByBatch(List<DmNationality> gjdqList);
 
     @Select("SELECT *,decode(STATUS,'1','有效','0','无效','--' ) STATUS_MC FROM DM_NATIONALITY")
-    List<Map<String, Object>> selectAllGjdqList();
+    List<Map<String, Object>> selectAll();
 }

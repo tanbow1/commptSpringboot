@@ -1,19 +1,15 @@
 package com.tanb.commpt.core.service.impl;
 
 import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tanb.commpt.core.constant.ConsCommon;
-import com.tanb.commpt.core.constant.ContentType;
 import com.tanb.commpt.core.constant.ContentType;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.mapper.DmNationalityMapper;
 import com.tanb.commpt.core.mapper.DmMenuMapper;
-import com.tanb.commpt.core.mapper.DmNationalityMapper;
 import com.tanb.commpt.core.mapper.DmProductMapper;
 import com.tanb.commpt.core.po.DmNationality;
 import com.tanb.commpt.core.po.DmMenu;
-import com.tanb.commpt.core.po.DmNationality;
 import com.tanb.commpt.core.po.DmProduct;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
@@ -28,7 +24,6 @@ import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -118,13 +113,13 @@ public class DmServiceImpl implements IDmService {
     public JsonResponse getGjdqListPagination(int pageNum, int pageSize) {
         JsonResponse jsonResponse = new JsonResponse();
         Integer[] pageStartAndEnd = CommonUtil.getPageStartAndEnd(pageNum, pageSize);
-        int total = dmGjdqMapper.selectGjdqCount();
+        int total = dmGjdqMapper.selectCount();
         if (total > 0) {
-            List<DmNationality> dmGjdqList = dmGjdqMapper.selectGjdqList(pageStartAndEnd[0], pageStartAndEnd[1]);
+            List<DmNationality> dmGjdqList = dmGjdqMapper.selectNationalityListPagination(pageStartAndEnd[0], pageStartAndEnd[1]);
             if (null != dmGjdqList)
-                jsonResponse.getRepData().put("gjdqList", dmGjdqList);
+                jsonResponse.getRepData().put("dmNationalityList", dmGjdqList);
         }
-        jsonResponse.getRepData().put("gjdqCount", total);
+        jsonResponse.getRepData().put("dmNationalityCount", total);
 
         return jsonResponse;
     }
@@ -190,7 +185,7 @@ public class DmServiceImpl implements IDmService {
                 changeCount = dmGjdqMapper.updateByPrimaryKey(dmGjdq);
             }
             if (changeCount > 0) {
-                int recordCount = dmGjdqMapper.selectCountByGjdqId(dmGjdq.getNationalityId());
+                int recordCount = dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId());
                 if (recordCount > 1) {
                     throw new BizLevelException(ConsCommon.WARN_MSG_018);
                 }
@@ -231,21 +226,24 @@ public class DmServiceImpl implements IDmService {
                 jsonResponse.setCode(ConsCommon.WARN_CODE_020);
                 jsonResponse.setMsg(ConsCommon.WARN_MSG_020);
             } else {
-                List<DmNationality> gjdqList = new ArrayList<DmNationality>();
-                DmNationality gjdq = null;
+                List<DmNationality> dmNationalityList = new ArrayList<DmNationality>();
+                DmNationality dmNationality = null;
                 ArrayList<String> listItem = null;
                 for (int i = 0, len = list.size(); i < len; i++) {
-                    gjdq = new DmNationality();
+                    dmNationality = new DmNationality();
                     listItem = list.get(i);
-                    gjdq.setNationalityId(listItem.get(0));
-                    gjdq.setNationalityNameZh(listItem.get(1));
-                    gjdq.setNationalityNameZh(listItem.get(2));
-                    gjdq.setNationalityEnTag(listItem.get(3));
-                    gjdq.setAlphabetic(listItem.get(4));
-                    gjdq.setStatus(listItem.get(5));
-                    gjdqList.add(gjdq);
+                    dmNationality.setNationalityId(listItem.get(0));
+                    dmNationality.setNationalityNameZh(listItem.get(1));
+                    dmNationality.setNationalityNameZh(listItem.get(2));
+                    dmNationality.setNationalityEnSimple(listItem.get(3));
+                    dmNationality.setAlphabetic(listItem.get(4));
+                    dmNationality.setStatus(listItem.get(5));
+                    dmNationality.setNationalityZhSimple(listItem.get(6));
+                    dmNationality.setReserveDm(listItem.get(7));
+                    dmNationality.setFormalDm(listItem.get(8));
+                    dmNationalityList.add(dmNationality);
                 }
-                int insertBatchCount = dmGjdqMapper.insertByBatch(gjdqList);
+                int insertBatchCount = dmGjdqMapper.insertByBatch(dmNationalityList);
                 jsonResponse.setMsg(jsonResponse.getMsg() + ",本次上传记录：" + insertBatchCount + "条。");
             }
         } else {
@@ -264,7 +262,7 @@ public class DmServiceImpl implements IDmService {
      */
     @Override
     public JsonResponse exportGjdqToExcel(JsonRequest jsonRequest) {
-        List<Map<String, Object>> dmGjdqList = dmGjdqMapper.selectAllGjdqList();
+        List<Map<String, Object>> dmGjdqList = dmGjdqMapper.selectAll();
         Map<String, String> headMap = new ConcurrentHashMap<String, String>();
         headMap.put("GJDQ_MC_Z", "中文名称");
         headMap.put("GJDQ_MC_E", "英文名称");

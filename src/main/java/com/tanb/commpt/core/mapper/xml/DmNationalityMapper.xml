@@ -98,14 +98,17 @@
       SELECT
       #{item.nationalityId,jdbcType=VARCHAR},
       #{item.nationalityNameZh,jdbcType=VARCHAR},
-      #{item.nationalityIdNameEn,jdbcType=VARCHAR},
-      #{item.nationalityIdEnTag,jdbcType=VARCHAR},
+      #{item.nationalityNameEn,jdbcType=VARCHAR},
+      #{item.nationalityEnSimple,jdbcType=VARCHAR},
       #{item.alphabetic,jdbcType=VARCHAR},
-      #{item.status,jdbcType=VARCHAR}
+      #{item.status,jdbcType=VARCHAR},
+      #{item.nationalityZhSimple,jdbcType=VARCHAR},
+      #{item.reserveDm,jdbcType=VARCHAR},
+      #{item.formalDm,jdbcType=VARCHAR},
       FROM dual
     </foreach>
   </insert>
-  <select id="selectGjdqList" parameterType="int" resultMap="BaseResultMap">
+  <select id="selectNationalityListPagination" parameterType="int" resultMap="BaseResultMap">
     <choose>
       <when test="pageStart != null and pageEnd != null">
         select
@@ -117,7 +120,7 @@
       <otherwise>
         select
         <include refid="Base_Column_List"/>
-        from NATIONALITY_ID
+        from DM_NATIONALITY
       </otherwise>
     </choose>
   </select>
