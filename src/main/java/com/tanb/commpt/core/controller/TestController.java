@@ -1,9 +1,7 @@
 package com.tanb.commpt.core.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.tanb.commpt.core.dao.impl.BaseDao;
-import com.tanb.commpt.core.global.SystemConfig;
-import com.tanb.commpt.core.global.SystemConfigure;
+import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.mapper.DmCodeMapper;
 import com.tanb.commpt.core.po.DmCode;
 import org.apache.log4j.Logger;
@@ -23,7 +21,7 @@ public class TestController {
     private static final Logger LOGGER = Logger.getLogger(TestController.class);
 
     @Autowired
-    private SystemConfigure systemConfigure;
+    private SystemConfiguration systemConfiguration;
 
     @Autowired
     BaseDao baseDao;
@@ -35,16 +33,13 @@ public class TestController {
     @RequestMapping("hello")
     public String hello() {
         LOGGER.debug("=====TEST=====");
-        System.out.println(systemConfigure);
+        System.out.println(systemConfiguration);
         System.out.println(baseDao.getNowLocal());
         return "Hello CommPt!!";
     }
 
     @RequestMapping("index")
     public String index() {
-        LOGGER.debug("=====INDEX=====");
-
-        PageHelper.startPage(1, 10);
         List<DmCode> dmCodeList = dmCodeMapper.selectAll();
         return "index";
     }

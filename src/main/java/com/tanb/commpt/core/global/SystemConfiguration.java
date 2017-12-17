@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by Tanbo on 2017/12/7.
  */
 @Configuration
-public class SystemConfigure implements CommandLineRunner {
+public class SystemConfiguration implements CommandLineRunner {
 
     @Value("${interceptor.ignoreUri}")
     public String INTERCEPTOR_IGNORE_URI;

@@ -2,7 +2,7 @@ package com.tanb.commpt.core.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tanb.commpt.core.constant.ConsCommon;
-import com.tanb.commpt.core.global.SystemConfig;
+import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.util.CommonUtil;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
-    SystemConfig config;
+    SystemConfiguration config;
 
 
     //运行时异常

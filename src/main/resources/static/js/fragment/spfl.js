@@ -13,7 +13,7 @@ function spflTreegridOpts() {
         collapsible: true,
         fitColumns: true,
         showFooter: true,
-        url: 'comm/getJsonData2?serviceName=dmService&methodName=getProductTypeTree',
+        url: '/comm/getJsonData2?serviceName=dmService&methodName=getProductTypeTree',
         title: '商品分类',
         idField: 'typeId',
         treeField: 'typeName',
@@ -96,7 +96,7 @@ function saveSpflEdit() {
         //暂时只进行单条记录，后台支持批量，需传入数组
         records.push(record);
 
-        commonAjax('comm/getJsonData2', 'dmService', 'updateSpflBatch', {records: JSON.stringify(records)}).then(function (resultData) {
+        commonAjax('/comm/getJsonData2', 'dmService', 'updateSpflBatch', {records: JSON.stringify(records)}).then(function (resultData) {
             if (checkResponseText(resultData)) {
                 easyMsg.alert(resultData.msg, 'info');
             } else {
@@ -113,6 +113,6 @@ function saveSpflEdit() {
 
 function reloadSpflRecord() {
     $('#tb_spfl').treegrid({
-        url: 'comm/getJsonData2?serviceName=dmService&methodName=getProductTypeTree'
+        url: '/comm/getJsonData2?serviceName=dmService&methodName=getProductTypeTree'
     });
 }

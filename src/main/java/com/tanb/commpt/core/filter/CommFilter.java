@@ -1,11 +1,9 @@
 package com.tanb.commpt.core.filter;
 
 
-import com.tanb.commpt.core.global.SystemConfig;
 import com.tanb.commpt.core.global.SystemContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;

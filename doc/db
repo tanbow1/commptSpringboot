@@ -1,11 +1,11 @@
-#mysql
+#####################mysql#####################
 
 database:
 commpt
 
 
 
-#oracle
+#####################oracle#####################
 
 database:
 ORCLCDB
@@ -39,12 +39,14 @@ C##DB_DM.DM_APPLIST
 C##DB_DM.DM_PRODUCT
 C##DB_DM.DM_INDUSTRY
 
-
+functions:
+XT_GET_STRARRAYSTROFINDEX
+XT_GET_GUID
 
 
 
 CREATE OR REPLACE EDITIONABLE SYNONYM "C##DB_APP"."XT_USER" FOR "C##DB_XT"."XT_USER";
 
 
-#mongodb
+#####################mongodb#####################
 

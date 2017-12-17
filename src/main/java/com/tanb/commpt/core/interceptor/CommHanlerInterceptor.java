@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.interceptor;
 
-import com.tanb.commpt.core.global.SystemConfigure;
+import com.tanb.commpt.core.global.SystemConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class CommHanlerInterceptor extends HandlerInterceptorAdapter {
             .getLogger(CommHanlerInterceptor.class);
 
     @Autowired
-    private SystemConfigure systemConfigure;
+    private SystemConfiguration systemConfiguration;
 
     @Override
     public boolean preHandle(HttpServletRequest request,
@@ -35,7 +35,7 @@ public class CommHanlerInterceptor extends HandlerInterceptorAdapter {
 
         String sessionId = request.getParameter("sessionId");
 
-        String[] IGNORE_URI = systemConfigure.INTERCEPTOR_IGNORE_URI.split(",");
+        String[] IGNORE_URI = systemConfiguration.INTERCEPTOR_IGNORE_URI.split(",");
         LOGGER.info("忽略拦截：" + Arrays.toString(IGNORE_URI));
 
         for (String s : IGNORE_URI) {

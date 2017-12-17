@@ -2,7 +2,7 @@ package com.tanb.commpt.core.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tanb.commpt.core.constant.ConsCommon;
-import com.tanb.commpt.core.global.SystemConfig;
+import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.util.CommonUtil;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author Tanbo
  */
-@Component
+//@Component
 public class SimpleMappingExceptionResolver implements
         HandlerExceptionResolver {
 
@@ -33,7 +33,7 @@ public class SimpleMappingExceptionResolver implements
             .getLogger(SimpleMappingExceptionResolver.class);
 
     @Autowired
-    SystemConfig config;
+    SystemConfiguration config;
 
     public ModelAndView resolveException(HttpServletRequest request,
                                          HttpServletResponse response, Object object, Exception ex) {
@@ -78,7 +78,7 @@ public class SimpleMappingExceptionResolver implements
             // 该异常 由于在Controller之前触发，转至GlobalExceptionHandler.maxUploadSizeExceededExceptionHandler处理
         } else {
             jsonResponse.setCode(ConsCommon.UNKNOW_CODE);
-            jsonResponse.setMsg(ConsCommon.UNKNOW_ERROR + " " + ex.getMessage());
+            jsonResponse.setMsg(ConsCommon.UNKNOW_ERROR + "：" + ex.getMessage());
         }
     }
 }

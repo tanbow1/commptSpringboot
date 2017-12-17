@@ -5,7 +5,7 @@ import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.global.SpringContext;
-import com.tanb.commpt.core.global.SystemConfigure;
+import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.service.IAuthService;
@@ -39,7 +39,7 @@ public class CommController {
     private static Logger LOGGER = LoggerFactory.getLogger(CommController.class);
 
     @Autowired
-    private SystemConfigure systemConfigure;
+    private SystemConfiguration systemConfiguration;
 
     @Autowired
     private IAuthService authService;
@@ -278,7 +278,7 @@ public class CommController {
         jsonRequest.getReqData().put("request", httpServletRequest);
         jsonRequest.getReqData().put("response", httpServletResponse);
 
-        int fileMaxlength = Integer.parseInt(systemConfigure.FILE_MAXLENGTH);
+        int fileMaxlength = Integer.parseInt(systemConfiguration.FILE_MAXLENGTH);
         if (files.length > fileMaxlength) {
             throw new BizLevelException("文件数过多，最多不能超过" + fileMaxlength + "个，当前文件数：" + files.length);
         }

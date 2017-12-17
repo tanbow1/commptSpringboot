@@ -3,8 +3,7 @@ package com.tanb.commpt.core.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tanb.commpt.core.global.SystemConfig;
-import com.tanb.commpt.core.global.SystemConfigure;
+import com.tanb.commpt.core.global.SystemConfiguration;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -36,7 +35,7 @@ import java.util.Date;
 public class JwtUtil {
 
     @Autowired
-    private SystemConfigure systemConfig;
+    private SystemConfiguration systemConfig;
 
     /**
      * 由字符串生成加密key
