@@ -28,43 +28,49 @@ function gjdqDatagridOpts() {
         columns: [[
             {field: 'ck', checkbox: true},
             {
-                field: 'gjdqMcZ', title: '中文名称', width: 100,
+                field: 'nationalityId', title: '国家地区代码', width: 100,
                 editor: {
                     type: 'text'
                 }
             },
             {
-                field: 'gjdqMcE', title: '英文名称', width: 100,
+                field: 'nationalityNameZh', title: '中文名称', width: 100,
                 editor: {
                     type: 'text'
                 }
             },
             {
-                field: 'gjdqMcdm', title: '国家地区代码', width: 100,
+                field: 'nationalityNameZh', title: '中文简称', width: 100,
                 editor: {
                     type: 'text'
                 }
             },
             {
-                field: 'gjdqDhdm', title: '电话代码', width: 100,
-                editor: {
-                    type: 'numberbox'
-                }
-            },
-            {
-                field: 'gjdqId', title: '自定义编码', width: 100,
-                editor: {
-                    type: 'numberbox'
-                }
-            },
-            {
-                field: 'sc', title: '与中国时差', width: 100,
+                field: 'nationalityNameEn', title: '英文名称', width: 100,
                 editor: {
                     type: 'text'
                 }
             },
             {
-                field: 'yxbj',
+                field: 'nationalityNameEn', title: '英文简称', width: 100,
+                editor: {
+                    type: 'text'
+                }
+            },
+            {
+                field: 'formalDm', title: '正式代码', align: 'center',width: 100,
+                editor: {
+                    type: 'text'
+                }
+            },
+            {
+                field: 'reserveDm', title: '保留代码',align: 'center', width: 100,
+                editor: {
+                    type: 'text'
+                }
+            },
+            {
+                field: 'status',
                 title: '有效标记(1:有效,0:无效)',
                 width: 100,
                 align: 'center',
@@ -171,9 +177,10 @@ function initGjdqTable(pageNumber, pageSize) {
         success: function (responseText, textStatus, XMLHttpRequest) {
             easyMsg.progressoff();
             if (checkResponseText(responseText)) {
-                var gjdqCount = responseText.repData.gjdqCount;
+                console.log(responseText.data);
+                var gjdqCount = responseText.data.dmNationalityCount;
                 if (gjdqCount > 0) {
-                    $("#tb_gjdq").datagrid('loadData', responseText.repData.gjdqList);
+                    $("#tb_gjdq").datagrid('loadData', responseText.data.dmNationalityList);
                 }
 
                 $("#tb_gjdq").datagrid("getPager").pagination('refresh', {
@@ -242,7 +249,6 @@ function onCheckGjdq(index, row) {
     checkedGjdqGridIndex = index;
 }
 function saveEditGjdqRecord() {
-    var rows = $('#tb_gjdq').datagrid('getChanges');
     if (endGjdqRecordEditing()) {
         $('#tb_gjdq').datagrid('acceptChanges');
     }
@@ -263,7 +269,7 @@ function saveEditGjdqRecord() {
 }
 function addGjdqRecord() {
     if (endGjdqRecordEditing()) {
-        $('#tb_gjdq').datagrid('appendRow', {'yxbj': '1'});
+        $('#tb_gjdq').datagrid('appendRow', {'status': '1'});
         editGjdqGridIndex = $('#tb_gjdq').datagrid('getRows').length - 1;
         $('#tb_gjdq').datagrid('selectRow', editGjdqGridIndex)
             .datagrid('beginEdit', editGjdqGridIndex);

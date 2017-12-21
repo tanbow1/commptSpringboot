@@ -44,7 +44,9 @@ public interface DmNationalityMapper {
           "NATIONALITY_EN_SIMPLE = #{nationalityEnSimple,jdbcType=VARCHAR},",
           "ALPHABETIC = #{alphabetic,jdbcType=CHAR},",
           "STATUS = #{status,jdbcType=CHAR},",
-          "NATIONALITY_ZH_SIMPLE = #{nationalityZhSimple,jdbcType=VARCHAR}",
+          "NATIONALITY_ZH_SIMPLE = #{nationalityZhSimple,jdbcType=VARCHAR},",
+            "RESERVE_DM = #{reserveDm,jdbcType=VARCHAR},",
+            "FORMAL_DM = #{formalDm,jdbcType=VARCHAR}",
         "where NATIONALITY_ID = #{nationalityId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(DmNationality record);
@@ -59,6 +61,7 @@ public interface DmNationalityMapper {
 
     int insertByBatch(List<DmNationality> gjdqList);
 
-    @Select("SELECT *,decode(STATUS,'1','有效','0','无效','--' ) STATUS_MC FROM DM_NATIONALITY")
+    @Select({"SELECT NATIONALITY_ID, NATIONALITY_NAME_ZH, NATIONALITY_NAME_EN, NATIONALITY_EN_SIMPLE," +
+            "    ALPHABETIC, decode(STATUS,'1','有效','0','无效','--' ) as STATUS, NATIONALITY_ZH_SIMPLE,RESERVE_DM,FORMAL_DM  FROM DM_NATIONALITY " })
     List<Map<String, Object>> selectAll();
 }

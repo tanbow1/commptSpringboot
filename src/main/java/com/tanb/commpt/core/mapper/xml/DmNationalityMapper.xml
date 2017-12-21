@@ -40,6 +40,12 @@
       <if test="nationalityZhSimple != null">
         NATIONALITY_ZH_SIMPLE,
       </if>
+      <if test="formalDm != null">
+        FORMAL_DM,
+      </if>
+      <if test="reserveDm != null">
+        RESERVE_DM,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="nationalityId != null">
@@ -62,6 +68,12 @@
       </if>
       <if test="nationalityZhSimple != null">
         #{nationalityZhSimple,jdbcType=VARCHAR},
+      </if>
+      <if test="formalDm != null">
+        #{formalDm,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveDm != null">
+        #{reserveDm,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

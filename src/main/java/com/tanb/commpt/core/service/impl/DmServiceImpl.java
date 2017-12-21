@@ -175,29 +175,22 @@ public class DmServiceImpl implements IDmService {
         Iterator it = list.iterator();
         DmNationality dmGjdq;
         int changeCount;
-        List<DmNationality> errorList = new ArrayList<DmNationality>();
         while (it.hasNext()) {
             dmGjdq = (DmNationality) it.next();
             if (null == dmGjdq.getNationalityId()) {
-                //add
-                changeCount = dmGjdqMapper.insertSelective(dmGjdq);
+                throw new BizLevelException(ConsCommon.WARN_MSG_016 + "(NationalityId不能为空)");
             } else {
-                //update
-                changeCount = dmGjdqMapper.updateByPrimaryKey(dmGjdq);
-            }
-            if (changeCount > 0) {
-                int recordCount = dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId());
-                if (recordCount > 1) {
-                    throw new BizLevelException(ConsCommon.WARN_MSG_018);
+                if(dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId()) >0){
+                    //update
+                    changeCount = dmGjdqMapper.updateByPrimaryKey(dmGjdq);
+                }else{
+                    //add
+                    changeCount = dmGjdqMapper.insertSelective(dmGjdq);
                 }
-            } else {
-                errorList.add(dmGjdq);
-                jsonResponse.setCode(ConsCommon.WARN_CODE_016);
-                jsonResponse.setMsg(ConsCommon.WARN_MSG_016);
+                if (changeCount < 1) {
+                    throw new BizLevelException(ConsCommon.WARN_MSG_016 + "(NationalityId：" + dmGjdq.getNationalityId() + ")");
+                }
             }
-        }
-        if (errorList.size() > 0) {
-            jsonResponse.getData().put("errorList", errorList);
         }
         return jsonResponse;
     }
@@ -265,13 +258,14 @@ public class DmServiceImpl implements IDmService {
     public JsonResponse exportGjdqToExcel(JsonRequest jsonRequest) {
         List<Map<String, Object>> dmGjdqList = dmGjdqMapper.selectAll();
         Map<String, String> headMap = new ConcurrentHashMap<String, String>();
-        headMap.put("GJDQ_MC_Z", "中文名称");
-        headMap.put("GJDQ_MC_E", "英文名称");
-        headMap.put("GJDQ_MCDM", "国家地区代码");
-        headMap.put("GJDQ_DHDM", "电话代码");
-        headMap.put("GJDQ_ID", "自定义编码");
-        headMap.put("SC", "与中国时差");
-        headMap.put("YXBJ", "有效标记");
+        headMap.put("NATIONALITY_ID", "国家地区代码");
+        headMap.put("NATIONALITY_NAME_ZH", "中文名称");
+        headMap.put("NATIONALITY_ZH_SIMPLE", "中文简称");
+        headMap.put("NATIONALITY_NAME_EN", "英文名称");
+        headMap.put("NATIONALITY_EN_SIMPLE", "英文简称");
+        headMap.put("FORMAL_DM", "正式代码");
+        headMap.put("RESERVE_DM", "保留代码");
+        headMap.put("STATUS", "有效标记");
         ExcelUtil.downloadExcelFile("国家地区代码", headMap, dmGjdqList, (HttpServletResponse) jsonRequest.getReqData().get("response"), null);
         return null;
     }
