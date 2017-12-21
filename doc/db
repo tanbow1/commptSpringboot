@@ -45,7 +45,7 @@ XT_GET_GUID
 
 
 
-CREATE OR REPLACE EDITIONABLE SYNONYM "C##DB_APP"."XT_USER" FOR "C##DB_XT"."XT_USER";
+
 
 
 #####################mongodb#####################

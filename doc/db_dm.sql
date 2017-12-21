@@ -1,0 +1,2720 @@
+--------------------------------------------------------
+--  File created - Thursday-December-21-2017   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table DM_APPLIST
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_APPLIST" 
+   (	"APP_ID" VARCHAR2(50 BYTE), 
+	"APP_NAME" VARCHAR2(50 BYTE), 
+	"APP_DESC" VARCHAR2(100 BYTE), 
+	"APP_OWNER" VARCHAR2(50 BYTE), 
+	"APP_STATUS" CHAR(1 BYTE), 
+	"CREATE_TIME" TIMESTAMP (6), 
+	"MODIFY_TIME" TIMESTAMP (6), 
+	"CREATE_USER" VARCHAR2(50 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1'
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_APPLIST"."APP_STATUS" IS '应用状态';
+   COMMENT ON COLUMN "C##DB_DM"."DM_APPLIST"."CREATE_TIME" IS '创建时间';
+   COMMENT ON COLUMN "C##DB_DM"."DM_APPLIST"."MODIFY_TIME" IS '上次修改时间';
+   COMMENT ON COLUMN "C##DB_DM"."DM_APPLIST"."CREATE_USER" IS '创建人id';
+   COMMENT ON TABLE "C##DB_DM"."DM_APPLIST"  IS '应用表';
+--------------------------------------------------------
+--  DDL for Table DM_CARD
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_CARD" 
+   (	"CARD_ID" VARCHAR2(6 BYTE), 
+	"CARD_NAME" VARCHAR2(50 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1', 
+	"CARD_TYPE" CHAR(1 BYTE) DEFAULT '1', 
+	"PARENT_ID" VARCHAR2(6 BYTE), 
+	"CARD_SIMPLE" VARCHAR2(50 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_CARD"."CARD_TYPE" IS '卡类型，1身份认证';
+   COMMENT ON COLUMN "C##DB_DM"."DM_CARD"."PARENT_ID" IS '上级 id';
+   COMMENT ON COLUMN "C##DB_DM"."DM_CARD"."CARD_SIMPLE" IS '卡名称简称';
+   COMMENT ON TABLE "C##DB_DM"."DM_CARD"  IS '卡类型';
+--------------------------------------------------------
+--  DDL for Table DM_CODE
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_CODE" 
+   (	"CODE" VARCHAR2(20 BYTE), 
+	"CODE_TYPE" VARCHAR2(10 BYTE), 
+	"CODE_NAME" VARCHAR2(50 BYTE), 
+	"CODE_DESC" VARCHAR2(100 BYTE), 
+	"CODE_STATUS" CHAR(1 BYTE) DEFAULT '1'
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_CODE"."CODE" IS '代码值';
+   COMMENT ON COLUMN "C##DB_DM"."DM_CODE"."CODE_TYPE" IS '代码类型（该字段无实际意义，仅作同类归集）';
+   COMMENT ON COLUMN "C##DB_DM"."DM_CODE"."CODE_NAME" IS '代码名称';
+   COMMENT ON COLUMN "C##DB_DM"."DM_CODE"."CODE_DESC" IS '代码详细描述';
+   COMMENT ON COLUMN "C##DB_DM"."DM_CODE"."CODE_STATUS" IS '代码数据状态1正常0停用';
+   COMMENT ON TABLE "C##DB_DM"."DM_CODE"  IS '应用系统中涉及的代码表 包含状态代码 等';
+--------------------------------------------------------
+--  DDL for Table DM_INDUSTRY
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_INDUSTRY" 
+   (	"INDUSTRY_ID" VARCHAR2(5 BYTE), 
+	"INDUSTRY_NAME" VARCHAR2(50 BYTE), 
+	"MLBZ" CHAR(1 BYTE), 
+	"DLBZ" CHAR(1 BYTE), 
+	"ZLBZ" CHAR(1 BYTE), 
+	"XLBZ" CHAR(1 BYTE), 
+	"PARENT_ID" VARCHAR2(5 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1'
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_INDUSTRY"."INDUSTRY_ID" IS '行业id';
+   COMMENT ON COLUMN "C##DB_DM"."DM_INDUSTRY"."MLBZ" IS '主类标志';
+   COMMENT ON COLUMN "C##DB_DM"."DM_INDUSTRY"."DLBZ" IS '大类标志';
+   COMMENT ON COLUMN "C##DB_DM"."DM_INDUSTRY"."ZLBZ" IS '中类标志';
+   COMMENT ON COLUMN "C##DB_DM"."DM_INDUSTRY"."XLBZ" IS '小类标志';
+   COMMENT ON COLUMN "C##DB_DM"."DM_INDUSTRY"."PARENT_ID" IS '上级行业id';
+   COMMENT ON TABLE "C##DB_DM"."DM_INDUSTRY"  IS '行业代码';
+--------------------------------------------------------
+--  DDL for Table DM_LOCATION
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_LOCATION" 
+   (	"LOCATION_ID" VARCHAR2(30 BYTE), 
+	"LOCATION_NAME" VARCHAR2(30 BYTE), 
+	"LOCATION_SIMPLE" VARCHAR2(20 BYTE), 
+	"ALPHABETIC" CHAR(1 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1', 
+	"PARENT_ID" VARCHAR2(30 BYTE), 
+	"TYPE_ID" VARCHAR2(5 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_LOCATION"."LOCATION_SIMPLE" IS '地区名简写（国外地名用英文缩写或其他规则）';
+   COMMENT ON COLUMN "C##DB_DM"."DM_LOCATION"."ALPHABETIC" IS '首字母';
+   COMMENT ON COLUMN "C##DB_DM"."DM_LOCATION"."PARENT_ID" IS '上级ID';
+   COMMENT ON COLUMN "C##DB_DM"."DM_LOCATION"."TYPE_ID" IS '分类（0国家；1省份+直辖市；2地级市；3市区县；4乡镇县市内区域；5其他不细分）';
+   COMMENT ON TABLE "C##DB_DM"."DM_LOCATION"  IS '地区代码表';
+--------------------------------------------------------
+--  DDL for Table DM_LOG
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_LOG" 
+   (	"LOG_TYPE" VARCHAR2(5 BYTE), 
+	"LOG_DESC" VARCHAR2(50 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1'
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_LOG"."LOG_TYPE" IS '日志类型';
+   COMMENT ON COLUMN "C##DB_DM"."DM_LOG"."LOG_DESC" IS '日志描述';
+--------------------------------------------------------
+--  DDL for Table DM_MENU
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_MENU" 
+   (	"MENU_ID" VARCHAR2(50 BYTE), 
+	"PARENT_ID" VARCHAR2(50 BYTE), 
+	"MENU_NAME" VARCHAR2(50 BYTE), 
+	"URL" VARCHAR2(100 BYTE), 
+	"OPEN_TYPE" CHAR(1 BYTE) DEFAULT '0', 
+	"HASCHILDREN" CHAR(1 BYTE), 
+	"STATE" CHAR(1 BYTE), 
+	"IS_DEL" CHAR(1 BYTE), 
+	"IS_EDIT" CHAR(1 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1', 
+	"SORT" NUMBER(5,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_MENU"."OPEN_TYPE" IS '0无操作1本页打开2子页面打开3打开新页面';
+   COMMENT ON COLUMN "C##DB_DM"."DM_MENU"."HASCHILDREN" IS '0无子节点1有子节点';
+   COMMENT ON COLUMN "C##DB_DM"."DM_MENU"."STATE" IS '节点状态 0关闭1打开';
+   COMMENT ON COLUMN "C##DB_DM"."DM_MENU"."IS_DEL" IS '1可代码级删除；0禁止';
+   COMMENT ON COLUMN "C##DB_DM"."DM_MENU"."IS_EDIT" IS '1可代码级编辑；0禁止';
+--------------------------------------------------------
+--  DDL for Table DM_NATIONALITY
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_NATIONALITY" 
+   (	"NATIONALITY_ID" VARCHAR2(6 BYTE), 
+	"NATIONALITY_NAME_ZH" VARCHAR2(50 BYTE), 
+	"NATIONALITY_NAME_EN" VARCHAR2(50 BYTE), 
+	"NATIONALITY_EN_SIMPLE" VARCHAR2(50 BYTE), 
+	"ALPHABETIC" CHAR(1 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1', 
+	"NATIONALITY_ZH_SIMPLE" VARCHAR2(50 BYTE), 
+	"FORMAL_DM" VARCHAR2(3 BYTE), 
+	"RESERVE_DM" VARCHAR2(3 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_NATIONALITY"."NATIONALITY_EN_SIMPLE" IS '英文简称';
+   COMMENT ON COLUMN "C##DB_DM"."DM_NATIONALITY"."ALPHABETIC" IS '首字母分类';
+   COMMENT ON COLUMN "C##DB_DM"."DM_NATIONALITY"."NATIONALITY_ZH_SIMPLE" IS '中文简称';
+   COMMENT ON COLUMN "C##DB_DM"."DM_NATIONALITY"."FORMAL_DM" IS '国际正式代码';
+   COMMENT ON COLUMN "C##DB_DM"."DM_NATIONALITY"."RESERVE_DM" IS '保留代码';
+--------------------------------------------------------
+--  DDL for Table DM_PRODUCT
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_PRODUCT" 
+   (	"PRODUCT_ID" VARCHAR2(50 BYTE), 
+	"PRODUCT_NAME" VARCHAR2(50 BYTE), 
+	"PARENT_ID" VARCHAR2(50 BYTE), 
+	"PRODUCT_DESC" VARCHAR2(100 BYTE), 
+	"HASCHILDREN" CHAR(1 BYTE), 
+	"STATE" VARCHAR2(20 BYTE), 
+	"SORT" NUMBER(5,0), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1', 
+	"URL" VARCHAR2(100 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_PRODUCT"."URL" IS '链接';
+   COMMENT ON TABLE "C##DB_DM"."DM_PRODUCT"  IS '产品表';
+--------------------------------------------------------
+--  DDL for Table DM_USER_LOCATION
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_USER_LOCATION" 
+   (	"USER_ID" VARCHAR2(50 BYTE), 
+	"LOCATION" VARCHAR2(100 BYTE), 
+	"COUNTRY" VARCHAR2(30 BYTE), 
+	"PROVINCE" VARCHAR2(30 BYTE), 
+	"CITY" VARCHAR2(30 BYTE), 
+	"STREET" VARCHAR2(30 BYTE), 
+	"PHONE" VARCHAR2(20 BYTE), 
+	"RECIPIENTS" VARCHAR2(30 BYTE), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1'
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_LOCATION"."LOCATION" IS '完整地址';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_LOCATION"."COUNTRY" IS '国家（地区）';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_LOCATION"."PROVINCE" IS '省份';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_LOCATION"."CITY" IS '城市';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_LOCATION"."STREET" IS '街道（区）';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_LOCATION"."RECIPIENTS" IS '接受人姓名';
+   COMMENT ON TABLE "C##DB_DM"."DM_USER_LOCATION"  IS '用户地址';
+--------------------------------------------------------
+--  DDL for Table DM_USER_PAYACCOUNT
+--------------------------------------------------------
+
+  CREATE TABLE "C##DB_DM"."DM_USER_PAYACCOUNT" 
+   (	"USER_ID" VARCHAR2(50 BYTE), 
+	"PAYACCOUNT" VARCHAR2(50 BYTE), 
+	"ACCOUNT_ID" VARCHAR2(50 BYTE), 
+	"ACCOUNT_TYPE" VARCHAR2(20 BYTE), 
+	"PAY_KEY" VARCHAR2(50 BYTE), 
+	"SORT" NUMBER(3,0), 
+	"STATUS" CHAR(1 BYTE) DEFAULT '1'
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_PAYACCOUNT"."ACCOUNT_ID" IS '账户类型代码';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_PAYACCOUNT"."ACCOUNT_TYPE" IS '账户类型';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_PAYACCOUNT"."PAY_KEY" IS '支付交易key';
+   COMMENT ON COLUMN "C##DB_DM"."DM_USER_PAYACCOUNT"."SORT" IS '支付顺序 ';
+   COMMENT ON TABLE "C##DB_DM"."DM_USER_PAYACCOUNT"  IS '用户可支付账户';
+REM INSERTING into C##DB_DM.DM_APPLIST
+SET DEFINE OFF;
+Insert into C##DB_DM.DM_APPLIST (APP_ID,APP_NAME,APP_DESC,APP_OWNER,APP_STATUS,CREATE_TIME,MODIFY_TIME,CREATE_USER,STATUS) values ('1','公共服务平台',null,'谈波','1',null,null,'1','1');
+REM INSERTING into C##DB_DM.DM_CARD
+SET DEFINE OFF;
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100001','居民身份证','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100002','军人证','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100003','护照','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100006','武警证','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100007','公章','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100008','工商营业执照','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100009','法人代码证','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100010','学生证','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100011','士兵证','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('100018','其他','1','1',null,null);
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('767','俄罗斯外贸银行公开股份公司','1','2',null,'俄罗斯外贸银行公开股份公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('105','中国建设银行','1','2',null,'建行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('201','国家开发银行','1','2',null,'国发行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('202','中国进出口银行','1','2',null,'中国进出口银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('203','中国农业发展银行','1','2',null,'农发行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('301','交通银行','1','2',null,'交行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('302','中信实业银行','1','2',null,'中信银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('303','中国光大银行','1','2',null,'光大银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('304','华夏银行','1','2',null,'华夏银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('305','中国民生银行','1','2',null,'民生银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('306','广发银行股份有限公司','1','2',null,'广发银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('307','平安银行股份有限公司','1','2',null,'平安银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('308','招商银行','1','2',null,'招行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('309','兴业银行','1','2',null,'兴业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('310','上海浦东发展银行','1','2',null,'上海浦发行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('313','城市商业银行','1','2',null,'城市商行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('314','农村商业银行','1','2',null,'农村商行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('315','恒丰银行','1','2',null,'恒丰银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('316','浙商银行','1','2',null,'浙商银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('317','农村合作银行','1','2',null,'农村合作银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('318','渤海银行','1','2',null,'渤海银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('319','徽商银行','1','2',null,'徽商银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('320','其他商业银行','1','2',null,'其他商行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('401','城市信用合作社','1','2',null,'城市信用社');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('402','农村信用合作社','1','2',null,'农村信用社');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('403','中国邮政储蓄银行','1','2',null,'中国邮政储蓄银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('501','香港上海汇丰银行','1','2',null,'汇丰银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('502','东亚银行','1','2',null,'东亚银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('503','南洋商业银行','1','2',null,'南洋商行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('504','恒生银行','1','2',null,'恒生银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('505','中银香港','1','2',null,'中银香港');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('506','集友银行','1','2',null,'香港集友银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('507','廖创兴银行','1','2',null,'廖创兴银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('508','亚洲商业银行','1','2',null,'亚洲商行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('509','道亨银行','1','2',null,'道亨银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('510','永亨银行','1','2',null,'永亨银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('531','花旗银行','1','2',null,'花旗银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('532','美国银行','1','2',null,'美国银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('533','摩根大通银行','1','2',null,'摩根大通银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('534','建东银行','1','2',null,'建东银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('535','美一银行','1','2',null,'美一银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('536','纽约银行','1','2',null,'纽约银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('561','三菱东京日联银行（中国）有限公司','1','2',null,'三菱东京日联银行（中国）');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('562','日联银行','1','2',null,'日联银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('563','三井住友银行','1','2',null,'三井住友银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('564','瑞穗实业银行','1','2',null,'瑞穗实业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('565','山口银行','1','2',null,'山口银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('591','韩国外换银行','1','2',null,'韩国外换银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('592','朝兴银行','1','2',null,'朝兴银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('593','友利银行','1','2',null,'友利银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('594','韩国产业银行','1','2',null,'韩国产业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('595','新韩银行','1','2',null,'新韩银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('596','韩国中小企业银行','1','2',null,'韩国中小企业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('597','韩亚银行','1','2',null,'韩亚银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('611','马来亚银行','1','2',null,'马来亚银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('616','首都银行及信托公司','1','2',null,'首都银行及信托公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('621','华侨银行','1','2',null,'华侨银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('622','大华银行','1','2',null,'大华银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('623','星展银行（中国）有限公司','1','2',null,'星展银行（中国）有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('631','盘谷银行','1','2',null,'盘谷银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('632','泰京银行','1','2',null,'泰京银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('633','泰华农民银行','1','2',null,'泰华农民银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('641','奥地利中央合作银行','1','2',null,'奥地利中央合作银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('651','比利时联合银行','1','2',null,'比利时联合银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('652','比利时富通银行','1','2',null,'比利时富通银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('661','荷兰银行','1','2',null,'荷兰银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('662','荷兰商业银行','1','2',null,'荷兰商业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('663','荷兰万贝银行','1','2',null,'荷兰万贝银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('671','渣打银行','1','2',null,'渣打银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('691','法国兴业银行','1','2',null,'法国兴业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('692','法国巴黎银行','1','2',null,'法国巴黎银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('693','东方汇理银行','1','2',null,'东方汇理银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('694','法国里昂信贷银行','1','2',null,'法国里昂信贷银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('695','法国外贸银行','1','2',null,'法国外贸银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('711','德累斯顿银行','1','2',null,'德累斯顿银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('712','德意志银行','1','2',null,'德意志银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('713','德国商业银行','1','2',null,'德国商业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('714','西德意志银行','1','2',null,'西德意志银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('715','巴伐利亚洲银行','1','2',null,'巴伐利亚洲银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('731','罗马银行','1','2',null,'罗马银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('732','意大利联合商业银行','1','2',null,'意大利联合商业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('741','瑞士信贷第一波士顿银行','1','2',null,'瑞士信贷第一波士顿银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('751','丰业银行','1','2',null,'丰业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('752','蒙特利尔银行','1','2',null,'蒙特利尔银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('761','澳新银行','1','2',null,'澳新银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('766','葡国储蓄信贷银行','1','2',null,'葡国储蓄信贷银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('771','珠海南通银行','1','2',null,'珠海南通银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('772','宁波国际银行','1','2',null,'宁波国际银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('773','新联商业银行','1','2',null,'新联商业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('774','协和银行','1','2',null,'协和银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('775','德富泰银行有限公司','1','2',null,'德富泰银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('776','荷兰合作银行（中国）有限公司','1','2',null,'荷兰合作银行（中国）');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('781','厦门国际银行','1','2',null,'厦门国际银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('782','上海－巴黎国际银行','1','2',null,'上海－巴黎国际银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('783','福建亚洲银行','1','2',null,'福建亚洲银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('784','浙江商业银行','1','2',null,'浙江商业银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('785','华商银行','1','2',null,'华商银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('786','青岛国际银行','1','2',null,'青岛国际银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('787','华一银行','1','2',null,'华一银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('901','中央国债登记结算有限责任公司','1','2',null,'中央国债登记结算公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('902','中国人民银行公开市场操作室','1','2',null,'中国人民银行公开市场操作室');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('903','中国银行间外汇交易中心','1','2',null,'中国银行间外汇交易中心');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('904','城市商业银行资金清算中心','1','2',null,'城市商业银行资金清算中心');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('011','中国人民银行国家金库','1','2',null,'人行国库');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('321','重庆三峡银行','1','2',null,'重庆三峡银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('322','上海农村商业银行','1','2',null,'上海农村商行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('512','永隆银行','1','2',null,'永隆银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('513','大新银行（中国）有限公司','1','2',null,'大新银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('514','中信银行国际（中国）有限公司','1','2',null,'中信银行国际（中国）有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('907','财务公司','1','2',null,'财务公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('325','上海银行','1','2',null,'上海银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('511','上海商业银行有限公司','1','2',null,'上海商业银行有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('521','华南商业银行股份有限公司','1','2',null,'华南商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('522','彰化商业银行股份有限公司','1','2',null,'彰化商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('523','国泰世华商业银行股份有限公司','1','2',null,'国泰世华商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('524','合作金库商业银行股份有限公司','1','2',null,'合作金库商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('525','第一商业银行股份有限公司','1','2',null,'第一商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('526','台湾土地银行','1','2',null,'台湾土地银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('527','兆丰国际商业银行股份有限公司','1','2',null,'兆丰国际商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('528','台湾银行股份有限公司','1','2',null,'台湾银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('529','玉山商业银行股份有限公司','1','2',null,'玉山商业银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('566','日本三井住友信托银行股份有限公司','1','2',null,'日本三井住友信托银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('567','日本横滨银行股份有限公司','1','2',null,'日本横滨银行股份有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('598','国民银行（中国）有限公司','1','2',null,'国民银行（中国）有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('673','英国巴克莱银行有限公司','1','2',null,'英国巴克莱银行有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('681','瑞典商业银行公共有限公司','1','2',null,'瑞典商业银行公共有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('001','中国人民银行会计营业部门','1','2',null,'人行会计营业部');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('102','中国工商银行','1','2',null,'工行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('103','中国农业银行','1','2',null,'农行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('104','中国银行','1','2',null,'中行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('682','瑞典北欧斯安银行有限公司','1','2',null,'瑞典北欧斯安银行有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('683','瑞典银行有限公司','1','2',null,'瑞典银行有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('716','德国北德意志州银行','1','2',null,'德国北德意志州银行');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('742','瑞士银行(中国)有限公司','1','2',null,'瑞士银行(中国)有限公司');
+Insert into C##DB_DM.DM_CARD (CARD_ID,CARD_NAME,STATUS,CARD_TYPE,PARENT_ID,CARD_SIMPLE) values ('762','澳大利亚西太平洋银行有限公司','1','2',null,'澳大利亚西太平洋银行有限公司');
+REM INSERTING into C##DB_DM.DM_CODE
+SET DEFINE OFF;
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('1','1','正常','数据库本条记录状态为有效，一般指字段STATUS=''1''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('0','1','停用','停用记录，STATUS=''0''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('9','1','销毁','该状态不能恢复，属于销毁备案记录。STATUS=''9''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('2','2','银行类别识别码','CARD_TYPE=''2''','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('1','2','身份证件类识别码','记录DM_CARD中CARD_TYPE字段值=''1''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('0','3','国家级','行政级别识别码，记录DM_LOCATION中TYPE_ID字段值=''0''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('1','3','省级、直辖市','TYPE_ID=''1''','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('2','3','地级市、省会','TYPE_ID=''2''','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('3','3','区县、县级市','TYPE_ID=''3''','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('4','3','乡镇、市内区划','TYPE_ID=''4''','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('5','3','其他级别','TYPE_ID=''5''','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('1','4','正常','用户状态，正常用户。通常是用户表USER_STATUS=''1''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('0','4','停用','用户已停用，可恢复。USER_STATUS=''0''。','1');
+Insert into C##DB_DM.DM_CODE (CODE,CODE_TYPE,CODE_NAME,CODE_DESC,CODE_STATUS) values ('9','4','注销','用户已注销，不可恢复。USER_STATUS=''9''。','1');
+REM INSERTING into C##DB_DM.DM_INDUSTRY
+SET DEFINE OFF;
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0170','中药材种植','N','N','N','Y','017','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('019','其他农业','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0190','其他农业','N','N','N','Y','019','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('02','林业','N','Y','N','N','A','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('021','林木育种和育苗','N','N','Y','N','02','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0211','林木育种','N','N','N','Y','021','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0212','林木育苗','N','N','N','Y','021','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('022','造林和更新','N','N','Y','N','02','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0220','造林和更新','N','N','N','Y','022','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('023','森林经营和管护','N','N','Y','N','02','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0230','森林经营和管护','N','N','N','Y','023','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('024','木材和竹材采运','N','N','Y','N','02','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0241','木材采运','N','N','N','Y','024','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0242','竹材采运','N','N','N','Y','024','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('025','林产品采集','N','N','Y','N','02','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0251','木竹材林产品采集','N','N','N','Y','025','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0252','非木竹材林产品采集','N','N','N','Y','025','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('03','畜牧业','N','Y','N','N','A','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('031','牲畜饲养','N','N','Y','N','03','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0311','牛的饲养','N','N','N','Y','031','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0312','马的饲养','N','N','N','Y','031','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0313','猪的饲养','N','N','N','Y','031','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0314','羊的饲养','N','N','N','Y','031','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0315','骆驼饲养','N','N','N','Y','031','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0319','其他牲畜饲养','N','N','N','Y','031','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('032','家禽饲养','N','N','Y','N','03','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0321','鸡的饲养','N','N','N','Y','032','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0322','鸭的饲养','N','N','N','Y','032','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0323','鹅的饲养','N','N','N','Y','032','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0329','其他家禽饲养','N','N','N','Y','032','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('033','狩猎和捕捉动物','N','N','Y','N','03','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0330','狩猎和捕捉动物','N','N','N','Y','033','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('039','其他畜牧业','N','N','Y','N','03','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0390','其他畜牧业','N','N','N','Y','039','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('04','渔业','N','Y','N','N','A','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('041','水产养殖','N','N','Y','N','04','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0411','海水养殖','N','N','N','Y','041','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0412','内陆养殖','N','N','N','Y','041','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('042','水产捕捞','N','N','Y','N','04','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0421','海水捕捞','N','N','N','Y','042','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0422','内陆捕捞','N','N','N','Y','042','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('05','农、林、牧、渔服务业','N','Y','N','N','A','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('051','农业服务业','N','N','Y','N','05','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0511','农业机械服务','N','N','N','Y','051','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0512','灌溉服务','N','N','N','Y','051','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0513','农产品初加工服务','N','N','N','Y','051','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0519','其他农业服务','N','N','N','Y','051','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('052','林业服务业','N','N','Y','N','05','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0521','林业有害生物防治服务','N','N','N','Y','052','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0522','森林防火服务','N','N','N','Y','052','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0523','林产品初级加工服务','N','N','N','Y','052','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0529','其他林业服务','N','N','N','Y','052','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('053','畜牧服务业','N','N','Y','N','05','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0530','畜牧服务业','N','N','N','Y','053','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('054','渔业服务业','N','N','Y','N','05','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0540','渔业服务业','N','N','N','Y','054','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('B','采矿业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('06','煤炭开采和洗选业','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('061','烟煤和无烟煤开采洗选','N','N','Y','N','06','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0610','烟煤和无烟煤开采洗选','N','N','N','Y','061','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('062','褐煤开采洗选','N','N','Y','N','06','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0620','褐煤开采洗选','N','N','N','Y','062','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('069','其他煤炭采选','N','N','Y','N','06','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0690','其他煤炭采选','N','N','N','Y','069','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('07','石油和天然气开采业','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('071','石油开采','N','N','Y','N','07','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0710','石油开采','N','N','N','Y','071','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('072','天然气开采','N','N','Y','N','07','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0720','天然气开采','N','N','N','Y','072','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('08','黑色金属矿采选业','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('081','铁矿采选','N','N','Y','N','08','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0810','铁矿采选','N','N','N','Y','081','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('082','锰矿、铬矿采选','N','N','Y','N','08','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0820','锰矿、铬矿采选','N','N','N','Y','082','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('089','其他黑色金属矿采选','N','N','Y','N','08','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0890','其他黑色金属矿采选','N','N','N','Y','089','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('09','有色金属矿采选业','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('091','常用有色金属矿采选','N','N','Y','N','09','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0911','铜矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0912','铅锌矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0913','镍钴矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0914','锡矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0915','锑矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0916','铝矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0917','镁矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0919','其他常用有色金属矿采选','N','N','N','Y','091','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('092','贵金属矿采选','N','N','Y','N','09','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0921','金矿采选','N','N','N','Y','092','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0922','银矿采选','N','N','N','Y','092','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0929','其他贵金属矿采选','N','N','N','Y','092','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('093','稀有稀土金属矿采选','N','N','Y','N','09','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0931','钨钼矿采选','N','N','N','Y','093','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0932','稀土金属矿采选','N','N','N','Y','093','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0933','放射性金属矿采选','N','N','N','Y','093','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0939','其他稀有金属矿采选','N','N','N','Y','093','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('10','非金属矿采选业','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('101','土砂石开采','N','N','Y','N','10','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1011','石灰石、石膏开采','N','N','N','Y','101','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1012','建筑装饰用石开采','N','N','N','Y','101','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1013','耐火土石开采','N','N','N','Y','101','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1019','粘土及其他土砂石开采','N','N','N','Y','101','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('102','化学矿开采','N','N','Y','N','10','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('A','农、林、牧、渔业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1020','化学矿开采','N','N','N','Y','102','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('103','采盐','N','N','Y','N','10','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1030','采盐','N','N','N','Y','103','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('109','石棉及其他非金属矿采选','N','N','Y','N','10','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1091','石棉、云母矿采选','N','N','N','Y','109','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1092','石墨、滑石采选','N','N','N','Y','109','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1093','宝石、玉石采选','N','N','N','Y','109','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1099','其他未列明非金属矿采选','N','N','N','Y','109','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('11','开采辅助活动','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('111','煤炭开采和洗选辅助活动','N','N','Y','N','11','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1110','煤炭开采和洗选辅助活动','N','N','N','Y','111','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('112','石油和天然气开采辅助活动','N','N','Y','N','11','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1120','石油和天然气开采辅助活动','N','N','N','Y','112','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('119','其他开采辅助活动','N','N','Y','N','11','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1190','其他开采辅助活动','N','N','N','Y','119','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('12','其他采矿业','N','Y','N','N','B','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('120','其他采矿业','N','N','Y','N','12','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1200','其他采矿业','N','N','N','Y','120','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('C','制造业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('13','农副食品加工业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('131','谷物磨制','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1310','谷物磨制','N','N','N','Y','131','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('132','饲料加工','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1320','饲料加工','N','N','N','Y','132','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('133','植物油加工','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1331','食用植物油加工','N','N','N','Y','133','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1332','非食用植物油加工','N','N','N','Y','133','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('134','制糖业','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1340','制糖业','N','N','N','Y','134','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('135','屠宰及肉类加工','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1351','牲畜屠宰','N','N','N','Y','135','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1352','禽类屠宰','N','N','N','Y','135','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1353','肉制品及副产品加工','N','N','N','Y','135','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('136','水产品加工','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1361','水产品冷冻加工','N','N','N','Y','136','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1362','鱼糜制品及水产品干腌制加工','N','N','N','Y','136','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1363','水产饲料制造','N','N','N','Y','136','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1364','鱼油提取及制品制造','N','N','N','Y','136','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1369','其他水产品加工','N','N','N','Y','136','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('137','蔬菜、水果和坚果加工','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1371','蔬菜加工','N','N','N','Y','137','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1372','水果和坚果加工','N','N','N','Y','137','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('139','其他农副食品加工','N','N','Y','N','13','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1391','淀粉及淀粉制品制造','N','N','N','Y','139','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1392','豆制品制造','N','N','N','Y','139','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1393','蛋品加工','N','N','N','Y','139','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1399','其他未列明农副食品加工','N','N','N','Y','139','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('14','食品制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('141','焙烤食品制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1411','糕点、面包制造','N','N','N','Y','141','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1419','饼干及其他焙烤食品制造','N','N','N','Y','141','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('142','糖果、巧克力及蜜饯制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1421','糖果、巧克力制造','N','N','N','Y','142','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1422','蜜饯制作','N','N','N','Y','142','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('143','方便食品制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1431','米、面制品制造','N','N','N','Y','143','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1432','速冻食品制造','N','N','N','Y','143','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1439','方便面及其他方便食品制造','N','N','N','Y','143','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('144','乳制品制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1440','乳制品制造','N','N','N','Y','144','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('145','罐头食品制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1451','肉、禽类罐头制造','N','N','N','Y','145','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1452','水产品罐头制造','N','N','N','Y','145','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1453','蔬菜、水果罐头制造','N','N','N','Y','145','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1459','其他罐头食品制造','N','N','N','Y','145','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('146','调味品、发酵制品制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1461','味精制造','N','N','N','Y','146','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8093','家具和相关物品修理','N','N','N','Y','809','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8099','其他未列明日用产品修理业','N','N','N','Y','809','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('81','其他服务业','N','Y','N','N','O','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('811','清洁服务','N','N','Y','N','81','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8111','建筑物清洁服务','N','N','N','Y','811','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8119','其他清洁服务','N','N','N','Y','811','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('819','其他未列明服务业','N','N','Y','N','81','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8190','其他未列明服务业','N','N','N','Y','819','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('P','教育','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('82','教育','N','Y','N','N','P','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('821','学前教育','N','N','Y','N','82','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8210','学前教育','N','N','N','Y','821','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('822','初等教育','N','N','Y','N','82','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8221','普通小学教育','N','N','N','Y','822','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8222','成人小学教育','N','N','N','Y','822','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('823','中等教育','N','N','Y','N','82','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8231','普通初中教育','N','N','N','Y','823','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8232','职业初中教育','N','N','N','Y','823','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8233','成人初中教育','N','N','N','Y','823','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8234','普通高中教育','N','N','N','Y','823','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8235','成人高中教育','N','N','N','Y','823','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8236','中等职业学校教育','N','N','N','Y','823','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('824','高等教育','N','N','Y','N','82','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8241','普通高等教育','N','N','N','Y','824','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8242','成人高等教育','N','N','N','Y','824','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('825','特殊教育','N','N','Y','N','82','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8250','特殊教育','N','N','N','Y','825','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('829','技能培训、教育辅助及其他教育','N','N','Y','N','82','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8291','职业技能培训','N','N','N','Y','829','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8292','体校及体育培训','N','N','N','Y','829','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8293','文化艺术培训','N','N','N','Y','829','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8294','教育辅助服务','N','N','N','Y','829','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8299','其他未列明教育','N','N','N','Y','829','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('Q','卫生和社会工作','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('83','卫生','N','Y','N','N','Q','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('831','医院','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8311','综合医院','N','N','N','Y','831','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8312','中医医院','N','N','N','Y','831','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8313','中西医结合医院','N','N','N','Y','831','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8314','民族医院','N','N','N','Y','831','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8315','专科医院','N','N','N','Y','831','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8316','疗养院','N','N','N','Y','831','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('832','社区医疗与卫生院','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8321','社区卫生服务中心（站）','N','N','N','Y','832','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8322','街道卫生院','N','N','N','Y','832','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8323','乡镇卫生院','N','N','N','Y','832','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('833','门诊部（所）','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8330','门诊部（所）','N','N','N','Y','833','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('834','计划生育技术服务活动','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8340','计划生育技术服务活动','N','N','N','Y','834','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('835','妇幼保健院（所、站）','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8350','妇幼保健院（所、站）','N','N','N','Y','835','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('836','专科疾病防治院（所、站）','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8360','专科疾病防治院（所、站）','N','N','N','Y','836','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('837','疾病预防控制中心','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8370','疾病预防控制中心','N','N','N','Y','837','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('839','其他卫生活动','N','N','Y','N','83','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8390','其他卫生活动','N','N','N','Y','839','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('84','社会工作','N','Y','N','N','Q','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('841','提供住宿社会工作','N','N','Y','N','84','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8411','干部休养所','N','N','N','Y','841','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8412','护理机构服务','N','N','N','Y','841','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8413','精神康复服务','N','N','N','Y','841','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8414','老年人、残疾人养护服务','N','N','N','Y','841','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8415','孤残儿童收养和庇护服务','N','N','N','Y','841','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8419','其他提供住宿社会救助','N','N','N','Y','841','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('842','不提供住宿社会工作','N','N','Y','N','84','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8421','社会看护与帮助服务','N','N','N','Y','842','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8429','其他不提供住宿社会工作','N','N','N','Y','842','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('R','文化、体育和娱乐业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('85','新闻和出版业','N','Y','N','N','R','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('851','新闻业','N','N','Y','N','85','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8510','新闻业','N','N','N','Y','851','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('852','出版业','N','N','Y','N','85','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8521','图书出版','N','N','N','Y','852','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8522','报纸出版','N','N','N','Y','852','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8523','期刊出版','N','N','N','Y','852','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8524','音像制品出版','N','N','N','Y','852','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8525','电子出版物出版','N','N','N','Y','852','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8529','其他出版业','N','N','N','Y','852','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('86','广播、电视、电影和影视录音制作业','N','Y','N','N','R','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('861','广播','N','N','Y','N','86','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8610','广播','N','N','N','Y','861','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('862','电视','N','N','Y','N','86','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8620','电视','N','N','N','Y','862','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('863','电影和影视节目制作','N','N','Y','N','86','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8630','电影和影视节目制作','N','N','N','Y','863','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('864','电影和影视节目发行','N','N','Y','N','86','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8640','电影和影视节目发行','N','N','N','Y','864','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('865','电影放映','N','N','Y','N','86','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8650','电影放映','N','N','N','Y','865','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('866','录音制作','N','N','Y','N','86','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8660','录音制作','N','N','N','Y','866','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('87','文化艺术业','N','Y','N','N','R','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('871','文艺创作与表演','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8710','文艺创作与表演','N','N','N','Y','871','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('872','艺术表演场馆','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8720','艺术表演场馆','N','N','N','Y','872','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('873','图书馆与档案馆','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8731','图书馆','N','N','N','Y','873','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8732','档案馆','N','N','N','Y','873','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('874','文物及非物质文化遗产保护','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8740','文物及非物质文化遗产保护','N','N','N','Y','874','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('875','博物馆','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8750','博物馆','N','N','N','Y','875','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('876','烈士陵园、纪念馆','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8760','烈士陵园、纪念馆','N','N','N','Y','876','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('877','群众文化活动','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8770','群众文化活动','N','N','N','Y','877','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('879','其他文化艺术业','N','N','Y','N','87','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8790','其他文化艺术业','N','N','N','Y','879','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('88','体育','N','Y','N','N','R','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('881','体育组织','N','N','Y','N','88','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8810','体育组织','N','N','N','Y','881','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('882','体育场馆','N','N','Y','N','88','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8820','体育场馆','N','N','N','Y','882','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('883','休闲健身活动','N','N','Y','N','88','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8830','休闲健身活动','N','N','N','Y','883','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('889','其他体育','N','N','Y','N','88','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8890','其他体育','N','N','N','Y','889','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('89','娱乐业','N','Y','N','N','R','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('891','室内娱乐活动','N','N','Y','N','89','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8911','歌舞厅娱乐活动','N','N','N','Y','891','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8912','电子游艺厅娱乐活动','N','N','N','Y','891','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8913','网吧活动','N','N','N','Y','891','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8919','其他室内娱乐活动','N','N','N','Y','891','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('892','游乐园','N','N','Y','N','89','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8920','游乐园','N','N','N','Y','892','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('893','彩票活动','N','N','Y','N','89','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8930','彩票活动','N','N','N','Y','893','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('894','文化、娱乐、体育经纪代理','N','N','Y','N','89','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8941','文化娱乐经纪人','N','N','N','Y','894','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8942','体育经纪人','N','N','N','Y','894','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8949','其他文化艺术经纪代理','N','N','N','Y','894','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('899','其他娱乐业','N','N','Y','N','89','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8990','其他娱乐业','N','N','N','Y','899','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('S','公共管理、社会保障和社会组织','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('90','中国共产党机关','N','Y','N','N','S','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('900','中国共产党机关','N','N','Y','N','90','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9000','中国共产党机关','N','N','N','Y','900','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('91','国家机构','N','Y','N','N','S','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('911','国家权力机构','N','N','Y','N','91','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9110','国家权力机构','N','N','N','Y','911','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('912','国家行政机构','N','N','Y','N','91','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9121','综合事务管理机构','N','N','N','Y','912','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9122','对外事务管理机构','N','N','N','Y','912','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9123','公共安全管理机构','N','N','N','Y','912','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9124','社会事务管理机构','N','N','N','Y','912','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9125','经济事务管理机构','N','N','N','Y','912','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9126','行政监督检查机构','N','N','N','Y','912','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('913','人民法院和人民检察院','N','N','Y','N','91','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9131','人民法院','N','N','N','Y','913','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9132','人民检察院','N','N','N','Y','913','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('919','其他国家机构','N','N','Y','N','91','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9190','其他国家机构','N','N','N','Y','919','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('92','人民政协、民主党派','N','Y','N','N','S','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('921','人民政协','N','N','Y','N','92','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9210','人民政协','N','N','N','Y','921','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('922','民主党派','N','N','Y','N','92','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9220','民主党派','N','N','N','Y','922','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('93','社会保障','N','Y','N','N','S','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('930','社会保障','N','N','Y','N','93','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9300','社会保障','N','N','N','Y','930','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('94','群众团体、社会团体和其他成员组织','N','Y','N','N','S','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('941','群众团体','N','N','Y','N','94','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9411','工会','N','N','N','Y','941','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9412','妇联','N','N','N','Y','941','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9413','共青团','N','N','N','Y','941','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9419','其他群众团体','N','N','N','Y','941','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('942','社会团体','N','N','Y','N','94','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9421','专业性团体','N','N','N','Y','942','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9422','行业性团体','N','N','N','Y','942','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9429','其他社会团体','N','N','N','Y','942','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('943','基金会','N','N','Y','N','94','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9430','基金会','N','N','N','Y','943','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('944','宗教组织','N','N','Y','N','94','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9440','宗教组织','N','N','N','Y','944','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('95','基层群众自治组织','N','Y','N','N','S','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('951','社区自治组织','N','N','Y','N','95','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9510','社区自治组织','N','N','N','Y','951','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('952','村民自治组织','N','N','Y','N','95','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9520','村民自治组织','N','N','N','Y','952','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('T','国际组织','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('96','国际组织','N','Y','N','N','T','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('960','国际组织','N','N','Y','N','96','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('9600','国际组织','N','N','N','Y','960','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('342','金属加工机械制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3421','金属切削机床制造','N','N','N','Y','342','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3422','金属成形机床制造','N','N','N','Y','342','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3423','铸造机械制造','N','N','N','Y','342','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3424','金属切割及焊接设备制造','N','N','N','Y','342','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3425','机床附件制造','N','N','N','Y','342','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3429','其他金属加工机械制造','N','N','N','Y','342','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('343','物料搬运设备制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3431','轻小型起重设备制造','N','N','N','Y','343','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3432','起重机制造','N','N','N','Y','343','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3433','生产专用车辆制造','N','N','N','Y','343','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3434','连续搬运设备制造','N','N','N','Y','343','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3435','电梯、自动扶梯及升降机制造','N','N','N','Y','343','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3439','其他物料搬运设备制造','N','N','N','Y','343','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('344','泵、阀门、压缩机及类似机械制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3441','泵及真空设备制造','N','N','N','Y','344','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3442','气体压缩机械制造','N','N','N','Y','344','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3443','阀门和旋塞制造','N','N','N','Y','344','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3444','液压和气压动力机械及元件制造','N','N','N','Y','344','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('345','轴承、齿轮和传动部件制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3451','轴承制造','N','N','N','Y','345','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3452','齿轮及齿轮减、变速箱制造','N','N','N','Y','345','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3459','其他传动部件制造','N','N','N','Y','345','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('346','烘炉、风机、衡器、包装等设备制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3461','烘炉、熔炉及电炉制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3462','风机、风扇制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3463','气体、液体分离及纯净设备制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3464','制冷、空调设备制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3465','风动和电动工具制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3466','喷枪及类似器具制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3467','衡器制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3468','包装专用设备制造','N','N','N','Y','346','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('347','文化、办公用机械制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3471','电影机械制造','N','N','N','Y','347','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3472','幻灯及投影设备制造','N','N','N','Y','347','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3473','照相机及器材制造','N','N','N','Y','347','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3474','复印和胶印设备制造','N','N','N','Y','347','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3475','计算器及货币专用设备制造','N','N','N','Y','347','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3479','其他文化、办公用机械制造','N','N','N','Y','347','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('348','通用零部件制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3481','金属密封件制造','N','N','N','Y','348','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3482','紧固件制造','N','N','N','Y','348','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3483','弹簧制造','N','N','N','Y','348','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3484','机械零部件加工','N','N','N','Y','348','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3489','其他通用零部件制造','N','N','N','Y','348','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('349','其他通用设备制造业','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3490','其他通用设备制造业','N','N','N','Y','349','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('35','专用设备制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('351','采矿、冶金、建筑专用设备制造','N','N','Y','N','35','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3511','矿山机械制造','N','N','N','Y','351','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3512','石油钻采专用设备制造','N','N','N','Y','351','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3513','建筑工程用机械制造','N','N','N','Y','351','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3514','海洋工程专用设备制造','N','N','N','Y','351','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3515','建筑材料生产专用机械制造','N','N','N','Y','351','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3516','冶金专用设备制造','N','N','N','Y','351','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3521','炼油、化工生产专用设备制造','N','N','N','Y','352','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3522','橡胶加工专用设备制造','N','N','N','Y','352','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3523','塑料加工专用设备制造','N','N','N','Y','352','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3524','木材加工机械制造','N','N','N','Y','352','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3525','模具制造','N','N','N','Y','352','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3529','其他非金属加工专用设备制造','N','N','N','Y','352','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3532','农副食品加工专用设备制造','N','N','N','Y','353','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3533','烟草生产专用设备制造','N','N','N','Y','353','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3534','饲料生产专用设备制造','N','N','N','Y','353','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3541','制浆和造纸专用设备制造','N','N','N','Y','354','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3542','印刷专用设备制造','N','N','N','Y','354','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3543','日用化工专用设备制造','N','N','N','Y','354','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3544','制药专用设备制造','N','N','N','Y','354','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3545','照明器具生产专用设备制造','N','N','N','Y','354','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3549','其他日用品生产专用设备制造','N','N','N','Y','354','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('355','纺织、服装和皮革加工专用设备制造','N','N','Y','N','35','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3551','纺织专用设备制造','N','N','N','Y','355','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3553','缝制机械制造','N','N','N','Y','355','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3554','洗涤机械制造','N','N','N','Y','355','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('356','电子和电工机械专用设备制造','N','N','Y','N','35','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3561','电工机械专用设备制造','N','N','N','Y','356','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3562','电子工业专用设备制造','N','N','N','Y','356','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('357','农、林、牧、渔专用机械制造','N','N','Y','N','35','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3571','拖拉机制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3572','机械化农业及园艺机具制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3573','营林及木竹采伐机械制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3574','畜牧机械制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3575','渔业机械制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3576','农林牧渔机械配件制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3577','棉花加工机械制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3579','其他农、林、牧、渔业机械制造','N','N','N','Y','357','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('358','医疗仪器设备及器械制造','N','N','Y','N','35','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3581','医疗诊断、监护及治疗设备制造','N','N','N','Y','358','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3582','口腔科用设备及器具制造','N','N','N','Y','358','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3584','医疗、外科及兽医用器械制造','N','N','N','Y','358','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3585','机械治疗及病房护理设备制造','N','N','N','Y','358','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3589','其他医疗设备及器械制造','N','N','N','Y','358','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3591','环境保护专用设备制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3592','地质勘查专用设备制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3593','邮政专用机械及器材制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3594','商业、饮食、服务专用设备制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3595','社会公共安全设备及器材制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3596','交通安全、管制及类似专用设备制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3597','水资源专用机械制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3599','其他专用设备制造','N','N','N','Y','359','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('36','汽车制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('361','汽车整车制造','N','N','Y','N','36','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3610','汽车整车制造','N','N','N','Y','361','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('362','改装汽车制造','N','N','Y','N','36','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3620','改装汽车制造','N','N','N','Y','362','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('363','低速载货汽车制造','N','N','Y','N','36','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3630','低速载货汽车制造','N','N','N','Y','363','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('364','电车制造','N','N','Y','N','36','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3640','电车制造','N','N','N','Y','364','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('365','汽车车身、挂车制造','N','N','Y','N','36','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3650','汽车车身、挂车制造','N','N','N','Y','365','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('366','汽车零部件及配件制造','N','N','Y','N','36','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3660','汽车零部件及配件制造','N','N','N','Y','366','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('371','铁路运输设备制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3711','铁路机车车辆及动车组制造','N','N','N','Y','371','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3712','窄轨机车车辆制造','N','N','N','Y','371','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3713','铁路机车车辆配件制造','N','N','N','Y','371','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3714','铁路专用设备及器材、配件制造','N','N','N','Y','371','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3719','其他铁路运输设备制造','N','N','N','Y','371','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('372','城市轨道交通设备制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3720','城市轨道交通设备制造','N','N','N','Y','372','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('373','船舶及相关装置制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3731','金属船舶制造','N','N','N','Y','373','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3732','非金属船舶制造','N','N','N','Y','373','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3733','娱乐船和运动船制造','N','N','N','Y','373','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3734','船用配套设备制造','N','N','N','Y','373','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3735','船舶改装与拆除','N','N','N','Y','373','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3739','航标器材及其他相关装置制造','N','N','N','Y','373','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('374','航空、航天器及设备制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3741','飞机制造','N','N','N','Y','374','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3742','航天器制造','N','N','N','Y','374','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3743','航空、航天相关设备制造','N','N','N','Y','374','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3749','其他航空航天器制造','N','N','N','Y','374','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('375','摩托车制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3751','摩托车整车制造','N','N','N','Y','375','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3752','摩托车零部件及配件制造','N','N','N','Y','375','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('376','自行车制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3761','脚踏自行车及残疾人座车制造','N','N','N','Y','376','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3762','助动自行车制造','N','N','N','Y','376','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('377','非公路休闲车及零配件制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3770','非公路休闲车及零配件制造','N','N','N','Y','377','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('379','潜水救捞及其他未列明运输设备制造','N','N','Y','N','37','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3791','潜水及水下救捞装备制造','N','N','N','Y','379','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3799','其他未列明运输设备制造','N','N','N','Y','379','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('38','电气机械和器材制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('381','电机制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3811','发电机及发电机组制造','N','N','N','Y','381','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3812','电动机制造','N','N','N','Y','381','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3819','微电机及其他电机制造','N','N','N','Y','381','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('382','输配电及控制设备制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3821','变压器、整流器和电感器制造','N','N','N','Y','382','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3822','电容器及其配套设备制造','N','N','N','Y','382','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3823','配电开关控制设备制造','N','N','N','Y','382','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3824','电力电子元器件制造','N','N','N','Y','382','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3825','光伏设备及元器件制造','N','N','N','Y','382','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3829','其他输配电及控制设备制造','N','N','N','Y','382','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('383','电线、电缆、光缆及电工器材制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3831','电线、电缆制造','N','N','N','Y','383','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3832','光纤、光缆制造','N','N','N','Y','383','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3833','绝缘制品制造','N','N','N','Y','383','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3839','其他电工器材制造','N','N','N','Y','383','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('384','电池制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3841','锂离子电池制造','N','N','N','Y','384','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3842','镍氢电池制造','N','N','N','Y','384','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3849','其他电池制造','N','N','N','Y','384','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('385','家用电力器具制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3851','家用制冷电器具制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3852','家用空气调节器制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3853','家用通风电器具制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3854','家用厨房电器具制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3855','家用清洁卫生电器具制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3856','家用美容、保健电器具制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3857','家用电力器具专用配件制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3859','其他家用电力器具制造','N','N','N','Y','385','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('386','非电力家用器具制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3869','其他非电力家用器具制造','N','N','N','Y','386','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('387','照明器具制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3871','电光源制造','N','N','N','Y','387','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3872','照明灯具制造','N','N','N','Y','387','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3879','灯用电器附件及其他照明器具制造','N','N','N','Y','387','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('389','其他电气机械及器材制造','N','N','Y','N','38','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3891','电气信号设备装置制造','N','N','N','Y','389','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3899','其他未列明电气机械及器材制造','N','N','N','Y','389','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('39','计算机、通信和其他电子设备制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('391','计算机制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3911','计算机整机制造','N','N','N','Y','391','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3912','计算机零部件制造','N','N','N','Y','391','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3913','计算机外围设备制造','N','N','N','Y','391','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3919','其他计算机制造','N','N','N','Y','391','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('392','通信设备制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3921','通信系统设备制造','N','N','N','Y','392','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3922','通信终端设备制造','N','N','N','Y','392','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('393','广播电视设备制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3931','广播电视节目制作及发射设备制造','N','N','N','Y','393','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3932','广播电视接收设备及器材制造','N','N','N','Y','393','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('394','雷达及配套设备制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3940','雷达及配套设备制造','N','N','N','Y','394','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('395','视听设备制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3951','电视机制造','N','N','N','Y','395','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3952','音响设备制造','N','N','N','Y','395','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3953','影视录放设备制造','N','N','N','Y','395','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('396','电子器件制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3961','电子真空器件制造','N','N','N','Y','396','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3962','半导体分立器件制造','N','N','N','Y','396','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3963','集成电路制造','N','N','N','Y','396','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3969','光电子器件及其他电子器件制造','N','N','N','Y','396','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('397','电子元件制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3971','电子元件及组件制造','N','N','N','Y','397','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3972','印制电路板制造','N','N','N','Y','397','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('399','其他电子设备制造','N','N','Y','N','39','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3990','其他电子设备制造','N','N','N','Y','399','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('40','仪器仪表制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('401','通用仪器仪表制造','N','N','Y','N','40','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4011','工业自动控制系统装置制造','N','N','N','Y','401','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4012','电工仪器仪表制造','N','N','N','Y','401','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4013','绘图、计算及测量仪器制造','N','N','N','Y','401','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4014','实验分析仪器制造','N','N','N','Y','401','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4015','试验机制造','N','N','N','Y','401','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4019','供应用仪表及其他通用仪器制造','N','N','N','Y','401','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('402','专用仪器仪表制造','N','N','Y','N','40','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4021','环境监测专用仪器仪表制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4022','运输设备及生产用计数仪表制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4023','导航、气象及海洋专用仪器制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4024','农林牧渔专用仪器仪表制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4025','地质勘探和地震专用仪器制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4026','教学专用仪器制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4027','核子及核辐射测量仪器制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4028','电子测量仪器制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4029','其他专用仪器制造','N','N','N','Y','402','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('403','钟表与计时仪器制造','N','N','Y','N','40','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4030','钟表与计时仪器制造','N','N','N','Y','403','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('404','光学仪器及眼镜制造','N','N','Y','N','40','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4041','光学仪器制造','N','N','N','Y','404','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4042','眼镜制造','N','N','N','Y','404','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('409','其他仪器仪表制造业','N','N','Y','N','40','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4090','其他仪器仪表制造业','N','N','N','Y','409','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('41','其他制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('411','日用杂品制造','N','N','Y','N','41','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4111','鬃毛加工、制刷及清扫工具制造','N','N','N','Y','411','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4119','其他日用杂品制造','N','N','N','Y','411','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('412','煤制品制造','N','N','Y','N','41','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4120','煤制品制造','N','N','N','Y','412','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('413','核辐射加工','N','N','Y','N','41','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4130','核辐射加工','N','N','N','Y','413','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('419','其他未列明制造业','N','N','Y','N','41','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4190','其他未列明制造业','N','N','N','Y','419','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('42','废弃资源综合利用业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('421','金属废料和碎屑加工处理','N','N','Y','N','42','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4210','金属废料和碎屑加工处理','N','N','N','Y','421','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('422','非金属废料和碎屑加工处理','N','N','Y','N','42','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4220','非金属废料和碎屑加工处理','N','N','N','Y','422','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('43','金属制品、机械和设备修理业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('431','金属制品修理','N','N','Y','N','43','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4310','金属制品修理','N','N','N','Y','431','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('432','通用设备修理','N','N','Y','N','43','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4320','通用设备修理','N','N','N','Y','432','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('433','专用设备修理','N','N','Y','N','43','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4330','专用设备修理','N','N','N','Y','433','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4341','铁路运输设备修理','N','N','N','Y','434','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4342','船舶修理','N','N','N','Y','434','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4343','航空航天器修理','N','N','N','Y','434','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4349','其他运输设备修理','N','N','N','Y','434','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('435','电气设备修理','N','N','Y','N','43','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4350','电气设备修理','N','N','N','Y','435','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('436','仪器仪表修理','N','N','Y','N','43','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4360','仪器仪表修理','N','N','N','Y','436','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('439','其他机械和设备修理业','N','N','Y','N','43','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4390','其他机械和设备修理业','N','N','N','Y','439','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('D','电力、热力、燃气及水生产和供应业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('44','电力、热力生产和供应业','N','Y','N','N','D','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('441','电力生产','N','N','Y','N','44','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4411','火力发电','N','N','N','Y','441','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4412','水力发电','N','N','N','Y','441','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4413','核力发电','N','N','N','Y','441','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4414','风力发电','N','N','N','Y','441','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4415','太阳能发电','N','N','N','Y','441','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4419','其他电力生产','N','N','N','Y','441','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('442','电力供应','N','N','Y','N','44','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4420','电力供应','N','N','N','Y','442','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('443','热力生产和供应','N','N','Y','N','44','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4430','热力生产和供应','N','N','N','Y','443','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('45','燃气生产和供应业','N','Y','N','N','D','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('450','燃气生产和供应业','N','N','Y','N','45','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4500','燃气生产和供应业','N','N','N','Y','450','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('46','水的生产和供应业','N','Y','N','N','D','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('461','自来水生产和供应','N','N','Y','N','46','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4610','自来水生产和供应','N','N','N','Y','461','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('462','污水处理及其再生利用','N','N','Y','N','46','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4620','污水处理及其再生利用','N','N','N','Y','462','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('469','其他水的处理、利用与分配','N','N','Y','N','46','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4690','其他水的处理、利用与分配','N','N','N','Y','469','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('E','建筑业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('47','房屋建筑业','N','Y','N','N','E','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('470','房屋建筑业','N','N','Y','N','47','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4700','房屋建筑业','N','N','N','Y','470','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('48','土木工程建筑业','N','Y','N','N','E','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('481','铁路、道路、隧道和桥梁工程建筑','N','N','Y','N','48','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4811','铁路工程建筑','N','N','N','Y','481','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4812','公路工程建筑','N','N','N','Y','481','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4813','市政道路工程建筑','N','N','N','Y','481','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4819','其他道路、隧道和桥梁工程建筑','N','N','N','Y','481','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('482','水利和内河港口工程建筑','N','N','Y','N','48','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4821','水源及供水设施工程建筑','N','N','N','Y','482','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4822','河湖治理及防洪设施工程建筑','N','N','N','Y','482','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4823','港口及航运设施工程建筑','N','N','N','Y','482','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('483','海洋工程建筑','N','N','Y','N','48','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4830','海洋工程建筑','N','N','N','Y','483','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('484','工矿工程建筑','N','N','Y','N','48','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4840','工矿工程建筑','N','N','N','Y','484','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('485','架线和管道工程建筑','N','N','Y','N','48','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4851','架线及设备工程建筑','N','N','N','Y','485','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4852','管道工程建筑','N','N','N','Y','485','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('489','其他土木工程建筑','N','N','Y','N','48','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4890','其他土木工程建筑','N','N','N','Y','489','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('49','建筑安装业','N','Y','N','N','E','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('491','电气安装','N','N','Y','N','49','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4910','电气安装','N','N','N','Y','491','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('492','管道和设备安装','N','N','Y','N','49','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4920','管道和设备安装','N','N','N','Y','492','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('499','其他建筑安装业','N','N','Y','N','49','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('4990','其他建筑安装业','N','N','N','Y','499','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('50','建筑装饰和其他建筑业','N','Y','N','N','E','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('501','建筑装饰业','N','N','Y','N','50','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5010','建筑装饰业','N','N','N','Y','501','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('502','工程准备活动','N','N','Y','N','50','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5021','建筑物拆除活动','N','N','N','Y','502','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5029','其他工程准备活动','N','N','N','Y','502','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('503','提供施工设备服务','N','N','Y','N','50','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5030','提供施工设备服务','N','N','N','Y','503','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('509','其他未列明建筑业','N','N','Y','N','50','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5090','其他未列明建筑业','N','N','N','Y','509','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('F','批发和零售业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('51','批发业','N','Y','N','N','F','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('511','农、林、牧产品批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5111','谷物、豆及薯类批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5112','种子批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5113','饲料批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5114','棉、麻批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5115','林业产品批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5116','牲畜批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5119','其他农牧产品批发','N','N','N','Y','511','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('512','食品、饮料及烟草制品批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5121','米、面制品及食用油批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5122','糕点、糖果及糖批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5123','果品、蔬菜批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5124','肉、禽、蛋、奶及水产品批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5125','盐及调味品批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5126','营养和保健品批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5127','酒、饮料及茶叶批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5128','烟草制品批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5129','其他食品批发','N','N','N','Y','512','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('513','纺织、服装及家庭用品批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5131','纺织品、针织品及原料批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5132','服装批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5133','鞋帽批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5134','化妆品及卫生用品批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5135','厨房、卫生间用具及日用杂货批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5136','灯具、装饰物品批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5137','家用电器批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5139','其他家庭用品批发','N','N','N','Y','513','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('514','文化、体育用品及器材批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5141','文具用品批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5142','体育用品及器材批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5143','图书批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5144','报刊批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5145','音像制品及电子出版物批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5146','首饰、工艺品及收藏品批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5149','其他文化用品批发','N','N','N','Y','514','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('515','医药及医疗器材批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5151','西药批发','N','N','N','Y','515','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5152','中药批发','N','N','N','Y','515','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5153','医疗用品及器材批发','N','N','N','Y','515','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('516','矿产品、建材及化工产品批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5161','煤炭及制品批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5162','石油及制品批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5163','非金属矿及制品批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5164','金属及金属矿批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5165','建材批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5166','化肥批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5167','农药批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5168','农用薄膜批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5169','其他化工产品批发','N','N','N','Y','516','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('517','机械设备、五金产品及电子产品批发','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5171','农业机械批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5172','汽车批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5173','汽车零配件批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5174','摩托车及零配件批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5175','五金产品批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5176','电气设备批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5177','计算机、软件及辅助设备批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5178','通讯及广播电视设备批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5179','其他机械设备及电子产品批发','N','N','N','Y','517','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('518','贸易经纪与代理','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5181','贸易代理','N','N','N','Y','518','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5182','拍卖','N','N','N','Y','518','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5189','其他贸易经纪与代理','N','N','N','Y','518','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('01','农业','N','Y','N','N','A','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('011','谷物种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0111','稻谷种植','N','N','N','Y','011','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0112','小麦种植','N','N','N','Y','011','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0113','玉米种植','N','N','N','Y','011','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0119','其他谷物种植','N','N','N','Y','011','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('012','豆类、油料和薯类种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0121','豆类种植','N','N','N','Y','012','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0122','油料种植','N','N','N','Y','012','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0123','薯类种植','N','N','N','Y','012','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('013','棉、麻、糖、烟草种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0131','棉花种植','N','N','N','Y','013','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0132','麻类种植','N','N','N','Y','013','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0133','糖料种植','N','N','N','Y','013','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0134','烟草种植','N','N','N','Y','013','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('014','蔬菜、食用菌及园艺作物种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0141','蔬菜种植','N','N','N','Y','014','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0142','食用菌种植','N','N','N','Y','014','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0143','花卉种植','N','N','N','Y','014','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0149','其他园艺作物种植','N','N','N','Y','014','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('015','水果种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0151','仁果类和核果类水果种植','N','N','N','Y','015','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0152','葡萄种植','N','N','N','Y','015','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0153','柑橘类种植','N','N','N','Y','015','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0154','香蕉等亚热带水果种植','N','N','N','Y','015','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0159','其他水果种植','N','N','N','Y','015','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('016','坚果、含油果、香料和饮料作物种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0161','坚果种植','N','N','N','Y','016','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0162','含油果种植','N','N','N','Y','016','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0163','香料作物种植','N','N','N','Y','016','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('0169','茶及其他饮料作物种植','N','N','N','Y','016','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('017','中药材种植','N','N','Y','N','01','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5287','陶瓷、石材装饰材料零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5289','其他室内装饰材料零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('529','货摊、无店铺及其他零售业','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5291','货摊食品零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5292','货摊纺织、服装及鞋零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5293','货摊日用品零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5294','互联网零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5295','邮购及电视、电话零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5296','旧货零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5297','生活用燃料零售','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5299','其他未列明零售业','N','N','N','Y','529','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('G','交通运输、仓储和邮政业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('53','铁路运输业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('531','铁路旅客运输','N','N','Y','N','53','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5310','铁路旅客运输','N','N','N','Y','531','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('532','铁路货物运输','N','N','Y','N','53','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5320','铁路货物运输','N','N','N','Y','532','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('533','铁路运输辅助活动','N','N','Y','N','53','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5331','客运火车站','N','N','N','Y','533','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5332','货运火车站','N','N','N','Y','533','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5339','其他铁路运输辅助活动','N','N','N','Y','533','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('54','道路运输业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('541','城市公共交通运输','N','N','Y','N','54','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5411','公共电汽车客运','N','N','N','Y','541','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5412','城市轨道交通','N','N','N','Y','541','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5413','出租车客运','N','N','N','Y','541','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5419','其他城市公共交通运输','N','N','N','Y','541','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('542','公路旅客运输','N','N','Y','N','54','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5420','公路旅客运输','N','N','N','Y','542','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('543','道路货物运输','N','N','Y','N','54','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5430','道路货物运输','N','N','N','Y','543','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('544','道路运输辅助活动','N','N','Y','N','54','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5441','客运汽车站','N','N','N','Y','544','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5442','公路管理与养护','N','N','N','Y','544','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5449','其他道路运输辅助活动','N','N','N','Y','544','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('55','水上运输业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('551','水上旅客运输','N','N','Y','N','55','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5511','海洋旅客运输','N','N','N','Y','551','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5512','内河旅客运输','N','N','N','Y','551','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5513','客运轮渡运输','N','N','N','Y','551','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('552','水上货物运输','N','N','Y','N','55','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5521','远洋货物运输','N','N','N','Y','552','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5522','沿海货物运输','N','N','N','Y','552','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5523','内河货物运输','N','N','N','Y','552','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('553','水上运输辅助活动','N','N','Y','N','55','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5531','客运港口','N','N','N','Y','553','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5532','货运港口','N','N','N','Y','553','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5539','其他水上运输辅助活动','N','N','N','Y','553','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('56','航空运输业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('561','航空客货运输','N','N','Y','N','56','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5611','航空旅客运输','N','N','N','Y','561','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5612','航空货物运输','N','N','N','Y','561','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('562','通用航空服务','N','N','Y','N','56','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5620','通用航空服务','N','N','N','Y','562','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('563','航空运输辅助活动','N','N','Y','N','56','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5631','机场','N','N','N','Y','563','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5632','空中交通管理','N','N','N','Y','563','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5639','其他航空运输辅助活动','N','N','N','Y','563','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('57','管道运输业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('570','管道运输业','N','N','Y','N','57','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5700','管道运输业','N','N','N','Y','570','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('58','装卸搬运和运输代理业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('581','装卸搬运','N','N','Y','N','58','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5810','装卸搬运','N','N','N','Y','581','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('582','运输代理业','N','N','Y','N','58','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5821','货物运输代理','N','N','N','Y','582','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5822','旅客票务代理','N','N','N','Y','582','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5829','其他运输代理业','N','N','N','Y','582','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('59','仓储业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('591','谷物、棉花等农产品仓储','N','N','Y','N','59','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5911','谷物仓储','N','N','N','Y','591','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5912','棉花仓储','N','N','N','Y','591','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5919','其他农产品仓储','N','N','N','Y','591','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('599','其他仓储业','N','N','Y','N','59','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5990','其他仓储业','N','N','N','Y','599','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('60','邮政业','N','Y','N','N','G','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('601','邮政基本服务','N','N','Y','N','60','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6010','邮政基本服务','N','N','N','Y','601','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('602','快递服务','N','N','Y','N','60','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6020','快递服务','N','N','N','Y','602','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('H','住宿和餐饮业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('61','住宿业','N','Y','N','N','H','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('611','旅游饭店','N','N','Y','N','61','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6110','旅游饭店','N','N','N','Y','611','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('612','一般旅馆','N','N','Y','N','61','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6120','一般旅馆','N','N','N','Y','612','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('619','其他住宿业','N','N','Y','N','61','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6190','其他住宿业','N','N','N','Y','619','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('62','餐饮业','N','Y','N','N','H','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('621','正餐服务','N','N','Y','N','62','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6210','正餐服务','N','N','N','Y','621','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('622','快餐服务','N','N','Y','N','62','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6220','快餐服务','N','N','N','Y','622','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('623','饮料及冷饮服务','N','N','Y','N','62','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6231','茶馆服务','N','N','N','Y','623','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6232','咖啡馆服务','N','N','N','Y','623','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6233','酒吧服务','N','N','N','Y','623','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6239','其他饮料及冷饮服务','N','N','N','Y','623','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('629','其他餐饮业','N','N','Y','N','62','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6291','小吃服务','N','N','N','Y','629','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6292','餐饮配送服务','N','N','N','Y','629','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6299','其他未列明餐饮业','N','N','N','Y','629','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('I','信息传输、软件和信息技术服务业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('63','电信、广播电视和卫星传输服务','N','Y','N','N','I','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('631','电信','N','N','Y','N','63','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6311','固定电信服务','N','N','N','Y','631','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6312','移动电信服务','N','N','N','Y','631','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6319','其他电信服务','N','N','N','Y','631','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('632','广播电视传输服务','N','N','Y','N','63','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6321','有线广播电视传输服务','N','N','N','Y','632','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6322','无线广播电视传输服务','N','N','N','Y','632','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('633','卫星传输服务','N','N','Y','N','63','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6330','卫星传输服务','N','N','N','Y','633','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('64','互联网和相关服务','N','Y','N','N','I','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('641','互联网接入及相关服务','N','N','Y','N','64','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6410','互联网接入及相关服务','N','N','N','Y','641','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('642','互联网信息服务','N','N','Y','N','64','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6420','互联网信息服务','N','N','N','Y','642','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('649','其他互联网服务','N','N','Y','N','64','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6490','其他互联网服务','N','N','N','Y','649','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('65','软件和信息技术服务业','N','Y','N','N','I','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('651','软件开发','N','N','Y','N','65','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6510','软件开发','N','N','N','Y','651','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('652','信息系统集成服务','N','N','Y','N','65','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6520','信息系统集成服务','N','N','N','Y','652','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('653','信息技术咨询服务','N','N','Y','N','65','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6530','信息技术咨询服务','N','N','N','Y','653','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('654','数据处理和存储服务','N','N','Y','N','65','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6540','数据处理和存储服务','N','N','N','Y','654','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('655','集成电路设计','N','N','Y','N','65','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6550','集成电路设计','N','N','N','Y','655','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('659','其他信息技术服务业','N','N','Y','N','65','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6591','数字内容服务','N','N','N','Y','659','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6592','呼叫中心','N','N','N','Y','659','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6599','其他未列明信息技术服务业','N','N','N','Y','659','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('J','金融业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('66','货币金融服务','N','Y','N','N','J','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('661','中央银行服务','N','N','Y','N','66','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6610','中央银行服务','N','N','N','Y','661','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('662','货币银行服务','N','N','Y','N','66','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6620','货币银行服务','N','N','N','Y','662','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('663','非货币银行服务','N','N','Y','N','66','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6631','金融租赁服务','N','N','N','Y','663','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6632','财务公司','N','N','N','Y','663','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6633','典当','N','N','N','Y','663','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6639','其他非货币银行服务','N','N','N','Y','663','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('664','银行监管服务','N','N','Y','N','66','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6640','银行监管服务','N','N','N','Y','664','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('67','资本市场服务','N','Y','N','N','J','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('671','证券市场服务','N','N','Y','N','67','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6711','证券市场管理服务','N','N','N','Y','671','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6712','证券经纪交易服务','N','N','N','Y','671','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6713','基金管理服务','N','N','N','Y','671','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('672','期货市场服务','N','N','Y','N','67','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6721','期货市场管理服务','N','N','N','Y','672','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6729','其他期货市场服务','N','N','N','Y','672','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6730','证券期货监管服务','N','N','N','Y','673','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('674','资本投资服务','N','N','Y','N','67','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6740','资本投资服务','N','N','N','Y','674','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('679','其他资本市场服务','N','N','Y','N','67','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6790','其他资本市场服务','N','N','N','Y','679','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('68','保险业','N','Y','N','N','J','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('681','人身保险','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6811','人寿保险','N','N','N','Y','681','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6812','健康和意外保险','N','N','N','Y','681','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('682','财产保险','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6820','财产保险','N','N','N','Y','682','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('683','再保险','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6830','再保险','N','N','N','Y','683','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('684','养老金','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6840','养老金','N','N','N','Y','684','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('685','保险经纪与代理服务','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6850','保险经纪与代理服务','N','N','N','Y','685','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('686','保险监管服务','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6860','保险监管服务','N','N','N','Y','686','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('689','其他保险活动','N','N','Y','N','68','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6891','风险和损失评估','N','N','N','Y','689','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6899','其他未列明保险活动','N','N','N','Y','689','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('69','其他金融业','N','Y','N','N','J','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('691','金融信托与管理服务','N','N','Y','N','69','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6910','金融信托与管理服务','N','N','N','Y','691','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('692','控股公司服务','N','N','Y','N','69','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6920','控股公司服务','N','N','N','Y','692','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('693','非金融机构支付服务','N','N','Y','N','69','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6930','非金融机构支付服务','N','N','N','Y','693','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('694','金融信息服务','N','N','Y','N','69','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6940','金融信息服务','N','N','N','Y','694','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('699','其他未列明金融业','N','N','Y','N','69','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('6990','其他未列明金融业','N','N','N','Y','699','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('K','房地产业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('70','房地产业','N','Y','N','N','K','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('701','房地产开发经营','N','N','Y','N','70','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7010','房地产开发经营','N','N','N','Y','701','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('702','物业管理','N','N','Y','N','70','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7020','物业管理','N','N','N','Y','702','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('703','房地产中介服务','N','N','Y','N','70','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7030','房地产中介服务','N','N','N','Y','703','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('704','自有房地产经营活动','N','N','Y','N','70','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7040','自有房地产经营活动','N','N','N','Y','704','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('709','其他房地产业','N','N','Y','N','70','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7090','其他房地产业','N','N','N','Y','709','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('L','租赁和商务服务业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('71','租赁业','N','Y','N','N','L','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('711','机械设备租赁','N','N','Y','N','71','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7111','汽车租赁','N','N','N','Y','711','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7112','农业机械租赁','N','N','N','Y','711','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7113','建筑工程机械与设备租赁','N','N','N','Y','711','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7114','计算机及通讯设备租赁','N','N','N','Y','711','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7119','其他机械与设备租赁','N','N','N','Y','711','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('712','文化及日用品出租','N','N','Y','N','71','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7121','娱乐及体育设备出租','N','N','N','Y','712','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7122','图书出租','N','N','N','Y','712','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7123','音像制品出租','N','N','N','Y','712','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7129','其他文化及日用品出租','N','N','N','Y','712','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('72','商务服务业','N','Y','N','N','L','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('721','企业管理服务','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7211','企业总部管理','N','N','N','Y','721','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7212','投资与资产管理','N','N','N','Y','721','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7213','单位后勤管理服务','N','N','N','Y','721','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7219','其他企业管理服务','N','N','N','Y','721','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('722','法律服务','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7221','律师及相关法律服务','N','N','N','Y','722','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7222','公证服务','N','N','N','Y','722','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7229','其他法律服务','N','N','N','Y','722','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('723','咨询与调查','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7231','会计、审计及税务服务','N','N','N','Y','723','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7232','市场调查','N','N','N','Y','723','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7233','社会经济咨询','N','N','N','Y','723','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7239','其他专业咨询','N','N','N','Y','723','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('724','广告业','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7240','广告业','N','N','N','Y','724','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('725','知识产权服务','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7250','知识产权服务','N','N','N','Y','725','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('726','人力资源服务','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7261','公共就业服务','N','N','N','Y','726','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7262','职业中介服务','N','N','N','Y','726','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7263','劳务派遣服务','N','N','N','Y','726','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7269','其他人力资源服务','N','N','N','Y','726','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('727','旅行社及相关服务','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7271','旅行社服务','N','N','N','Y','727','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7272','旅游管理服务','N','N','N','Y','727','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7279','其他旅行社相关服务','N','N','N','Y','727','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('728','安全保护服务','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7281','安全服务','N','N','N','Y','728','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7282','安全系统监控服务','N','N','N','Y','728','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7289','其他安全保护服务','N','N','N','Y','728','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('729','其他商务服务业','N','N','Y','N','72','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7291','市场管理','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7292','会议及展览服务','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7293','包装服务','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7294','办公服务','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7295','信用服务','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7296','担保服务','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7299','其他未列明商务服务业','N','N','N','Y','729','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('M','科学研究和技术服务业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('73','研究和试验发展','N','Y','N','N','M','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('731','自然科学研究和试验发展','N','N','Y','N','73','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7310','自然科学研究和试验发展','N','N','N','Y','731','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('732','工程和技术研究和试验发展','N','N','Y','N','73','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7320','工程和技术研究和试验发展','N','N','N','Y','732','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('733','农业科学研究和试验发展','N','N','Y','N','73','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7330','农业科学研究和试验发展','N','N','N','Y','733','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('734','医学研究和试验发展','N','N','Y','N','73','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7340','医学研究和试验发展','N','N','N','Y','734','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('735','社会人文科学研究','N','N','Y','N','73','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7350','社会人文科学研究','N','N','N','Y','735','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('74','专业技术服务业','N','Y','N','N','M','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('741','气象服务','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7410','气象服务','N','N','N','Y','741','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('742','地震服务','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7420','地震服务','N','N','N','Y','742','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('743','海洋服务','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7430','海洋服务','N','N','N','Y','743','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('744','测绘服务','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7440','测绘服务','N','N','N','Y','744','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('745','质检技术服务','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7450','质检技术服务','N','N','N','Y','745','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('746','环境与生态监测','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7461','环境保护监测','N','N','N','Y','746','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7462','生态监测','N','N','N','Y','746','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('747','地质勘查','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7471','能源矿产地质勘查','N','N','N','Y','747','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7472','固体矿产地质勘查','N','N','N','Y','747','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7473','水、二氧化碳等矿产地质勘查','N','N','N','Y','747','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7474','基础地质勘查','N','N','N','Y','747','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7475','地质勘查技术服务','N','N','N','Y','747','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('748','工程技术','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7481','工程管理服务','N','N','N','Y','748','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7482','工程勘察设计','N','N','N','Y','748','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7483','规划管理','N','N','N','Y','748','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('749','其他专业技术服务业','N','N','Y','N','74','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7491','专业化设计服务','N','N','N','Y','749','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7492','摄影扩印服务','N','N','N','Y','749','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7493','兽医服务','N','N','N','Y','749','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7499','其他未列明专业技术服务业','N','N','N','Y','749','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('75','科技推广和应用服务业','N','Y','N','N','M','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('751','技术推广服务','N','N','Y','N','75','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7511','农业技术推广服务','N','N','N','Y','751','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7512','生物技术推广服务','N','N','N','Y','751','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7513','新材料技术推广服务','N','N','N','Y','751','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7514','节能技术推广服务','N','N','N','Y','751','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7519','其他技术推广服务','N','N','N','Y','751','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('752','科技中介服务','N','N','Y','N','75','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7520','科技中介服务','N','N','N','Y','752','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('759','其他科技推广和应用服务业','N','N','Y','N','75','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7590','其他科技推广和应用服务业','N','N','N','Y','759','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('N','水利、环境和公共设施管理业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('76','水利管理业','N','Y','N','N','N','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('761','防洪除涝设施管理','N','N','Y','N','76','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7610','防洪除涝设施管理','N','N','N','Y','761','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('762','水资源管理','N','N','Y','N','76','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7620','水资源管理','N','N','N','Y','762','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('763','天然水收集与分配','N','N','Y','N','76','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7630','天然水收集与分配','N','N','N','Y','763','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('764','水文服务','N','N','Y','N','76','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7640','水文服务','N','N','N','Y','764','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('769','其他水利管理业','N','N','Y','N','76','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7690','其他水利管理业','N','N','N','Y','769','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('77','生态保护和环境治理业','N','Y','N','N','N','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('771','生态保护','N','N','Y','N','77','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7711','自然保护区管理','N','N','N','Y','771','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7712','野生动物保护','N','N','N','Y','771','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7713','野生植物保护','N','N','N','Y','771','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7719','其他自然保护','N','N','N','Y','771','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('772','环境治理业','N','N','Y','N','77','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7721','水污染治理','N','N','N','Y','772','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7722','大气污染治理','N','N','N','Y','772','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7723','固体废物治理','N','N','N','Y','772','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7724','危险废物治理','N','N','N','Y','772','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7725','放射性废物治理','N','N','N','Y','772','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7729','其他污染治理','N','N','N','Y','772','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('78','公共设施管理业','N','Y','N','N','N','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('781','市政设施管理','N','N','Y','N','78','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7810','市政设施管理','N','N','N','Y','781','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('782','环境卫生管理','N','N','Y','N','78','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7820','环境卫生管理','N','N','N','Y','782','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('783','城乡市容管理','N','N','Y','N','78','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7830','城乡市容管理','N','N','N','Y','783','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('784','绿化管理','N','N','Y','N','78','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7840','绿化管理','N','N','N','Y','784','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('785','公园和游览景区管理','N','N','Y','N','78','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7851','公园管理','N','N','N','Y','785','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7852','游览景区管理','N','N','N','Y','785','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('O','居民服务、修理和其他服务业','Y','N','N','N',null,'1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('79','居民服务业','N','Y','N','N','O','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('791','家庭服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7910','家庭服务','N','N','N','Y','791','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('792','托儿所服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7920','托儿所服务','N','N','N','Y','792','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('793','洗染服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7930','洗染服务','N','N','N','Y','793','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('794','理发及美容服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7940','理发及美容服务','N','N','N','Y','794','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('795','洗浴服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7950','洗浴服务','N','N','N','Y','795','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('796','保健服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7960','保健服务','N','N','N','Y','796','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('797','婚姻服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7970','婚姻服务','N','N','N','Y','797','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('798','殡葬服务','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7980','殡葬服务','N','N','N','Y','798','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('799','其他居民服务业','N','N','Y','N','79','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('7990','其他居民服务业','N','N','N','Y','799','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('80','机动车、电子产品和日用产品修理业','N','Y','N','N','O','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('801','汽车、摩托车修理与维护','N','N','Y','N','80','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8011','汽车修理与维护','N','N','N','Y','801','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8012','摩托车修理与维护','N','N','N','Y','801','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('802','计算机和办公设备维修','N','N','Y','N','80','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8021','计算机和辅助设备修理','N','N','N','Y','802','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8022','通讯设备修理','N','N','N','Y','802','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8029','其他办公设备维修','N','N','N','Y','802','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('803','家用电器修理','N','N','Y','N','80','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8031','家用电子产品修理','N','N','N','Y','803','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8032','日用电器修理','N','N','N','Y','803','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('809','其他日用产品修理业','N','N','Y','N','80','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8091','自行车修理','N','N','N','Y','809','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('8092','鞋和皮革修理','N','N','N','Y','809','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1462','酱油、食醋及类似制品制造','N','N','N','Y','146','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1469','其他调味品、发酵制品制造','N','N','N','Y','146','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('149','其他食品制造','N','N','Y','N','14','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1491','营养食品制造','N','N','N','Y','149','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1492','保健食品制造','N','N','N','Y','149','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1493','冷冻饮品及食用冰制造','N','N','N','Y','149','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1494','盐加工','N','N','N','Y','149','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1495','食品及饲料添加剂制造','N','N','N','Y','149','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1499','其他未列明食品制造','N','N','N','Y','149','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('15','酒、饮料和精制茶制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('151','酒的制造','N','N','Y','N','15','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1511','酒精制造','N','N','N','Y','151','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1512','白酒制造','N','N','N','Y','151','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1513','啤酒制造','N','N','N','Y','151','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1514','黄酒制造','N','N','N','Y','151','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1515','葡萄酒制造','N','N','N','Y','151','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1519','其他酒制造','N','N','N','Y','151','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('152','饮料制造','N','N','Y','N','15','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1521','碳酸饮料制造','N','N','N','Y','152','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1522','瓶（罐）装饮用水制造','N','N','N','Y','152','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1523','果菜汁及果菜汁饮料制造','N','N','N','Y','152','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1524','含乳饮料和植物蛋白饮料制造','N','N','N','Y','152','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1525','固体饮料制造','N','N','N','Y','152','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1529','茶饮料及其他饮料制造','N','N','N','Y','152','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('153','精制茶加工','N','N','Y','N','15','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1530','精制茶加工','N','N','N','Y','153','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('16','烟草制品业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('161','烟叶复烤','N','N','Y','N','16','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1610','烟叶复烤','N','N','N','Y','161','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('162','卷烟制造','N','N','Y','N','16','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1620','卷烟制造','N','N','N','Y','162','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('169','其他烟草制品制造','N','N','Y','N','16','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1690','其他烟草制品制造','N','N','N','Y','169','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('17','纺织业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('171','棉纺织及印染精加工','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1711','棉纺纱加工','N','N','N','Y','171','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1712','棉织造加工','N','N','N','Y','171','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1713','棉印染精加工','N','N','N','Y','171','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('172','毛纺织及染整精加工','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1721','毛条和毛纱线加工','N','N','N','Y','172','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1722','毛织造加工','N','N','N','Y','172','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1723','毛染整精加工','N','N','N','Y','172','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('173','麻纺织及染整精加工','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1731','麻纤维纺前加工和纺纱','N','N','N','Y','173','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1732','麻织造加工','N','N','N','Y','173','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1733','麻染整精加工','N','N','N','Y','173','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('174','丝绢纺织及印染精加工','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1741','缫丝加工','N','N','N','Y','174','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1742','绢纺和丝织加工','N','N','N','Y','174','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1743','丝印染精加工','N','N','N','Y','174','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('175','化纤织造及印染精加工','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1751','化纤织造加工','N','N','N','Y','175','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1752','化纤织物染整精加工','N','N','N','Y','175','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('176','针织或钩针编织物及其制品制造','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1761','针织或钩针编织物织造','N','N','N','Y','176','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1762','针织或钩针编织物印染精加工','N','N','N','Y','176','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1763','针织或钩针编织品制造','N','N','N','Y','176','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('177','家用纺织制成品制造','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1771','床上用品制造','N','N','N','Y','177','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1772','毛巾类制品制造','N','N','N','Y','177','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1773','窗帘、布艺类产品制造','N','N','N','Y','177','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1779','其他家用纺织制成品制造','N','N','N','Y','177','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('178','非家用纺织制成品制造','N','N','Y','N','17','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1781','非织造布制造','N','N','N','Y','178','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1782','绳、索、缆制造','N','N','N','Y','178','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1783','纺织带和帘子布制造','N','N','N','Y','178','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1784','篷、帆布制造','N','N','N','Y','178','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1789','其他非家用纺织制成品制造','N','N','N','Y','178','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('18','纺织服装、服饰业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('181','机织服装制造','N','N','Y','N','18','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1810','机织服装制造','N','N','N','Y','181','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('182','针织或钩针编织服装制造','N','N','Y','N','18','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1820','针织或钩针编织服装制造','N','N','N','Y','182','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('183','服饰制造','N','N','Y','N','18','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1830','服饰制造','N','N','N','Y','183','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('19','皮革、毛皮、羽毛及其制品和制鞋业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('191','皮革鞣制加工','N','N','Y','N','19','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1910','皮革鞣制加工','N','N','N','Y','191','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('192','皮革制品制造','N','N','Y','N','19','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1921','皮革服装制造','N','N','N','Y','192','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1922','皮箱、包（袋）制造','N','N','N','Y','192','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1923','皮手套及皮装饰制品制造','N','N','N','Y','192','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1929','其他皮革制品制造','N','N','N','Y','192','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('193','毛皮鞣制及制品加工','N','N','Y','N','19','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1931','毛皮鞣制加工','N','N','N','Y','193','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1932','毛皮服装加工','N','N','N','Y','193','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1939','其他毛皮制品加工','N','N','N','Y','193','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('194','羽毛(绒)加工及制品制造','N','N','Y','N','19','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1941','羽毛（绒）加工','N','N','N','Y','194','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1942','羽毛（绒）制品加工','N','N','N','Y','194','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('195','制鞋业','N','N','Y','N','19','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1951','纺织面料鞋制造','N','N','N','Y','195','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1952','皮鞋制造','N','N','N','Y','195','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1953','塑料鞋制造','N','N','N','Y','195','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1954','橡胶鞋制造','N','N','N','Y','195','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('1959','其他制鞋业','N','N','N','Y','195','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('201','木材加工','N','N','Y','N','20','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2011','锯材加工','N','N','N','Y','201','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2012','木片加工','N','N','N','Y','201','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2013','单板加工','N','N','N','Y','201','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2019','其他木材加工','N','N','N','Y','201','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('202','人造板制造','N','N','Y','N','20','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2021','胶合板制造','N','N','N','Y','202','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2022','纤维板制造','N','N','N','Y','202','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2023','刨花板制造','N','N','N','Y','202','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2029','其他人造板制造','N','N','N','Y','202','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('203','木制品制造','N','N','Y','N','20','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2031','建筑用木料及木材组件加工','N','N','N','Y','203','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2032','木门窗、楼梯制造','N','N','N','Y','203','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2033','地板制造','N','N','N','Y','203','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2034','木制容器制造','N','N','N','Y','203','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2039','软木制品及其他木制品制造','N','N','N','Y','203','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('204','竹、藤、棕、草等制品制造','N','N','Y','N','20','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2041','竹制品制造','N','N','N','Y','204','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2042','藤制品制造','N','N','N','Y','204','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2043','棕制品制造','N','N','N','Y','204','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2049','草及其他制品制造','N','N','N','Y','204','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('21','家具制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('211','木质家具制造','N','N','Y','N','21','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2110','木质家具制造','N','N','N','Y','211','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('212','竹、藤家具制造','N','N','Y','N','21','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2120','竹、藤家具制造','N','N','N','Y','212','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('213','金属家具制造','N','N','Y','N','21','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2130','金属家具制造','N','N','N','Y','213','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('214','塑料家具制造','N','N','Y','N','21','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2140','塑料家具制造','N','N','N','Y','214','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('219','其他家具制造','N','N','Y','N','21','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2190','其他家具制造','N','N','N','Y','219','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('22','造纸和纸制品业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('221','纸浆制造','N','N','Y','N','22','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2211','木竹浆制造','N','N','N','Y','221','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2212','非木竹浆制造','N','N','N','Y','221','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('222','造纸','N','N','Y','N','22','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2221','机制纸及纸板制造','N','N','N','Y','222','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2222','手工纸制造','N','N','N','Y','222','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2223','加工纸制造','N','N','N','Y','222','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('223','纸制品制造','N','N','Y','N','22','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2231','纸和纸板容器制造','N','N','N','Y','223','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2239','其他纸制品制造','N','N','N','Y','223','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('23','印刷和记录媒介复制业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('231','印刷','N','N','Y','N','23','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2311','书、报刊印刷','N','N','N','Y','231','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2312','本册印制','N','N','N','Y','231','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2319','包装装潢及其他印刷','N','N','N','Y','231','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('232','装订及印刷相关服务','N','N','Y','N','23','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2320','装订及印刷相关服务','N','N','N','Y','232','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('233','记录媒介复制','N','N','Y','N','23','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2330','记录媒介复制','N','N','N','Y','233','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('24','文教、工美、体育和娱乐用品制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('241','文教办公用品制造','N','N','Y','N','24','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2411','文具制造','N','N','N','Y','241','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2412','笔的制造','N','N','N','Y','241','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2413','教学用模型及教具制造','N','N','N','Y','241','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2414','墨水、墨汁制造','N','N','N','Y','241','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2419','其他文教办公用品制造','N','N','N','Y','241','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('242','乐器制造','N','N','Y','N','24','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2421','中乐器制造','N','N','N','Y','242','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2422','西乐器制造','N','N','N','Y','242','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2423','电子乐器制造','N','N','N','Y','242','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2429','其他乐器及零件制造','N','N','N','Y','242','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('243','工艺美术品制造','N','N','Y','N','24','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2431','雕塑工艺品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2432','金属工艺品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2433','漆器工艺品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2434','花画工艺品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2435','天然植物纤维编织工艺品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2436','抽纱刺绣工艺品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2437','地毯、挂毯制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2438','珠宝首饰及有关物品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2439','其他工艺美术品制造','N','N','N','Y','243','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('244','体育用品制造','N','N','Y','N','24','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2441','球类制造','N','N','N','Y','244','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2442','体育器材及配件制造','N','N','N','Y','244','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2443','训练健身器材制造','N','N','N','Y','244','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2444','运动防护用具制造','N','N','N','Y','244','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2449','其他体育用品制造','N','N','N','Y','244','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('245','玩具制造','N','N','Y','N','24','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2450','玩具制造','N','N','N','Y','245','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('246','游艺器材及娱乐用品制造','N','N','Y','N','24','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2461','露天游乐场所游乐设备制造','N','N','N','Y','246','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2462','游艺用品及室内游艺器材制造','N','N','N','Y','246','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2469','其他娱乐用品制造','N','N','N','Y','246','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('25','石油加工、炼焦和核燃料加工业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('251','精炼石油产品制造','N','N','Y','N','25','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2511','原油加工及石油制品制造','N','N','N','Y','251','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2512','人造原油制造','N','N','N','Y','251','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('252','炼焦','N','N','Y','N','25','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2520','炼焦','N','N','N','Y','252','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('253','核燃料加工','N','N','Y','N','25','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2530','核燃料加工','N','N','N','Y','253','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('26','化学原料和化学制品制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('261','基础化学原料制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2611','无机酸制造','N','N','N','Y','261','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2612','无机碱制造','N','N','N','Y','261','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2613','无机盐制造','N','N','N','Y','261','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2614','有机化学原料制造','N','N','N','Y','261','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2619','其他基础化学原料制造','N','N','N','Y','261','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('262','肥料制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2621','氮肥制造','N','N','N','Y','262','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2622','磷肥制造','N','N','N','Y','262','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2623','钾肥制造','N','N','N','Y','262','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2624','复混肥料制造','N','N','N','Y','262','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2625','有机肥料及微生物肥料制造','N','N','N','Y','262','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2629','其他肥料制造','N','N','N','Y','262','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('263','农药制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2631','化学农药制造','N','N','N','Y','263','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2632','生物化学农药及微生物农药制造','N','N','N','Y','263','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('264','涂料、油墨、颜料及类似产品制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2641','涂料制造','N','N','N','Y','264','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2642','油墨及类似产品制造','N','N','N','Y','264','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2643','颜料制造','N','N','N','Y','264','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2644','染料制造','N','N','N','Y','264','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2645','密封用填料及类似品制造','N','N','N','Y','264','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('265','合成材料制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2651','初级形态塑料及合成树脂制造','N','N','N','Y','265','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2652','合成橡胶制造','N','N','N','Y','265','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2653','合成纤维单（聚合）体制造','N','N','N','Y','265','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2659','其他合成材料制造','N','N','N','Y','265','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('266','专用化学产品制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2661','化学试剂和助剂制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2662','专项化学用品制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2663','林产化学产品制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2664','信息化学品制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2665','环境污染处理专用药剂材料制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2666','动物胶制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2669','其他专用化学产品制造','N','N','N','Y','266','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('267','炸药、火工及焰火产品制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2671','炸药及火工产品制造','N','N','N','Y','267','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2672','焰火、鞭炮产品制造','N','N','N','Y','267','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('268','日用化学产品制造','N','N','Y','N','26','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2681','肥皂及合成洗涤剂制造','N','N','N','Y','268','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2682','化妆品制造','N','N','N','Y','268','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2683','口腔清洁用品制造','N','N','N','Y','268','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2684','香料、香精制造','N','N','N','Y','268','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2689','其他日用化学产品制造','N','N','N','Y','268','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('27','医药制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('271','化学药品原料药制造','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2710','化学药品原料药制造','N','N','N','Y','271','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('272','化学药品制剂制造','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2720','化学药品制剂制造','N','N','N','Y','272','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('273','中药饮片加工','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2730','中药饮片加工','N','N','N','Y','273','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('274','中成药生产','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2740','中成药生产','N','N','N','Y','274','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('275','兽用药品制造','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2750','兽用药品制造','N','N','N','Y','275','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('276','生物药品制造','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2760','生物药品制造','N','N','N','Y','276','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('277','卫生材料及医药用品制造','N','N','Y','N','27','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2770','卫生材料及医药用品制造','N','N','N','Y','277','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('28','化学纤维制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('281','纤维素纤维原料及纤维制造','N','N','Y','N','28','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2811','化纤浆粕制造','N','N','N','Y','281','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2812','人造纤维（纤维素纤维）制造','N','N','N','Y','281','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('282','合成纤维制造','N','N','Y','N','28','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2821','锦纶纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2822','涤纶纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2823','腈纶纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2824','维纶纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2825','丙纶纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2826','氨纶纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2829','其他合成纤维制造','N','N','N','Y','282','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('29','橡胶和塑料制品业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('291','橡胶制品业','N','N','Y','N','29','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('673','证券期货监管服务','N','N','Y','N','67','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2911','轮胎制造','N','N','N','Y','291','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2912','橡胶板、管、带制造','N','N','N','Y','291','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2913','橡胶零件制造','N','N','N','Y','291','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2914','再生橡胶制造','N','N','N','Y','291','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2915','日用及医用橡胶制品制造','N','N','N','Y','291','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2919','其他橡胶制品制造','N','N','N','Y','291','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('292','塑料制品业','N','N','Y','N','29','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2921','塑料薄膜制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2922','塑料板、管、型材制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2923','塑料丝、绳及编织品制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2924','泡沫塑料制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2925','塑料人造革、合成革制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2926','塑料包装箱及容器制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2927','日用塑料制品制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2928','塑料零件制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('2929','其他塑料制品制造','N','N','N','Y','292','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('30','非金属矿物制品业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('301','水泥、石灰和石膏制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3011','水泥制造','N','N','N','Y','301','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3012','石灰和石膏制造','N','N','N','Y','301','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('302','石膏、水泥制品及类似制品制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3021','水泥制品制造','N','N','N','Y','302','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3022','砼结构构件制造','N','N','N','Y','302','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3023','石棉水泥制品制造','N','N','N','Y','302','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3024','轻质建筑材料制造','N','N','N','Y','302','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3029','其他水泥类似制品制造','N','N','N','Y','302','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('303','砖瓦、石材等建筑材料制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3031','粘土砖瓦及建筑砌块制造','N','N','N','Y','303','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3032','建筑陶瓷制品制造','N','N','N','Y','303','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3033','建筑用石加工','N','N','N','Y','303','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3034','防水建筑材料制造','N','N','N','Y','303','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3035','隔热和隔音材料制造','N','N','N','Y','303','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3039','其他建筑材料制造','N','N','N','Y','303','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('304','玻璃制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3041','平板玻璃制造','N','N','N','Y','304','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3049','其他玻璃制造','N','N','N','Y','304','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('305','玻璃制品制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3051','技术玻璃制品制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3052','光学玻璃制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3053','玻璃仪器制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3054','日用玻璃制品制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3055','玻璃包装容器制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3056','玻璃保温容器制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3057','制镜及类似品加工','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3059','其他玻璃制品制造','N','N','N','Y','305','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3061','玻璃纤维及制品制造','N','N','N','Y','306','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3062','玻璃纤维增强塑料制品制造','N','N','N','Y','306','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('307','陶瓷制品制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3071','卫生陶瓷制品制造','N','N','N','Y','307','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3072','特种陶瓷制品制造','N','N','N','Y','307','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3073','日用陶瓷制品制造','N','N','N','Y','307','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3079','园林、陈设艺术及其他陶瓷制品制造','N','N','N','Y','307','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('308','耐火材料制品制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3081','石棉制品制造','N','N','N','Y','308','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3082','云母制品制造','N','N','N','Y','308','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3089','耐火陶瓷制品及其他耐火材料制造','N','N','N','Y','308','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('309','石墨及其他非金属矿物制品制造','N','N','Y','N','30','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3091','石墨及碳素制品制造','N','N','N','Y','309','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3099','其他非金属矿物制品制造','N','N','N','Y','309','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('31','黑色金属冶炼和压延加工业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('311','炼铁','N','N','Y','N','31','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3110','炼铁','N','N','N','Y','311','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('312','炼钢','N','N','Y','N','31','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3120','炼钢','N','N','N','Y','312','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('313','黑色金属铸造','N','N','Y','N','31','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3130','黑色金属铸造','N','N','N','Y','313','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('314','钢压延加工','N','N','Y','N','31','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3140','钢压延加工','N','N','N','Y','314','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('315','铁合金冶炼','N','N','Y','N','31','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3150','铁合金冶炼','N','N','N','Y','315','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('32','有色金属冶炼和压延加工业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('321','常用有色金属冶炼','N','N','Y','N','32','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3211','铜冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3212','铅锌冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3213','镍钴冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3214','锡冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3215','锑冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3216','铝冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3217','镁冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3219','其他常用有色金属冶炼','N','N','N','Y','321','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('322','贵金属冶炼','N','N','Y','N','32','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3221','金冶炼','N','N','N','Y','322','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3222','银冶炼','N','N','N','Y','322','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3229','其他贵金属冶炼','N','N','N','Y','322','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('323','稀有稀土金属冶炼','N','N','Y','N','32','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3231','钨钼冶炼','N','N','N','Y','323','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3232','稀土金属冶炼','N','N','N','Y','323','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3239','其他稀有金属冶炼','N','N','N','Y','323','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('324','有色金属合金制造','N','N','Y','N','32','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3240','有色金属合金制造','N','N','N','Y','324','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('325','有色金属铸造','N','N','Y','N','32','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3250','有色金属铸造','N','N','N','Y','325','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('326','有色金属压延加工','N','N','Y','N','32','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3261','铜压延加工','N','N','N','Y','326','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3262','铝压延加工','N','N','N','Y','326','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3263','贵金属压延加工','N','N','N','Y','326','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3264','稀有稀土金属压延加工','N','N','N','Y','326','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3269','其他有色金属压延加工','N','N','N','Y','326','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('33','金属制品业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('331','结构性金属制品制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3311','金属结构制造','N','N','N','Y','331','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3312','金属门窗制造','N','N','N','Y','331','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('332','金属工具制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3321','切削工具制造','N','N','N','Y','332','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3322','手工具制造','N','N','N','Y','332','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3323','农用及园林用金属工具制造','N','N','N','Y','332','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3324','刀剪及类似日用金属工具制造','N','N','N','Y','332','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3329','其他金属工具制造','N','N','N','Y','332','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('333','集装箱及金属包装容器制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3331','集装箱制造','N','N','N','Y','333','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3332','金属压力容器制造','N','N','N','Y','333','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3333','金属包装容器制造','N','N','N','Y','333','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('334','金属丝绳及其制品制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3340','金属丝绳及其制品制造','N','N','N','Y','334','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('335','建筑、安全用金属制品制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3351','建筑、家具用金属配件制造','N','N','N','Y','335','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3352','建筑装饰及水暖管道零件制造','N','N','N','Y','335','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3353','安全、消防用金属制品制造','N','N','N','Y','335','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3359','其他建筑、安全用金属制品制造','N','N','N','Y','335','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('336','金属表面处理及热处理加工','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3360','金属表面处理及热处理加工','N','N','N','Y','336','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('337','搪瓷制品制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3371','生产专用搪瓷制品制造','N','N','N','Y','337','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3372','建筑装饰搪瓷制品制造','N','N','N','Y','337','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3373','搪瓷卫生洁具制造','N','N','N','Y','337','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3379','搪瓷日用品及其他搪瓷制品制造','N','N','N','Y','337','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('338','金属制日用品制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3381','金属制厨房用器具制造','N','N','N','Y','338','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3382','金属制餐具和器皿制造','N','N','N','Y','338','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3383','金属制卫生器具制造','N','N','N','Y','338','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3389','其他金属制日用品制造','N','N','N','Y','338','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('339','其他金属制品制造','N','N','Y','N','33','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3391','锻件及粉末冶金制品制造','N','N','N','Y','339','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3392','交通及公共管理用金属标牌制造','N','N','N','Y','339','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3399','其他未列明金属制品制造','N','N','N','Y','339','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('34','通用设备制造业','N','Y','N','N','C','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('341','锅炉及原动设备制造','N','N','Y','N','34','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3411','锅炉及辅助设备制造','N','N','N','Y','341','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3412','内燃机及配件制造','N','N','N','Y','341','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3413','汽轮机及辅机制造','N','N','N','Y','341','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3414','水轮机及辅机制造','N','N','N','Y','341','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3415','风能原动设备制造','N','N','N','Y','341','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('3419','其他原动设备制造','N','N','N','Y','341','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('519','其他批发业','N','N','Y','N','51','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5191','再生物资回收与批发','N','N','N','Y','519','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5199','其他未列明批发业','N','N','N','Y','519','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('52','零售业','N','Y','N','N','F','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('521','综合零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5211','百货零售','N','N','N','Y','521','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5212','超级市场零售','N','N','N','Y','521','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5219','其他综合零售','N','N','N','Y','521','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('522','食品、饮料及烟草制品专门零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5221','粮油零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5222','糕点、面包零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5223','果品、蔬菜零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5224','肉、禽、蛋、奶及水产品零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5225','营养和保健品零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5226','酒、饮料及茶叶零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5227','烟草制品零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5229','其他食品零售','N','N','N','Y','522','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('523','纺织、服装及日用品专门零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5231','纺织品及针织品零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5232','服装零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5233','鞋帽零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5234','化妆品及卫生用品零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5235','钟表、眼镜零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5236','箱、包零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5237','厨房用具及日用杂品零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5238','自行车零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5239','其他日用品零售','N','N','N','Y','523','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('524','文化、体育用品及器材专门零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5241','文具用品零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5242','体育用品及器材零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5243','图书、报刊零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5244','音像制品及电子出版物零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5245','珠宝首饰零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5246','工艺美术品及收藏品零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5247','乐器零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5248','照相器材零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5249','其他文化用品零售','N','N','N','Y','524','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('525','医药及医疗器材专门零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5251','药品零售','N','N','N','Y','525','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5252','医疗用品及器材零售','N','N','N','Y','525','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5261','汽车零售','N','N','N','Y','526','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5262','汽车零配件零售','N','N','N','Y','526','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5263','摩托车及零配件零售','N','N','N','Y','526','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5264','机动车燃料零售','N','N','N','Y','526','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('527','家用电器及电子产品专门零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5271','家用视听设备零售','N','N','N','Y','527','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5272','日用家电设备零售','N','N','N','Y','527','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5273','计算机、软件及辅助设备零售','N','N','N','Y','527','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5274','通信设备零售','N','N','N','Y','527','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5279','其他电子产品零售','N','N','N','Y','527','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('528','五金、家具及室内装饰材料专门零售','N','N','Y','N','52','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5281','五金零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5282','灯具零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5283','家具零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5284','涂料零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5285','卫生洁具零售','N','N','N','Y','528','1');
+Insert into C##DB_DM.DM_INDUSTRY (INDUSTRY_ID,INDUSTRY_NAME,MLBZ,DLBZ,ZLBZ,XLBZ,PARENT_ID,STATUS) values ('5286','木质装饰材料零售','N','N','N','Y','528','1');
+REM INSERTING into C##DB_DM.DM_LOCATION
+SET DEFINE OFF;
+REM INSERTING into C##DB_DM.DM_LOG
+SET DEFINE OFF;
+REM INSERTING into C##DB_DM.DM_MENU
+SET DEFINE OFF;
+REM INSERTING into C##DB_DM.DM_NATIONALITY
+SET DEFINE OFF;
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('442','卢森堡大公国','GrandDuchy of Luxembourg','LUXEMBOURG','L','1','卢森堡','LUX','LU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('862','委内瑞拉共和国','Republic of Venezuela','VENEZUELA','V','1','委内瑞拉','VEN','VE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('704','越南社会主义共和国','Socialist Republic of Viet Nam','VIETNAM','V','1','越南','VNM','VN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('887','也门共和国','Republic of Yemen','YEMEN','Y','1','也门','YEM','YE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('891','南斯拉夫联盟共和国','Federal Republic of Yugoslavia','YUGOSLAVIA','Y','1','南斯拉夫','YUG','YU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('894','赞比亚共和国','Republic of Zambia','ZAMBIA','Z','1','赞比亚','ZMB','ZM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('716','津巴布韦共和国','Republic of Zimbabwe','ZIMBABWE','Z','1','津巴布韦','ZWE','ZW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('499','黑山','Montenegro','Montenegro','M','1','黑山','MNE','ME');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('688','塞尔维亚','Serbia','Serbia','S','1','塞尔维亚','SRB','RS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('008','阿尔巴尼亚共和国','Republic of Albania','ALBANIA','A','1','阿尔巴尼亚','ALB','AL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('020','安道尔公国','Principality of Andorra','ANDORRA','A','1','安道尔','AND','AD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('024','安哥拉共和国','Republic of Angola','ANGOLA','A','1','安哥拉','AGO','AO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('660','安圭拉','Anguilla','ANGUILLA','A','1','安圭拉','AIA','AI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('010','南极洲','Antarctica','ANTARCTICA','A','1','南极洲','ATA','AQ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('032','阿根廷共和国','Argentine Republic','ARGENTINA','A','1','阿根廷','ARG','AR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('051','亚美尼亚共和国','Republic of Armenia','ARMENIA','A','1','亚美尼亚','ARM','AM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('533','阿鲁巴','Aruba','ARUBA','A','1','阿鲁巴','ABW','AW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('036','澳大利亚联邦','Commonwealth of Australia','AUSTRALIA','A','1','澳大利亚','AUS','AU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('040','奥地利共和国','Republic of Austria','AUSTRIA','A','1','奥地利','AUT','AT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('031','阿塞拜疆共和国','Republic of Azerbaijan','AZERBAIJAN','A','1','阿塞拜疆','AZE','AZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('044','巴哈马联邦','Commonwealth of the Bahamas','BAHAMAS','B','1','巴哈马','BHS','BS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('048','巴林国','State of Bahrain','BAHRAIN','B','1','巴林','BHR','BH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('052','巴巴多斯','Barbados','BARBADOS','B','1','巴巴多斯','BRB','BB');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('112','白俄罗斯共和国','Republic of Belarus','BELARUS','B','1','白俄罗斯','BLR','BY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('056','比利时王国','Kingdom of Belgium','BELGIUM','B','1','比利时','BEL','BE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('084','伯利兹','Belize','BELIZE','B','1','伯利兹','BLZ','BZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('204','贝宁共和国','Republic of Benin','BENIN','B','1','贝宁','BEN','BJ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('060','百慕大','Bermuda','BERMUDA','B','1','百慕大','BMU','BM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('064','不丹王国','Kingdom of Bhutan','BHUTAN','B','1','不丹','BTN','BT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('068','玻利维亚共和国','Republic of Bolivia','BOLIVIA','B','1','玻利维亚','BOL','BO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('072','博茨瓦纳共和国','Republic of Botswana','BOTSWANA','B','1','博茨瓦纳','BWA','BW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('076','巴西联邦共和国','Federative Republic of Brazil','BRAZIL','B','1','巴西','BRA','BR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('096','文莱达鲁萨兰国','Brunei Darussalam','BRUNEI','B','1','文莱','BRN','BN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('100','保加利亚共和国','Republic of Bulgaria','BULGARIA','B','1','保加利亚','BGR','BG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('108','布隆迪共和国','Republic of Burundi','BURUNDI','B','1','布隆迪','BDI','BI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('116','柬埔寨王国','Kingdom of Cambodia','CAMBODIA','K','1','柬埔寨','KHM','KH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('120','喀麦隆共和国','Republic of Cameroon','CAMEROON','C','1','喀麦隆','CMR','CM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('124','加拿大','Canada','CANADA','C','1','加拿大','CAN','CA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('132','佛得角共和国','Republic of CapeVerde','CAPEVERDE','C','1','佛得角','CPV','CV');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('148','乍得共和国','Republic of Chad','CHAD','T','1','乍得','TCD','TD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('152','智利共和国','Republic of Chile','CHILE','C','1','智利','CHL','CL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('156','中华人民共和国','People''s Republic of China','CHINA','C','1','中国','CHN','CN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('170','哥伦比亚共和国','Republic of Colombia','COLOMBIA','C','1','哥伦比亚','COL','CO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('178','刚果共和国','Republic of Congo','CONGO','C','1','刚果（布）','COG','CG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('188','哥斯达黎加共和国','Republic of Costa Rica','COSTARICA','C','1','哥斯达黎加','CRI','CR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('191','克罗地亚共和国','Republic of Croatia','CROATIA','H','1','克罗地亚','HRV','HR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('192','古巴共和国','Republic of Cuba','CUBA','C','1','古巴','CUB','CU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('196','塞浦路斯共和国','Republic of Cyprus','CYPRUS','C','1','塞浦路斯','CYP','CY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('208','丹麦王国','Kingdom of Denmark','DENMARK','D','1','丹麦','DNK','DK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('262','吉布提共和国','Republic of Djibouti','DJIBOUTI','D','1','吉布提','DJI','DJ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('212','多米尼克国','Commonwealth of Dominica','DOMINICA','D','1','多米尼克','DMA','DM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('626','东帝汶','East Timor','EASTTIMOR','T','1','东帝汶','TMP','TP');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('218','厄瓜多尔共和国','Republic of Ecuador','ECUADOR','E','1','厄瓜多尔','ECU','EC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('818','阿拉伯埃及共和国','Arab Republic of Egypt','EGYPT','E','1','埃及','EGY','EG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('222','萨尔瓦多共和国','Republic of El Salvador','ELSALVADOR','S','1','萨尔瓦多','SLV','SV');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('232','厄立特里亚国','State of Eritrea','ERITREA','E','1','厄立特里亚','ERI','ER');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('233','爱沙尼亚共和国','Republic of Estonia','ESTONIA','E','1','爱沙尼亚','EST','EE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('242','斐济群岛共和国','Republic of the Fiji Islands','FIJI','F','1','斐济','FJI','FJ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('246','芬兰共和国','Republic of Finland','FINLAND','F','1','芬兰','FIN','FI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('250','法兰西共和国','French Republic','FRANCE','F','1','法国','FRA','FR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('266','加蓬共和国','Gabonese Republic','GABON','G','1','加蓬','GAB','GA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('270','冈比亚共和国','Republic of the Gambia','GAMBIA','G','1','冈比亚','GMB','GM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('268','格鲁吉亚','Georgia','GEORGIA','G','1','格鲁吉亚','GEO','GE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('276','德意志联邦共和国','Federal Republic of Germany','GERMANY','D','1','德国','DEU','DE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('288','加纳共和国','Republic of Ghana','GHANA','G','1','加纳','GHA','GH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('292','直布罗陀','Gibraltar','GIBRALTAR','G','1','直布罗陀','GIB','GI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('300','希腊共和国','Hellenic Republic','GREECE','G','1','希腊','GRC','GR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('304','格陵兰','Greenland','GREENLAND','G','1','格陵兰','GRL','GL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('308','格林纳达','Grenada','GRENADA','G','1','格林纳达','GRD','GD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('312','瓜德罗普','Guadeloupe','GUADELOUPE','G','1','瓜德罗普','GLP','GP');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('316','关岛','Guam','GUAM','G','1','关岛','GUM','GU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('320','危地马拉共和国','Republic of Guatemala','GUATEMALA','G','1','危地马','GTM','GT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('324','几内亚共和国','Republic of Guinea','GUINEA','G','1','几内亚','GIN','GN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('328','圭亚那合作共和国','Cooperative Republic of Guyana','GUYANA','G','1','圭亚那','GUY','GY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('332','海地共和国','Republic of Haiti','HAITI','H','1','海地','HTI','HT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('340','洪都拉斯共和国','Republic of Honduras','HONDURAS','H','1','洪都拉斯','HND','HN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('348','匈牙利共和国','Republic of Hungary','HUNGARY','H','1','匈牙利','HUN','HU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('352','冰岛共和国','Republic of Iceland','ICELAND','I','1','冰岛','ISL','IS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('356','印度共和国','Republic of India','INDIA','I','1','印度','IND','IN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('360','印度尼西亚共和国','Republic of Indonesia','INDONESIA','I','1','印度尼西亚','IDN','ID');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('364','伊朗伊斯兰共和国','Islamic Republic of Iran','IRAN','I','1','伊朗','IRN','IR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('368','伊拉克共和国','Republic of Iraq','IRAQ','I','1','伊拉克','IRQ','IQ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('372','爱尔兰','Ireland','IRELAND','I','1','爱尔兰','IRL','IE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('376','以色列国','State of Israel','ISRAEI','I','1','以色列','ISR','IL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('380','意大利共和国','Italian Republic','ITALY','I','1','意大利','ITA','IT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('388','牙买加','Jamaica','JAMAICA','J','1','牙买加','JAM','JM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('392','日本国','Japan','JAPAN','J','1','日本','JPN','JP');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('400','约旦哈希姆王国','Hashemite Kingdom of Jordan','JORDAN','J','1','约旦','JOP','JO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('398','哈萨克斯坦共和国','Republic of Kazakhstan','KAZAKHSTAN','K','1','哈萨克斯坦','KAZ','KZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('404','肯尼亚共和国','Republic of Kenya','KENYA','K','1','肯尼亚','KEN','KE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('296','基里巴斯共和国','Republic of Kiribati','KIRIBATI','K','1','基里巴斯','KIR','KI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('414','科威特国','State of Kuwait','KUWAIT','K','1','科威特','KWT','KW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('417','吉尔吉斯共和国','Kyrgyz Republic','KYRGYZSTAN','K','1','吉尔吉斯斯坦','KGZ','KG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('428','拉脱维亚共和国','Republic of Latvia','LATVIA','L','1','拉脱维亚','LVA','LV');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('422','黎巴嫩共和国','Lebanese Republic','LEBANON','L','1','黎巴嫩','LBN','LB');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('426','莱索托王国','Kingdom of Lesotho','LESOTHO','L','1','莱索托','LSO','LS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('430','利比里亚共和国','Republic of Liberia','LIBERIA','L','1','利比里亚','LBR','LR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('440','立陶宛共和国','Republic of Lithuania','LITHUANIA','L','1','立陶宛','LTU','LT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('450','马达加斯加共和国','Republic of Madagascar','MADAGASCAR','M','1','马达加斯加','MDG','MG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('454','马拉维共和国','Republic of Malawi','MALAWI','M','1','马拉维','MWI','MW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('458','马来西亚','Malaysia','MALAYSIA','M','1','马来西亚','MYS','MY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('462','马尔代夫共和国','Republic of Maldives','MALDIVES','M','1','马尔代夫','MDV','MV');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('466','马里共和国','Republic of Mali','MALI','M','1','马里','MLI','ML');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('470','马耳他共和国','Republic of Malta','MALTA','M','1','马耳他','MLT','MT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('474','马提尼克','Martinique','MARTINIQUE','M','1','马提尼克','MTQ','MQ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('478','毛里塔尼亚伊斯兰共和国','Islamic Republic of Mauritania','MAURITANIA','M','1','毛里塔尼亚','MRT','MR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('480','毛里求斯共和国','Republic of Mauritius','MAURITIUS','M','1','毛里求斯','MUS','MU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('175','马约特','Mayotte','MAYOTTE','M','1','马约特','MYT','YT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('484','墨西哥合众国','United States of Mexico','MEXICO','M','1','墨西哥','MEX','MX');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('498','摩尔多瓦共和国','Republic of Moldova','MOLDOVA','M','1','摩尔多瓦','MDA','MD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('492','摩纳哥公国','Principality of Monaco','MONACO','M','1','摩纳哥','MCO','MC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('496','蒙古国','Mongolia','MONGOLIA','M','1','蒙古','MNG','MN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('500','蒙特塞拉特','Montserrat','MONTSERRAT','M','1','蒙特塞拉特','MSR','MS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('504','摩洛哥王国','Kingdom of Morocco','MOROCCO','M','1','摩洛哥','MAR','MA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('508','莫桑比克共和国','Republic of Mozambique','MOZAMBIQUE','M','1','莫桑比克','MOZ','MZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('104','缅甸联邦','Union of Myanmar','MYANMAR','M','1','缅甸','MMR','MM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('516','纳米比亚共和国','Republic of Namibia','NAMIBIA','N','1','纳米比亚','NAM','NA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('520','瑙鲁共和国','Republic of Nauru','NAURU','N','1','瑙鲁','NRU','NR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('524','尼泊尔王国','Kingdom of Nepal','NEPAL','N','1','尼泊尔','NPL','NP');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('554','新西兰','New Zealand','NEWZEALAND','N','1','新西兰','NZL','NZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('558','尼加拉瓜共和国','Republic of Nicaragua','NICARAGUA','N','1','尼加拉瓜','NIC','NI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('562','尼日尔共和国','Republic of Niger','NIGER','N','1','尼日尔','NER','NE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('566','尼日利亚联邦共和国','Federal Republic of Nigeria','NIGERIA','N','1','尼日利亚','NGA','NG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('570','纽埃','Niue','NIUE','N','1','纽埃','NIU','NU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('578','挪威王国','Kingdom of Norway','NORWAY','N','1','挪威','NOR','NO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('512','阿曼苏丹国','Sultanate of Oman','OMAN','O','1','阿曼','OMN','OM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('586','巴基斯坦伊斯兰共和国','Islamic Republic of Pakistan','PAKISTAN','P','1','巴基斯坦','PAK','PK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('585','帕劳共和国','Republic of Palau','PALAU','P','1','帕劳','PLW','PW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('275','巴勒斯坦国','State of Palestine','PALESTINE','P','1','巴勒斯坦','PSE','PS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('591','巴拿马共和国','Republic of Panama','PANAMA','P','1','巴拿马','PAN','PA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('600','巴拉圭共和国','Republic of Paraguay','PARAGUAY','P','1','巴拉圭','PRY','PY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('604','秘鲁共和国','Republic of Peru','PERU','P','1','秘鲁','PER','PE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('612','皮特凯恩','Pitcairn','PITCAIRN','P','1','皮特凯恩','PCN','PN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('616','波兰共和国','Republic of Poland','POLAND','P','1','波兰','POL','PL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('620','葡萄牙共和国','Portuguese Republic','PORTUGAL','P','1','葡萄牙','PRT','PT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('630','波多黎各','Puerto Rico','PUERTORICO','P','1','波多黎各','PRI','PR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('634','卡塔尔国','State of Qatar','QATAR','Q','1','卡塔尔','QAT','QA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('638','留尼汪','Reunion','REUNION','R','1','留尼汪','REU','RE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('642','罗马尼亚','Romania','ROMANIA','R','1','罗马尼亚','ROM','RO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('646','卢旺达共和国','Republic of Rwanda','RWANDA','R','1','卢旺达','RWA','RW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('662','圣卢西亚','Saint Lucia','SAINTLUCIA','L','1','圣卢西亚','LCA','LC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('882','萨摩亚独立国','Independent State of Samoa','SAMOA','W','1','萨摩亚','WSM','WS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('674','圣马力诺共和国','Republic of SanMarino','SANMARINO','S','1','圣马力诺','SMR','SM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('686','塞内加尔共和国','Republic of Senegal','SENEGAL','S','1','塞内加尔','SEN','SN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('690','塞舌尔共和国','Republic of Seychelles','SEYCHELLES','S','1','塞舌尔','SYC','SC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('702','新加坡共和国','Republic of Singapore','SINGAPORE','S','1','新加坡','SGP','SG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('703','斯洛伐克共和国','Slovak Republic','SLOVAKIA','S','1','斯洛伐克','SVK','SK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('705','斯洛文尼亚共和国','Republic of Slovenia','SLOVENIA','S','1','斯洛文尼亚','SVN','SI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('706','索马里共和国','Somali Republic','SOMALIA','S','1','索马里','SOM','SO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('724','西班牙王国','Kingdom of Spain','SPAIN','E','1','西班牙','ESP','ES');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('736','苏丹共和国','Republic of the Sudan','SUDAN','S','1','苏丹','SDN','SD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('740','苏里南共和国','Republic of Suriname','SURINAME','S','1','苏里南','SUR','SR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('748','斯威士兰王国','Kingdom of Swaziland','SWAZILAND','S','1','斯威士兰','SWZ','SZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('752','瑞典王国','Kingdom of Sweden','SWEDEN','S','1','瑞典','SWE','SE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('762','塔吉克斯坦共和国','Republic of Tajikistan','TANKISTAN','T','1','塔吉克斯坦','TJK','TJ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('834','坦桑尼亚联合共和国','United Republic of Tanzania','TANZANIA','T','1','坦桑尼亚','TZA','TZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('764','泰王国','Kingdom of Thailand','THAILAND','T','1','泰国','THA','TH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('768','多哥共和国','Republic of Togo','TOGO','T','1','多哥','TGO','TG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('772','托克劳','Tokelau','TOKELAU','T','1','托克劳','TKL','TK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('776','汤加王国','Kingdom of Tonga','TONGA','T','1','汤加','TON','TO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('788','突尼斯共和国','Republic of Tunisia','TUNISIA','T','1','突尼斯','TUN','TN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('792','土耳其共和国','Republic of Turkey','TURKEY','T','1','土耳其','TUR','TR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('798','图瓦卢','Tuvalu','TUVALU','T','1','图瓦卢','TUV','TV');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('800','乌干达共和国','Republic of Uganda','UGANDA','U','1','乌干达','UGA','UG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('804','乌克兰','Ukraine','UKRAINE','U','1','乌克兰','UKR','UA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('858','乌拉圭东岸共和国','Oriental Republic of Uruguay','URUGUAY','U','1','乌拉圭','URY','UY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('860','乌兹别克斯坦共和国','Republic of Uzbekistan','UZBEKISTAN','U','1','乌兹别克斯坦','UZB','UZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('548','瓦努阿图共和国','Republic of Vanuatu','VANUATU','V','1','瓦努阿图','VUT','VU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('336','梵蒂冈城国','Vatican City State','VATICAN','V','1','梵蒂冈','VAT','VA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('012','阿尔及利亚民主人民共和国','Democratic People''s Republic of Algeria','ALGERIA','D','1','阿尔及利亚','DZA','DZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('050','盂加拉人民共和国','People''s Republic of Bangladesh','BANGLADESH','B','1','孟加拉国','BGD','BD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('344','中国香港特别行政区','Hong Kong Special Administrative Region of China','HONGKONG','H','1','香港','HKG','HK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('446','中国澳门特别行政区','Macau Special Administrative Region of China','MACAU','M','1','澳门','MAC','MO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('174','科摩罗伊斯兰联邦共和国','Islamic Federal Republic of the Comoros','COMOROS','C','1','科摩罗','COM','KM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('231','埃塞俄比亚联邦民主共和国','Federal Democratic Republic of Ethiopia','ETHIOPIA','E','1','埃塞俄比亚','ETH','ET');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('418','老挝人民民主共和国','Lao People''s Democratic Republic','LAOS','L','1','老挝','LAO','LA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('434','大阿拉伯利比亚人民社会主义民众国','Great Socialist People''s Libyan Arab Jamahiriya','LIBYA','L','1','利比亚','LBY','LY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('144','斯里兰卡民主社会主义共和国','Democratic Socialist Republic of Sri Lanka','SRILANKA','L','1','斯里兰卡','LKA','LK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('092','英属维尔京群岛','British Virgin Islands','VIRGINISLANDS，BRITISH','V','1','英属维尔京群岛','VGB','VG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('850','美属维尔京群岛','Virgin Islands of the United States','VIRGINISLANDS，U.S.','V','1','美属维尔京群岛','VIR','VI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('876','瓦利斯和富图纳','Wallisand Futuna','WALLISANDFUTUNA','W','1','瓦利斯和富图纳','WLF','WF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('732','西撒哈拉','Western Sahara','WESTERNSAHARA','E','1','西撒哈拉','ESH','EH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('004','阿富汗','Afghanistan','AFGHANISTAN','A','1','阿富汗','AFG','AF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('016','美属萨摩亚','American Samoa','AMERICANSAMOA','A','1','美属萨摩亚','ASM','AS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('028','安提瓜和巴布达','Antiguaand Barbuda','ANTIGUAANDBARBUDA','A','1','安提瓜和巴布达','ATG','AG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('070','波斯尼亚和黑塞哥维那','Bosnia and Herzegovina','BOSNIAANDHERZEGOVINA','B','1','波黑','BIH','BA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('074','布维岛','Bouvet Island','BOUVETISLAND','B','1','布维岛','BVT','BV');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('086','英属印度洋领地','British Indian Ocean Territory','BRITISHINDIANOCEANTERRITORY','I','1','英属印度洋领地','IOT','IO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('854','布基纳法索','Burkina Faso','BURKINAFASO','B','1','布基纳法索','BFA','BF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('136','开曼群岛','Cayman Islands','CAYMANISLANDS','C','1','开曼群岛','CYM','KY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('140','中非共和国','Central African Republic','CENTRALAFRICANREPUBLIC','C','1','中非','CAF','CF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('158','中国台湾','Taiwan，Province of China','TAIWAN，PROVINCEOFCHINA','T','1','台湾','TWN','TW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('162','圣诞岛','Christmas Island','CHRISTMASISLAND','C','1','圣诞岛','CXR','CX');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('166','科科斯（基林）群岛','Cocos（Keeling）Islands','COCOS（KEELING）ISLANDS','C','1','科科斯（基林）群岛','CCK','CC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('180','刚果民主共和国','Democratic Republic of Congo','CONGO，THEDEMOCRATICREPUBLICOFTHE','C','1','刚果（金）','COD','CD');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('184','库克群岛','Cook Islands','COOKISLANDS','C','1','库克群岛','COK','CK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('384','科特迪瓦共和国','Republic of Coted''Ivoire','COTED''IVOIRE','C','1','科特迪瓦','CIV','CI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('203','捷克共和国','Czech Republic','CZECHREPUBLIC','C','1','捷克','CZE','CZ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('214','多米尼加共和国','Dominican Republic','DOMINICANREPUBLIC','D','1','多米尼加','DOM','DO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('226','赤道几内亚共和国','Republic of Equatorial Guinea','EQUATORIALGUINEA','G','1','赤道几内亚','GNQ','GQ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('238','福克兰群岛（马尔维纳斯）','Falkland Islands（Malvinas）','FALKLANDISLANDS（MALVINAS）','F','1','福克兰群岛（马尔维纳斯）','FLK','FK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('234','法罗群岛','Faroe Islands','FAROEISLANDS','F','1','法罗群岛','FRO','FO');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('254','法属圭亚那','French Guiana','FRENCHGUIANA','G','1','法属圭亚那','GUF','GF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('258','法属波利尼西亚','French Polynesia','FRENCHPOLYNESIA','P','1','法属波利尼西亚','PYF','PF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('260','法属南部领地','French Southern Territories','FRENCHSOUTHERNTERRITORIES','A','1','法属南部领地','ATF','TF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('624','几内亚比绍共和国','Republic of Guinea-Bissau','GUINEA-BISSAU','G','1','几内亚比绍','GNB','GW');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('334','赫德岛和麦克唐纳岛','Heard Islandand Mcdonald Islands','HEARDISLANDANDMCDONALDISLANDS','H','1','赫德岛和麦克唐纳岛','HMD','HM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('408','朝鲜民主主义人民共和国','Democratic People''s Republic of Korea','KOREA，DEMOCRATICPEOPLE''SREPUBLICOF','P','1','朝鲜','PRK','KP');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('410','大韩民国','Republic of Korea','KOREA，REPUBLICOF','K','1','韩国','KOR','KR');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('438','列支敦士登公国','Principality of Liechtenstein','LIECHTENSTEIN','L','1','列支敦士登','LIE','LI');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('807','前南斯拉夫马其顿共和国','Theformer Yugoslav Republic of Macedonia','MACEDONIA，THEFORMERYUGOSLAVREPUBLICOF','M','1','前南马其顿','MKD','MK');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('584','马绍尔群岛共和国','Republic of the Marshall Islands','MARSHALLISLANDS','M','1','马绍尔群岛','MHL','MH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('583','密克罗尼西亚联邦','Federated States of Micronesia','MICRONESIA，FEDERATEDSTATESOF','F','1','密克罗尼西亚联邦','FSM','FM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('528','荷兰王国','Kingdom of the Netherlands','NETHERLANDS','N','1','荷兰','NLD','NL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('530','荷属安的列斯','Netherlands Antilles','NETHERLANDSANTILLES','A','1','荷属安的列斯','ANT','AN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('540','新喀里多尼亚','New Caledonia','NEWCALEDONIA','N','1','新喀里多尼亚','NCL','NC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('574','诺福克岛','Norfolk Island','NORFOLKISLAND','N','1','诺福克岛','NFK','NF');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('580','北马里亚纳自由联邦','Commonwealth of the Northern Mariana Islands','NORTHERNMARIANAISLANDS','M','1','北马里亚纳','MNP','MP');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('598','巴布亚新几内亚独立国','Independent State of Papua New Guinea','PAPUANEWGUINEA','P','1','巴布亚新几内亚','PNG','PG');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('608','菲律宾共和国','Republic of the Philippines','PHILIPPINES','P','1','菲律宾','PHL','PH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('643','俄罗斯联邦','Russian Federation','RUSSIANFEDERATION','R','1','俄罗斯联邦','RUS','RU');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('654','圣赫勒拿','Saint Helena','SAINTHELENA','S','1','圣赫勒拿','SHN','SH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('659','圣基茨和尼维斯联邦','Federation of Saint Kittsand Nevis','SAINTKITTSANDNEVIS','K','1','圣基茨和尼维斯','KNA','KN');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('666','圣皮埃尔和密克隆','Saint Pierreand Miquelon','SAINTPIERREANDMIQUELON','S','1','圣皮埃尔和密克隆','SPM','PM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('670','圣文森特和格林纳丁斯','Saint Vincentand the Grenadines','SAINTVINCENTANDTHEGRENADINES','V','1','圣文森特和格林纳丁斯','VCT','VC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('678','圣多美和普林西比民主共和国','Democratic Republic of Sao Tomeand Principe','SAOTOMEANDPRINCIPE','S','1','圣多美和普林西比','STP','ST');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('682','沙特阿拉伯王国','Kingdom of Saudi Arabia','SAUDIARABIA','S','1','沙特阿拉伯','SAU','SA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('694','塞拉利昂共和国','Republic of Sierra Leone','SIERRALEONE','S','1','塞拉利昂','SLE','SL');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('090','所罗门群岛','Solomon Islands','SOLOMONISLANDS','S','1','所罗门群岛','SLB','SB');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('710','南非共和国','Republic of SouthAfrica','SOUTHAFRICA','Z','1','南非','ZAF','ZA');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('239','南乔治亚岛和南桑德韦奇岛','South Georgia and the South Sandwich Islands','SOUTHGEORGIAANDTHESOUTHSANDWICHISLANDS','S','1','南乔治亚岛和南桑德韦奇岛','SGS','GS');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('744','斯瓦尔巴岛和扬马延岛','Svalbardand Jan Mayen','SVALBARDANDJANMAYEN','S','1','斯瓦尔巴岛和扬马延岛','SJM','SJ');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('756','瑞士联邦','Swiss Confederation','SWITZERLAND','C','1','瑞士','CHE','CH');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('760','阿拉伯叙利亚共和国','Syrian Arab Republic','SYRIANARABREPUBLIC','S','1','叙利亚','SYR','SY');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('780','特立尼达和多巴哥共和国','Republic of Trinidadand Tobago','TRINIDADANDTOBAGO','T','1','特立尼达和多巴哥','TTO','TT');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('795','土库曼斯坦','Turkmenistan','TURKMENISTAN','T','1','土库曼斯坦','TKM','TM');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('796','特克斯和凯科斯群岛','Turksand Caicos Islands','TURKSANDCAICOSISLANDS','T','1','特克斯和凯科斯群岛','TCA','TC');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('784','阿拉伯联合酋长国','United Arab Emirates','UNITEDARABEMIRATES','A','1','阿联酋','ARE','AE');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('840','美利坚合众国','Unitedstates of America','UNITEDSTATES','U','1','美国','USA','US');
+Insert into C##DB_DM.DM_NATIONALITY (NATIONALITY_ID,NATIONALITY_NAME_ZH,NATIONALITY_NAME_EN,NATIONALITY_EN_SIMPLE,ALPHABETIC,STATUS,NATIONALITY_ZH_SIMPLE,FORMAL_DM,RESERVE_DM) values ('581','美国本土外小岛屿','United States Minor Outlying Islands','UNITEDSTATESMINOROUTLYINGISLANDS','U','1','美国本土外小岛屿','UMI','UM');
+REM INSERTING into C##DB_DM.DM_PRODUCT
+SET DEFINE OFF;
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('101','美食外卖','1','-','1','0',1,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('102','电影演出','1','-','0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('103','酒店住宿','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('104','休闲娱乐','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('105','便民生活','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('106','丽人美发','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('107','结婚婚宴','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('109','运动健身','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('108','母婴亲子','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('110','家装家居','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('111','宠物服务','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('112','学习培训','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('113','医疗健康','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('114','汽车服务','1',null,'1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('115','同城服务','1','小程序首页主菜单显示。','1','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('198','热门','1','推荐分类，显示在小程序主页推荐栏。','1','0',1,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10101','外卖','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10102','优惠券','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10103','蛋糕甜点','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10104','火锅','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10105','自助餐','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10106','小吃快餐','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10107','日韩料理','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10108','西餐','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10109','聚餐宴请','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10110','烧烤撸串','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10111','东北菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10112','川湘菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10113','江浙菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10114','香锅烤鱼','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10115','粤菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10116','西北菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10117','咖啡酒吧','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10118','云贵菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10119','东南亚菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10120','海鲜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10121','素食','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10122','台湾/客家菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10123','创意菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10124','汤/粥/炖菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10125','蒙餐','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10126','新疆菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10127','京菜鲁菜','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10199','其他美食','101',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10301','经济','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10302','主题','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10303','舒适','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10304','高档','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10305','豪华','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10306','客栈','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10307','公寓','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10308','别墅','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10309','民宿/青旅','103',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10401','足疗按摩','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10402','洗浴/汗蒸','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10403','KTV','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10404','酒吧','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10405','电玩/游戏厅','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10406','网吧网咖','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10407','运动健身','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10408','电影','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10409','DIY手工坊','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10410','密室逃脱','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10411','茶馆','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10412','棋牌室','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10413','桌游','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10414','真人CS','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10415','采摘/农家乐','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10416','演出赛事','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10417','VR','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10418','文化艺术','104',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10501','衣物/皮具洗护','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10502','家政服务','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10503','证件照','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10504','打印复印','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10505','汽车服务','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10506','搬家','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10507','宠物服务','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10508','体检','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10509','管道疏通','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10510','银行/ATM/保险','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10511','家电维修','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10512','手机/电脑维修','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10513','健康服务','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10514','鲜花','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10515','配镜','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10516','母婴亲子','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10517','充值服务','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10518','学习培训','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10519','服饰鞋包','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10520','开锁','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10521','商场购物','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10522','婚庆','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10523','成人用品','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10524','文化传媒','105',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10601','美发','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10602','美容美体','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10603','美甲美睫','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10604','瑜伽舞蹈','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10605','祛痘','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10606','纹身纹眉','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10607','整形','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10608','化妆品','106',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10701','婚纱礼服','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10702','西服定制','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10703','婚庆公司','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10704','个性写真','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10705','婚纱摄影','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10706','婚戒首饰','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10707','婚礼小礼品','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10708','婚车租赁','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10709','彩妆造型','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10710','司仪主持','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10711','婚礼跟拍','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10712','婚宴','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10713','旅拍','107',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10801','儿童乐园','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10802','婴儿游泳','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10803','儿童摄影','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10804','孕妇写真','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10805','上门拍','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10806','亲子购','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10807','幼儿教育','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10808','亲子摄影','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10809','孕产护理','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10810','坐月子','108',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10901','健身中心','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10902','综合体育馆','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10903','医疗健康','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10904','羽毛球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10905','台球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10906','武术','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10907','保龄球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10908','高尔夫','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10909','篮球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10910','滑冰','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10911','射击','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10912','网球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10913','骑马','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10914','足球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10915','乒乓球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10916','壁球','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10917','舞蹈','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10918','瑜伽','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('10999','其他','109',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('1','全部分类','0',null,'1','1',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11102','宠物医院','111',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11101','宠物店','111',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11001','装修设计','110',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11002','家电','110',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11003','家装卖场','110',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11004','装修建材','110',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11005','家具家居','110',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11201','外语培训','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11202','音乐培训','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11203','美术培训','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11204','驾校','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11205','升学辅导','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11206','留学','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11207','兴趣生活','112',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11301','体检中心','113',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11302','医院','113',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11303','诊所','113',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11304','药店','113',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11325','求职招聘','113',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11401','洗车','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11402','汽车美容','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11403','维修保养','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11404','租车','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11405','汽车改装','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11406','4S','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11407','停车场','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11499','其他汽车服务','114',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11501','同城信息','115','-','0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11502','同城交友','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11503','游戏开黑','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11504','闲置二手','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11505','寻人寻物','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11506','买房租房','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11507','求职招聘','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11508','吃喝玩乐','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('11509','宠物生活','115',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('199','其他','1','-','0','0',98,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('19801','美食','198',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('19802','电影','198',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('19803','酒店','198',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('19804','休闲','198',null,'0','0',0,'1',null);
+Insert into C##DB_DM.DM_PRODUCT (PRODUCT_ID,PRODUCT_NAME,PARENT_ID,PRODUCT_DESC,HASCHILDREN,STATE,SORT,STATUS,URL) values ('19805','外卖','198',null,'0','0',0,'1',null);
+REM INSERTING into C##DB_DM.DM_USER_LOCATION
+SET DEFINE OFF;
+REM INSERTING into C##DB_DM.DM_USER_PAYACCOUNT
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index DM_APPLIST_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_APPLIST_PK" ON "C##DB_DM"."DM_APPLIST" ("APP_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_CODE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_CODE_PK" ON "C##DB_DM"."DM_CODE" ("CODE", "CODE_TYPE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_INDUSTRY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_INDUSTRY_PK" ON "C##DB_DM"."DM_INDUSTRY" ("INDUSTRY_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_LOCATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_LOCATION_PK" ON "C##DB_DM"."DM_LOCATION" ("LOCATION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_LOG_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_LOG_PK" ON "C##DB_DM"."DM_LOG" ("LOG_TYPE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_MENU_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_MENU_PK" ON "C##DB_DM"."DM_MENU" ("MENU_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_PRODUCT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_PRODUCT_PK" ON "C##DB_DM"."DM_PRODUCT" ("PRODUCT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_USER_LOCATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_USER_LOCATION_PK" ON "C##DB_DM"."DM_USER_LOCATION" ("USER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index DM_USER_PAYACCOUNT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."DM_USER_PAYACCOUNT_PK" ON "C##DB_DM"."DM_USER_PAYACCOUNT" ("USER_ID", "PAYACCOUNT") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C0011066
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##DB_DM"."SYS_C0011066" ON "C##DB_DM"."DM_CARD" ("CARD_ID", "CARD_TYPE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table DM_MENU
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_MENU" MODIFY ("MENU_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_MENU" MODIFY ("OPEN_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_MENU" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_MENU" ADD CONSTRAINT "DM_MENU_PK" PRIMARY KEY ("MENU_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_USER_PAYACCOUNT
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_USER_PAYACCOUNT" MODIFY ("USER_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_USER_PAYACCOUNT" MODIFY ("PAYACCOUNT" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_USER_PAYACCOUNT" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_USER_PAYACCOUNT" ADD CONSTRAINT "DM_USER_PAYACCOUNT_PK" PRIMARY KEY ("USER_ID", "PAYACCOUNT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_CODE
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_CODE" MODIFY ("CODE_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CODE" MODIFY ("CODE_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CODE" MODIFY ("CODE" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CODE" ADD CONSTRAINT "DM_CODE_PK" PRIMARY KEY ("CODE", "CODE_TYPE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_INDUSTRY
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_INDUSTRY" MODIFY ("INDUSTRY_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_INDUSTRY" ADD CONSTRAINT "DM_INDUSTRY_PK" PRIMARY KEY ("INDUSTRY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_LOCATION
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_LOCATION" MODIFY ("LOCATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_LOCATION" ADD CONSTRAINT "DM_LOCATION_PK" PRIMARY KEY ("LOCATION_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "C##DB_DM"."DM_LOCATION" MODIFY ("STATUS" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table DM_APPLIST
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_APPLIST" MODIFY ("APP_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_APPLIST" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_APPLIST" ADD CONSTRAINT "DM_APPLIST_PK" PRIMARY KEY ("APP_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_CARD
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_CARD" MODIFY ("CARD_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CARD" MODIFY ("CARD_NAME" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CARD" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CARD" MODIFY ("CARD_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_CARD" ADD CONSTRAINT "SYS_C0011066" PRIMARY KEY ("CARD_ID", "CARD_TYPE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_USER_LOCATION
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_USER_LOCATION" MODIFY ("USER_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_USER_LOCATION" ADD CONSTRAINT "DM_USER_LOCATION_PK" PRIMARY KEY ("USER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_PRODUCT
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_PRODUCT" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_PRODUCT" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_PRODUCT" ADD CONSTRAINT "DM_PRODUCT_PK" PRIMARY KEY ("PRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_LOG
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_LOG" MODIFY ("LOG_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_LOG" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_LOG" ADD CONSTRAINT "DM_LOG_PK" PRIMARY KEY ("LOG_TYPE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DM_NATIONALITY
+--------------------------------------------------------
+
+  ALTER TABLE "C##DB_DM"."DM_NATIONALITY" MODIFY ("NATIONALITY_ID" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_NATIONALITY" MODIFY ("NATIONALITY_NAME_ZH" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_NATIONALITY" MODIFY ("NATIONALITY_NAME_EN" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_NATIONALITY" MODIFY ("NATIONALITY_EN_SIMPLE" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_NATIONALITY" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "C##DB_DM"."DM_NATIONALITY" ADD PRIMARY KEY ("NATIONALITY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
