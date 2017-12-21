@@ -10,9 +10,10 @@
     <result column="STATE" jdbcType="VARCHAR" property="state" />
     <result column="SORT" jdbcType="DECIMAL" property="sort" />
     <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
   </resultMap>
   <sql id="Base_Column_List">
-    PRODUCT_ID, PRODUCT_NAME, PARENT_ID, PRODUCT_DESC, HASCHILDREN, STATE, SORT, STATUS
+    PRODUCT_ID, PRODUCT_NAME, PARENT_ID, PRODUCT_DESC, HASCHILDREN, STATE, SORT, STATUS,URL
   </sql>
   <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmProduct">
     insert into DM_PRODUCT
@@ -41,6 +42,9 @@
       <if test="status != null">
         STATUS,
       </if>
+      <if test="url != null">
+        URL ,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -67,6 +71,9 @@
       <if test="status != null">
         #{status,jdbcType=CHAR},
       </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmProduct">
@@ -92,6 +99,9 @@
       </if>
       <if test="status != null">
         STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
       </if>
     </set>
     where PRODUCT_ID = #{productId,jdbcType=VARCHAR}

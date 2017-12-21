@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author Tanbo
  */
-//@Component
+@Component
 public class SimpleMappingExceptionResolver implements
         HandlerExceptionResolver {
 

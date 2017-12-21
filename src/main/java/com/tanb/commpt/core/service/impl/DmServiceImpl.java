@@ -24,6 +24,7 @@ import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -117,9 +118,9 @@ public class DmServiceImpl implements IDmService {
         if (total > 0) {
             List<DmNationality> dmGjdqList = dmGjdqMapper.selectNationalityListPagination(pageStartAndEnd[0], pageStartAndEnd[1]);
             if (null != dmGjdqList)
-                jsonResponse.getRepData().put("dmNationalityList", dmGjdqList);
+                jsonResponse.getData().put("dmNationalityList", dmGjdqList);
         }
-        jsonResponse.getRepData().put("dmNationalityCount", total);
+        jsonResponse.getData().put("dmNationalityCount", total);
 
         return jsonResponse;
     }
@@ -153,7 +154,7 @@ public class DmServiceImpl implements IDmService {
         if (errorList.size() > 0) {
             jsonResponse.setCode(ConsCommon.WARN_CODE_017);
             jsonResponse.setMsg(errorList.size() + "条" + ConsCommon.WARN_MSG_017);
-            jsonResponse.getRepData().put("errorList", errorList);
+            jsonResponse.getData().put("errorList", errorList);
         }
         return jsonResponse;
     }
@@ -196,7 +197,7 @@ public class DmServiceImpl implements IDmService {
             }
         }
         if (errorList.size() > 0) {
-            jsonResponse.getRepData().put("errorList", errorList);
+            jsonResponse.getData().put("errorList", errorList);
         }
         return jsonResponse;
     }
@@ -277,21 +278,11 @@ public class DmServiceImpl implements IDmService {
 
     @Override
     public JsonResponse selectProductTypeTreeByParentId(JsonRequest jsonRequest) {
-        return null;
+        JsonResponse jsonResponse = new JsonResponse();
+        List<DmProduct> dmProductList =
+                dmProductMapper.selectDmProductTypesByParentId(String.valueOf(jsonRequest.getReqData().get("parentId")));
+        return jsonResponse;
     }
-
-    @Override
-    public JsonResponse getProductTypeTree(JsonRequest jsonRequest) throws IOException {
-        return null;
-    }
-
-//    @Override
-//    public JsonResponse selectProductProductTreeByParentId(JsonRequest jsonRequest) {
-//        JsonResponse jsonResponse = new JsonResponse();
-//        List<DmProduct> dmProductProductList =
-//                dmProductProductMapper.selectDmProductsByParentId(String.valueOf(jsonRequest.getReqData().get("parentId")));
-//        return jsonResponse;
-//    }
 
     /**
      * 获取产品类型结构树
@@ -300,49 +291,49 @@ public class DmServiceImpl implements IDmService {
      * @return
      * @throws IOException
      */
-//    @Override
-//    public JsonResponse getProductProductTree(JsonRequest jsonRequest) throws IOException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        List<ConcurrentHashMap<String, Object>> dmProductProductList = new ArrayList<>();
-//        getProductProductTreegrid(dmProductProductList, "1");
-//        Map<String, Object> dataMap = new ConcurrentHashMap<String, Object>();
-//        dataMap.put("rows", dmProductProductList);
-//        dataMap.put("total", dmProductProductList.size());
-//        dataMap.put("footer", new ArrayList<>());
-//        HttpServletResponse httpServletResponse = (HttpServletResponse) jsonRequest.getReqData().get("response");
-//        httpServletResponse.setContentType(ContentType.getContentType("json"));
-//        httpServletResponse.setCharacterEncoding("utf-8");
-//        PrintWriter out = httpServletResponse.getWriter();
-//        out.print(objectMapper.writeValueAsString(dataMap));
-//        out.flush();
-//        return null;
-//    }
+    @Override
+    public JsonResponse getProductTypeTree(JsonRequest jsonRequest) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<ConcurrentHashMap<String, Object>> dmProductList = new ArrayList<>();
+        getProductProductTreegrid(dmProductList, "1");
+        Map<String, Object> dataMap = new ConcurrentHashMap<String, Object>();
+        dataMap.put("rows", dmProductList);
+        dataMap.put("total", dmProductList.size());
+        dataMap.put("footer", new ArrayList<>());
+        HttpServletResponse httpServletResponse = (HttpServletResponse) jsonRequest.getReqData().get("response");
+        httpServletResponse.setContentType(ContentType.getContentType("json"));
+        httpServletResponse.setCharacterEncoding("utf-8");
+        PrintWriter out = httpServletResponse.getWriter();
+        out.print(objectMapper.writeValueAsString(dataMap));
+        out.flush();
+        return null;
+    }
+
     private void getProductProductTreegrid(List<ConcurrentHashMap<String, Object>> dataList,
                                            String parentId) {
-//        List<DmProduct> dmProductProductList = dmProductMapper.selectDmProductsByParentId(parentId);
-
-        List<DmProduct> dmProductProductList = null;
-        DmProduct dmProductProduct = null;
+        List<DmProduct> dmProductList = dmProductMapper.selectDmProductTypesByParentId(parentId);
+        DmProduct dmProduct = null;
         ConcurrentHashMap<String, Object> map = null;
 
-        Iterator dmProductProductIterator = dmProductProductList.iterator();
-        while (dmProductProductIterator.hasNext()) {
+        Iterator dmProductIterator = dmProductList.iterator();
+        while (dmProductIterator.hasNext()) {
             map = new ConcurrentHashMap<String, Object>();
-            dmProductProduct = (DmProduct) dmProductProductIterator.next();
+            dmProduct = (DmProduct) dmProductIterator.next();
             dataList.add(map);
-            map.put("typeId", dmProductProduct.getProductId());
-            map.put("typeName", dmProductProduct.getProductName());
-            map.put("typeDesc", null == dmProductProduct.getProductDesc() ? "--" : dmProductProduct.getProductDesc());
-            map.put("yxbj", dmProductProduct.getStatus());
-            //   map.put("state", null == dmProductProduct.getState() ? "" : dmProductProduct.getState());
-            map.put("pId", dmProductProduct.getProductId());
-            map.put("haschildren", dmProductProduct.getHaschildren());
-            if ("1".equals(dmProductProduct.getHaschildren())) {
+            map.put("productId", dmProduct.getProductId());
+            map.put("productName", dmProduct.getProductName());
+            map.put("productDesc", null == dmProduct.getProductDesc() ? "-" : dmProduct.getProductDesc());
+            map.put("status", dmProduct.getStatus());
+//            map.put("state", null == dmProduct.getState() ? "0" : dmProduct.getState());
+            map.put("parentId", dmProduct.getParentId());
+            map.put("haschildren", null == dmProduct.getHaschildren() ? "0" : dmProduct.getHaschildren());
+            map.put("sort", null == dmProduct.getSort() ? "" : dmProduct.getSort());
+            if ("1".equals(dmProduct.getHaschildren())) {
                 map.put("state", "closed");
                 //此处state与数据库字段无关，与是否含子节点保持一致
                 List<ConcurrentHashMap<String, Object>> childrenList = new ArrayList<ConcurrentHashMap<String, Object>>();
                 map.put("children", childrenList);
-                getProductProductTreegrid(childrenList, dmProductProduct.getProductId());
+                getProductProductTreegrid(childrenList, dmProduct.getProductId());
             }
         }
     }
@@ -360,26 +351,26 @@ public class DmServiceImpl implements IDmService {
         JavaType javaProduct = CommonUtil.getCollectionType(ArrayList.class, DmProduct.class);
         List list = objectMapper.readValue(String.valueOf(jsonRequest.getReqData().get("records")), javaProduct);
         Iterator it = list.iterator();
-        DmProduct dmProductProduct;
+        DmProduct dmProduct;
         int changeCount;
         List<DmProduct> errorList = new ArrayList<DmProduct>();
 
         while (it.hasNext()) {
-            dmProductProduct = (DmProduct) it.next();
-            if (null == dmProductProduct.getProductId()) {
+            dmProduct = (DmProduct) it.next();
+            if (null == dmProduct.getProductId()) {
                 throw new BizLevelException(ConsCommon.WARN_MSG_021);
             } else {
                 //update
-                changeCount = dmProductMapper.updateByPrimaryKeySelective(dmProductProduct);
+                changeCount = dmProductMapper.updateByPrimaryKeySelective(dmProduct);
             }
             if (changeCount <= 0) {
-                errorList.add(dmProductProduct);
+                errorList.add(dmProduct);
                 jsonResponse.setCode(ConsCommon.WARN_CODE_016);
                 jsonResponse.setMsg(ConsCommon.WARN_MSG_016);
             }
         }
         if (errorList.size() > 0) {
-            jsonResponse.getRepData().put("errorList", errorList);
+            jsonResponse.getData().put("errorList", errorList);
         }
         return jsonResponse;
     }

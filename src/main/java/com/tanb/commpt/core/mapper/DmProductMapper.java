@@ -20,11 +20,11 @@ public interface DmProductMapper {
         "insert into DM_PRODUCT (PRODUCT_ID, PRODUCT_NAME, ",
         "PARENT_ID, PRODUCT_DESC, ",
         "HASCHILDREN, STATE, ",
-        "SORT, STATUS)",
+        "SORT, STATUS,URL)",
         "values (#{productId,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, ",
         "#{parentId,jdbcType=VARCHAR}, #{productDesc,jdbcType=VARCHAR}, ",
         "#{haschildren,jdbcType=CHAR}, #{state,jdbcType=VARCHAR}, ",
-        "#{sort,jdbcType=DECIMAL}, #{status,jdbcType=CHAR})"
+        "#{sort,jdbcType=DECIMAL}, #{status,jdbcType=CHAR},#{url,jdbcType=VARCHAR})"
     })
     int insert(DmProduct record);
 
@@ -33,7 +33,7 @@ public interface DmProductMapper {
     @Select({
         "select",
         "PRODUCT_ID, PRODUCT_NAME, PARENT_ID, PRODUCT_DESC, HASCHILDREN, STATE, SORT, ",
-        "STATUS",
+        "STATUS,URL",
         "from DM_PRODUCT",
         "where PRODUCT_ID = #{productId,jdbcType=VARCHAR}"
     })
@@ -50,16 +50,17 @@ public interface DmProductMapper {
           "HASCHILDREN = #{haschildren,jdbcType=CHAR},",
           "STATE = #{state,jdbcType=VARCHAR},",
           "SORT = #{sort,jdbcType=DECIMAL},",
-          "STATUS = #{status,jdbcType=CHAR}",
+          "STATUS = #{status,jdbcType=CHAR},",
+            "URL = #{url,jdbcType=CHAR}",
         "where PRODUCT_ID = #{productId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(DmProduct record);
 
-    @Select("select PRODUCT_ID, PRODUCT_NAME, STATUS, PARENT_ID, PRODUCT_DESC ,HASCHILDREN,decode(STATE,'0','closed')  state from DM_PRODUCT order by sort")
+    @Select("select PRODUCT_ID, PRODUCT_NAME, STATUS, PARENT_ID, PRODUCT_DESC ,HASCHILDREN,decode(STATE,'0','closed')  state,URL,sort from DM_PRODUCT order by sort")
     @ResultMap("com.tanb.commpt.core.mapper.DmProductMapper.BaseResultMap")
     List<DmProduct> selectAllDmProductTypes();
 
-    @Select("select PRODUCT_ID, PRODUCT_NAME, STATUS, PARENT_ID, PRODUCT_DESC,HASCHILDREN,decode(STATE,'0','closed')  state from DM_PRODUCT where PARENT_ID = #{parentId,jdbcType=VARCHAR} order by sort")
+    @Select("select PRODUCT_ID, PRODUCT_NAME, STATUS, PARENT_ID, PRODUCT_DESC,HASCHILDREN,decode(STATE,'0','closed')  state,URL,sort from DM_PRODUCT where PARENT_ID = #{parentId,jdbcType=VARCHAR} order by sort")
     @ResultMap("com.tanb.commpt.core.mapper.DmProductMapper.BaseResultMap")
     List<DmProduct> selectDmProductTypesByParentId(String parentId);
 }

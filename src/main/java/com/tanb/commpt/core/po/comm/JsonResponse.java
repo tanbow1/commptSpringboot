@@ -10,7 +10,8 @@ public class JsonResponse extends Base {
 
     private String code = ConsCommon.SUCCESS_CODE;
     private String msg = ConsCommon.SUCCESS;
-    private String detailMsg;
+    private String detailMsg = "";
+    private ConcurrentHashMap<String, Object> data = new ConcurrentHashMap<String, Object>();
 
     public JsonResponse() {
         super();
@@ -24,10 +25,8 @@ public class JsonResponse extends Base {
     public JsonResponse(String msg, String code, ConcurrentHashMap<String, Object> repData) {
         this.msg = msg;
         this.code = code;
-        this.repData = repData;
+        this.data = repData;
     }
-
-    private ConcurrentHashMap<String, Object> repData = new ConcurrentHashMap<String, Object>();
 
     public String getDetailMsg() {
         return detailMsg;
@@ -54,11 +53,11 @@ public class JsonResponse extends Base {
     }
 
 
-    public Map<String, Object> getRepData() {
-        return repData;
+    public Map<String, Object> getData() {
+        return data;
     }
 
-    public void setRepData(ConcurrentHashMap<String, Object> repData) {
-        this.repData = repData;
+    public void setData(ConcurrentHashMap<String, Object> data) {
+        this.data = data;
     }
 }

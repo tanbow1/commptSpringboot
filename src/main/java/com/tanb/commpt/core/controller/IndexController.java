@@ -52,8 +52,8 @@ public class IndexController {
                 throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":插入token失败");
             }
 
-            jsonResponse.getRepData().put(ConsCommon.ACCESS_TOKEN, resultMap.get("accessToken"));
-            jsonResponse.getRepData().put(ConsCommon.REFRESH_TOKEN, resultMap.get("refreshToken"));
+            jsonResponse.getData().put(ConsCommon.ACCESS_TOKEN, resultMap.get("accessToken"));
+            jsonResponse.getData().put(ConsCommon.REFRESH_TOKEN, resultMap.get("refreshToken"));
         } else {
             jsonResponse.setCode(ConsCommon.FAILED_CODE);
             jsonResponse.setMsg(ConsCommon.WARN_MSG_007);

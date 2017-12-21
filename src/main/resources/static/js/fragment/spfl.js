@@ -15,13 +15,13 @@ function spflTreegridOpts() {
         showFooter: true,
         url: '/comm/getJsonData2?serviceName=dmService&methodName=getProductTypeTree',
         title: '商品分类',
-        idField: 'typeId',
-        treeField: 'typeName',
+        idField: 'productId',
+        treeField: 'productName',
         columns: [[
-            {title: '名称', field: 'typeName', editor: 'text', width: 100},
-            {title: '描述', field: 'typeDesc', editor: 'text', width: 100},
+            {title: '名称', field: 'productName', editor: 'text', width: 100},
+            {title: '描述', field: 'productDesc', editor: 'text', width: 100},
             {
-                title: '有效标记', field: 'yxbj', width: 100, align: 'center', formatter: function (value) {
+                title: '有效标记(1:有)', field: 'status', width: 100, align: 'center', formatter: function (value) {
                 return value;
             }, editor: {
                 type: 'checkbox', options: {
@@ -30,14 +30,15 @@ function spflTreegridOpts() {
             }
             },
             {
-                title: '是否包含子节点', field: 'haschildren', width: 100, align: 'center', formatter: function (value) {
+                title: '是否包含子节点(1:含)', field: 'haschildren', width: 100, align: 'center', formatter: function (value) {
                 return value;
             }, editor: {
                 type: 'checkbox', options: {
                     on: '1', off: '0'
                 }
             }
-            }
+            },
+            {title: '排序', field: 'sort', editor: 'text', width: 100,align: 'center'},
         ]],
         toolbar: [{
             iconCls: 'icon-reload',
@@ -71,7 +72,7 @@ function startSpflEdit() {
     }
     var row = $('#tb_spfl').treegrid('getSelected');
     if (row) {
-        spflEditingId = row.typeId
+        spflEditingId = row.productId
         $('#tb_spfl').treegrid('beginEdit', spflEditingId);
     }
 }

@@ -81,7 +81,7 @@ public class CommController {
         if ("0".equals(resultMap.get("insertCount"))) {
             throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":刷新token失败");
         }
-        jsonResponse.getRepData().put("resultData", resultMap);
+        jsonResponse.getData().put("resultData", resultMap);
         return jsonResponse;
     }
 
@@ -96,7 +96,7 @@ public class CommController {
         if (null == resultMap) {
             throw new BizLevelException(ConsCommon.WARN_MSG_006);
         }
-        jsonResponse.getRepData().put("resultData", resultMap);
+        jsonResponse.getData().put("resultData", resultMap);
         return jsonResponse;
     }
 
