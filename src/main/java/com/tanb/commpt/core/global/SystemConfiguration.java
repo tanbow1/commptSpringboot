@@ -22,6 +22,9 @@ public class SystemConfiguration implements CommandLineRunner {
     @Value("${file.default.maxUploadSize}")
     public String FILE_MAXUPLOADSIZE;
 
+    @Value("${file.default.maxInMemorySize}")
+    public String FILE_MAXINMEMORYSIZE;
+
     @Value("${ftp.host}")
     public String FTP_HOST;
 

@@ -58,13 +58,13 @@ function gjdqDatagridOpts() {
                 }
             },
             {
-                field: 'formalDm', title: '正式代码', align: 'center',width: 100,
+                field: 'formalDm', title: '正式代码', align: 'center', width: 100,
                 editor: {
                     type: 'text'
                 }
             },
             {
-                field: 'reserveDm', title: '保留代码',align: 'center', width: 100,
+                field: 'reserveDm', title: '保留代码', align: 'center', width: 100,
                 editor: {
                     type: 'text'
                 }
@@ -177,7 +177,6 @@ function initGjdqTable(pageNumber, pageSize) {
         success: function (responseText, textStatus, XMLHttpRequest) {
             easyMsg.progressoff();
             if (checkResponseText(responseText)) {
-                console.log(responseText.data);
                 var gjdqCount = responseText.data.dmNationalityCount;
                 if (gjdqCount > 0) {
                     $("#tb_gjdq").datagrid('loadData', responseText.data.dmNationalityList);
@@ -326,7 +325,7 @@ function uploadFiles() {
         easyMsg.toast("未选择文件");
     } else {
         $("#comm_fileuploadDialog_content").ajaxSubmit({
-            url: "comm/uploadFiles",
+            url: "/comm/uploadFiles",
             dataType: "json",
             type: "POST",
             data: {
@@ -352,7 +351,6 @@ function uploadFiles() {
                     }, function () {
                         $("#comm_fileuploadDialog").dialog('close');
                     })
-
                 } else {
                     bootstraProgress.error("comm_fileuploadDialog_content");
                     easyMsg.alert(data.msg);

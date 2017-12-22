@@ -210,9 +210,9 @@ public class DmServiceImpl implements IDmService {
             for (int i = 0, len = files.length; i < len; i++) {
                 String s = files[i].getContentType();
                 if (ContentType.getContentType("xlsx").equals(s)) {
-                    list = ExcelUtil.readXlsx(files[i], 0, 0);
+                    list = ExcelUtil.readXlsx(files[i], 2, 0);
                 } else if (ContentType.getContentType("xls").equals(s)) {
-                    list = ExcelUtil.readXls(files[i], 0, 0);
+                    list = ExcelUtil.readXls(files[i], 2, 0);
                 }
             }
 
@@ -226,6 +226,7 @@ public class DmServiceImpl implements IDmService {
                 for (int i = 0, len = list.size(); i < len; i++) {
                     dmNationality = new DmNationality();
                     listItem = list.get(i);
+
                     dmNationality.setNationalityId(listItem.get(0));
                     dmNationality.setNationalityNameZh(listItem.get(1));
                     dmNationality.setNationalityNameZh(listItem.get(2));
