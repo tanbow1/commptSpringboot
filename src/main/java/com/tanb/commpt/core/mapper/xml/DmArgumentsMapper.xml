@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanb.commpt.core.mapper.DmArgumentsMapper">
+  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.DmArguments">
+    <id column="ARG_ID" jdbcType="VARCHAR" property="argId" />
+    <result column="ARG_KEY" jdbcType="VARCHAR" property="argKey" />
+    <result column="ARG_VAL1" jdbcType="VARCHAR" property="argVal1" />
+    <result column="ARG_VAL2" jdbcType="VARCHAR" property="argVal2" />
+    <result column="ARG_VAL3" jdbcType="VARCHAR" property="argVal3" />
+    <result column="ARG_VAL4" jdbcType="VARCHAR" property="argVal4" />
+    <result column="ARG_VAL5" jdbcType="VARCHAR" property="argVal5" />
+    <result column="ARG_VAL6" jdbcType="VARCHAR" property="argVal6" />
+    <result column="ARG_VAL7" jdbcType="VARCHAR" property="argVal7" />
+    <result column="ARG_VAL8" jdbcType="VARCHAR" property="argVal8" />
+    <result column="ARG_VAL9" jdbcType="VARCHAR" property="argVal9" />
+    <result column="ARG_DESC" jdbcType="VARCHAR" property="argDesc" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ARG_ID, ARG_KEY, ARG_VAL1, ARG_VAL2, ARG_VAL3, ARG_VAL4, ARG_VAL5, ARG_VAL6, ARG_VAL7, 
+    ARG_VAL8, ARG_VAL9, ARG_DESC, STATUS
+  </sql>
+  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.DmArguments">
+    insert into DM_ARGUMENTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="argId != null">
+        ARG_ID,
+      </if>
+      <if test="argKey != null">
+        ARG_KEY,
+      </if>
+      <if test="argVal1 != null">
+        ARG_VAL1,
+      </if>
+      <if test="argVal2 != null">
+        ARG_VAL2,
+      </if>
+      <if test="argVal3 != null">
+        ARG_VAL3,
+      </if>
+      <if test="argVal4 != null">
+        ARG_VAL4,
+      </if>
+      <if test="argVal5 != null">
+        ARG_VAL5,
+      </if>
+      <if test="argVal6 != null">
+        ARG_VAL6,
+      </if>
+      <if test="argVal7 != null">
+        ARG_VAL7,
+      </if>
+      <if test="argVal8 != null">
+        ARG_VAL8,
+      </if>
+      <if test="argVal9 != null">
+        ARG_VAL9,
+      </if>
+      <if test="argDesc != null">
+        ARG_DESC,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="argId != null">
+        #{argId,jdbcType=VARCHAR},
+      </if>
+      <if test="argKey != null">
+        #{argKey,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal1 != null">
+        #{argVal1,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal2 != null">
+        #{argVal2,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal3 != null">
+        #{argVal3,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal4 != null">
+        #{argVal4,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal5 != null">
+        #{argVal5,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal6 != null">
+        #{argVal6,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal7 != null">
+        #{argVal7,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal8 != null">
+        #{argVal8,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal9 != null">
+        #{argVal9,jdbcType=VARCHAR},
+      </if>
+      <if test="argDesc != null">
+        #{argDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.DmArguments">
+    update DM_ARGUMENTS
+    <set>
+      <if test="argKey != null">
+        ARG_KEY = #{argKey,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal1 != null">
+        ARG_VAL1 = #{argVal1,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal2 != null">
+        ARG_VAL2 = #{argVal2,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal3 != null">
+        ARG_VAL3 = #{argVal3,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal4 != null">
+        ARG_VAL4 = #{argVal4,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal5 != null">
+        ARG_VAL5 = #{argVal5,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal6 != null">
+        ARG_VAL6 = #{argVal6,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal7 != null">
+        ARG_VAL7 = #{argVal7,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal8 != null">
+        ARG_VAL8 = #{argVal8,jdbcType=VARCHAR},
+      </if>
+      <if test="argVal9 != null">
+        ARG_VAL9 = #{argVal9,jdbcType=VARCHAR},
+      </if>
+      <if test="argDesc != null">
+        ARG_DESC = #{argDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where ARG_ID = #{argId,jdbcType=VARCHAR}
+  </update>
+</mapper>

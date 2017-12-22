@@ -9,7 +9,6 @@ import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.service.IAuthService;
-import com.tanb.commpt.core.service.IDmService;
 import com.tanb.commpt.core.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,9 +42,6 @@ public class CommController {
 
     @Autowired
     private IAuthService authService;
-
-    @Autowired
-    private IDmService dmService;
 
     /**
      * 统一页面跳转
@@ -98,13 +94,6 @@ public class CommController {
         }
         jsonResponse.getData().put("resultData", resultMap);
         return jsonResponse;
-    }
-
-    //根据父节点获取主菜单
-    @ResponseBody
-    @RequestMapping("/getMaintree")
-    public List getMaintree() {
-        return dmService.getMenuTree("1");
     }
 
     /**

@@ -7,6 +7,7 @@ import com.tanb.commpt.core.po.XtUser;
 import com.tanb.commpt.core.po.comm.JsonRequest;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.service.IAuthService;
+import com.tanb.commpt.core.service.IDmService;
 import com.tanb.commpt.core.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Tanbo on 2017/12/8.
@@ -31,6 +34,9 @@ public class IndexController {
 
     @Autowired
     IAuthService authService;
+
+    @Autowired
+    private IDmService dmService;
 
     @RequestMapping(value = {"", "/", "login"})
     public ModelAndView error() throws BizLevelException {
@@ -62,4 +68,10 @@ public class IndexController {
         return jsonResponse;
     }
 
+    //根据父节点获取主菜单
+    @ResponseBody
+    @RequestMapping("/getMaintree")
+    public List<ConcurrentHashMap<String, Object>> getMaintree() {
+        return dmService.getMenuTree("0");
+    }
 }

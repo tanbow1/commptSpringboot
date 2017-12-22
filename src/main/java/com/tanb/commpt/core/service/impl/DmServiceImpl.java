@@ -86,6 +86,8 @@ public class DmServiceImpl implements IDmService {
             map.put("text", menu.getMenuName());
             map.put("openProduct", menu.getOpenType());
             map.put("readonly", menu.getIsEdit());
+            map.put("openType",menu.getOpenType());
+
             if (!StringUtils.isEmptyOrWhitespace(menu.getUrl())) {
                 map.put("url", menu.getUrl());
             } else {

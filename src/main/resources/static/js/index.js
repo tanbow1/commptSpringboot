@@ -4,11 +4,11 @@ $(function () {
         text: "首页",
         closable: false,
         openType: "1",
-        url: "/fragment/gjdq.html"
+        url: "/fragment/spfl.html"
     });
 
     $("#mainmenutree").tree({
-        url: '/comm/getMaintree',
+        url: '/getMaintree',
         onClick: function (node) {
             $(this).tree('toggle', node.target);//点击菜单任意位置展开
 
