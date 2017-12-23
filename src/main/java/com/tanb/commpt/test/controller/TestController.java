@@ -1,4 +1,4 @@
-package com.tanb.commpt.core.controller;
+package com.tanb.commpt.test.controller;
 
 import com.tanb.commpt.core.dao.impl.BaseDao;
 import com.tanb.commpt.core.global.SystemConfiguration;
@@ -47,7 +47,7 @@ public class TestController {
     public String index() throws Exception {
         List<DmCode> dmCodeList = dmCodeMapper.selectAll();
       //  authService.saveJwt("1");
-        ConcurrentHashMap<String, String> resultMap =  authService.checkToken("","eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJDT01NT05QVF9fSldUIiwiaWF0IjoxNTE0MDA1MTA5LCJzdWIiOiJcIjFcIiIsImV4cCI6MTUxNDE3NzkwOX0.69qChBhaj28WJuDeFzVo5PSSEJMme1eErQ2YyaY8MV4",null);
+      //  ConcurrentHashMap<String, String> resultMap =  authService.checkToken("","eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJDT01NT05QVF9fSldUIiwiaWF0IjoxNTE0MDA1MTA5LCJzdWIiOiJcIjFcIiIsImV4cCI6MTUxNDE3NzkwOX0.69qChBhaj28WJuDeFzVo5PSSEJMme1eErQ2YyaY8MV4",null);
         return "index";
     }
 
