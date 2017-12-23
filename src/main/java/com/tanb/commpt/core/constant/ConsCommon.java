@@ -106,16 +106,16 @@ public class ConsCommon {
     public static final String WARN_MSG_020 = "未获取文件内容，请检查内容合法性";
 
     public static final String WARN_CODE_021 = "W021";
-    public static final String WARN_MSG_021 = "主键不存在，无法获取记录";
+    public static final String WARN_MSG_021 = "记录不存在";
 
     // //////////////////////////////////////////////////////////jwt
 
-    public static final String JWT_ID = "jwt";
+    public static final String JWT_ID = SYS_PREFIX + "_JWT";
 
     //accessToken2天有效
     public static final long JWT_TTL = 172800000l;  //ms
 
-    //refreshToken每天刷新
+    //刷新频率每天
     public static final long JWT_REFRESH_INTERVAL = 86400000l;
 
     //refreshToken1年有效

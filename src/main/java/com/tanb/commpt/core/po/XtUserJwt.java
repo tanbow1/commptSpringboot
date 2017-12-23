@@ -9,7 +9,7 @@ public class XtUserJwt extends XtUserJwtKey {
 
     private Date jwtRefreshTtl;
 
-    private Long jwtRefreshInterval;
+    private Date jwtRefreshInterval;
 
     private Date createTime;
 
@@ -37,11 +37,11 @@ public class XtUserJwt extends XtUserJwtKey {
         this.jwtRefreshTtl = jwtRefreshTtl;
     }
 
-    public Long getJwtRefreshInterval() {
+    public Date getJwtRefreshInterval() {
         return jwtRefreshInterval;
     }
 
-    public void setJwtRefreshInterval(Long jwtRefreshInterval) {
+    public void setJwtRefreshInterval(Date jwtRefreshInterval) {
         this.jwtRefreshInterval = jwtRefreshInterval;
     }
 

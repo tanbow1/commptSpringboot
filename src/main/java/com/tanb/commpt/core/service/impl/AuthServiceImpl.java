@@ -8,12 +8,12 @@ import com.tanb.commpt.core.mapper.XtUserJwtMapper;
 import com.tanb.commpt.core.po.XtUserJwt;
 import com.tanb.commpt.core.service.IAuthService;
 import com.tanb.commpt.core.util.JwtUtil;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -21,6 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Service("authService")
 public class AuthServiceImpl implements IAuthService {
+
+    private static final Logger LOGGER = Logger.getLogger(AuthServiceImpl.class);
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -30,12 +32,18 @@ public class AuthServiceImpl implements IAuthService {
 
 
     /**
-     * 新增用户token
+     * 保存用户token：
+     * 用户下存在则覆盖
+     * jwtUtil创建的accessToken，refreshToken
+     * JWT_TTL为accessToken2天有效
+     * JWT_REFRESH_TTL为refreshToken1年有效
+     * JWT_REFRESH_INTERVAL为token刷新频率每天
+     * valid:true有效
      *
      * @param userId
      * @return 返回用户id
-     * jwtUtil创建的accessToken，refreshToken
-     * jwtUtil新增记录数，成功插入则1
+     * 记录变更数
+     * 新的accessToken，refreshToken
      * @throws Exception
      */
     @Override
@@ -55,33 +63,52 @@ public class AuthServiceImpl implements IAuthService {
         resultMap.put("userId", userId);
         resultMap.put("accessToken", accessToken);
         resultMap.put("refreshToken", refreshToken);
+        resultMap.put("valid", "true");
+        resultMap.put("errorMsg", "");
         return resultMap;
     }
 
     /**
-     * 主动刷新token
+     * 刷新token：
+     * 调用刷新token时需知道用户下原始accessToken和refreshToken
+     * 如果JWT_REFRESH_TTL refreshToken有效则可以刷新token信息
      *
      * @param accessToken
      * @param refreshToken
+     * @param isCheckRefreshToken :刷新前是否校验RefreshToken有效性
      * @return
      * @throws Exception
      */
     @Override
     @Transactional(rollbackFor = {BizLevelException.class, SystemLevelException.class})
-    public ConcurrentHashMap<String, String> refreshToken(String accessToken, String refreshToken) throws BizLevelException, JsonProcessingException {
+    public ConcurrentHashMap<String, String> refreshToken(String userId, String accessToken, String refreshToken, boolean isCheckRefreshToken) throws BizLevelException, JsonProcessingException {
         if (StringUtils.isEmptyOrWhitespace(accessToken)) {
+            LOGGER.info("accessToken为refreshToken方法的必要字段");
             throw new BizLevelException(ConsCommon.WARN_MSG_004);
         }
         if (StringUtils.isEmptyOrWhitespace(refreshToken)) {
+            LOGGER.info("refreshToken为refreshToken方法的必要字段");
             throw new BizLevelException(ConsCommon.WARN_MSG_005);
         }
-        String userId = xtUserJwtMapper.selectByRefreshToken(accessToken, refreshToken);
-        if (null == userId) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_006);
+        if (StringUtils.isEmptyOrWhitespace(userId)) {
+            LOGGER.info("必要字段userId未获取到，通过accessToken查询。");
+            userId = xtUserJwtMapper.selectByAccessToken(accessToken);
+            if (null == userId) {
+                LOGGER.info("无法通过accessToken获取userId");
+                throw new BizLevelException("更新失败(" + ConsCommon.WARN_MSG_006 + ")");
+            }
+        }
+        if (isCheckRefreshToken) {
+            String userIdRet = xtUserJwtMapper.selectByUserAndToken(userId, accessToken, refreshToken);
+            if (null == userIdRet) {
+                LOGGER.info("记录不存在或refreshToken已失效");
+                throw new BizLevelException("更新失败(" + ConsCommon.WARN_MSG_021 + "或" + ConsCommon.WARN_MSG_006 + ")");
+            } else {
+                return saveJwt(userId);
+            }
         } else {
             return saveJwt(userId);
         }
-
     }
 
     /**
@@ -92,24 +119,39 @@ public class AuthServiceImpl implements IAuthService {
      * ACCESS_TOKEN_TIMEOUT, REFRESH_TOKEN_TIMEOUT, NEED_REFRESH]
      */
     @Override
-    public ConcurrentHashMap<String, String> selectByAccessToken(String accessToken) {
-        return xtUserJwtMapper.selectByAccessToken(accessToken);
+    public ConcurrentHashMap<String, String> selectTokenInfoByUserAccessToken(String userId, String accessToken) {
+        return xtUserJwtMapper.selectTokenInfoByUserAccessToken(userId, accessToken);
     }
 
     /**
-     * 调用关键业务时token校验
+     * 调用业务时token校验
      *
-     * @param accessToken
-     * @param refreshToken
-     * @return 校验通过必返字段：userId，accessToken，refreshToken
-     * 可选insertCount，token更新时返回
+     * @param accessToken：必要参数
+     * @param refreshToken:如无需自动刷新，可为null或""
+     * @return 校验通过返回字段：valid:true, userId，accessToken，refreshToken
+     * 校验不通过：valid:false
      */
     @Transactional(rollbackFor = {Exception.class})
     @Override
-    public ConcurrentHashMap<String, String> checkToken(String accessToken, String refreshToken) throws JsonProcessingException, BizLevelException {
-        Map<String, String> tokenMap = selectByAccessToken(accessToken);
+    public ConcurrentHashMap<String, String> checkToken(String userId, String accessToken, String refreshToken) throws JsonProcessingException, BizLevelException {
+        ConcurrentHashMap<String, String> resultMap = new ConcurrentHashMap<String, String>();
+        refreshToken = StringUtils.isEmptyOrWhitespace(refreshToken) ? "" : refreshToken;
+        resultMap.put("insertCount", "0");
+        resultMap.put("valid", "true");
+        resultMap.put("errorMsg", "");
+        resultMap.put("userId", userId);
+        resultMap.put("accessToken", accessToken);
+        resultMap.put("refreshToken", refreshToken);
+        if (StringUtils.isEmptyOrWhitespace(userId)) {
+            LOGGER.info("必要字段userId未获取到，通过accessToken查询。");
+            userId = xtUserJwtMapper.selectByAccessToken(accessToken);
+            if (null == userId) {
+                LOGGER.info("无法通过accessToken获取userId");
+                throw new BizLevelException("更新失败(" + ConsCommon.WARN_MSG_006 + ")");
+            }
+        }
+        ConcurrentHashMap<String, String> tokenMap = selectTokenInfoByUserAccessToken(userId, accessToken);
         if (null != tokenMap) {
-            ConcurrentHashMap<String, String> resultMap = new ConcurrentHashMap<String, String>();
             if ("N".equals(tokenMap.get("ACCESS_TOKEN_TIMEOUT"))) {
                 //accessToken未失效
 
@@ -117,32 +159,39 @@ public class AuthServiceImpl implements IAuthService {
                     //达到需要刷新时间点
                     if (!StringUtils.isEmptyOrWhitespace(refreshToken)) {
                         //主动刷新token
-                        return refreshToken(accessToken, refreshToken);
+                        return refreshToken(userId, accessToken, refreshToken, false);
                     }
                     //无refreshToken，无法主动刷新token
-                } else {
-                    resultMap.put("userId", tokenMap.get("USER_ID"));
-                    resultMap.put("accessToken", accessToken);
-                    resultMap.put("refreshToken", tokenMap.get("REFRESH_TOKEN"));
-                    return resultMap;
-                }
 
+                } else {
+                    //token完全有效，无需刷新
+
+                }
             } else {
                 //accessToken失效
+
                 if ("N".equals(tokenMap.get("REFRESH_TOKEN_TIMEOUT"))) {
                     //refreshToken未失效
                     if (!StringUtils.isEmptyOrWhitespace(refreshToken)) {
                         //主动刷新token
-                        return refreshToken(accessToken, refreshToken);
+                        return refreshToken(userId, accessToken, refreshToken, false);
+                    } else {
+                        //无refreshToken，无法主动刷新token
+                        resultMap.put("valid", "false");
+                        resultMap.put("errorMsg", ConsCommon.WARN_MSG_006);
                     }
-                    //无refreshToken，无法主动刷新token
+
+                } else {
+                    //refreshToken也失效
+                    resultMap.put("valid", "false");
+                    resultMap.put("errorMsg", ConsCommon.WARN_MSG_006);
                 }
-
-                //refreshToken失效
-
             }
+        } else {
+            resultMap.put("valid", "false");
+            resultMap.put("errorMsg", ConsCommon.WARN_MSG_021);
         }
-        return null;
+        return resultMap;
     }
 
 

@@ -43,7 +43,10 @@ public class IndexController {
         return new ModelAndView("login");
     }
 
-    //登录
+    /**
+     * 默认登录方式
+     * 账户重新登录后token也更新
+     */
     @ResponseBody
     @RequestMapping("doLogin")
     public JsonResponse login(@ModelAttribute JsonRequest jsonRequest) throws Exception {
@@ -67,6 +70,39 @@ public class IndexController {
 
         return jsonResponse;
     }
+
+    /**
+     * token登录
+     *
+     * @param jsonRequest
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("loginToken")
+    public JsonResponse loginToken(@ModelAttribute JsonRequest jsonRequest) throws Exception {
+        JsonResponse jsonResponse = new JsonResponse();
+        String accessToken = jsonRequest.getAccessToken();
+        String refreshToken = jsonRequest.getRefreshToken();
+        String userId = String.valueOf(jsonRequest.getReqData().get("username"));
+        ConcurrentHashMap retMap = authService.checkToken(userId, accessToken, refreshToken);
+        if (retMap != null) {
+            if ("false".equals(retMap.get("valid"))) {
+                //token校验失败
+                jsonResponse.setCode(ConsCommon.FAILED_CODE);
+                jsonResponse.setMsg(retMap.get("errorMsg").toString());
+            } else {
+                //token校验成功
+                jsonResponse.getData().put(ConsCommon.ACCESS_TOKEN, retMap.get("accessToken"));
+                jsonResponse.getData().put(ConsCommon.REFRESH_TOKEN, retMap.get("refreshToken"));
+            }
+        } else {
+            jsonResponse.setCode(ConsCommon.UNKNOW_CODE);
+            jsonResponse.setMsg(ConsCommon.UNKNOW_ERROR);
+        }
+        return jsonResponse;
+    }
+
 
     //根据父节点获取主菜单
     @ResponseBody

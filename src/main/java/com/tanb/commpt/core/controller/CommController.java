@@ -73,7 +73,11 @@ public class CommController {
         if (StringUtils.isEmptyOrWhitespace(refreshToken)) {
             refreshToken = httpServletRequest.getParameter("refreshToken");
         }
-        Map<String, String> resultMap = authService.refreshToken(accessToken, refreshToken);
+        String userId = String.valueOf(jsonRequest.getReqData().get("userId"));
+        if (StringUtils.isEmptyOrWhitespace(userId)) {
+            refreshToken = httpServletRequest.getParameter("userId");
+        }
+        Map<String, String> resultMap = authService.refreshToken(userId, accessToken, refreshToken, true);
         if ("0".equals(resultMap.get("insertCount"))) {
             throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":刷新token失败");
         }
@@ -88,10 +92,8 @@ public class CommController {
         JsonResponse jsonResponse = new JsonResponse();
         String accessToken = jsonRequest.getAccessToken();
         String refreshToken = jsonRequest.getRefreshToken();
-        Map<String, String> resultMap = authService.checkToken(accessToken, refreshToken);
-        if (null == resultMap) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_006);
-        }
+        String userId = String.valueOf(jsonRequest.getReqData().get("userId"));
+        Map<String, String> resultMap = authService.checkToken(userId, accessToken, refreshToken);
         jsonResponse.getData().put("resultData", resultMap);
         return jsonResponse;
     }

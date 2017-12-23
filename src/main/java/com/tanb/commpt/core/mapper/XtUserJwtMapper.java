@@ -54,14 +54,16 @@ public interface XtUserJwtMapper {
     int updateByPrimaryKey(XtUserJwt record);
 
     @Delete({
-            "delete from T_XT_JWT",
+            "delete from XT_USER_JWT",
             "where USER_ID = #{userId,jdbcType=VARCHAR}"
     })
     int deleteByUserId(String userId);
 
     int insert2(XtUserJwt xtJwt);
 
-    ConcurrentHashMap<String, String> selectByAccessToken(String accessToken);
+    ConcurrentHashMap<String, String> selectTokenInfoByUserAccessToken(@Param("userId") String userId, @Param("accessToken") String accessToken);
 
-    String selectByRefreshToken(@Param("accessToken") String accessToken, @Param("refreshToken") String refreshToken);
+    String selectByAccessToken(@Param("accessToken") String accessToken);
+
+    String selectByUserAndToken(@Param("userId") String userId, @Param("accessToken") String accessToken, @Param("refreshToken") String refreshToken);
 }

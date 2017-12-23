@@ -12,10 +12,10 @@ public interface IAuthService {
 
     ConcurrentHashMap<String, String> saveJwt(String userId) throws Exception;
 
-    ConcurrentHashMap<String, String> refreshToken(String accessToken, String refreshToken) throws BizLevelException, JsonProcessingException;
+    ConcurrentHashMap<String, String> refreshToken(String userId, String accessToken, String refreshToken, boolean isCheck) throws BizLevelException, JsonProcessingException;
 
-    ConcurrentHashMap<String, String> selectByAccessToken(String accessToken);
+    ConcurrentHashMap<String, String> selectTokenInfoByUserAccessToken(String userId, String accessToken);
 
-    ConcurrentHashMap<String, String> checkToken(String accessToken, String refreshToken) throws JsonProcessingException, BizLevelException;
+    ConcurrentHashMap<String, String> checkToken(String userId, String accessToken, String refreshToken) throws JsonProcessingException, BizLevelException;
 
 }
