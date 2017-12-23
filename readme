@@ -11,7 +11,6 @@
 java:
     com.tanb.commpt
     core: //公共核心模块
-        annotation
         constant
         controller
         service
@@ -28,6 +27,7 @@ java:
         util
         global
     miniapp: //小程序后端
+    test://测试
 resources:
     static
     templates
