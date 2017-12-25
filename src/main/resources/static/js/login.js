@@ -68,10 +68,10 @@ function loginsys(btnObj) {
             btnObj.removeAttribute('disabled');
             loadingTagObj.removeClass('fa-spinner fa-spin');
             if (checkResponseText(responseText)) {
-                $.cookie(SYS_PREFIX + 'ACCESS_TOKEN', responseText.repData.COMMONPT_ACCESS_TOKEN);
-                $.cookie(SYS_PREFIX + 'REFRESH_TOKEN', responseText.repData.COMMONPT_REFRESH_TOKEN);
+                $.cookie(SYS_PREFIX + 'ACCESS_TOKEN', responseText.data.COMMONPT_ACCESS_TOKEN);
+                $.cookie(SYS_PREFIX + 'REFRESH_TOKEN', responseText.data.COMMONPT_REFRESH_TOKEN);
 
-                window.location.href = '/comm/toPage/index';
+                window.location.href = '/index';
             } else {
                 $("#tipMsg").text(responseText.msg);
             }
