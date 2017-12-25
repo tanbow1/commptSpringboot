@@ -3,6 +3,7 @@ package com.tanb.commpt.core.service.impl;
 import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.mapper.XtUserMapper;
+import com.tanb.commpt.core.mapper.XtUserRoleMapper;
 import com.tanb.commpt.core.po.XtUser;
 import com.tanb.commpt.core.po.XtUserRole;
 import com.tanb.commpt.core.service.IUserService;
@@ -24,6 +25,9 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private XtUserMapper xtUserMapper;
 
+    @Autowired
+    private XtUserRoleMapper xtUserRoleMapper;
+
     /**
      * 用户名、密码获取用户信息
      *
@@ -43,7 +47,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     * 保存用户信息
+     * 注册用户信息
      *
      * @param user
      * @param userRole
@@ -57,7 +61,8 @@ public class UserServiceImpl implements IUserService {
         if (!StringUtils.isEmpty(user.getPassword())) {
             user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
         } else {
-            //默认密码
+            //默认密码123456
+            user.setPassword(MD5Util.getEncryptedStr("123456"));
         }
         XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
         if (null != existsUser) {
@@ -73,9 +78,22 @@ public class UserServiceImpl implements IUserService {
         }
 
         int insertCount = xtUserMapper.insert2(user);
-        if (insertCount > 0)
-            return user.getUserId();
-        else
+        if (insertCount > 0) {
+            String userId = user.getUserId();
+            if (null == userRole) {
+                userRole = new XtUserRole();
+                userRole.setUserId(userId);
+            }
+            if (StringUtils.isEmpty(userRole.getRoleId())) {
+                //默认普通用户=2
+                userRole.setRoleId("2");
+            }
+            if (StringUtils.isEmpty(userRole.getStatus())) {
+                userRole.setStatus("1");
+            }
+            xtUserRoleMapper.insert(userRole);
+            return userId;
+        } else
             throw new BizLevelException(ConsCommon.REGIST_EXCEPTION);
     }
 
@@ -86,6 +104,10 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     private XtUser selectByPrimaryKey(String userId) {
-        return xtUserMapper.selectByPrimaryKey(userId);
+        XtUser xtUser = xtUserMapper.selectByPrimaryKey(userId);
+        if (null != xtUser) {
+            xtUser.setPassword("");
+        }
+        return xtUser;
     }
 }

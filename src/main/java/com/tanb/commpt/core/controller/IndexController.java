@@ -38,9 +38,19 @@ public class IndexController {
     @Autowired
     private IDmService dmService;
 
-    @RequestMapping(value = {"", "/", "login"})
-    public ModelAndView error() throws BizLevelException {
+    @RequestMapping("login")
+    public ModelAndView toLogin() throws BizLevelException {
         return new ModelAndView("login");
+    }
+
+    @RequestMapping(value = {"/", "index"})
+    public ModelAndView toIndex() throws BizLevelException {
+        return new ModelAndView("index");
+    }
+
+    @RequestMapping(value = {"home"})
+    public ModelAndView toHome() throws BizLevelException {
+        return new ModelAndView("home");
     }
 
     /**

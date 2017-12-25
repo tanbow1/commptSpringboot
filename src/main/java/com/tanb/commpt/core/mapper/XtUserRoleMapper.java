@@ -14,9 +14,9 @@ public interface XtUserRoleMapper  {
 
     @Insert({
         "insert into XT_USER_ROLE (USER_ID, ROLE_ID, ",
-        "YXBJ)",
+        "STATUS)",
         "values (#{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, ",
-        "#{yxbj,jdbcType=CHAR})"
+        "#{status,jdbcType=CHAR})"
     })
     int insert(XtUserRole record);
 

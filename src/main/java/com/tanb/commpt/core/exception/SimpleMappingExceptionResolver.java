@@ -35,6 +35,7 @@ public class SimpleMappingExceptionResolver implements
     @Autowired
     SystemConfiguration config;
 
+    @Override
     public ModelAndView resolveException(HttpServletRequest request,
                                          HttpServletResponse response, Object object, Exception ex) {
         JsonResponse jsonResponse = new JsonResponse();
