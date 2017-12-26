@@ -167,7 +167,7 @@
 
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="XT_ROLE_MENU" domainObjectName="xtRoleMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="XT_PERMISSION" domainObjectName="XtPermission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <!--<property name="constructorBased" value="false"/>-->

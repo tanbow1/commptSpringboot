@@ -58,11 +58,13 @@ function loginsys(btnObj) {
         timeout: SYS_TIMEOUT,
         dataType: 'json',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            debugger
             btnObj.removeAttribute('disabled');
             loadingTagObj.removeClass('fa-spinner fa-spin');
             alert(textStatus);
         },
         success: function (responseText, textStatus, XMLHttpRequest) {
+            debugger
             btnObj.removeAttribute('disabled');
             loadingTagObj.removeClass('fa-spinner fa-spin');
             // if (checkResponseText(responseText)) {
