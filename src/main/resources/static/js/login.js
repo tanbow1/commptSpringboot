@@ -49,12 +49,10 @@ function loginsys(btnObj) {
     }
 
     $.ajax({
-        url: "/doLogin",
+        url: "/login",
         data: {
-            reqData: {
-                username: username,
-                password: password
-            }
+            username: username,
+            password: password
         },
         type: 'post',
         timeout: SYS_TIMEOUT,
@@ -67,14 +65,14 @@ function loginsys(btnObj) {
         success: function (responseText, textStatus, XMLHttpRequest) {
             btnObj.removeAttribute('disabled');
             loadingTagObj.removeClass('fa-spinner fa-spin');
-            if (checkResponseText(responseText)) {
-                $.cookie(SYS_PREFIX + 'ACCESS_TOKEN', responseText.data.COMMONPT_ACCESS_TOKEN);
-                $.cookie(SYS_PREFIX + 'REFRESH_TOKEN', responseText.data.COMMONPT_REFRESH_TOKEN);
-
-                window.location.href = '/index';
-            } else {
-                $("#tipMsg").text(responseText.msg);
-            }
+            // if (checkResponseText(responseText)) {
+            //     $.cookie(SYS_PREFIX + 'ACCESS_TOKEN', responseText.data.COMMONPT_ACCESS_TOKEN);
+            //     $.cookie(SYS_PREFIX + 'REFRESH_TOKEN', responseText.data.COMMONPT_REFRESH_TOKEN);
+            //
+            //     window.location.href = '/index';
+            // } else {
+            //     $("#tipMsg").text(responseText.msg);
+            // }
         }
 
 

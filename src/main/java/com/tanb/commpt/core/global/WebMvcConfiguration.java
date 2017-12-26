@@ -1,15 +1,11 @@
 package com.tanb.commpt.core.global;
 
-import com.tanb.commpt.core.constant.ConsCommon;
 import com.tanb.commpt.core.interceptor.CommHanlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.multipart.support.MultipartFilter;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -40,5 +36,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         registry.addInterceptor(commHanlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/test/**", "/static/**", "/templates/**", "/login/**");
         super.addInterceptors(registry);
     }
+
 
 }

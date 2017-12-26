@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +42,8 @@ public class GlobalExceptionHandler {
         modelAndView = new ModelAndView();
         jsonResponse = new JsonResponse();
         jsonResponse.setCode(ConsCommon.RUNTIME_EXCEPTION_CODE);
-        jsonResponse.setMsg(ConsCommon.RUNTIME_EXCEPTION + ":" + ex.getMessage());
+        jsonResponse.setMsg(ConsCommon.RUNTIME_EXCEPTION);
+        jsonResponse.setDetailMsg(ex.getMessage());
         if (ajaxReturn(request, response)) return null;
         modelAndView.addObject("jsonResponse", jsonResponse);
         modelAndView.setViewName("common/error");
@@ -56,6 +58,36 @@ public class GlobalExceptionHandler {
         jsonResponse = new JsonResponse();
         jsonResponse.setCode(ConsCommon.MAXUPLOADSIZE_EXCEPTION_CODE);
         jsonResponse.setMsg(ConsCommon.MAXUPLOADSIZE_EXCEPTION + "(文件累计最大支持" + Integer.parseInt(config.FILE_MAXUPLOADSIZE) / (1024 * 1024) + "M)");
+        jsonResponse.setDetailMsg(ex.getMessage());
+        if (ajaxReturn(request, response)) return null;
+        modelAndView.addObject("jsonResponse", jsonResponse);
+        modelAndView.setViewName("common/error");
+        logger.error(jsonResponse.getMsg(), ex);
+        return modelAndView;
+    }
+
+    //404
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ModelAndView NoHandlerFoundException(NoHandlerFoundException ex, HttpServletRequest request, HttpServletResponse response) {
+        modelAndView = new ModelAndView();
+        jsonResponse = new JsonResponse();
+        jsonResponse.setCode(ConsCommon.NOHANDLERFOUND_EXCEPTION_CODE);
+        jsonResponse.setMsg(ConsCommon.NOHANDLERFOUND_EXCEPTION);
+        jsonResponse.setDetailMsg(ex.getMessage());
+        if (ajaxReturn(request, response)) return null;
+        modelAndView.addObject("jsonResponse", jsonResponse);
+        modelAndView.setViewName("common/error");
+        logger.error(jsonResponse.getMsg(), ex);
+        return modelAndView;
+    }
+
+    //500
+    @ExceptionHandler(Exception.class)
+    public ModelAndView Exception(Exception ex, HttpServletRequest request, HttpServletResponse response) {
+        modelAndView = new ModelAndView();
+        jsonResponse = new JsonResponse();
+        jsonResponse.setCode(ConsCommon.SERVER_EXCEPTION_CODE);
+        jsonResponse.setMsg(ConsCommon.SERVER_EXCEPTION);
         jsonResponse.setDetailMsg(ex.getMessage());
         if (ajaxReturn(request, response)) return null;
         modelAndView.addObject("jsonResponse", jsonResponse);

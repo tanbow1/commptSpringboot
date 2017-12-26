@@ -32,16 +32,19 @@ public class ConsCommon {
     public static final String UNKNOW_CODE = "-1";
     public static final String UNKNOW_ERROR = "未知错误";
 
-    // //////////////////////////////////////////////////////////异常
+    // //////////////////////////////////////////////////////////全局异常处理类
 
     public static final String RUNTIME_EXCEPTION_CODE = "EX001";
-    public static final String RUNTIME_EXCEPTION = "运行时异常";
+    public static final String RUNTIME_EXCEPTION = "程序运行出错";
 
     public static final String MAXUPLOADSIZE_EXCEPTION_CODE = "EX002";
     public static final String MAXUPLOADSIZE_EXCEPTION = "上传文件过大";
 
-    public static final String REGIST_EXCEPTION_CODE = "EX003";
-    public static final String REGIST_EXCEPTION = "注册失败";
+    public static final String NOHANDLERFOUND_EXCEPTION_CODE = "EX404";
+    public static final String NOHANDLERFOUND_EXCEPTION = "页面未找到";
+
+    public static final String SERVER_EXCEPTION_CODE = "EX500";
+    public static final String SERVER_EXCEPTION = "服务出错";
 
     // //////////////////////////////////////////////////////////警告
 

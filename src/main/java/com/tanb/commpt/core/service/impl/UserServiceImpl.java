@@ -94,7 +94,7 @@ public class UserServiceImpl implements IUserService {
             xtUserRoleMapper.insert(userRole);
             return userId;
         } else
-            throw new BizLevelException(ConsCommon.REGIST_EXCEPTION);
+            throw new BizLevelException("注册失败");
     }
 
     /**

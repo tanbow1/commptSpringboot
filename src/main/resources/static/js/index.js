@@ -4,7 +4,7 @@ $(function () {
         text: "首页",
         closable: false,
         openType: "1",
-        url: "/fragment/spfl.html"
+        url: "/static/fragment/spfl.html"
     });
 
     $("#mainmenutree").tree({

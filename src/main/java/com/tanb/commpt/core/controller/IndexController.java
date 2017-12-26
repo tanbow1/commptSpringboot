@@ -38,7 +38,7 @@ public class IndexController {
     @Autowired
     private IDmService dmService;
 
-    @RequestMapping("login")
+    @RequestMapping("loginPage")
     public ModelAndView toLogin() throws BizLevelException {
         return new ModelAndView("login");
     }

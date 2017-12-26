@@ -1,6 +1,8 @@
 //package com.tanb.commpt.core.global;
 //
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Configuration;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 //import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -19,11 +21,11 @@
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
 //                .authorizeRequests()
-//                //  .antMatchers( "/","/index").permitAll() //指定不需要认证的请求
+////                .antMatchers("/static/**").permitAll() //指定不需要认证的请求
 //                .anyRequest().authenticated()
 //                .and()
 //                .formLogin()
-//                .loginPage("/login") ////指定登录页
+//                .loginPage("/loginPage") ////指定登录页
 //                .defaultSuccessUrl("/index")  //登录成功后默认跳转到
 //                .permitAll()
 //                .and()
@@ -36,7 +38,6 @@
 //    @Override
 //    public void configure(WebSecurity web) throws Exception {
 //        //解决静态资源被拦截的问题
-//        web.ignoring().antMatchers("/static/**");
+//        web.ignoring().antMatchers("/static/**", "/templates/**");
 //    }
-//
 //}
