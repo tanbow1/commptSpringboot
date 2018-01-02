@@ -26,7 +26,7 @@ public class CommptMainApplication extends SpringBootServletInitializer {
         return springApplicationBuilder.sources(CommptMainApplication.class);
     }
 
-    //404 dispatcherServlet配置，在NoHandlerFoundException中处理
+    // dispatcherServlet配置，在NoHandlerFoundException中处理
     @Bean
     public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
         ServletRegistrationBean registration = new ServletRegistrationBean(

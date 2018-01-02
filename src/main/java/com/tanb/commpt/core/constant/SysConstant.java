@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.constant;
 
-public class ConsCommon {
+public class SysConstant {
 
     // //////////////////////////////////////////////////////////公共参数
 
@@ -39,6 +39,9 @@ public class ConsCommon {
 
     public static final String MAXUPLOADSIZE_EXCEPTION_CODE = "EX002";
     public static final String MAXUPLOADSIZE_EXCEPTION = "上传文件过大";
+
+    public static final String IO_EXCEPTION_CODE = "EX003";
+    public static final String IO_EXCEPTION = "输入输出异常";
 
     public static final String NOHANDLERFOUND_EXCEPTION_CODE = "EX404";
     public static final String NOHANDLERFOUND_EXCEPTION = "页面未找到";

@@ -2,7 +2,7 @@ package com.tanb.commpt.core.util;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
@@ -13,14 +13,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.lang.reflect.Array;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 /***
  * 公共Helper
@@ -83,10 +76,10 @@ public class CommonUtil {
     public static Integer[] getPageStartAndEnd(Integer pageNumber,
                                                Integer pageSize) {
         if (null == pageNumber || pageNumber < 1) {
-            pageNumber = ConsCommon.DEFAULT_PAGE_START;
+            pageNumber = SysConstant.DEFAULT_PAGE_START;
         }
         if (null == pageSize || pageSize < 1) {
-            pageSize = ConsCommon.DEFAULT_PAGE_SIZE;
+            pageSize = SysConstant.DEFAULT_PAGE_SIZE;
         }
         int pageStart = pageSize * (pageNumber - 1) + 1;
         int pageEnd = pageSize * pageNumber;

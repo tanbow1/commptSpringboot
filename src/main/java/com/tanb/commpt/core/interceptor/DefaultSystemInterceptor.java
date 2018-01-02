@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
 /**
- * 通用拦截器
+ * 系统通用拦截器
  *
  * @author Tanbo
  */
-public class CommHanlerInterceptor extends HandlerInterceptorAdapter {
+public class DefaultSystemInterceptor extends HandlerInterceptorAdapter {
     private static final Logger LOGGER = LoggerFactory
-            .getLogger(CommHanlerInterceptor.class);
+            .getLogger(DefaultSystemInterceptor.class);
 
     @Autowired
     private SystemConfiguration systemConfiguration;

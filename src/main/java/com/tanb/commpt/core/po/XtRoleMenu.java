@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.po;
 
-public class xtRoleMenu extends xtRoleMenuKey {
+public class XtRoleMenu extends XtRoleMenuKey {
     private String status;
 
     public String getStatus() {

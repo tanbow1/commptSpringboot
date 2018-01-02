@@ -1,7 +1,7 @@
 package com.tanb.commpt.core.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.mapper.XtUserJwtMapper;
@@ -51,8 +51,8 @@ public class AuthServiceImpl implements IAuthService {
     public ConcurrentHashMap<String, String> saveJwt(String userId) throws JsonProcessingException {
         xtUserJwtMapper.deleteByUserId(userId);
         String subject = JwtUtil.generalSubject(userId);
-        String accessToken = jwtUtil.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_TTL);
-        String refreshToken = jwtUtil.createJWT(ConsCommon.JWT_ID, subject, ConsCommon.JWT_REFRESH_TTL);
+        String accessToken = jwtUtil.createJWT(SysConstant.JWT_ID, subject, SysConstant.JWT_TTL);
+        String refreshToken = jwtUtil.createJWT(SysConstant.JWT_ID, subject, SysConstant.JWT_REFRESH_TTL);
         XtUserJwt xtJwt = new XtUserJwt();
         xtJwt.setUserId(userId);
         xtJwt.setAccessToken(accessToken);
@@ -84,25 +84,25 @@ public class AuthServiceImpl implements IAuthService {
     public ConcurrentHashMap<String, String> refreshToken(String userId, String accessToken, String refreshToken, boolean isCheckRefreshToken) throws BizLevelException, JsonProcessingException {
         if (StringUtils.isEmptyOrWhitespace(accessToken)) {
             LOGGER.info("accessToken为refreshToken方法的必要字段");
-            throw new BizLevelException(ConsCommon.WARN_MSG_004);
+            throw new BizLevelException(SysConstant.WARN_MSG_004);
         }
         if (StringUtils.isEmptyOrWhitespace(refreshToken)) {
             LOGGER.info("refreshToken为refreshToken方法的必要字段");
-            throw new BizLevelException(ConsCommon.WARN_MSG_005);
+            throw new BizLevelException(SysConstant.WARN_MSG_005);
         }
         if (StringUtils.isEmptyOrWhitespace(userId)) {
             LOGGER.info("必要字段userId未获取到，通过accessToken查询。");
             userId = xtUserJwtMapper.selectByAccessToken(accessToken);
             if (null == userId) {
                 LOGGER.info("无法通过accessToken获取userId");
-                throw new BizLevelException("更新失败(" + ConsCommon.WARN_MSG_006 + ")");
+                throw new BizLevelException("更新失败(" + SysConstant.WARN_MSG_006 + ")");
             }
         }
         if (isCheckRefreshToken) {
             String userIdRet = xtUserJwtMapper.selectByUserAndToken(userId, accessToken, refreshToken);
             if (null == userIdRet) {
                 LOGGER.info("记录不存在或refreshToken已失效");
-                throw new BizLevelException("更新失败(" + ConsCommon.WARN_MSG_021 + "或" + ConsCommon.WARN_MSG_006 + ")");
+                throw new BizLevelException("更新失败(" + SysConstant.WARN_MSG_021 + "或" + SysConstant.WARN_MSG_006 + ")");
             } else {
                 return saveJwt(userId);
             }
@@ -147,7 +147,7 @@ public class AuthServiceImpl implements IAuthService {
             userId = xtUserJwtMapper.selectByAccessToken(accessToken);
             if (null == userId) {
                 LOGGER.info("无法通过accessToken获取userId");
-                throw new BizLevelException("更新失败(" + ConsCommon.WARN_MSG_006 + ")");
+                throw new BizLevelException("更新失败(" + SysConstant.WARN_MSG_006 + ")");
             }
         }
         ConcurrentHashMap<String, String> tokenMap = selectTokenInfoByUserAccessToken(userId, accessToken);
@@ -178,18 +178,18 @@ public class AuthServiceImpl implements IAuthService {
                     } else {
                         //无refreshToken，无法主动刷新token
                         resultMap.put("valid", "false");
-                        resultMap.put("errorMsg", ConsCommon.WARN_MSG_006);
+                        resultMap.put("errorMsg", SysConstant.WARN_MSG_006);
                     }
 
                 } else {
                     //refreshToken也失效
                     resultMap.put("valid", "false");
-                    resultMap.put("errorMsg", ConsCommon.WARN_MSG_006);
+                    resultMap.put("errorMsg", SysConstant.WARN_MSG_006);
                 }
             }
         } else {
             resultMap.put("valid", "false");
-            resultMap.put("errorMsg", ConsCommon.WARN_MSG_021);
+            resultMap.put("errorMsg", SysConstant.WARN_MSG_021);
         }
         return resultMap;
     }

@@ -1,10 +1,12 @@
 package com.tanb.commpt.core.po;
 
-import com.tanb.commpt.core.po.comm.Base;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Date;
+import java.util.*;
 
-public class XtUser extends Base {
+public class XtUser implements UserDetails {
     private String userId;
 
     private String userName;
@@ -41,8 +43,23 @@ public class XtUser extends Base {
 
     private String userStatus;
 
+    //以上数据库对应字段
+
+    private List<Map<String, String>> rolePermissions;//将用户对应角色列表加入
+
+    private String username;//登录表单中和springsecurity认证中默认使用该字段
+
+
     public String getUserStatus() {
         return userStatus;
+    }
+
+    public List<Map<String, String>> getRolePermissions() {
+        return rolePermissions;
+    }
+
+    public void setRolePermissions(List<Map<String, String>> rolePermissions) {
+        this.rolePermissions = rolePermissions;
     }
 
     public void setUserStatus(String userStatus) {
@@ -169,8 +186,50 @@ public class XtUser extends Base {
         this.registTime = registTime;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> auths = new ArrayList<>();
+        List<Map<String, String>> rolePermissions = this.getRolePermissions();
+        if (rolePermissions != null && rolePermissions.size() > 0) {
+            for (Map<String, String> rolePermission : rolePermissions) {
+                auths.add(new SimpleGrantedAuthority(rolePermission.get("PERMISSION_NAME")));
+            }
+        }
+        return auths;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {

@@ -61,5 +61,5 @@ public interface XtUserMapper {
 
     int insert2(XtUser xtUser);
 
-    XtUser selectExistsUser(@Param("username") String username);
+    XtUser findByUsername(@Param("username") String username);
 }

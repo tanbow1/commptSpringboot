@@ -16,9 +16,9 @@ public interface XtRoleMapper {
 
     @Insert({
         "insert into XT_ROLE (ROLE_ID, ROLE_NAME, ",
-        "STATUS)",
+        "STATUS, PERMISSION_NAME)",
         "values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, ",
-        "#{status,jdbcType=CHAR})"
+        "#{status,jdbcType=CHAR}, #{permissionName,jdbcType=VARCHAR})"
     })
     int insert(XtRole record);
 
@@ -26,7 +26,7 @@ public interface XtRoleMapper {
 
     @Select({
         "select",
-        "ROLE_ID, ROLE_NAME, STATUS",
+        "ROLE_ID, ROLE_NAME, STATUS, PERMISSION_NAME",
         "from XT_ROLE",
         "where ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
@@ -38,7 +38,8 @@ public interface XtRoleMapper {
     @Update({
         "update XT_ROLE",
         "set ROLE_NAME = #{roleName,jdbcType=VARCHAR},",
-          "STATUS = #{status,jdbcType=CHAR}",
+          "STATUS = #{status,jdbcType=CHAR},",
+          "PERMISSION_NAME = #{permissionName,jdbcType=VARCHAR}",
         "where ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(XtRole record);

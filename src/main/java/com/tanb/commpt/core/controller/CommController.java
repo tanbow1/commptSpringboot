@@ -1,7 +1,7 @@
 package com.tanb.commpt.core.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.global.SpringContext;
@@ -79,7 +79,7 @@ public class CommController {
         }
         Map<String, String> resultMap = authService.refreshToken(userId, accessToken, refreshToken, true);
         if ("0".equals(resultMap.get("insertCount"))) {
-            throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":刷新token失败");
+            throw new SystemLevelException(SysConstant.UNKNOW_ERROR + ":刷新token失败");
         }
         jsonResponse.getData().put("resultData", resultMap);
         return jsonResponse;
@@ -145,7 +145,7 @@ public class CommController {
                     } else if ("boolean".equals(type)) {
                         paramValues[index] = Boolean.valueOf(String.valueOf(tempParamMap.get("value")));
                     } else {
-                        throw new BizLevelException(ConsCommon.WARN_MSG_015);
+                        throw new BizLevelException(SysConstant.WARN_MSG_015);
                     }
                 }
             }
@@ -154,29 +154,29 @@ public class CommController {
             jsonResponse = (JsonResponse) method.invoke(serviceBean, paramValues);
 
         } catch (NoSuchMethodException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_008 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_008);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_008);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_008 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_008);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_008);
         } catch (IllegalAccessException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_009 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_009);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_009);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_009 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_009);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_009);
         } catch (ClassCastException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_012 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_012);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_012);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_012 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_012);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_012);
         } catch (ClassNotFoundException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_013 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_013);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_013);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_013 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_013);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_013);
         } catch (IllegalArgumentException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_014 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_014);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_014);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_014 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_014);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_014);
         } catch (NoSuchBeanDefinitionException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_010 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_010);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_010);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_010 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_010);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_010);
         }
 
         return jsonResponse;
@@ -213,32 +213,32 @@ public class CommController {
             methodName = httpServletRequest.getParameter("methodName");
 
         if (null == serviceName || null == methodName)
-            throw new BizLevelException(ConsCommon.WARN_MSG_014);
+            throw new BizLevelException(SysConstant.WARN_MSG_014);
 
         try {
             Object serviceBean = SpringContext.getBean(serviceName);
             Method method = serviceBean.getClass().getMethod(methodName, JsonRequest.class);
             jsonResponse = (JsonResponse) method.invoke(serviceBean, jsonRequest);
         } catch (NoSuchMethodException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_008 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_008);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_008);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_008 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_008);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_008);
         } catch (IllegalAccessException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_009 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_009);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_009);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_009 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_009);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_009);
         } catch (ClassCastException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_012 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_012);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_012);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_012 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_012);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_012);
         } catch (IllegalArgumentException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_014 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_014);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_014);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_014 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_014);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_014);
         } catch (NoSuchBeanDefinitionException e) {
-            LOGGER.error(e.getMessage() + "[" + ConsCommon.WARN_MSG_010 + "]");
-            jsonResponse.setCode(ConsCommon.WARN_CODE_010);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_010);
+            LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_010 + "]");
+            jsonResponse.setCode(SysConstant.WARN_CODE_010);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_010);
         }
 
         return jsonResponse;
@@ -282,20 +282,20 @@ public class CommController {
             jsonResponse = (JsonResponse) method.invoke(serviceBean, jsonRequest, files);
         } catch (NoSuchMethodException e) {
             LOGGER.error(e.getMessage());
-            jsonResponse.setCode(ConsCommon.WARN_CODE_008);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_008);
+            jsonResponse.setCode(SysConstant.WARN_CODE_008);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_008);
         } catch (IllegalAccessException e) {
             LOGGER.error(e.getMessage());
-            jsonResponse.setCode(ConsCommon.WARN_CODE_009);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_009);
+            jsonResponse.setCode(SysConstant.WARN_CODE_009);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_009);
         } catch (ClassCastException e) {
             LOGGER.error(e.getMessage());
-            jsonResponse.setCode(ConsCommon.WARN_CODE_012);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_012);
+            jsonResponse.setCode(SysConstant.WARN_CODE_012);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_012);
         } catch (IllegalArgumentException e) {
             LOGGER.error(e.getMessage());
-            jsonResponse.setCode(ConsCommon.WARN_CODE_014);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_014);
+            jsonResponse.setCode(SysConstant.WARN_CODE_014);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_014);
         }
 
         return jsonResponse;

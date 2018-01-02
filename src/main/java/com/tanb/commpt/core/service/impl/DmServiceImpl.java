@@ -2,7 +2,7 @@ package com.tanb.commpt.core.service.impl;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.constant.ContentType;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.mapper.DmNationalityMapper;
@@ -154,8 +154,8 @@ public class DmServiceImpl implements IDmService {
             }
         }
         if (errorList.size() > 0) {
-            jsonResponse.setCode(ConsCommon.WARN_CODE_017);
-            jsonResponse.setMsg(errorList.size() + "条" + ConsCommon.WARN_MSG_017);
+            jsonResponse.setCode(SysConstant.WARN_CODE_017);
+            jsonResponse.setMsg(errorList.size() + "条" + SysConstant.WARN_MSG_017);
             jsonResponse.getData().put("errorList", errorList);
         }
         return jsonResponse;
@@ -180,7 +180,7 @@ public class DmServiceImpl implements IDmService {
         while (it.hasNext()) {
             dmGjdq = (DmNationality) it.next();
             if (null == dmGjdq.getNationalityId()) {
-                throw new BizLevelException(ConsCommon.WARN_MSG_016 + "(NationalityId不能为空)");
+                throw new BizLevelException(SysConstant.WARN_MSG_016 + "(NationalityId不能为空)");
             } else {
                 if(dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId()) >0){
                     //update
@@ -190,7 +190,7 @@ public class DmServiceImpl implements IDmService {
                     changeCount = dmGjdqMapper.insertSelective(dmGjdq);
                 }
                 if (changeCount < 1) {
-                    throw new BizLevelException(ConsCommon.WARN_MSG_016 + "(NationalityId：" + dmGjdq.getNationalityId() + ")");
+                    throw new BizLevelException(SysConstant.WARN_MSG_016 + "(NationalityId：" + dmGjdq.getNationalityId() + ")");
                 }
             }
         }
@@ -219,8 +219,8 @@ public class DmServiceImpl implements IDmService {
             }
 
             if (list.size() <= 0) {
-                jsonResponse.setCode(ConsCommon.WARN_CODE_020);
-                jsonResponse.setMsg(ConsCommon.WARN_MSG_020);
+                jsonResponse.setCode(SysConstant.WARN_CODE_020);
+                jsonResponse.setMsg(SysConstant.WARN_MSG_020);
             } else {
                 List<DmNationality> dmNationalityList = new ArrayList<DmNationality>();
                 DmNationality dmNationality = null;
@@ -244,8 +244,8 @@ public class DmServiceImpl implements IDmService {
                 jsonResponse.setMsg(jsonResponse.getMsg() + ",本次上传记录：" + insertBatchCount + "条。");
             }
         } else {
-            jsonResponse.setCode(ConsCommon.WARN_CODE_019);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_019);
+            jsonResponse.setCode(SysConstant.WARN_CODE_019);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_019);
         }
 
         return jsonResponse;
@@ -355,15 +355,15 @@ public class DmServiceImpl implements IDmService {
         while (it.hasNext()) {
             dmProduct = (DmProduct) it.next();
             if (null == dmProduct.getProductId()) {
-                throw new BizLevelException(ConsCommon.WARN_MSG_021);
+                throw new BizLevelException(SysConstant.WARN_MSG_021);
             } else {
                 //update
                 changeCount = dmProductMapper.updateByPrimaryKeySelective(dmProduct);
             }
             if (changeCount <= 0) {
                 errorList.add(dmProduct);
-                jsonResponse.setCode(ConsCommon.WARN_CODE_016);
-                jsonResponse.setMsg(ConsCommon.WARN_MSG_016);
+                jsonResponse.setCode(SysConstant.WARN_CODE_016);
+                jsonResponse.setMsg(SysConstant.WARN_MSG_016);
             }
         }
         if (errorList.size() > 0) {

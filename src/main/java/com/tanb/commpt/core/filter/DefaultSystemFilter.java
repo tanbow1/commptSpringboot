@@ -5,6 +5,7 @@ import com.tanb.commpt.core.global.SystemContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -14,17 +15,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
+ * 系统通用过滤器
+ * <p>
  * Created by Tanbo on 2017/8/26.
  */
-@WebFilter(filterName = "commFilter", urlPatterns = "/*")
+@WebFilter(filterName = "defaultSystemFilter", urlPatterns = "/*")
 @Order(1)
-public class CommFilter implements Filter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CommFilter.class);
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
+public class DefaultSystemFilter extends GenericFilterBean {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultSystemFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -34,7 +32,7 @@ public class CommFilter implements Filter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
         String url = httpServletRequest.getRequestURL().toString();
-
+        httpServletRequest.getParameter("userId");
         LOGGER.info(" filter 当前url : " + url);
 
         String[] IGNORE_URI = SystemContext.singleton().getValueAsString("filter.ignoreUri").split(",");

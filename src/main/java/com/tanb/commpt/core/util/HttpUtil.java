@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.util;
 
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.constant.ContentType;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -25,7 +25,6 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
-import sun.rmi.runtime.Log;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLException;
@@ -119,7 +118,7 @@ public class HttpUtil {
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 InputStream instream = entity.getContent();
-                result = IOUtils.toString(instream, ConsCommon.UTF8);
+                result = IOUtils.toString(instream, SysConstant.UTF8);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -158,11 +157,11 @@ public class HttpUtil {
                         .getValue().toString());
                 pairList.add(pair);
             }
-            httpPost.setEntity(new UrlEncodedFormEntity(pairList, Charset.forName(ConsCommon.UTF8)));
+            httpPost.setEntity(new UrlEncodedFormEntity(pairList, Charset.forName(SysConstant.UTF8)));
             response = httpClient.execute(httpPost);
             LOGGER.info("执行返回：" + response.toString());
             HttpEntity entity = response.getEntity();
-            httpStr = EntityUtils.toString(entity, ConsCommon.UTF8);
+            httpStr = EntityUtils.toString(entity, SysConstant.UTF8);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -192,14 +191,14 @@ public class HttpUtil {
 
         try {
             httpPost.setConfig(requestConfig);
-            StringEntity stringEntity = new StringEntity(json.toString(), ConsCommon.UTF8);//解决中文乱码问题
-            stringEntity.setContentEncoding(ConsCommon.UTF8);
+            StringEntity stringEntity = new StringEntity(json.toString(), SysConstant.UTF8);//解决中文乱码问题
+            stringEntity.setContentEncoding(SysConstant.UTF8);
             stringEntity.setContentType(ContentType.getContentType("json"));
             httpPost.setEntity(stringEntity);
             response = httpClient.execute(httpPost);
             HttpEntity entity = response.getEntity();
             LOGGER.info("执行状态码：" + response.getStatusLine().getStatusCode());
-            httpStr = EntityUtils.toString(entity, ConsCommon.UTF8);
+            httpStr = EntityUtils.toString(entity, SysConstant.UTF8);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -235,7 +234,7 @@ public class HttpUtil {
                         .getValue().toString());
                 pairList.add(pair);
             }
-            httpPost.setEntity(new UrlEncodedFormEntity(pairList, Charset.forName(ConsCommon.UTF8)));
+            httpPost.setEntity(new UrlEncodedFormEntity(pairList, Charset.forName(SysConstant.UTF8)));
             response = httpClient.execute(httpPost);
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode != HttpStatus.SC_OK) {
@@ -245,7 +244,7 @@ public class HttpUtil {
             if (entity == null) {
                 return null;
             }
-            httpStr = EntityUtils.toString(entity, ConsCommon.UTF8);
+            httpStr = EntityUtils.toString(entity, SysConstant.UTF8);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -275,8 +274,8 @@ public class HttpUtil {
 
         try {
             httpPost.setConfig(requestConfig);
-            StringEntity stringEntity = new StringEntity(json.toString(), ConsCommon.UTF8);//解决中文乱码问题
-            stringEntity.setContentEncoding(ConsCommon.UTF8);
+            StringEntity stringEntity = new StringEntity(json.toString(), SysConstant.UTF8);//解决中文乱码问题
+            stringEntity.setContentEncoding(SysConstant.UTF8);
             stringEntity.setContentType(ContentType.getContentType("json"));
             httpPost.setEntity(stringEntity);
             response = httpClient.execute(httpPost);
@@ -288,7 +287,7 @@ public class HttpUtil {
             if (entity == null) {
                 return null;
             }
-            httpStr = EntityUtils.toString(entity, ConsCommon.UTF8);
+            httpStr = EntityUtils.toString(entity, SysConstant.UTF8);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

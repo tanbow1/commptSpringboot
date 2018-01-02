@@ -292,15 +292,13 @@
             </if>
         </trim>
     </insert>
-    <select id="selectExistsUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from XT_USER WHERE
         MOBILE = #{username,jdbcType=VARCHAR}
         OR
         USER_ACCOUNT = #{username,jdbcType=VARCHAR}
-        OR
-        CARD_NUMBER = #{username,jdbcType=VARCHAR}
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT

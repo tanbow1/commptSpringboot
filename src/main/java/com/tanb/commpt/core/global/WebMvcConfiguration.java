@@ -1,11 +1,9 @@
 package com.tanb.commpt.core.global;
 
-import com.tanb.commpt.core.interceptor.CommHanlerInterceptor;
+import com.tanb.commpt.core.interceptor.DefaultSystemInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -24,8 +22,8 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
      * @return
      */
     @Bean
-    CommHanlerInterceptor commHanlerInterceptor() {
-        return new CommHanlerInterceptor();
+    DefaultSystemInterceptor commHanlerInterceptor() {
+        return new DefaultSystemInterceptor();
     }
 
     @Override
@@ -36,6 +34,5 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         registry.addInterceptor(commHanlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/test/**", "/static/**", "/templates/**", "/login/**");
         super.addInterceptors(registry);
     }
-
 
 }

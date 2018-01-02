@@ -1,7 +1,7 @@
 package com.tanb.commpt.core.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.po.comm.JsonResponse;
 import com.tanb.commpt.core.util.CommonUtil;
@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 全局异常通用
+ * 全局异常
  *
  * @author Tanbo
  */
@@ -64,22 +64,15 @@ public class SimpleMappingExceptionResolver implements
     }
 
     private void setErrorJsonResponse(Exception ex, JsonResponse jsonResponse) {
-        jsonResponse.setCode(ConsCommon.FAILED_CODE);
-        if (ex instanceof BizLevelException) {
-            jsonResponse.setMsg("出现错误: " + ex.getMessage());
-        } else if (ex instanceof SystemLevelException) {
-            jsonResponse.setMsg("系统出错: " + ex.getMessage() + ",请联系系统管理员!");
-        } else if (ex instanceof InvocationTargetException) {
+        jsonResponse.setCode(SysConstant.FAILED_CODE);
+        if (ex instanceof InvocationTargetException) {
             Throwable throwable = ((InvocationTargetException) ex).getTargetException();
             jsonResponse.setMsg("出现错误: " + throwable.getMessage());
             jsonResponse.setDetailMsg(ex.getCause().toString());
             //方法调用出错范围太大 ，需获取该异常内部TargetException才能明确哪个异常
-        } else if (ex instanceof MaxUploadSizeExceededException) {
-            jsonResponse.setMsg("出现错误,文件过大(最大支持" + Integer.parseInt(config.FILE_MAXUPLOADSIZE) / (1024 * 1024) + "M): " + ex.getMessage());
-            // 该异常 由于在Controller之前触发，转至GlobalExceptionHandler.maxUploadSizeExceededExceptionHandler处理
         } else {
-            jsonResponse.setCode(ConsCommon.UNKNOW_CODE);
-            jsonResponse.setMsg(ConsCommon.UNKNOW_ERROR + "：" + ex.getMessage());
+            jsonResponse.setCode(SysConstant.UNKNOW_CODE);
+            jsonResponse.setMsg(SysConstant.UNKNOW_ERROR + "：" + ex.getMessage());
         }
     }
 }

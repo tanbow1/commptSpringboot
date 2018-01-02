@@ -1,15 +1,15 @@
 package com.tanb.commpt.core.po.comm;
 
 
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class JsonResponse extends Base {
 
-    private String code = ConsCommon.SUCCESS_CODE;
-    private String msg = ConsCommon.SUCCESS;
+    private String code = SysConstant.SUCCESS_CODE;
+    private String msg = SysConstant.SUCCESS;
     private String detailMsg = "";
     private ConcurrentHashMap<String, Object> data = new ConcurrentHashMap<String, Object>();
 

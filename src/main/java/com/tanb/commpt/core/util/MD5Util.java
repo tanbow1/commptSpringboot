@@ -17,7 +17,7 @@ public class MD5Util {
      * @param str
      * @return
      */
-    public static String md5(String str) {
+    public static String encode(String str) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(str.getBytes());
@@ -95,7 +95,7 @@ public class MD5Util {
      * @throws NoSuchAlgorithmException
      * @throws UnsupportedEncodingException
      */
-    public static String getEncryptedStr(String str)
+    public static String encryptWithSalt(String str)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         //声明加密后的口令数组变量
         byte[] pwd = null;

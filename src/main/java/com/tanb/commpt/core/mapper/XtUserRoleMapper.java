@@ -4,6 +4,9 @@ import com.tanb.commpt.core.po.XtUserRole;
 import com.tanb.commpt.core.po.XtUserRoleKey;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+import java.util.Map;
+
 public interface XtUserRoleMapper  {
     @Delete({
         "delete from XT_USER_ROLE",
@@ -41,4 +44,6 @@ public interface XtUserRoleMapper  {
           "and ROLE_ID = #{roleId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(XtUserRole record);
+
+    List<Map<String,String>> selectRolePermissionByUserId(String userId);
 }

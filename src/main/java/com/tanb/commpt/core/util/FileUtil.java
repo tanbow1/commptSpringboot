@@ -2,7 +2,7 @@ package com.tanb.commpt.core.util;
 
 
 
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.exception.SystemLevelException;
 
 import java.io.*;
@@ -191,7 +191,7 @@ public class FileUtil {
         StringBuilder str = new StringBuilder();
         BufferedReader bufferedReader;
         try {
-            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(FileUtil.class.getResource(filePath).getPath()), ConsCommon.UTF8));
+            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(FileUtil.class.getResource(filePath).getPath()), SysConstant.UTF8));
             String s;
             try {
                 while ((s = bufferedReader.readLine()) != null)

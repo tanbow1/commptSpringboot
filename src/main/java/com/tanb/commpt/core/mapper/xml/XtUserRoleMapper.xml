@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tanb.commpt.core.mapper.XtUserRoleMapper">
-  <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.XtUserRole">
-    <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
-    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
-    <result column="STATUS" jdbcType="CHAR" property="status" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.tanb.commpt.core.po.XtUserRole">
+        <id column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+        <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     USER_ID, ROLE_ID, STATUS
   </sql>
-  <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtUserRole">
-    insert into XT_USER_ROLE
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        USER_ID,
-      </if>
-      <if test="roleId != null">
-        ROLE_ID,
-      </if>
-      <if test="status != null">
-        STATUS,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=CHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.XtUserRole">
-    update XT_USER_ROLE
-    <set>
-      <if test="status != null">
-        STATUS = #{status,jdbcType=CHAR},
-      </if>
-    </set>
-    where USER_ID = #{userId,jdbcType=VARCHAR}
-      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
-  </update>
+    <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtUserRole">
+        insert into XT_USER_ROLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="roleId != null">
+                ROLE_ID,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.XtUserRole">
+        update XT_USER_ROLE
+        <set>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+        </set>
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+        and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+    </update>
+    <resultMap id="RolePermissionMap" type="java.util.Map">
+        <result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+        <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId"/>
+        <result column="PERMISSION_NAME" jdbcType="VARCHAR" property="permissionName"/>
+    </resultMap>
+    <select id="selectRolePermissionByUserId" parameterType="java.lang.String" resultMap="RolePermissionMap">
+    SELECT T1.USER_ID,T1.ROLE_ID,T2.PERMISSION_NAME FROM XT_USER_ROLE T1,XT_ROLE T2
+    WHERE T1.USER_ID=#{userId,jdbcType=VARCHAR}
+    AND T1.STATUS='1' AND T2.STATUS='1' AND T1.ROLE_ID=T2.ROLE_ID
+  </select>
 </mapper>

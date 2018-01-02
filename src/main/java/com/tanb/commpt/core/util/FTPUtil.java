@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.util;
 
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.global.SystemContext;
 import org.apache.commons.codec.binary.Base64;
@@ -32,9 +32,9 @@ public class FTPUtil {
         try {
             ftpClient.connect(host);
             logger.info("2）FTP已连接");
-            ftpClient.setControlEncoding(null == encoding ? ConsCommon.UTF8 : encoding);
+            ftpClient.setControlEncoding(null == encoding ? SysConstant.UTF8 : encoding);
             FTPClientConfig ftpClientConfig = new FTPClientConfig(null == systemKey ? FTPClientConfig.SYST_UNIX : systemKey);
-            ftpClientConfig.setServerLanguageCode(null == languageCode ? ConsCommon.LANGUAGE_LOCAL : languageCode);
+            ftpClientConfig.setServerLanguageCode(null == languageCode ? SysConstant.LANGUAGE_LOCAL : languageCode);
             logger.info("3）FTP相关配置成功");
             ftpClient.login(username, password);
             ftpClient.enterLocalActiveMode();//主动模式

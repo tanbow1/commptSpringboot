@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.service.impl;
 
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.mapper.XtUserMapper;
 import com.tanb.commpt.core.mapper.XtUserRoleMapper;
@@ -37,7 +37,7 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public XtUser selectByUsernameAndPassword(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        XtUser xtUser = xtUserMapper.selectExistsUser(username);
+        XtUser xtUser = xtUserMapper.findByUsername(username);
         if (null != xtUser) {
             if (MD5Util.validateStr(password, xtUser.getPassword())) {
                 return xtUser;
@@ -59,22 +59,22 @@ public class UserServiceImpl implements IUserService {
     @Override
     public String saveUserInfo(XtUser user, XtUserRole userRole) throws UnsupportedEncodingException, NoSuchAlgorithmException, BizLevelException {
         if (!StringUtils.isEmpty(user.getPassword())) {
-            user.setPassword(MD5Util.getEncryptedStr(user.getPassword()));
+            user.setPassword(MD5Util.encryptWithSalt(user.getPassword()));
         } else {
             //默认密码123456
-            user.setPassword(MD5Util.getEncryptedStr("123456"));
+            user.setPassword(MD5Util.encryptWithSalt("123456"));
         }
-        XtUser existsUser = xtUserMapper.selectExistsUser(user.getUserAccount());
+        XtUser existsUser = xtUserMapper.findByUsername(user.getUserAccount());
         if (null != existsUser) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_001);
+            throw new BizLevelException(SysConstant.WARN_MSG_001);
         }
-        existsUser = xtUserMapper.selectExistsUser(user.getCardNumber());
+        existsUser = xtUserMapper.findByUsername(user.getCardNumber());
         if (null != existsUser) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_002);
+            throw new BizLevelException(SysConstant.WARN_MSG_002);
         }
-        existsUser = xtUserMapper.selectExistsUser(user.getMobile());
+        existsUser = xtUserMapper.findByUsername(user.getMobile());
         if (null != existsUser) {
-            throw new BizLevelException(ConsCommon.WARN_MSG_003);
+            throw new BizLevelException(SysConstant.WARN_MSG_003);
         }
 
         int insertCount = xtUserMapper.insert2(user);

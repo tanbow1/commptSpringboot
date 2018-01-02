@@ -9,6 +9,8 @@ public class XtRole extends Base {
 
     private String status;
 
+    private String permissionName;
+
     public String getRoleId() {
         return roleId;
     }
@@ -31,5 +33,13 @@ public class XtRole extends Base {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getPermissionName() {
+        return permissionName;
+    }
+
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName == null ? null : permissionName.trim();
     }
 }

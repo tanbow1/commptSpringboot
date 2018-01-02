@@ -2,7 +2,7 @@ package com.tanb.commpt.core.po;
 
 import com.tanb.commpt.core.po.comm.Base;
 
-public class xtRoleMenuKey extends Base {
+public class XtRoleMenuKey extends Base {
     private String roleId;
 
     private String menuId;

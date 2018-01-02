@@ -5,9 +5,10 @@
     <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
     <result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
     <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="PERMISSION_NAME" jdbcType="VARCHAR" property="permissionName" />
   </resultMap>
   <sql id="Base_Column_List">
-    ROLE_ID, ROLE_NAME, STATUS
+    ROLE_ID, ROLE_NAME, STATUS, PERMISSION_NAME
   </sql>
   <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtRole">
     insert into XT_ROLE
@@ -21,6 +22,9 @@
       <if test="status != null">
         STATUS,
       </if>
+      <if test="permissionName != null">
+        PERMISSION_NAME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
@@ -32,6 +36,9 @@
       <if test="status != null">
         #{status,jdbcType=CHAR},
       </if>
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.core.po.XtRole">
@@ -42,6 +49,9 @@
       </if>
       <if test="status != null">
         STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="permissionName != null">
+        PERMISSION_NAME = #{permissionName,jdbcType=VARCHAR},
       </if>
     </set>
     where ROLE_ID = #{roleId,jdbcType=VARCHAR}

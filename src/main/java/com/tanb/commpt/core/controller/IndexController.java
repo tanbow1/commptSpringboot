@@ -1,6 +1,6 @@
 package com.tanb.commpt.core.controller;
 
-import com.tanb.commpt.core.constant.ConsCommon;
+import com.tanb.commpt.core.constant.SysConstant;
 import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.exception.SystemLevelException;
 import com.tanb.commpt.core.po.XtUser;
@@ -68,14 +68,14 @@ public class IndexController {
         if (null != user) {
             Map<String, String> resultMap = authService.saveJwt(user.getUserId());
             if ("0".equals(resultMap.get("insertCount"))) {
-                throw new SystemLevelException(ConsCommon.UNKNOW_ERROR + ":插入token失败");
+                throw new SystemLevelException(SysConstant.UNKNOW_ERROR + ":插入token失败");
             }
 
-            jsonResponse.getData().put(ConsCommon.ACCESS_TOKEN, resultMap.get("accessToken"));
-            jsonResponse.getData().put(ConsCommon.REFRESH_TOKEN, resultMap.get("refreshToken"));
+            jsonResponse.getData().put(SysConstant.ACCESS_TOKEN, resultMap.get("accessToken"));
+            jsonResponse.getData().put(SysConstant.REFRESH_TOKEN, resultMap.get("refreshToken"));
         } else {
-            jsonResponse.setCode(ConsCommon.FAILED_CODE);
-            jsonResponse.setMsg(ConsCommon.WARN_MSG_007);
+            jsonResponse.setCode(SysConstant.FAILED_CODE);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_007);
         }
 
         return jsonResponse;
@@ -99,16 +99,16 @@ public class IndexController {
         if (retMap != null) {
             if ("false".equals(retMap.get("valid"))) {
                 //token校验失败
-                jsonResponse.setCode(ConsCommon.FAILED_CODE);
+                jsonResponse.setCode(SysConstant.FAILED_CODE);
                 jsonResponse.setMsg(retMap.get("errorMsg").toString());
             } else {
                 //token校验成功
-                jsonResponse.getData().put(ConsCommon.ACCESS_TOKEN, retMap.get("accessToken"));
-                jsonResponse.getData().put(ConsCommon.REFRESH_TOKEN, retMap.get("refreshToken"));
+                jsonResponse.getData().put(SysConstant.ACCESS_TOKEN, retMap.get("accessToken"));
+                jsonResponse.getData().put(SysConstant.REFRESH_TOKEN, retMap.get("refreshToken"));
             }
         } else {
-            jsonResponse.setCode(ConsCommon.UNKNOW_CODE);
-            jsonResponse.setMsg(ConsCommon.UNKNOW_ERROR);
+            jsonResponse.setCode(SysConstant.UNKNOW_CODE);
+            jsonResponse.setMsg(SysConstant.UNKNOW_ERROR);
         }
         return jsonResponse;
     }
