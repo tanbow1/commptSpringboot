@@ -1,12 +1,13 @@
 package com.tanb.commpt.core.po;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import com.tanb.commpt.core.po.comm.Base;
 
-public class XtUser implements UserDetails {
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+public class XtUser extends Base {
     private String userId;
 
     private String userName;
@@ -43,11 +44,7 @@ public class XtUser implements UserDetails {
 
     private String userStatus;
 
-    //以上数据库对应字段
-
     private List<Map<String, String>> rolePermissions;//将用户对应角色列表加入
-
-    private String username;//登录表单中和springsecurity认证中默认使用该字段
 
 
     public String getUserStatus() {
@@ -186,51 +183,11 @@ public class XtUser implements UserDetails {
         this.registTime = registTime;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> auths = new ArrayList<>();
-        List<Map<String, String>> rolePermissions = this.getRolePermissions();
-        if (rolePermissions != null && rolePermissions.size() > 0) {
-            for (Map<String, String> rolePermission : rolePermissions) {
-                auths.add(new SimpleGrantedAuthority(rolePermission.get("PERMISSION_NAME")));
-            }
-        }
-        return auths;
-    }
 
     public String getPassword() {
         return password;
     }
 
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
