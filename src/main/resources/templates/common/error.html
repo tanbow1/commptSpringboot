@@ -5,7 +5,9 @@
     <title>出错啦(ERROR)</title>
 </head>
 <body>
-出错了:
-<!--<span th:text="${jsonResponse.msg} "></span>-->
+出错了:<br/>
+code:<span style="color: #ff0000;" th:text="${jsonResponse!=null?jsonResponse.code:''} "></span><br/>
+message:<span th:text="${jsonResponse!=null?jsonResponse.msg:''} "></span><br/>
+detailMsg:<span th:text="${jsonResponse!=null?jsonResponse.detailMsg:''} "></span>
 </body>
 </html>
