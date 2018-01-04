@@ -49,7 +49,7 @@ function loginsys(btnObj) {
     }
 
     $.ajax({
-        url: "/login",
+        url: "/doLogin",
         data: {
             username: username,
             password: password
@@ -58,23 +58,21 @@ function loginsys(btnObj) {
         timeout: SYS_TIMEOUT,
         dataType: 'json',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            debugger
             btnObj.removeAttribute('disabled');
             loadingTagObj.removeClass('fa-spinner fa-spin');
             alert(textStatus);
         },
         success: function (responseText, textStatus, XMLHttpRequest) {
-            debugger
             btnObj.removeAttribute('disabled');
             loadingTagObj.removeClass('fa-spinner fa-spin');
-            // if (checkResponseText(responseText)) {
-            //     $.cookie(SYS_PREFIX + 'ACCESS_TOKEN', responseText.data.COMMONPT_ACCESS_TOKEN);
-            //     $.cookie(SYS_PREFIX + 'REFRESH_TOKEN', responseText.data.COMMONPT_REFRESH_TOKEN);
-            //
-            //     window.location.href = '/index';
-            // } else {
-            //     $("#tipMsg").text(responseText.msg);
-            // }
+            if (checkResponseText(responseText)) {
+                $.cookie(SYS_PREFIX + 'ACCESS_TOKEN', responseText.data.COMMONPT_ACCESS_TOKEN);
+                $.cookie(SYS_PREFIX + 'REFRESH_TOKEN', responseText.data.COMMONPT_REFRESH_TOKEN);
+
+                window.location.href = '/index';
+            } else {
+                $("#tipMsg").text(responseText.msg);
+            }
         }
 
 

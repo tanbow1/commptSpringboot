@@ -44,10 +44,13 @@ public class SysConstant {
     public static final String IO_EXCEPTION = "输入输出异常";
 
     public static final String NOHANDLERFOUND_EXCEPTION_CODE = "EX404";
-    public static final String NOHANDLERFOUND_EXCEPTION = "页面未找到";
+    public static final String NOHANDLERFOUND_EXCEPTION = "请求无效";
+
+    public static final String NOACCESS_EXCEPTION_CODE = "EX403";
+    public static final String NOACCESS_EXCEPTION = "禁止访问";
 
     public static final String SERVER_EXCEPTION_CODE = "EX500";
-    public static final String SERVER_EXCEPTION = "服务出错";
+    public static final String SERVER_EXCEPTION = "请求出错";
 
     // //////////////////////////////////////////////////////////警告
 

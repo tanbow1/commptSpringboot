@@ -77,7 +77,6 @@ public class IndexController {
             jsonResponse.setCode(SysConstant.FAILED_CODE);
             jsonResponse.setMsg(SysConstant.WARN_MSG_007);
         }
-
         return jsonResponse;
     }
 

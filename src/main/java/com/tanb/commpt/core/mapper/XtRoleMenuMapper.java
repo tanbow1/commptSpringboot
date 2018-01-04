@@ -32,7 +32,7 @@ public interface XtRoleMenuMapper {
             "where ROLE_ID = #{roleId,jdbcType=VARCHAR}",
             "and MENU_ID = #{menuId,jdbcType=VARCHAR}"
     })
-    @ResultMap("com.tanb.commpt.core.mapper.xtRoleMenuMapper.BaseResultMap")
+    @ResultMap("com.tanb.commpt.core.mapper.XtRoleMenuMapper.BaseResultMap")
     XtRoleMenu selectByPrimaryKey(XtRoleMenuKey key);
 
     int updateByPrimaryKeySelective(XtRoleMenu record);
