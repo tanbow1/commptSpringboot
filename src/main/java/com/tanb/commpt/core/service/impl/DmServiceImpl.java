@@ -82,11 +82,12 @@ public class DmServiceImpl implements IDmService {
             map = new ConcurrentHashMap<String, Object>();
             menu = (DmMenu) menuIterator.next();
             dataList.add(map);
+            map.put("pId", menu.getParentId());
             map.put("id", menu.getMenuId());
             map.put("text", menu.getMenuName());
-            map.put("openProduct", menu.getOpenType());
-            map.put("readonly", menu.getIsEdit());
-            map.put("openType",menu.getOpenType());
+            map.put("canDel", menu.getIsDel());
+            map.put("canEdit", menu.getIsEdit());
+            map.put("openType", menu.getOpenType());
 
             if (!StringUtils.isEmptyOrWhitespace(menu.getUrl())) {
                 map.put("url", menu.getUrl());
@@ -182,10 +183,10 @@ public class DmServiceImpl implements IDmService {
             if (null == dmGjdq.getNationalityId()) {
                 throw new BizLevelException(SysConstant.WARN_MSG_016 + "(NationalityId不能为空)");
             } else {
-                if(dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId()) >0){
+                if (dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId()) > 0) {
                     //update
                     changeCount = dmGjdqMapper.updateByPrimaryKey(dmGjdq);
-                }else{
+                } else {
                     //add
                     changeCount = dmGjdqMapper.insertSelective(dmGjdq);
                 }

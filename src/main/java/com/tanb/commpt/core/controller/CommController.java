@@ -99,9 +99,10 @@ public class CommController {
     }
 
     /**
-     * 统一ajax调用，ajax传入参数需写全
-     * <p>
-     * 支持的method参数类型：int boolean string ，可以补充
+     * 统一ajax调用，过于繁琐
+     * ajax传入必要参数：serviceName,methodName,methodParams
+     * 该方法需JsonRequest中methodParams参数来确定serviceName中methodName重载方法
+     * 支持的method参数类型：int boolean string ，可以补充..
      *
      * @param jsonRequest
      * @param httpServletRequest
@@ -109,6 +110,7 @@ public class CommController {
      * @return
      * @throws BizLevelException
      */
+    @Deprecated
     @ResponseBody
     @RequestMapping("/getJsonData")
     public JsonResponse getJsonData(@ModelAttribute JsonRequest jsonRequest,
@@ -184,9 +186,9 @@ public class CommController {
 
 
     /**
-     * 统一调用 ajax／url get方式，如果是url必须带参数
-     * <p>
-     * 请求的service默认入参：JsonRequest，出参：JsonResponse
+     * 统一调用
+     * ajax或url传入必要参数：serviceName,methodName
+     * 为避免getJsonData中的问题，调用需满足serviceName中方法统一请求参数为：JsonRequest，返回参数为：JsonResponse
      *
      * @param jsonRequest
      * @param httpServletRequest

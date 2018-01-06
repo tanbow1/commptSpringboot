@@ -23,7 +23,9 @@ public class JsonRequest extends Base {
     //请求具体参数
     private ConcurrentHashMap<String, Object> reqData = new ConcurrentHashMap<String, Object>();
 
-    //方法中参数（索引index 类型type 值value）,用于确定同名方法不同参数,index从1开始
+    // 方法中参数（索引index 类型type 值value）,用于确定同名方法不同参数,index从1开始,
+    // 用于确认重载方法
+    @Deprecated
     private List<ConcurrentHashMap<String, Object>> methodParams = new ArrayList<ConcurrentHashMap<String, Object>>();
 
     public List<ConcurrentHashMap<String, Object>> getMethodParams() {

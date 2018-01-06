@@ -76,25 +76,25 @@ public class SysConstant {
     public static final String WARN_MSG_007 = "用户名或密码有误";
 
     public static final String WARN_CODE_008 = "W008";
-    public static final String WARN_MSG_008 = "方法不存在，检查methodName是否有误";
+    public static final String WARN_MSG_008 = "方法不存在，检查方法名是否有误";
 
     public static final String WARN_CODE_009 = "W009";
-    public static final String WARN_MSG_009 = "方法调用权限不足，检查是否为private";
+    public static final String WARN_MSG_009 = "方法调用权限不足";
 
     public static final String WARN_CODE_010 = "W010";
-    public static final String WARN_MSG_010 = "服务实例化失败，检查serviceName是否有误";
+    public static final String WARN_MSG_010 = "服务实例化失败，检查方法名是否有误";
 
     public static final String WARN_CODE_011 = "W011";
     public static final String WARN_MSG_011 = "调用失败，检查方法体是否有误";
 
     public static final String WARN_CODE_012 = "W012";
-    public static final String WARN_MSG_012 = "调用成功，返回类型有误";
+    public static final String WARN_MSG_012 = "调用成功，但返回类型有误";
 
     public static final String WARN_CODE_013 = "W013";
-    public static final String WARN_MSG_013 = "未找到该类，检查className是否有误";
+    public static final String WARN_MSG_013 = "未找到该类，检查类名是否有误";
 
     public static final String WARN_CODE_014 = "W014";
-    public static final String WARN_MSG_014 = "调用失败，检查传入参数";
+    public static final String WARN_MSG_014 = "调用失败，检查传入参数是否有误";
 
     public static final String WARN_CODE_015 = "W015";
     public static final String WARN_MSG_015 = "方法参数类型不支持";
