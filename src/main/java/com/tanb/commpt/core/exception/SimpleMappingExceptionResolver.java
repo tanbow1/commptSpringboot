@@ -32,14 +32,11 @@ public class SimpleMappingExceptionResolver implements
     private static final Logger LOGGER = LoggerFactory
             .getLogger(SimpleMappingExceptionResolver.class);
 
-    @Autowired
-    SystemConfiguration config;
-
     @Override
     public ModelAndView resolveException(HttpServletRequest request,
                                          HttpServletResponse response, Object object, Exception ex) {
-        JsonResponse jsonResponse = new JsonResponse();
         LOGGER.error(ex.getMessage());
+        JsonResponse jsonResponse = new JsonResponse();
         // 判断是否ajax请求
         if (!CommonUtil.isAjaxRequest(request)) {
             // 非ajax请求

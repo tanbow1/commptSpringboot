@@ -348,7 +348,7 @@ public class HttpUtil {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        String result = HttpUtil.doGet("https://www.baidu.com");
+        String result = HttpUtil.doGet("https://api.weixin.qq.com/sns/jscode2session?appid=wx75d69c1c22919f6e&secret=a25302b95cf0547542e2c333f8a7a0e7&js_code=071gU6re2WIGFE0gpHoe2nXOqe2gU6rr&grant_type=authorization_code");
         System.out.println(result);
     }
 }

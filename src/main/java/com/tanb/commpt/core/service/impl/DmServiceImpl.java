@@ -181,7 +181,7 @@ public class DmServiceImpl implements IDmService {
         while (it.hasNext()) {
             dmGjdq = (DmNationality) it.next();
             if (null == dmGjdq.getNationalityId()) {
-                throw new BizLevelException(SysConstant.WARN_MSG_016 + "(NationalityId不能为空)");
+                throw new BizLevelException(SysConstant.WARN_CODE_016, SysConstant.WARN_MSG_016 + "(NationalityId不能为空)");
             } else {
                 if (dmGjdqMapper.selectCountByNationalityId(dmGjdq.getNationalityId()) > 0) {
                     //update
@@ -191,7 +191,7 @@ public class DmServiceImpl implements IDmService {
                     changeCount = dmGjdqMapper.insertSelective(dmGjdq);
                 }
                 if (changeCount < 1) {
-                    throw new BizLevelException(SysConstant.WARN_MSG_016 + "(NationalityId：" + dmGjdq.getNationalityId() + ")");
+                    throw new BizLevelException(SysConstant.WARN_CODE_016, SysConstant.WARN_MSG_016 + "(NationalityId：" + dmGjdq.getNationalityId() + ")");
                 }
             }
         }
@@ -310,8 +310,8 @@ public class DmServiceImpl implements IDmService {
     private void getProductProductTreegrid(List<ConcurrentHashMap<String, Object>> dataList,
                                            String parentId) {
         List<DmProduct> dmProductList = dmProductMapper.selectDmProductTypesByParentId(parentId);
-        DmProduct dmProduct = null;
-        ConcurrentHashMap<String, Object> map = null;
+        DmProduct dmProduct;
+        ConcurrentHashMap<String, Object> map;
 
         Iterator dmProductIterator = dmProductList.iterator();
         while (dmProductIterator.hasNext()) {
@@ -322,7 +322,6 @@ public class DmServiceImpl implements IDmService {
             map.put("productName", dmProduct.getProductName());
             map.put("productDesc", null == dmProduct.getProductDesc() ? "-" : dmProduct.getProductDesc());
             map.put("status", dmProduct.getStatus());
-//            map.put("state", null == dmProduct.getState() ? "0" : dmProduct.getState());
             map.put("parentId", dmProduct.getParentId());
             map.put("haschildren", null == dmProduct.getHaschildren() ? "0" : dmProduct.getHaschildren());
             map.put("sort", null == dmProduct.getSort() ? "" : dmProduct.getSort());
@@ -356,7 +355,7 @@ public class DmServiceImpl implements IDmService {
         while (it.hasNext()) {
             dmProduct = (DmProduct) it.next();
             if (null == dmProduct.getProductId()) {
-                throw new BizLevelException(SysConstant.WARN_MSG_021);
+                throw new BizLevelException(SysConstant.WARN_CODE_021, SysConstant.WARN_MSG_021);
             } else {
                 //update
                 changeCount = dmProductMapper.updateByPrimaryKeySelective(dmProduct);

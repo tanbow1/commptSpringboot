@@ -88,25 +88,31 @@ public class GlobalExceptionHandler {
             jsonResponse.setMsg(SysConstant.SERVER_EXCEPTION);
             jsonResponse.setDetailMsg("500:[" + ex + "]");
         }
-       return returnError(request, response);
+        return returnError(request, response);
     }
 
     @ExceptionHandler(value = {BizLevelException.class, SystemLevelException.class})
     public Object sysException(Exception ex, HttpServletRequest request, HttpServletResponse response) throws IOException {
         modelAndView = new ModelAndView();
         jsonResponse = new JsonResponse();
-        jsonResponse.setCode(SysConstant.FAILED_CODE);
-        jsonResponse.setMsg(SysConstant.FAILED);
-        if (ex instanceof BizLevelException)
+        if (ex instanceof BizLevelException) {
+            BizLevelException bzEx = (BizLevelException) ex;
+            jsonResponse.setCode(bzEx.getCode());
+            jsonResponse.setMsg(bzEx.getMessage());
             jsonResponse.setDetailMsg("应用异常:[" + ex + "]");
-        if (ex instanceof SystemLevelException)
+        }
+        if (ex instanceof SystemLevelException) {
+            SystemLevelException sysEx = (SystemLevelException) ex;
+            jsonResponse.setCode(sysEx.getCode());
+            jsonResponse.setMsg(sysEx.getMessage());
             jsonResponse.setDetailMsg("系统异常:[" + ex + "],请联系系统管理员!");
+        }
         return returnError(request, response);
     }
 
     private Object returnError(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.info("-------------------------出现异常------------------------");
-        logger.info(jsonResponse.getDetailMsg());
+        logger.error("-------------------------出现异常------------------------");
+        logger.error(jsonResponse.getDetailMsg());
         if (CommonUtil.isAjaxRequest(request)) {
             try {
                 response.setContentType("application/json;charset=UTF-8");

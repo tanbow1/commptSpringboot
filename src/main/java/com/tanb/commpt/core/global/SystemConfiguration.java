@@ -40,6 +40,15 @@ public class SystemConfiguration implements CommandLineRunner {
     @Value("${ftp.uploadBasepath}")
     public String FTP_BASEPATH;
 
+    @Value("${wx.basePath}")
+    public String WX_BASEPATH;
+
+    @Value("${wx.appId}")
+    public String WX_APPID;
+
+    @Value("${wx.secret}")
+    public String WX_SECRET;
+
     @Override
     public void run(String... strings) throws Exception {
         System.out.println("========系统参数组件初始化=======");

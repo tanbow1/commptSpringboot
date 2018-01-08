@@ -206,13 +206,19 @@
         insert into XT_USER
         <trim prefix="(" suffix=")" suffixOverrides=",">
             USER_ID,
-            USER_NAME,
+            <if test="userName != null">
+                USER_NAME,
+            </if>
             USER_ACCOUNT,
-            REAL_NAME,
+            <if test="realName != null">
+                REAL_NAME,
+            </if>
             <if test="sex != null">
                 SEX,
             </if>
-            MOBILE,
+            <if test="mobile != null">
+                MOBILE,
+            </if>
             <if test="birthday != null">
                 BIRTHDAY,
             </if>
@@ -248,13 +254,19 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             #{userId,jdbcType=VARCHAR},
-            #{userName,jdbcType=VARCHAR},
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
             #{userAccount,jdbcType=VARCHAR},
-            #{realName,jdbcType=VARCHAR},
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
             <if test="sex != null">
                 #{sex,jdbcType=CHAR},
             </if>
-            #{mobile,jdbcType=VARCHAR},
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
             <if test="birthday != null">
                 #{birthday,jdbcType=VARCHAR},
             </if>
@@ -299,6 +311,8 @@
         MOBILE = #{username,jdbcType=VARCHAR}
         OR
         USER_ACCOUNT = #{username,jdbcType=VARCHAR}
+        OR
+        CARD_NUMBER = #{username,jdbcType=VARCHAR}
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT

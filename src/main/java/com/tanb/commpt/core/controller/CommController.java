@@ -15,10 +15,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,15 +66,15 @@ public class CommController {
     public JsonResponse refreshToken(@ModelAttribute JsonRequest jsonRequest, HttpServletRequest httpServletRequest) throws JsonProcessingException, BizLevelException, SystemLevelException {
         JsonResponse jsonResponse = new JsonResponse();
         String accessToken = jsonRequest.getAccessToken();
-        if (StringUtils.isEmptyOrWhitespace(accessToken)) {
+        if (StringUtils.isEmpty(accessToken)) {
             accessToken = httpServletRequest.getParameter("accessToken");
         }
         String refreshToken = jsonRequest.getRefreshToken();
-        if (StringUtils.isEmptyOrWhitespace(refreshToken)) {
+        if (StringUtils.isEmpty(refreshToken)) {
             refreshToken = httpServletRequest.getParameter("refreshToken");
         }
         String userId = String.valueOf(jsonRequest.getReqData().get("userId"));
-        if (StringUtils.isEmptyOrWhitespace(userId)) {
+        if (StringUtils.isEmpty(userId)) {
             refreshToken = httpServletRequest.getParameter("userId");
         }
         Map<String, String> resultMap = authService.refreshToken(userId, accessToken, refreshToken, true);
@@ -99,7 +99,7 @@ public class CommController {
     }
 
     /**
-     * 统一ajax调用，过于繁琐
+     * ajax通用请求，过于繁琐
      * ajax传入必要参数：serviceName,methodName,methodParams
      * 该方法需JsonRequest中methodParams参数来确定serviceName中methodName重载方法
      * 支持的method参数类型：int boolean string ，可以补充..
@@ -186,21 +186,21 @@ public class CommController {
 
 
     /**
-     * 统一调用
+     * 通用请求
      * ajax或url传入必要参数：serviceName,methodName
-     * 为避免getJsonData中的问题，调用需满足serviceName中方法统一请求参数为：JsonRequest，返回参数为：JsonResponse
+     * 为避免getJsonData中的问题，使用该方法统一处理需满足serviceName中方法统一请求参数为：JsonRequest，返回参数为：JsonResponse
      *
      * @param jsonRequest
      * @param httpServletRequest
      * @param httpServletResponse
      * @return
-     * @throws InvocationTargetException 该异常需要抛出给异常类统一处理，否则无法明确service中抛出的具体错误原因
+     * @throws InvocationTargetException 为service中抛出的未捕获异常，需抛出给异常类统一处理，否则无法明确service中抛出的具体错误原因
      */
     @ResponseBody
     @RequestMapping("/getJsonData2")
     public JsonResponse getJsonData2(@ModelAttribute JsonRequest jsonRequest,
                                      HttpServletRequest httpServletRequest,
-                                     HttpServletResponse httpServletResponse) throws InvocationTargetException, BizLevelException {
+                                     HttpServletResponse httpServletResponse) throws InvocationTargetException {
         JsonResponse jsonResponse = new JsonResponse();
         jsonRequest.getReqData().put("request", httpServletRequest);
         jsonRequest.getReqData().put("response", httpServletResponse);
@@ -208,39 +208,50 @@ public class CommController {
         String serviceName = jsonRequest.getServiceName();
         String methodName = jsonRequest.getMethodName();
 
-        //主要参数没取到默认从url上取
         if (null == serviceName)
             serviceName = httpServletRequest.getParameter("serviceName");
         if (null == methodName)
             methodName = httpServletRequest.getParameter("methodName");
 
-        if (null == serviceName || null == methodName)
-            throw new BizLevelException(SysConstant.WARN_MSG_014);
+        if (StringUtils.isEmpty(serviceName) || StringUtils.isEmpty(methodName)) {
+            LOGGER.error("请求参数serviceName或methodName不存在");
+            jsonResponse.setCode(SysConstant.WARN_CODE_014);
+            jsonResponse.setMsg(SysConstant.WARN_MSG_014);
+            jsonResponse.setDetailMsg("请求参数serviceName或methodName不存在");
+            return jsonResponse;
+        }
 
         try {
+            LOGGER.info("========开始调用服务：" + serviceName + "，方法：" + methodName + "========");
             Object serviceBean = SpringContext.getBean(serviceName);
             Method method = serviceBean.getClass().getMethod(methodName, JsonRequest.class);
             jsonResponse = (JsonResponse) method.invoke(serviceBean, jsonRequest);
+            LOGGER.info("========结束调用服务：" + serviceName + "，方法：" + methodName + "========");
         } catch (NoSuchMethodException e) {
             LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_008 + "]");
             jsonResponse.setCode(SysConstant.WARN_CODE_008);
             jsonResponse.setMsg(SysConstant.WARN_MSG_008);
+            jsonResponse.setDetailMsg("方法[" + methodName + "]不存在");
         } catch (IllegalAccessException e) {
             LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_009 + "]");
             jsonResponse.setCode(SysConstant.WARN_CODE_009);
             jsonResponse.setMsg(SysConstant.WARN_MSG_009);
+            jsonResponse.setDetailMsg("方法[" + methodName + "]调用权限不足");
         } catch (ClassCastException e) {
             LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_012 + "]");
             jsonResponse.setCode(SysConstant.WARN_CODE_012);
             jsonResponse.setMsg(SysConstant.WARN_MSG_012);
+            jsonResponse.setDetailMsg("方法[" + methodName + "]调用时返回类型有误");
         } catch (IllegalArgumentException e) {
             LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_014 + "]");
             jsonResponse.setCode(SysConstant.WARN_CODE_014);
             jsonResponse.setMsg(SysConstant.WARN_MSG_014);
+            jsonResponse.setDetailMsg("方法[" + methodName + "]调用时传入参数有误");
         } catch (NoSuchBeanDefinitionException e) {
             LOGGER.error(e.getMessage() + "[" + SysConstant.WARN_MSG_010 + "]");
             jsonResponse.setCode(SysConstant.WARN_CODE_010);
             jsonResponse.setMsg(SysConstant.WARN_MSG_010);
+            jsonResponse.setDetailMsg("方法[" + methodName + "]不存在");
         }
 
         return jsonResponse;

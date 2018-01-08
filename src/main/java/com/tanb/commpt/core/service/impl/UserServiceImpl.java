@@ -61,20 +61,27 @@ public class UserServiceImpl implements IUserService {
         if (!StringUtils.isEmpty(user.getPassword())) {
             user.setPassword(MD5Util.encryptWithSalt(user.getPassword()));
         } else {
-            //默认密码123456
-            user.setPassword(MD5Util.encryptWithSalt("123456"));
+            //默认密码
+            user.setPassword(MD5Util.encryptWithSalt(SysConstant.DEFAULT_PWD));
         }
-        XtUser existsUser = xtUserMapper.findByUsername(user.getUserAccount());
-        if (null != existsUser) {
-            throw new BizLevelException(SysConstant.WARN_MSG_001);
+
+        if (!StringUtils.isEmpty(user.getUserAccount())) {
+            XtUser existsUser = xtUserMapper.findByUsername(user.getUserAccount());
+            if (null != existsUser) {
+                throw new BizLevelException(SysConstant.WARN_CODE_001, SysConstant.WARN_MSG_001);
+            }
         }
-        existsUser = xtUserMapper.findByUsername(user.getCardNumber());
-        if (null != existsUser) {
-            throw new BizLevelException(SysConstant.WARN_MSG_002);
+        if (!StringUtils.isEmpty(user.getCardNumber())) {
+            XtUser existsUser = xtUserMapper.findByUsername(user.getCardNumber());
+            if (null != existsUser) {
+                throw new BizLevelException(SysConstant.WARN_CODE_002, SysConstant.WARN_MSG_002);
+            }
         }
-        existsUser = xtUserMapper.findByUsername(user.getMobile());
-        if (null != existsUser) {
-            throw new BizLevelException(SysConstant.WARN_MSG_003);
+        if (!StringUtils.isEmpty(user.getMobile())) {
+            XtUser existsUser = xtUserMapper.findByUsername(user.getMobile());
+            if (null != existsUser) {
+                throw new BizLevelException(SysConstant.WARN_CODE_003, SysConstant.WARN_MSG_003);
+            }
         }
 
         int insertCount = xtUserMapper.insert2(user);

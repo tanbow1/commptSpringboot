@@ -15,10 +15,13 @@
     <result column="COUNTRY_CODE" jdbcType="VARCHAR" property="countryCode" />
     <result column="PURE_PHONE_NUMBER" jdbcType="VARCHAR" property="purePhoneNumber" />
     <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="SESSION_KEY" jdbcType="VARCHAR" property="sessionKey" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
     OPEN_ID, UNION_ID, NICK_NAME, AVATAR_URL, GENDER, CITY, PROVINCE, COUNTRY, LANGUAGE, 
-    PHONE_NUMBER, COUNTRY_CODE, PURE_PHONE_NUMBER, STATUS
+    PHONE_NUMBER, COUNTRY_CODE, PURE_PHONE_NUMBER, STATUS, SESSION_KEY, USER_ID, CREATE_TIME
   </sql>
   <insert id="insertSelective" parameterType="com.tanb.commpt.miniapp.po.BzWxUser">
     insert into BZ_WX_USER
@@ -62,6 +65,15 @@
       <if test="status != null">
         STATUS,
       </if>
+      <if test="sessionKey != null">
+        SESSION_KEY,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="openId != null">
@@ -103,6 +115,15 @@
       <if test="status != null">
         #{status,jdbcType=CHAR},
       </if>
+      <if test="sessionKey != null">
+        #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.tanb.commpt.miniapp.po.BzWxUser">
@@ -143,6 +164,15 @@
       </if>
       <if test="status != null">
         STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="sessionKey != null">
+        SESSION_KEY = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where OPEN_ID = #{openId,jdbcType=VARCHAR}

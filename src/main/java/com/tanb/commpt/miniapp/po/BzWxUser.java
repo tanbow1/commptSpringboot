@@ -1,6 +1,7 @@
 package com.tanb.commpt.miniapp.po;
 
 import com.tanb.commpt.core.po.comm.Base;
+import java.util.Date;
 
 public class BzWxUser extends Base {
     private String openId;
@@ -28,6 +29,12 @@ public class BzWxUser extends Base {
     private String purePhoneNumber;
 
     private String status;
+
+    private String sessionKey;
+
+    private String userId;
+
+    private Date createTime;
 
     public String getOpenId() {
         return openId;
@@ -131,5 +138,29 @@ public class BzWxUser extends Base {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getSessionKey() {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey == null ? null : sessionKey.trim();
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

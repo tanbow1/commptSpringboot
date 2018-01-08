@@ -4,7 +4,9 @@ public class SysConstant {
 
     // //////////////////////////////////////////////////////////公共参数
 
-    public static final String SYS_PREFIX = "COMMONPT_";
+    public static final String SYS_PREFIX = "COMMONPT_";//本系统前缀
+
+    public static final String WX_MINI_PREFIX = "wx_m_";//微信小程序前缀
 
     public static final String UTF8 = "UTF-8";
 
@@ -13,6 +15,8 @@ public class SysConstant {
     public static final String LANGUAGE_LOCAL = "zh-CN";
 
     public static final String LANGUAGE_EN = "en";
+
+    public static final String DEFAULT_PWD = "123456";
 
 
     // //////////////////////////////////////////////////////////分页

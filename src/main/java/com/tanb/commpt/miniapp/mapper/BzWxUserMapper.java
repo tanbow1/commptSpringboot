@@ -20,13 +20,17 @@ public interface BzWxUserMapper {
         "GENDER, CITY, PROVINCE, ",
         "COUNTRY, LANGUAGE, ",
         "PHONE_NUMBER, COUNTRY_CODE, ",
-        "PURE_PHONE_NUMBER, STATUS)",
+        "PURE_PHONE_NUMBER, STATUS, ",
+        "SESSION_KEY, USER_ID, ",
+        "CREATE_TIME)",
         "values (#{openId,jdbcType=VARCHAR}, #{unionId,jdbcType=VARCHAR}, ",
         "#{nickName,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, ",
         "#{gender,jdbcType=CHAR}, #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, ",
         "#{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, ",
         "#{phoneNumber,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, ",
-        "#{purePhoneNumber,jdbcType=VARCHAR}, #{status,jdbcType=CHAR})"
+        "#{purePhoneNumber,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, ",
+        "#{sessionKey,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, ",
+        "SYSDATE)"
     })
     int insert(BzWxUser record);
 
@@ -35,7 +39,8 @@ public interface BzWxUserMapper {
     @Select({
         "select",
         "OPEN_ID, UNION_ID, NICK_NAME, AVATAR_URL, GENDER, CITY, PROVINCE, COUNTRY, LANGUAGE, ",
-        "PHONE_NUMBER, COUNTRY_CODE, PURE_PHONE_NUMBER, STATUS",
+        "PHONE_NUMBER, COUNTRY_CODE, PURE_PHONE_NUMBER, STATUS, SESSION_KEY, USER_ID, ",
+        "CREATE_TIME",
         "from BZ_WX_USER",
         "where OPEN_ID = #{openId,jdbcType=VARCHAR}"
     })
@@ -57,7 +62,10 @@ public interface BzWxUserMapper {
           "PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},",
           "COUNTRY_CODE = #{countryCode,jdbcType=VARCHAR},",
           "PURE_PHONE_NUMBER = #{purePhoneNumber,jdbcType=VARCHAR},",
-          "STATUS = #{status,jdbcType=CHAR}",
+          "STATUS = #{status,jdbcType=CHAR},",
+          "SESSION_KEY = #{sessionKey,jdbcType=VARCHAR},",
+          "USER_ID = #{userId,jdbcType=VARCHAR},",
+          "CREATE_TIME = SYSDATE",
         "where OPEN_ID = #{openId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(BzWxUser record);
