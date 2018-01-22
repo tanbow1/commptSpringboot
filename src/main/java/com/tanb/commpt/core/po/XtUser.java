@@ -44,8 +44,17 @@ public class XtUser extends Base {
 
     private String userStatus;
 
+    private String registWay;
+
     private List<Map<String, String>> rolePermissions;//将用户对应角色列表加入
 
+    public String getRegistWay() {
+        return registWay;
+    }
+
+    public void setRegistWay(String registWay) {
+        this.registWay = registWay;
+    }
 
     public String getUserStatus() {
         return userStatus;

@@ -20,11 +20,12 @@
         <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
         <result column="STATUS" jdbcType="CHAR" property="status"/>
         <result column="USER_STATUS" jdbcType="CHAR" property="userStatus"/>
+        <result column="REGIST_WAY" jdbcType="CHAR" property="registWay"/>
     </resultMap>
     <sql id="Base_Column_List">
     USER_ID, USER_NAME, USER_ACCOUNT, REAL_NAME, SEX, MOBILE, BIRTHDAY, NATIONALITY_ID, 
     NATIONALITY, CARD_ID, CARD_TYPE, CARD_NUMBER, ADDRESS, AVATAR, REGIST_TIME, PASSWORD, 
-    STATUS,USER_STATUS
+    STATUS,USER_STATUS,REGIST_WAY
   </sql>
     <insert id="insertSelective" parameterType="com.tanb.commpt.core.po.XtUser">
         insert into XT_USER
@@ -71,9 +72,7 @@
             <if test="avatar != null">
                 AVATAR,
             </if>
-            <if test="registTime != null">
                 REGIST_TIME,
-            </if>
             <if test="password != null">
                 PASSWORD,
             </if>
@@ -82,6 +81,9 @@
             </if>
             <if test="userStatus != null">
                 USER_STATUS,
+            </if>
+            <if test="registWay != null">
+                REGIST_WAY,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -127,9 +129,7 @@
             <if test="avatar != null">
                 #{avatar,jdbcType=VARCHAR},
             </if>
-            <if test="registTime != null">
-                #{registTime,jdbcType=TIMESTAMP},
-            </if>
+            SYSDATE,
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
             </if>
@@ -138,6 +138,9 @@
             </if>
             <if test="userStatus != null">
                 #{userStatus,jdbcType=CHAR},
+            </if>
+            <if test="registWay != null">
+                #{registWay,jdbcType=CHAR},
             </if>
         </trim>
     </insert>
@@ -195,6 +198,9 @@
             <if test="userStatus != null">
                 USER_STATUS = #{userStatus,jdbcType=CHAR},
             </if>
+            <if test="registWay != null">
+                REGIST_WAY = #{registWay,jdbcType=CHAR},
+            </if>
         </set>
         where USER_ID = #{userId,jdbcType=VARCHAR}
     </update>
@@ -251,6 +257,9 @@
             <if test="userStatus != null">
                 USER_STATUS,
             </if>
+            <if test="registWay != null">
+                REGIST_WAY ,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             #{userId,jdbcType=VARCHAR},
@@ -301,6 +310,9 @@
             </if>
             <if test="userStatus != null">
                 userStatus,
+            </if>
+            <if test="registWay != null">
+                registWay,
             </if>
         </trim>
     </insert>

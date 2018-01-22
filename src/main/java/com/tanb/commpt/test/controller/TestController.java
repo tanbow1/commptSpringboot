@@ -1,22 +1,24 @@
 package com.tanb.commpt.test.controller;
 
 import com.tanb.commpt.core.dao.impl.BaseDao;
+import com.tanb.commpt.core.exception.BizLevelException;
 import com.tanb.commpt.core.global.SystemConfiguration;
 import com.tanb.commpt.core.mapper.DmCodeMapper;
 import com.tanb.commpt.core.po.DmCode;
 import com.tanb.commpt.core.po.XtUser;
-import com.tanb.commpt.core.po.XtUserRole;
 import com.tanb.commpt.core.service.IAuthService;
 import com.tanb.commpt.core.service.IUserService;
-import com.tanb.commpt.core.service.impl.UserServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
 /**
  * Created by Tanbo on 2017/12/6.
@@ -41,12 +43,20 @@ public class TestController {
     @Autowired
     IUserService userService;
 
+    @Resource
+    @Qualifier("jdbcTemplate2")
+    JdbcTemplate jdbcTemplate2;
+
     @ResponseBody
     @RequestMapping("hello")
-    public String hello() {
+    public String hello() throws BizLevelException {
         LOGGER.debug("=====TEST=====");
         System.out.println(systemConfiguration);
         System.out.println(baseDao.getNowLocal());
+        System.out.println(jdbcTemplate2.queryForObject("select 111 from dual",String.class));
+
+        baseDao.transactionTest();
+
         return "Hello CommPt!!";
     }
 
@@ -75,10 +85,12 @@ public class TestController {
         user.setNationalityId("156");
         user.setRealName("朱玲玲");
         user.setSex("0");
+        user.setRegistWay("9");
 //        XtUserRole role  = new XtUserRole();
 
         String useId = userService.saveUserInfo(user, null);
         return useId;
     }
+
 
 }

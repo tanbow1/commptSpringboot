@@ -87,6 +87,7 @@ public class WxMiniAppServiceImpl implements IWxMiniAppService {
             LOGGER.info("========>微信小程序用户：" + openid + " 未注册");
             XtUser xtUser = new XtUser();
             xtUser.setUserAccount(openid);
+            xtUser.setRegistWay("2");
             userService.saveUserInfo(xtUser, null);
             LOGGER.info("========>用户主表已注册");
             wxUser = new BzWxUser();
@@ -99,7 +100,7 @@ public class WxMiniAppServiceImpl implements IWxMiniAppService {
                 throw new BizLevelException(SysConstant.UNKNOW_CODE, SysConstant.UNKNOW_ERROR + ":注册微信小程序用户时出现未知错误(微信用户表注册异常)");
             }
             LOGGER.info("========>微信小程序用户：" + openid + " 注册成功");
-            jsonResponse.setDetailMsg("微信小程序用户已注册");
+            jsonResponse.setDetailMsg("注册成功");
         } else {
             if (StringUtils.isEmpty(wxUser.getUserId())) {
                 LOGGER.info("========>查找到微信小程序用户：" + openid + " ，未绑定本系统(userId不存在)");
@@ -107,14 +108,11 @@ public class WxMiniAppServiceImpl implements IWxMiniAppService {
                 XtUser xtUser = xtUserMapper.selectByPrimaryKey(wxUser.getUserId());
                 if (null != xtUser) {
                     LOGGER.info("========>查找到微信小程序用户：" + openid + " ，已绑定本系统");
-
                 } else {
                     LOGGER.info("========>查找到微信小程序用户：" + openid + " ，未绑定本系统(userId无效)");
-
                 }
             }
-
-
+            jsonResponse.setDetailMsg("登录成功");
         }
         return jsonResponse;
     }

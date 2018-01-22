@@ -6,6 +6,7 @@ import com.tanb.commpt.core.constant.SysConstant;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -24,18 +25,18 @@ import java.util.UUID;
 public class CommonUtil {
 
     /**
-     * 直接取spring 默认数据源
+     * 直接取spring数据源
      *
      * @param request
      * @return
      */
-    public static DataSource springDataSource(HttpServletRequest request) {
+    public static DataSource springDataSource(HttpServletRequest request, String dataSourceBeanName) {
         DataSource dataSource = null;
         ServletContext context = request.getSession().getServletContext();
         WebApplicationContext webApplicationContext = WebApplicationContextUtils
                 .getRequiredWebApplicationContext(context);
         dataSource = (DataSource) webApplicationContext
-                .getBean("dataSourceDefault");
+                .getBean(dataSourceBeanName);
         return dataSource;
     }
 
@@ -63,8 +64,10 @@ public class CommonUtil {
     /**
      * java uuid
      */
-    public static String getSystemUUID() {
-        return UUID.randomUUID().toString().replace("-", "");
+    public static String getSystemUUID(String replacement) {
+        if (StringUtils.isEmpty(replacement))
+            replacement = "";
+        return UUID.randomUUID().toString().replace("-", replacement);
     }
 
 
